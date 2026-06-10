@@ -1,0 +1,1502 @@
+[
+  {
+    "id": 1,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS基础",
+    "difficulty": "easy",
+    "question": "CSS 的中文全称是什么？",
+    "options": [
+      { "key": "A", "text": "计算机样式系统" },
+      { "key": "B", "text": "层叠样式表" },
+      { "key": "C", "text": "级联脚本语言" },
+      { "key": "D", "text": "页面布局语言" }
+    ],
+    "answer": "B",
+    "explanation": "CSS 全称为 Cascading Style Sheets，中文译为「层叠样式表」。其中 Cascading（层叠）表示多条规则作用于同一元素时按优先级决定最终效果，Style Sheets 指一组 CSS 规则的集合。",
+    "score": 5
+  },
+  {
+    "id": 2,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS基础",
+    "difficulty": "easy",
+    "question": "以下哪种 CSS 编写方式最推荐，可以实现样式与结构分离？",
+    "options": [
+      { "key": "A", "text": "行内样式" },
+      { "key": "B", "text": "内部样式表" },
+      { "key": "C", "text": "外部样式表" },
+      { "key": "D", "text": "内联脚本" }
+    ],
+    "answer": "C",
+    "explanation": "外部样式表通过 <link> 标签引入独立的 .css 文件，实现样式与结构的完全分离，便于维护和复用，是推荐的方式。行内样式优先级高但难以维护，内部样式表适合单页小项目。",
+    "score": 5
+  },
+  {
+    "id": 3,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS基础",
+    "difficulty": "easy",
+    "question": "以下哪些是 CSS 的合法编写位置？（多选）",
+    "options": [
+      { "key": "A", "text": "行内样式，如 <p style=\"color: red;\">" },
+      { "key": "B", "text": "内部样式表，写在 <head> 中的 <style> 标签内" },
+      { "key": "C", "text": "外部样式表，通过 <link> 标签引入" },
+      { "key": "D", "text": "写在 <script> 标签内" }
+    ],
+    "answer": "ABC",
+    "explanation": "CSS 有三种编写位置：行内样式（style 属性）、内部样式表（<style> 标签）和外部样式表（<link> 引入 .css 文件）。<script> 标签用于编写 JavaScript，不能写 CSS。",
+    "score": 5
+  },
+  {
+    "id": 4,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS基础",
+    "difficulty": "easy",
+    "question": "以下 CSS 规则有几处语法错误？请修正后写出正确的代码。",
+    "codeBefore": "h1 {\n  color: blue\n  font-size: 24px\n}",
+    "codeAfter": "h1 {\n  color: blue;\n  font-size: 24px;\n}",
+    "answer": "h1 {\n  color: blue;\n  font-size: 24px;\n}",
+    "explanation": "共 2 处错误：每条 CSS 声明必须以分号 ; 结尾，即 color: blue 和 font-size: 24px 后面都缺少分号。CSS 规范要求每条声明必须用分号结束。",
+    "score": 10
+  },
+  {
+    "id": 5,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS基础",
+    "difficulty": "easy",
+    "question": "请编写一段完整的 HTML 代码，使用外部样式表的方式引入一个名为 style.css 的样式文件（放在 css 文件夹下），并为页面中的 <h1> 标签设置红色文字和 32px 字号。",
+    "answer": "<!-- HTML 文件 -->\n<head>\n  <link rel=\"stylesheet\" href=\"./css/style.css\">\n</head>\n<body>\n  <h1>欢迎</h1>\n</body>\n\n/* style.css */\nh1 {\n  color: red;\n  font-size: 32px;\n}",
+    "explanation": "外部样式表通过 <link rel=\"stylesheet\" href=\"路径\"> 引入，href 指向 css/style.css。CSS 文件中使用 h1 选择器设置 color 和 font-size 属性，每条声明以分号结尾。",
+    "score": 10
+  },
+  {
+    "id": 6,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS基础",
+    "difficulty": "easy",
+    "question": "以下关于 CSS 优先级的描述，正确的是？",
+    "options": [
+      { "key": "A", "text": "ID 选择器优先级低于类选择器" },
+      { "key": "B", "text": "行内样式优先级高于 !important" },
+      { "key": "C", "text": "!important 优先级最高，大于行内样式" },
+      { "key": "D", "text": "元素选择器优先级高于类选择器" }
+    ],
+    "answer": "C",
+    "explanation": "CSS 优先级从高到低为：!important > 行内样式 > ID 选择器 > 类/伪类/属性选择器 > 元素/伪元素选择器。!important 会覆盖一切，但应谨慎使用。",
+    "score": 5
+  },
+  {
+    "id": 7,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS基础",
+    "difficulty": "easy",
+    "question": "当两条 CSS 规则优先级相同时，最终生效的是？",
+    "options": [
+      { "key": "A", "text": "先写的规则" },
+      { "key": "B", "text": "后写的规则" },
+      { "key": "C", "text": "随机选择一条" },
+      { "key": "D", "text": "两条同时生效" }
+    ],
+    "answer": "B",
+    "explanation": "当优先级相同时，后写的规则会覆盖先写的规则，这是 CSS 层叠性的体现。例如两个相同优先级的 color 声明，后面的会覆盖前面的。",
+    "score": 5
+  },
+  {
+    "id": 8,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS基础",
+    "difficulty": "easy",
+    "question": "以下哪些因素会影响 CSS 样式的最终生效结果？（多选）",
+    "options": [
+      { "key": "A", "text": "选择器的优先级（specificity）" },
+      { "key": "B", "text": "样式声明的书写顺序" },
+      { "key": "C", "text": "!important 关键字" },
+      { "key": "D", "text": "HTML 注释的位置" }
+    ],
+    "answer": "ABC",
+    "explanation": "CSS 最终样式的决定因素包括：选择器优先级（specificity）、书写顺序（后写覆盖先写）、!important 等。HTML 注释不影响 CSS 渲染。",
+    "score": 5
+  },
+  {
+    "id": 9,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS基础",
+    "difficulty": "easy",
+    "question": "以下代码想让段落文字变为蓝色，但实际显示为红色。请修正代码使段落显示蓝色。",
+    "codeBefore": "p { color: red; }\n.text { color: green; }\n#intro { color: blue; }\n\n<p class=\"text\">Hello</p>",
+    "codeAfter": "p { color: red; }\n.text { color: green; }\n/* 删除 #intro 规则，或把 p 选择器改为类/ID以提高优先级 */\n\n<p class=\"text\" id=\"intro\">Hello</p>",
+    "answer": ".text { color: green; }\np { color: red; }\n\n<p class=\"text\">Hello</p>",
+    "explanation": "原代码中 #intro 选择器定义了蓝色，但 <p> 元素没有 id=\"intro\" 属性，所以 #intro 规则不生效。.text（类选择器）优先级高于 p（元素选择器），所以显示绿色。如果想让文字变蓝色，需要为元素添加 id=\"intro\" 或将 color: blue 写在更高优先级的选择器中。",
+    "score": 10
+  },
+  {
+    "id": 10,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS基础",
+    "difficulty": "easy",
+    "question": "请编写 CSS 代码：页面中有一个 <h1> 和两个 <p> 元素。要求 h1 文字为红色、字号 28px；所有 p 元素默认颜色为灰色(#666)；但第二个 p 元素（class=\"highlight\"）文字颜色覆盖为蓝色(#409eff)。请写出 HTML 和 CSS。",
+    "answer": "/* CSS */\nh1 {\n  color: red;\n  font-size: 28px;\n}\np {\n  color: #666;\n}\n.highlight {\n  color: #409eff;\n}\n\n<!-- HTML -->\n<h1>标题</h1>\n<p>普通段落</p>\n<p class=\"highlight\">高亮段落</p>",
+    "explanation": "利用类选择器 .highlight 的优先级高于元素选择器 p 的特性，可以实现默认样式与特殊样式的覆盖。类选择器优先级高于元素选择器，所以 .highlight 的 color 会覆盖 p 的 color。",
+    "score": 10
+  },
+  {
+    "id": 11,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "以下哪个选择器可以选中页面上所有元素？",
+    "options": [
+      { "key": "A", "text": "# 选择器" },
+      { "key": "B", "text": ". 选择器" },
+      { "key": "C", "text": "* 选择器" },
+      { "key": "D", "text": "& 选择器" }
+    ],
+    "answer": "C",
+    "explanation": "*（通配选择器）可以选中页面中的所有元素，常用于全局样式重置，如 * { margin: 0; padding: 0; }。# 是 ID 选择器，. 是类选择器，& 不是 CSS 选择器。",
+    "score": 5
+  },
+  {
+    "id": 12,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "以下选择器中，哪个可以同时为 h1、h2、h3 设置相同样式？",
+    "options": [
+      { "key": "A", "text": "h1 h2 h3 { }" },
+      { "key": "B", "text": "h1 > h2 > h3 { }" },
+      { "key": "C", "text": "h1, h2, h3 { }" },
+      { "key": "D", "text": "h1.h2.h3 { }" }
+    ],
+    "answer": "C",
+    "explanation": "h1, h2, h3 是分组选择器（并集选择器），用逗号分隔，表示同时选中 h1、h2 和 h3 三个元素。空格表示后代选择器，> 表示子代选择器，. 表示类选择器。",
+    "score": 5
+  },
+  {
+    "id": 13,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "以下哪些属于 CSS 基本选择器？（多选）",
+    "options": [
+      { "key": "A", "text": "通配选择器 *" },
+      { "key": "B", "text": "类选择器 .class" },
+      { "key": "C", "text": "后代选择器 div p" },
+      { "key": "D", "text": "ID 选择器 #id" }
+    ],
+    "answer": "ABD",
+    "explanation": "CSS 基本选择器包括：通配选择器(*)、元素选择器、类选择器(.)、ID 选择器(#) 和分组选择器(,)。后代选择器(div p)属于复合选择器。",
+    "score": 5
+  },
+  {
+    "id": 14,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "以下代码想为三个不同类型的元素设置相同样式，但语法有误。请修正。",
+    "codeBefore": ".header #nav p {\n  font-size: 14px;\n  color: #333;\n}",
+    "codeAfter": ".header, #nav, p {\n  font-size: 14px;\n  color: #333;\n}",
+    "answer": ".header, #nav, p {\n  font-size: 14px;\n  color: #333;\n}",
+    "explanation": "原代码中 .header #nav p 是后代选择器，表示选中 .header 内部 #nav 内部的 p。如果要同时选中三个不同的元素，应使用分组选择器，用逗号分隔：.header, #nav, p。",
+    "score": 10
+  },
+  {
+    "id": 15,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "请编写 CSS 代码：使用分组选择器为 h1、h2、h3 设置统一的字体为 'Microsoft YaHei'，颜色为 #333；同时为 .title 类设置字号 24px、加粗；为 #logo 设置宽度 120px、高度 60px。",
+    "answer": "h1, h2, h3 {\n  font-family: \"Microsoft YaHei\", sans-serif;\n  color: #333;\n}\n\n.title {\n  font-size: 24px;\n  font-weight: bold;\n}\n\n#logo {\n  width: 120px;\n  height: 60px;\n}",
+    "explanation": "分组选择器用逗号分隔多个选择器共享声明块。类选择器用 . 前缀，ID 选择器用 # 前缀。ID 在页面中应唯一，类可以复用。",
+    "score": 10
+  },
+  {
+    "id": 16,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "选择器 div > p 的含义是什么？",
+    "options": [
+      { "key": "A", "text": "选中 div 内部所有的 p 元素，不论层级" },
+      { "key": "B", "text": "选中 div 的直接子元素 p" },
+      { "key": "C", "text": "选中 div 前面的 p 元素" },
+      { "key": "D", "text": "选中同时是 div 和 p 的元素" }
+    ],
+    "answer": "B",
+    "explanation": "div > p 是子代选择器，> 表示只选中 div 的直接子元素 p，不包括更深层级的 p（如 div 内部的 section 内的 p）。后代选择器 div p 则选中所有层级的 p。",
+    "score": 5
+  },
+  {
+    "id": 17,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "选择器 h1 + p 会选中哪个元素？",
+    "options": [
+      { "key": "A", "text": "h1 内部的所有 p" },
+      { "key": "B", "text": "h1 后面所有的同级 p" },
+      { "key": "C", "text": "紧跟 h1 后面的第一个同级 p" },
+      { "key": "D", "text": "h1 和 p 两个元素" }
+    ],
+    "answer": "C",
+    "explanation": "h1 + p 是相邻兄弟选择器，+ 表示选中紧跟在 h1 后面的第一个同级 p 元素。h1 ~ p（通用兄弟选择器）则选中 h1 后面所有同级 p。",
+    "score": 5
+  },
+  {
+    "id": 18,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "以下哪些属于 CSS 复合选择器？（多选）",
+    "options": [
+      { "key": "A", "text": "交集选择器 p.text" },
+      { "key": "B", "text": "后代选择器 div p" },
+      { "key": "C", "text": "子代选择器 div > p" },
+      { "key": "D", "text": "类选择器 .box" }
+    ],
+    "answer": "ABC",
+    "explanation": "复合选择器由多个基本选择器组合而成：交集选择器(p.text)、后代选择器(div p)、子代选择器(div > p)、相邻兄弟选择器(h1 + p)、通用兄弟选择器(h1 ~ p)。类选择器(.box)属于基本选择器。",
+    "score": 5
+  },
+  {
+    "id": 19,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "以下代码想选中 .nav 的直接子元素 li，但实际选中的是所有后代 li。请修正。",
+    "codeBefore": ".nav li {\n  list-style: none;\n  padding: 8px 16px;\n}",
+    "codeAfter": ".nav > li {\n  list-style: none;\n  padding: 8px 16px;\n}",
+    "answer": ".nav > li {\n  list-style: none;\n  padding: 8px 16px;\n}",
+    "explanation": "原代码 .nav li 使用后代选择器（空格），会选中 .nav 内部所有层级的 li。要只选中直接子元素，应使用子代选择器 .nav > li（> 符号）。",
+    "score": 10
+  },
+  {
+    "id": 20,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "请编写 CSS 代码，为一个导航菜单设置样式：.nav 内部的 ul 中，直接子元素 li 无列表样式并左浮动，.nav 内部所有 a 标签颜色为 #666、去掉下划线，同时选中类名为 current 的 li 元素设置背景色 #409eff、文字变白色。",
+    "answer": ".nav > ul > li {\n  list-style: none;\n  float: left;\n}\n\n.nav a {\n  color: #666;\n  text-decoration: none;\n}\n\n.nav .current {\n  background-color: #409eff;\n  color: #fff;\n}",
+    "explanation": "使用子代选择器 > 选中直接子元素避免影响嵌套列表；后代选择器（空格）选中 .nav 内所有 a；交集选择思路通过后代 .nav .current 选中导航中的当前项。",
+    "score": 10
+  },
+  {
+    "id": 21,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "以下哪个属性选择器可以选中所有 href 以 'https' 开头的 a 标签？",
+    "options": [
+      { "key": "A", "text": "a[href$=\"https\"]" },
+      { "key": "B", "text": "a[href^=\"https\"]" },
+      { "key": "C", "text": "a[href*=\"https\"]" },
+      { "key": "D", "text": "a[href=\"https\"]" }
+    ],
+    "answer": "B",
+    "explanation": "^= 表示「以...开头」，a[href^=\"https\"] 选中所有 href 以 https 开头的链接。$= 表示「以...结尾」，*= 表示「包含」，= 表示「完全匹配」。",
+    "score": 5
+  },
+  {
+    "id": 22,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "伪类 :hover 的作用是什么？",
+    "options": [
+      { "key": "A", "text": "元素被点击时的状态" },
+      { "key": "B", "text": "鼠标悬停在元素上时的状态" },
+      { "key": "C", "text": "元素获得焦点时的状态" },
+      { "key": "D", "text": "元素被访问后的状态" }
+    ],
+    "answer": "B",
+    "explanation": ":hover 伪类在鼠标悬停在元素上时生效。:active 是按下时的状态，:focus 是获得焦点时的状态，:visited 是已访问链接的状态。",
+    "score": 5
+  },
+  {
+    "id": 23,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "关于属性选择器，以下哪些语法是正确的？（多选）",
+    "options": [
+      { "key": "A", "text": "input[type=\"text\"] —— 匹配 type 属性等于 text 的 input" },
+      { "key": "B", "text": "a[href^=\"https\"] —— 匹配 href 以 https 开头的 a" },
+      { "key": "C", "text": "a[href$=\".pdf\"] —— 匹配 href 以 .pdf 结尾的 a" },
+      { "key": "D", "text": "[class*=\"btn\"] —— 匹配 class 属性包含 btn 的元素" }
+    ],
+    "answer": "ABCD",
+    "explanation": "四种属性选择器语法均正确：= 完全匹配、^= 开头匹配、$= 结尾匹配、*= 包含匹配。属性选择器非常灵活，可根据属性值精确选中元素。",
+    "score": 5
+  },
+  {
+    "id": 24,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "以下代码想让表格的奇数行有灰色背景，但 nth-child 写法有误。请修正。",
+    "codeBefore": "tr:nth-child(even) {\n  background-color: #f5f5f5;\n}",
+    "codeAfter": "tr:nth-child(odd) {\n  background-color: #f5f5f5;\n}",
+    "answer": "tr:nth-child(odd) {\n  background-color: #f5f5f5;\n}",
+    "explanation": "even 表示偶数行，odd 表示奇数行。如果要奇数行显示灰色背景，应使用 odd。nth-child 还可以使用公式如 2n+1（奇数）、2n（偶数）。",
+    "score": 10
+  },
+  {
+    "id": 25,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "easy",
+    "question": "请编写 CSS 代码实现：1) 所有 type=\"email\" 的 input 边框为蓝色(#409eff)；2) 所有 href 以 .pdf 结尾的链接文字变红色并带下划线；3) class 中包含 'card' 的元素有 8px 圆角和阴影效果。",
+    "answer": "input[type=\"email\"] {\n  border: 1px solid #409eff;\n}\n\na[href$=\".pdf\"] {\n  color: red;\n  text-decoration: underline;\n}\n\n[class*=\"card\"] {\n  border-radius: 8px;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\n}",
+    "explanation": "属性选择器 [type=\"email\"] 精确匹配、[href$=\".pdf\"] 结尾匹配、[class*=\"card\"] 包含匹配。属性选择器可以针对特定属性值的元素精确设置样式。",
+    "score": 10
+  },
+  {
+    "id": 26,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "medium",
+    "question": "以下关于伪元素的描述，哪个是正确的？",
+    "options": [
+      { "key": "A", "text": "::before 伪元素不需要 content 属性即可生效" },
+      { "key": "B", "text": "::after 伪元素在元素内容之后插入虚拟内容" },
+      { "key": "C", "text": "伪元素是真实存在于 DOM 树中的元素" },
+      { "key": "D", "text": "伪元素只能用于块级元素" }
+    ],
+    "answer": "B",
+    "explanation": "::after 在元素内容之后插入虚拟内容。::before 和 ::after 都必须配合 content 属性使用才能生效；伪元素是虚拟的，不存在于 DOM 树中；伪元素可用于行内元素和块级元素。",
+    "score": 5
+  },
+  {
+    "id": 27,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "medium",
+    "question": "选择器 #nav .item li 的优先级数值 (a,b,c,d) 是？",
+    "options": [
+      { "key": "A", "text": "(0,0,2,1)" },
+      { "key": "B", "text": "(0,1,1,1)" },
+      { "key": "C", "text": "(0,1,2,1)" },
+      { "key": "D", "text": "(0,0,1,2)" }
+    ],
+    "answer": "B",
+    "explanation": "#nav 贡献 b=1（ID选择器），.item 贡献 c=1（类选择器），li 贡献 d=1（元素选择器），结果为 (0,1,1,1)。行内样式才贡献 a=1。",
+    "score": 5
+  },
+  {
+    "id": 28,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "medium",
+    "question": "以下关于伪类和伪元素的说法，哪些是正确的？（多选）",
+    "options": [
+      { "key": "A", "text": ":hover 是伪类，描述元素的特殊状态" },
+      { "key": "B", "text": "::before 是伪元素，用于创建虚拟元素" },
+      { "key": "C", "text": ":nth-child(n) 是伪类，用于选择特定位置的子元素" },
+      { "key": "D", "text": ":not(.active) 是伪类，用于排除特定元素" }
+    ],
+    "answer": "ABCD",
+    "explanation": "所有选项均正确。伪类（:hover、:nth-child、:not 等）描述元素的特殊状态；伪元素（::before、::after 等）创建虚拟元素。CSS3 推荐伪元素用双冒号 ::，伪类用单冒号 :。",
+    "score": 5
+  },
+  {
+    "id": 29,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "medium",
+    "question": "以下清除浮动的伪元素写法缺少关键属性，导致无法清除浮动。请修正。",
+    "codeBefore": ".clearfix::after {\n  display: block;\n  clear: both;\n}",
+    "codeAfter": ".clearfix::after {\n  content: \"\";\n  display: block;\n  clear: both;\n}",
+    "answer": ".clearfix::after {\n  content: \"\";\n  display: block;\n  clear: both;\n}",
+    "explanation": "::after 伪元素必须设置 content 属性（即使是空字符串）才能生效。原代码缺少 content: \"\"，导致伪元素不会被创建，clear: both 也就无法生效。",
+    "score": 10
+  },
+  {
+    "id": 30,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS选择器",
+    "difficulty": "medium",
+    "question": "请编写 CSS 代码：1) 使用 ::before 为每个列表项（li）前添加一个蓝色圆点（●）标记；2) 使用 ::first-letter 让每段文字的首字母字号变为 24px 并加粗；3) 使用 :nth-child(2n) 让表格的偶数行有浅灰背景(#f9f9f9)。",
+    "answer": "li::before {\n  content: \"●\";\n  color: #409eff;\n  margin-right: 8px;\n}\n\np::first-letter {\n  font-size: 24px;\n  font-weight: bold;\n}\n\ntr:nth-child(2n) {\n  background-color: #f9f9f9;\n}",
+    "explanation": "伪元素 ::before 配合 content 属性在元素前插入内容。伪元素 ::first-letter 作用于首字母。伪类 :nth-child(2n) 选中偶数子元素，实现隔行变色（斑马纹效果）。",
+    "score": 10
+  },
+  {
+    "id": 31,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS三大特征",
+    "difficulty": "medium",
+    "question": "以下哪个 CSS 属性可以被子元素继承？",
+    "options": [
+      { "key": "A", "text": "margin" },
+      { "key": "B", "text": "border" },
+      { "key": "C", "text": "color" },
+      { "key": "D", "text": "width" }
+    ],
+    "answer": "C",
+    "explanation": "只有 color、font-family、font-size、line-height 等与文字相关的属性可以继承。width、height、margin、padding、border、background 等盒模型相关属性不可继承。",
+    "score": 5
+  },
+  {
+    "id": 32,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS三大特征",
+    "difficulty": "medium",
+    "question": "以下关于 CSS 层叠性的描述，正确的是？",
+    "options": [
+      { "key": "A", "text": "层叠性只在不同选择器之间起作用" },
+      { "key": "B", "text": "相同优先级下，后写的样式会覆盖先写的" },
+      { "key": "C", "text": "层叠性的优先级高于继承性" },
+      { "key": "D", "text": "层叠性是指子元素继承父元素的样式" }
+    ],
+    "answer": "B",
+    "explanation": "层叠性指优先级相同时，后写覆盖先写。选项 A 错误（同一选择器后写也覆盖先写）；选项 C 不准确（层叠和继承是不同机制，优先级覆盖两者）；选项 D 描述的是继承性。",
+    "score": 5
+  },
+  {
+    "id": 33,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS三大特征",
+    "difficulty": "medium",
+    "question": "三大特征共同决定元素最终样式。以下关于它们的描述，哪些是正确的？（多选）",
+    "options": [
+      { "key": "A", "text": "继承性：子元素自动获得父元素的 color、font-size 等属性" },
+      { "key": "B", "text": "层叠性：相同优先级的规则，后写的覆盖先写的" },
+      { "key": "C", "text": "优先级：!important 可覆盖一切，但应谨慎使用" },
+      { "key": "D", "text": "三大特征的作用力排序为：继承 < 层叠 < 优先级" }
+    ],
+    "answer": "ABCD",
+    "explanation": "全部选项正确。CSS 三大特征的关系：继承性最弱 → 层叠性（后写覆盖先写）→ 优先级最强。三大特征共同作用决定元素的最终表现样式。",
+    "score": 5
+  },
+  {
+    "id": 34,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS三大特征",
+    "difficulty": "medium",
+    "question": "以下代码中，子元素 .box 没有直接设置 color，期望继承 body 的红色但实际显示了蓝色。请修正代码使其正常继承 body 的红色。",
+    "codeBefore": "body { color: red; }\n.box { color: blue; }\n\n<div class=\"box\">文字</div>",
+    "codeAfter": "body { color: red; }\n.box { color: inherit; }\n\n<div class=\"box\">文字</div>",
+    "answer": "body { color: red; }\n.box { color: inherit; }\n\n<div class=\"box\">文字</div>",
+    "explanation": "当 .box 有直接 color 声明时，会覆盖继承自 body 的颜色。使用 inherit 关键字可以强制子元素继承父元素的对应属性值，即使已有自己的声明。",
+    "score": 10
+  },
+  {
+    "id": 35,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS三大特征",
+    "difficulty": "medium",
+    "question": "请编写 CSS 代码：body 设置默认字体为 Arial、字号 16px、颜色 #333、行高 1.6。页面中有一个 class=\"card\" 的 div，要求其内部的 p 元素继承 body 的颜色（即使 p 有默认样式），同时 .card 内 h2 的字号为 20px、颜色为 #409eff（覆盖继承的 body 颜色）。",
+    "answer": "body {\n  font-family: Arial, sans-serif;\n  font-size: 16px;\n  color: #333;\n  line-height: 1.6;\n}\n\n.card p {\n  color: inherit;\n}\n\n.card h2 {\n  font-size: 20px;\n  color: #409eff;\n}",
+    "explanation": "body 设置的 font-family、color、font-size、line-height 会继承给后代元素。.card h2 的 color 会覆盖继承的值（优先级 > 继承性），而 .card p 使用 inherit 确保始终跟随 body 的颜色。",
+    "score": 10
+  },
+  {
+    "id": 36,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS常用属性",
+    "difficulty": "medium",
+    "question": "以下哪种颜色表示方式支持设置透明度？",
+    "options": [
+      { "key": "A", "text": "#ff0000" },
+      { "key": "B", "text": "red" },
+      { "key": "C", "text": "rgba(255, 0, 0, 0.5)" },
+      { "key": "D", "text": "rgb(255, 0, 0)" }
+    ],
+    "answer": "C",
+    "explanation": "rgba() 中的 a 表示 Alpha 通道，取值范围 0~1，用于设置透明度（0 全透明，1 不透明）。十六进制和关键字都不支持透明度设置。",
+    "score": 5
+  },
+  {
+    "id": 37,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS常用属性",
+    "difficulty": "medium",
+    "question": "text-overflow: ellipsis 要生效，必须配合哪两个属性？",
+    "options": [
+      { "key": "A", "text": "overflow: hidden 和 white-space: nowrap" },
+      { "key": "B", "text": "overflow: scroll 和 width: 100%" },
+      { "key": "C", "text": "display: block 和 float: left" },
+      { "key": "D", "text": "visibility: hidden 和 text-align: center" }
+    ],
+    "answer": "A",
+    "explanation": "单行文本溢出省略号需要三件套：overflow: hidden（隐藏溢出内容）、white-space: nowrap（强制不换行）、text-overflow: ellipsis（显示省略号）。三者缺一不可。",
+    "score": 5
+  },
+  {
+    "id": 38,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS常用属性",
+    "difficulty": "medium",
+    "question": "以下哪些 CSS 属性与文本样式相关？（多选）",
+    "options": [
+      { "key": "A", "text": "text-align —— 文本水平对齐" },
+      { "key": "B", "text": "text-decoration —— 文本装饰（如下划线）" },
+      { "key": "C", "text": "letter-spacing —— 字符间距" },
+      { "key": "D", "text": "text-indent —— 首行缩进" }
+    ],
+    "answer": "ABCD",
+    "explanation": "全部选项都是 CSS 文本相关属性：text-align 控制水平对齐、text-decoration 控制装饰线、letter-spacing 控制字符间距、text-indent 控制首行缩进。",
+    "score": 5
+  },
+  {
+    "id": 39,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS常用属性",
+    "difficulty": "medium",
+    "question": "以下代码想让单行文字溢出时显示省略号，但省略号没有出现。请修正。",
+    "codeBefore": ".ellipsis {\n  width: 200px;\n  text-overflow: ellipsis;\n}",
+    "codeAfter": ".ellipsis {\n  width: 200px;\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}",
+    "answer": ".ellipsis {\n  width: 200px;\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}",
+    "explanation": "text-overflow: ellipsis 单独使用无效，必须配合 overflow: hidden 和 white-space: nowrap。只有文本不换行且溢出被隐藏时，省略号才会显示。",
+    "score": 10
+  },
+  {
+    "id": 40,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS常用属性",
+    "difficulty": "medium",
+    "question": "请编写 CSS 代码为一个博客文章页面设置文字样式：1) body 字体 16px/1.8 'Microsoft YaHei'，颜色 #333；2) 文章标题(.article-title) 字号 28px、居中、颜色 #222；3) 段落(.article-content p) 首行缩进 2em、两端对齐；4) 链接样式：默认色 #409eff 无下划线，悬停时加下划线。",
+    "answer": "body {\n  font: 16px/1.8 \"Microsoft YaHei\", sans-serif;\n  color: #333;\n}\n\n.article-title {\n  font-size: 28px;\n  text-align: center;\n  color: #222;\n}\n\n.article-content p {\n  text-indent: 2em;\n  text-align: justify;\n}\n\na {\n  color: #409eff;\n  text-decoration: none;\n}\n\na:hover {\n  text-decoration: underline;\n}",
+    "explanation": "font 简写同时设置字号和行高；text-indent: 2em 实现首行缩进两个汉字宽度；text-align: justify 两端对齐；:hover 伪类实现悬停交互效果。",
+    "score": 10
+  },
+  {
+    "id": 41,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS常用属性",
+    "difficulty": "medium",
+    "question": "以下哪个 CSS 属性可以让表格的单元格边框合并为单一边框？",
+    "options": [
+      { "key": "A", "text": "border-spacing: 0" },
+      { "key": "B", "text": "border-collapse: collapse" },
+      { "key": "C", "text": "border-merge: true" },
+      { "key": "D", "text": "table-layout: fixed" }
+    ],
+    "answer": "B",
+    "explanation": "border-collapse: collapse 将表格单元格的双线边框合并为单一边框，是制作标准表格的常用属性。border-spacing 设置单元格间距，table-layout 控制表格布局算法。",
+    "score": 5
+  },
+  {
+    "id": 42,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "标准盒模型中，一个元素的 width: 200px; padding: 20px; border: 2px solid; 实际占据的总宽度是多少？",
+    "options": [
+      { "key": "A", "text": "200px" },
+      { "key": "B", "text": "220px" },
+      { "key": "C", "text": "244px" },
+      { "key": "D", "text": "240px" }
+    ],
+    "answer": "C",
+    "explanation": "标准盒模型：总宽度 = width + 左右padding + 左右border = 200 + 20×2 + 2×2 = 244px。如果设置 box-sizing: border-box，则 width 包含 padding 和 border，总宽度就是 200px。",
+    "score": 5
+  },
+  {
+    "id": 43,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "以下哪些单位是 CSS 中合法的长度单位？（多选）",
+    "options": [
+      { "key": "A", "text": "px（像素）" },
+      { "key": "B", "text": "em（相对当前元素 font-size）" },
+      { "key": "C", "text": "rem（相对根元素 font-size）" },
+      { "key": "D", "text": "%（相对父元素对应属性）" }
+    ],
+    "answer": "ABCD",
+    "explanation": "四种都是合法单位：px 是绝对单位；em 相对当前元素的 font-size；rem 相对根元素(html)的 font-size（更可控）；% 相对父元素的对应属性。",
+    "score": 5
+  },
+  {
+    "id": 44,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "以下代码中 background 简写属性顺序不正确，可能导致背景图片无法显示。请修正为正确的简写顺序。",
+    "codeBefore": ".hero {\n  background: url(\"bg.jpg\") no-repeat #eee center/cover;\n}",
+    "codeAfter": ".hero {\n  background: #eee url(\"bg.jpg\") no-repeat center/cover;\n}",
+    "answer": ".hero {\n  background: #eee url(\"bg.jpg\") no-repeat center/cover;\n}",
+    "explanation": "background 简写推荐顺序为：background-color、background-image、background-repeat、background-position/background-size。颜色应在图片之前，以便图片加载失败时显示备用背景色。",
+    "score": 10
+  },
+  {
+    "id": 45,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS常用属性",
+    "difficulty": "medium",
+    "question": "请编写 CSS 代码为一个数据表格设置样式：1) 表格宽度 100%，边框合并；2) 表头(th)背景色 #409eff、白色文字、padding 12px；3) 普通单元格(td)边框 1px solid #ddd、padding 10px；4) 表格行悬停时背景变为 #f0f7ff。",
+    "answer": "table {\n  width: 100%;\n  border-collapse: collapse;\n}\n\nth {\n  background-color: #409eff;\n  color: #fff;\n  padding: 12px;\n}\n\ntd {\n  border: 1px solid #ddd;\n  padding: 10px;\n}\n\ntr:hover {\n  background-color: #f0f7ff;\n}",
+    "explanation": "border-collapse: collapse 合并表格边框；th 和 td 分别设置表头和单元格样式；tr:hover 伪类实现整行悬停高亮效果，提升表格交互体验。",
+    "score": 10
+  },
+  {
+    "id": 46,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "display: inline-block 的特点是什么？",
+    "options": [
+      { "key": "A", "text": "独占一行，不能设置宽高" },
+      { "key": "B", "text": "行内排列，可以设置宽高" },
+      { "key": "C", "text": "完全不显示，不占空间" },
+      { "key": "D", "text": "行内排列，宽高由内容决定" }
+    ],
+    "answer": "B",
+    "explanation": "inline-block 结合了 inline（行内排列，不换行）和 block（可设置宽高）的优点。inline 不能设宽高，block 独占一行，none 不显示不占空间。",
+    "score": 5
+  },
+  {
+    "id": 47,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "以下哪种方式可以让一个固定宽度的块级元素水平居中？",
+    "options": [
+      { "key": "A", "text": "margin: 10px auto" },
+      { "key": "B", "text": "text-align: center" },
+      { "key": "C", "text": "float: center" },
+      { "key": "D", "text": "position: center" }
+    ],
+    "answer": "A",
+    "explanation": "margin: 0 auto 可以让固定宽度的块级元素水平居中（左右 auto 均分剩余空间）。text-align: center 是让内部行内元素居中。float 没有 center 值，position 也没有 center 值。",
+    "score": 5
+  },
+  {
+    "id": 48,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "以下哪些 display 属性值可以让元素不换行（与其他元素同行排列）？（多选）",
+    "options": [
+      { "key": "A", "text": "inline" },
+      { "key": "B", "text": "inline-block" },
+      { "key": "C", "text": "flex（父元素设置后，子元素同行排列）" },
+      { "key": "D", "text": "block" }
+    ],
+    "answer": "ABC",
+    "explanation": "inline 和 inline-block 元素不换行。父元素设置为 flex 后，子元素默认同行排列。block 独占一行，会换行。",
+    "score": 5
+  },
+  {
+    "id": 49,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "以下代码中两个 inline-block 的 div 之间有空白间隙。请修正代码消除间隙。",
+    "codeBefore": ".nav-item {\n  display: inline-block;\n  width: 100px;\n  height: 40px;\n  background: #409eff;\n}\n\n<div class=\"nav-item\">首页</div>\n<div class=\"nav-item\">关于</div>",
+    "codeAfter": ".nav {\n  font-size: 0;\n}\n\n.nav-item {\n  display: inline-block;\n  width: 100px;\n  height: 40px;\n  background: #409eff;\n  font-size: 14px;\n}\n\n<div class=\"nav\">\n  <div class=\"nav-item\">首页</div>\n  <div class=\"nav-item\">关于</div>\n</div>",
+    "answer": ".nav {\n  font-size: 0;\n}\n\n.nav-item {\n  display: inline-block;\n  width: 100px;\n  height: 40px;\n  background: #409eff;\n  font-size: 14px;\n}\n\n<div class=\"nav\">\n  <div class=\"nav-item\">首页</div>\n  <div class=\"nav-item\">关于</div>\n</div>",
+    "explanation": "inline-block 元素间的 HTML 换行会被渲染为空白间隙。解决方法：给父元素设置 font-size: 0，然后给子元素重新设置需要的字号。也可以使用 flex 布局替代 inline-block。",
+    "score": 10
+  },
+  {
+    "id": 50,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "请编写 CSS 代码创建一个商品卡片布局：卡片(.card)宽 300px、边框 1px solid #eee、圆角 8px、水平居中（页面中）、内边距 16px；卡片内图片(.card-img)宽 100%、圆角 4px；标题(.card-title)字号 18px、加粗、margin-top: 12px；描述文字(.card-desc)颜色 #999、字号 14px。",
+    "answer": ".card {\n  width: 300px;\n  border: 1px solid #eee;\n  border-radius: 8px;\n  margin: 0 auto;\n  padding: 16px;\n}\n\n.card-img {\n  width: 100%;\n  border-radius: 4px;\n}\n\n.card-title {\n  font-size: 18px;\n  font-weight: bold;\n  margin-top: 12px;\n}\n\n.card-desc {\n  color: #999;\n  font-size: 14px;\n}",
+    "explanation": "margin: 0 auto 让固定宽度的块级卡片水平居中；padding 设置内边距；width: 100% 让图片自适应卡片宽度；border-radius 实现圆角效果。",
+    "score": 10
+  },
+  {
+    "id": 51,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "父子元素间发生外边距塌陷时，以下哪种方法不能解决？",
+    "options": [
+      { "key": "A", "text": "父元素添加 overflow: hidden" },
+      { "key": "B", "text": "父元素添加 padding-top: 1px" },
+      { "key": "C", "text": "父元素设置 float: left" },
+      { "key": "D", "text": "子元素添加 margin-top: 0" }
+    ],
+    "answer": "D",
+    "explanation": "解决父子上外边距塌陷的方法：父元素加 overflow: hidden、加 padding-top、加 border-top、设置 float、设置 display: flow-root 等（触发 BFC）。子元素设置 margin-top: 0 只是去掉间距，不能解决塌陷问题。",
+    "score": 5
+  },
+  {
+    "id": 52,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "两个相邻兄弟元素，上方元素的 margin-bottom: 30px，下方元素的 margin-top: 20px，它们之间的实际间距是多少？",
+    "options": [
+      { "key": "A", "text": "50px" },
+      { "key": "B", "text": "30px" },
+      { "key": "C", "text": "20px" },
+      { "key": "D", "text": "10px" }
+    ],
+    "answer": "B",
+    "explanation": "相邻兄弟元素的上下 margin 会发生合并（折叠），取两者中的较大值。30px > 20px，所以实际间距为 30px，而非两者相加的 50px。",
+    "score": 5
+  },
+  {
+    "id": 53,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "以下哪些方式可以触发 BFC（块级格式化上下文）？（多选）",
+    "options": [
+      { "key": "A", "text": "overflow: hidden" },
+      { "key": "B", "text": "display: flow-root" },
+      { "key": "C", "text": "float: left" },
+      { "key": "D", "text": "position: absolute" }
+    ],
+    "answer": "ABCD",
+    "explanation": "以上均可触发 BFC：overflow 不为 visible、display: flow-root（专门创建 BFC）、float 不为 none、position: absolute/fixed。BFC 可以解决外边距塌陷、清除浮动等问题。",
+    "score": 5
+  },
+  {
+    "id": 54,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "以下代码中子元素的 margin-top 导致父元素一起下移（外边距塌陷）。请修正代码阻止塌陷。",
+    "codeBefore": ".parent {\n  background: #f0f0f0;\n  /* 父元素与子元素上外边距发生塌陷 */\n}\n\n.child {\n  margin-top: 30px;\n}",
+    "codeAfter": ".parent {\n  background: #f0f0f0;\n  overflow: hidden;\n}\n\n.child {\n  margin-top: 30px;\n}",
+    "answer": ".parent {\n  background: #f0f0f0;\n  overflow: hidden;\n}\n\n.child {\n  margin-top: 30px;\n}",
+    "explanation": "父子外边距塌陷可以通过触发父元素的 BFC 来解决。给父元素添加 overflow: hidden 是最常用的方法之一。其他方法还包括加 padding-top、border-top 或使用 display: flow-root。",
+    "score": 10
+  },
+  {
+    "id": 55,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "盒子模型",
+    "difficulty": "medium",
+    "question": "请编写 CSS 代码创建一个带标题的卡片组件：1) 卡片(.card)宽 400px、边框 1px solid #e0e0e0、圆角 8px、overflow: hidden（防止溢出和塌陷）；2) 卡片头部(.card-header)背景色 #409eff、白色文字、padding 16px；3) 卡片内容(.card-body)内边距 20px、文字颜色 #666、行高 1.8；4) 内容中的第一段(.card-body p:first-child)的 margin-top 设为 0（避免与头部间距过大）。",
+    "answer": ".card {\n  width: 400px;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n  overflow: hidden;\n}\n\n.card-header {\n  background-color: #409eff;\n  color: #fff;\n  padding: 16px;\n}\n\n.card-body {\n  padding: 20px;\n  color: #666;\n  line-height: 1.8;\n}\n\n.card-body p:first-child {\n  margin-top: 0;\n}",
+    "explanation": "overflow: hidden 同时解决了溢出隐藏和外边距塌陷问题。:first-child 伪类用于精准选择第一个元素。padding 设置合理的内边距让内容不贴边。",
+    "score": 10
+  },
+  {
+    "id": 56,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "浮动",
+    "difficulty": "medium",
+    "question": "设置 float: left 的元素会发生什么？",
+    "options": [
+      { "key": "A", "text": "元素保留在文档流中，向左移动" },
+      { "key": "B", "text": "元素脱离文档流，向左浮动，周围行内元素环绕" },
+      { "key": "C", "text": "元素脱离文档流，固定在视口左侧" },
+      { "key": "D", "text": "元素变为行内元素，向左排列" }
+    ],
+    "answer": "B",
+    "explanation": "float 使元素脱离普通文档流，向指定方向贴靠，周围的文本和行内元素会环绕它。这与 position: fixed（固定视口）不同，也与 inline 排列不同。",
+    "score": 5
+  },
+  {
+    "id": 57,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "浮动",
+    "difficulty": "medium",
+    "question": "以下清除浮动的方法中，最推荐的是？",
+    "options": [
+      { "key": "A", "text": "在浮动元素后添加空 div 并设置 clear: both" },
+      { "key": "B", "text": "使用伪元素 ::after 配合 clear: both" },
+      { "key": "C", "text": "给父元素设置固定高度" },
+      { "key": "D", "text": "给所有子元素添加 clear 属性" }
+    ],
+    "answer": "B",
+    "explanation": "伪元素清除法（.clearfix::after）是最推荐的方式，不需要添加额外的 HTML 标签，保持结构干净。添加空 div 也能清除但增加了无意义标签。固定高度不灵活，无法适应内容变化。",
+    "score": 5
+  },
+  {
+    "id": 58,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "浮动",
+    "difficulty": "medium",
+    "question": "浮动元素可能带来哪些影响？（多选）",
+    "options": [
+      { "key": "A", "text": "父元素高度塌陷" },
+      { "key": "B", "text": "后续块级元素可能被浮动元素覆盖" },
+      { "key": "C", "text": "周围的行内元素会环绕浮动元素" },
+      { "key": "D", "text": "浮动元素自动垂直居中" }
+    ],
+    "answer": "ABC",
+    "explanation": "浮动导致父元素高度塌陷（因为浮动元素脱离文档流不撑开父元素），后续块级元素可能被覆盖，行内元素环绕浮动元素。浮动不会使元素自动垂直居中。",
+    "score": 5
+  },
+  {
+    "id": 59,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "浮动",
+    "difficulty": "medium",
+    "question": "以下代码中，父元素 .container 因为子元素浮动导致高度为 0。请修正代码使父元素包裹浮动子元素。",
+    "codeBefore": ".left { float: left; width: 200px; }\n.right { float: right; width: 200px; }\n\n<div class=\"container\">\n  <div class=\"left\">左侧</div>\n  <div class=\"right\">右侧</div>\n</div>",
+    "codeAfter": ".container::after {\n  content: \"\";\n  display: block;\n  clear: both;\n}\n\n.left { float: left; width: 200px; }\n.right { float: right; width: 200px; }\n\n<div class=\"container\">\n  <div class=\"left\">左侧</div>\n  <div class=\"right\">右侧</div>\n</div>",
+    "answer": ".container::after {\n  content: \"\";\n  display: block;\n  clear: both;\n}\n\n.left { float: left; width: 200px; }\n.right { float: right; width: 200px; }",
+    "explanation": "浮动元素脱离文档流，父元素无法感知其高度导致塌陷。使用伪元素清除法（::after + content + display: block + clear: both）是最推荐的解决方案，无需添加额外 HTML 标签。",
+    "score": 10
+  },
+  {
+    "id": 60,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "浮动",
+    "difficulty": "medium",
+    "question": "请编写 CSS 代码创建图文混排效果：1) 容器(.article)宽 700px，清除内部浮动；2) 图片(.article-img)左浮动、宽 300px、右边距 20px、圆角 8px；3) 标题(.article-title)字号 22px、颜色 #333；4) 段落(.article-content p)行高 1.8、颜色 #666、首行缩进 2em。请同时写出清除浮动的代码。",
+    "answer": ".article::after {\n  content: \"\";\n  display: block;\n  clear: both;\n}\n\n.article {\n  width: 700px;\n}\n\n.article-img {\n  float: left;\n  width: 300px;\n  margin-right: 20px;\n  border-radius: 8px;\n}\n\n.article-title {\n  font-size: 22px;\n  color: #333;\n}\n\n.article-content p {\n  line-height: 1.8;\n  color: #666;\n  text-indent: 2em;\n}",
+    "explanation": "图片左浮动实现文字环绕效果。.article::after 清除浮动防止容器高度塌陷。margin-right 给图片右侧留出间距，避免文字紧贴图片。",
+    "score": 10
+  },
+  {
+    "id": 61,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "定位",
+    "difficulty": "medium",
+    "question": "position: relative 的特点是什么？",
+    "options": [
+      { "key": "A", "text": "脱离文档流，相对视口定位" },
+      { "key": "B", "text": "保留原空间，相对自身原位置偏移" },
+      { "key": "C", "text": "脱离文档流，相对最近定位祖先偏移" },
+      { "key": "D", "text": "固定在视口，不随滚动移动" }
+    ],
+    "answer": "B",
+    "explanation": "relative 相对自身原位置偏移，原空间保留不释放，不影响其他元素布局。absolute 脱离文档流相对最近定位祖先；fixed 相对视口固定；static 是默认值。",
+    "score": 5
+  },
+  {
+    "id": 62,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "定位",
+    "difficulty": "medium",
+    "question": "z-index 属性在什么条件下才生效？",
+    "options": [
+      { "key": "A", "text": "任何元素都可以使用" },
+      { "key": "B", "text": "只对 position 为非 static 的元素生效" },
+      { "key": "C", "text": "只对 float 元素生效" },
+      { "key": "D", "text": "只对 display: flex 的元素生效" }
+    ],
+    "answer": "B",
+    "explanation": "z-index 只能用于 position 为 relative、absolute、fixed 或 sticky 的元素（即非 static）。数值越大越靠前显示。static 元素设置 z-index 无效。",
+    "score": 5
+  },
+  {
+    "id": 63,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "定位",
+    "difficulty": "medium",
+    "question": "以下哪些 position 值会使元素脱离文档流？（多选）",
+    "options": [
+      { "key": "A", "text": "absolute" },
+      { "key": "B", "text": "fixed" },
+      { "key": "C", "text": "relative" },
+      { "key": "D", "text": "static" }
+    ],
+    "answer": "AB",
+    "explanation": "absolute 和 fixed 都会使元素脱离文档流（不占原空间）。relative 保留原空间，static 是默认的文档流排列。sticky 在滚动超过阈值前类似 relative。",
+    "score": 5
+  },
+  {
+    "id": 64,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "定位",
+    "difficulty": "hard",
+    "question": "以下代码想将 .child 相对于 .parent 的右上角定位（top: 0; right: 0），但 .child 却相对于浏览器窗口定位。请修正。",
+    "codeBefore": ".parent {\n  width: 500px;\n  height: 300px;\n  background: #eee;\n}\n\n.child {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100px;\n  height: 40px;\n  background: #409eff;\n}\n\n<div class=\"parent\">\n  <div class=\"child\">角标</div>\n</div>",
+    "codeAfter": ".parent {\n  position: relative;\n  width: 500px;\n  height: 300px;\n  background: #eee;\n}\n\n.child {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100px;\n  height: 40px;\n  background: #409eff;\n}\n\n<div class=\"parent\">\n  <div class=\"child\">角标</div>\n</div>",
+    "answer": ".parent {\n  position: relative;\n  width: 500px;\n  height: 300px;\n  background: #eee;\n}\n\n.child {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100px;\n  height: 40px;\n  background: #409eff;\n}",
+    "explanation": "absolute 元素相对于最近的非 static 定位祖先定位。原代码中 .parent 没有设置 position（默认为 static），所以 .child 会一直向上找到 body/视口作为参照。给 .parent 添加 position: relative 即可将参照锚定到父元素。",
+    "score": 10
+  },
+  {
+    "id": 65,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "定位",
+    "difficulty": "hard",
+    "question": "请编写 CSS 代码实现一个固定在页面顶部的导航栏(.fixed-nav)：宽 100%、高 60px、背景色 #333、白色文字、z-index: 999，且页面内容不会因为导航固定而跳动（即保持原位置占位）。导航栏内包含一个水平居中的版心容器(.nav-inner)，max-width: 1200px。",
+    "answer": ".fixed-nav {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 60px;\n  background-color: #333;\n  color: #fff;\n  z-index: 999;\n}\n\n.nav-inner {\n  max-width: 1200px;\n  height: 100%;\n  margin: 0 auto;\n  display: flex;\n  align-items: center;\n}\n\n/* 防止内容被固定导航遮挡 */\nbody {\n  padding-top: 60px;\n}",
+    "explanation": "position: fixed 使导航固定在视口顶部。z-index: 999 确保导航在最上层。body 的 padding-top 等于导航高度(60px)，防止页面内容被固定导航遮挡。margin: 0 auto 让版心容器水平居中。",
+    "score": 10
+  },
+  {
+    "id": 66,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "定位",
+    "difficulty": "hard",
+    "question": "position: sticky 的定位行为是什么？",
+    "options": [
+      { "key": "A", "text": "始终固定在视口顶部" },
+      { "key": "B", "text": "滚动到阈值前像 relative，之后像 fixed" },
+      { "key": "C", "text": "始终跟随文档流，不做任何固定" },
+      { "key": "D", "text": "脱离文档流，相对父元素定位" }
+    ],
+    "answer": "B",
+    "explanation": "sticky 是 relative 和 fixed 的结合：当滚动未达到阈值（如 top: 0）时，表现为 relative；当滚动超过阈值后，表现为 fixed 固定在指定位置。常用于吸顶导航。",
+    "score": 5
+  },
+  {
+    "id": 67,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "定位",
+    "difficulty": "hard",
+    "question": "使用 transform: translate(-50%, -50%) 配合绝对定位可以实现什么效果？",
+    "options": [
+      { "key": "A", "text": "元素缩小为原来的一半" },
+      { "key": "B", "text": "元素精确水平垂直居中" },
+      { "key": "C", "text": "元素向左上方移动 50px" },
+      { "key": "D", "text": "元素旋转 50 度" }
+    ],
+    "answer": "B",
+    "explanation": "绝对定位 + transform: translate(-50%, -50%) 是经典的居中方案：top: 50%; left: 50% 将元素左上角定位到中心，translate(-50%, -50%) 将元素自身向左上偏移一半宽高，实现精确居中。不依赖元素具体尺寸。",
+    "score": 5
+  },
+  {
+    "id": 68,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "定位",
+    "difficulty": "hard",
+    "question": "以下哪些是实现元素水平垂直居中的有效方法？（多选）",
+    "options": [
+      { "key": "A", "text": "绝对定位 + top:50%; left:50%; transform:translate(-50%,-50%)" },
+      { "key": "B", "text": "Flex 布局：display:flex; justify-content:center; align-items:center" },
+      { "key": "C", "text": "Grid 布局：display:grid; place-items:center" },
+      { "key": "D", "text": "margin: 0 auto + vertical-align: middle" }
+    ],
+    "answer": "ABC",
+    "explanation": "A（绝对定位+transform）适用于任何元素；B（Flex）是最推荐的现代方案；C（Grid+place-items）是最简洁的方案。D 的 margin: 0 auto 只能水平居中块级元素，vertical-align: middle 只能用于行内/表格元素，不能实现垂直居中。",
+    "score": 5
+  },
+  {
+    "id": 69,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "定位",
+    "difficulty": "hard",
+    "question": "以下代码想让 .badge 角标定位在卡片右上角，但角标位置不正确且被卡片内容遮挡。请修正。",
+    "codeBefore": ".card {\n  width: 300px;\n  height: 200px;\n  background: #fff;\n}\n\n.badge {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: red;\n  color: #fff;\n  padding: 4px 8px;\n  z-index: 0;\n}\n\n<div class=\"card\">\n  <div class=\"badge\">新品</div>\n  <p>卡片内容...</p>\n</div>",
+    "codeAfter": ".card {\n  position: relative;\n  width: 300px;\n  height: 200px;\n  background: #fff;\n}\n\n.badge {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: red;\n  color: #fff;\n  padding: 4px 8px;\n  z-index: 10;\n}\n\n<div class=\"card\">\n  <div class=\"badge\">新品</div>\n  <p>卡片内容...</p>\n</div>",
+    "answer": ".card {\n  position: relative;\n  width: 300px;\n  height: 200px;\n  background: #fff;\n}\n\n.badge {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: red;\n  color: #fff;\n  padding: 4px 8px;\n  z-index: 10;\n}",
+    "explanation": "两处问题：1) .card 缺少 position: relative 作为定位参照，导致 .badge 相对于更远的祖先或视口定位；2) z-index: 0 层级不够高，可能被后续元素覆盖，应设为更大值如 10。",
+    "score": 10
+  },
+  {
+    "id": 70,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "定位",
+    "difficulty": "hard",
+    "question": "请编写 CSS 代码实现一个带遮罩层的模态框(Modal)：1) 遮罩层(.modal-overlay)固定全屏覆盖，背景 rgba(0,0,0,0.5)，z-index: 1000；2) 模态框(.modal)在遮罩层上方垂直水平居中，宽 500px、背景白色、圆角 12px、z-index: 1001；3) 关闭按钮(.modal-close)绝对定位在模态框右上角（top:10px, right:10px）；4) 模态框内标题(.modal-title)字号 20px、加粗、padding: 20px。使用 Flex 实现居中。",
+    "answer": ".modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  z-index: 1000;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.modal {\n  position: relative;\n  width: 500px;\n  background: #fff;\n  border-radius: 12px;\n  z-index: 1001;\n}\n\n.modal-close {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  cursor: pointer;\n}\n\n.modal-title {\n  font-size: 20px;\n  font-weight: bold;\n  padding: 20px;\n}",
+    "explanation": "遮罩层用 fixed + Flex 居中模态框。模态框设置 position: relative 作为关闭按钮的定位参照。z-index 分层：遮罩 1000 < 模态 1001，确保模态框在遮罩层上方。",
+    "score": 10
+  },
+  {
+    "id": 71,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "布局",
+    "difficulty": "medium",
+    "question": "以下关于版心（container）的描述，哪个是正确的？",
+    "options": [
+      { "key": "A", "text": "版心是固定宽度，不能使用 max-width" },
+      { "key": "B", "text": "版心通过 margin: 0 auto 水平居中，是页面的主要内容区域" },
+      { "key": "C", "text": "版心必须放在 <header> 标签内部" },
+      { "key": "D", "text": "版心宽度必须设置为 1200px" }
+    ],
+    "answer": "B",
+    "explanation": "版心是页面主要内容区域的固定宽度容器，通常用 max-width（配合响应式）而非固定 width，通过 margin: 0 auto 居中。版心宽度根据设计而定，常见为 1200px，但非强制。版心可放在任何需要的位置。",
+    "score": 5
+  },
+  {
+    "id": 72,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "布局",
+    "difficulty": "medium",
+    "question": "Normalize.css 和 Reset CSS 的主要区别是什么？",
+    "options": [
+      { "key": "A", "text": "Normalize.css 将所有默认样式清零" },
+      { "key": "B", "text": "Normalize.css 保留有用的默认样式，修正浏览器 bug" },
+      { "key": "C", "text": "两者完全相同，只是名称不同" },
+      { "key": "D", "text": "Normalize.css 只适用于移动端" }
+    ],
+    "answer": "B",
+    "explanation": "Normalize.css 比 Reset CSS 更温和：它保留有用的浏览器默认样式（如 h1 的字号层级），只修正不同浏览器的差异和 bug，不暴力清零所有样式。Reset CSS 则将所有默认样式归零。",
+    "score": 5
+  },
+  {
+    "id": 73,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "布局",
+    "difficulty": "medium",
+    "question": "以下关于页面布局方案的说法，哪些是正确的？（多选）",
+    "options": [
+      { "key": "A", "text": "版心(.container)常用于限制内容最大宽度并居中" },
+      { "key": "B", "text": "Normalize.css 保留了浏览器默认样式的优点" },
+      { "key": "C", "text": "Flexbox 和 Grid 已逐步取代浮动用于页面布局" },
+      { "key": "D", "text": "浮动仍然是现代布局的首选方案" }
+    ],
+    "answer": "ABC",
+    "explanation": "版心限制宽度并居中，Normalize.css 保留有用默认值，Flexbox/Grid 是现代布局首选。浮动已不推荐用于复杂页面布局，更适合图文混排等简单场景。",
+    "score": 5
+  },
+  {
+    "id": 74,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "布局",
+    "difficulty": "medium",
+    "question": "以下版心容器设置了固定宽度，导致在小屏幕上出现横向滚动条。请修正为响应式版心。",
+    "codeBefore": ".container {\n  width: 1200px;\n  margin: 0 auto;\n  padding: 0 15px;\n}",
+    "codeAfter": ".container {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 0 15px;\n}",
+    "answer": ".container {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 0 15px;\n}",
+    "explanation": "将 width 改为 max-width，可以保证在大屏幕上版心不超过 1200px，在小屏幕上版心自适应缩小，避免出现横向滚动条。这是响应式版心的标准写法。",
+    "score": 10
+  },
+  {
+    "id": 75,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "布局",
+    "difficulty": "hard",
+    "question": "请编写一个完整页面的 CSS 布局代码：1) 引入 Normalize.css（CDN）；2) 全局设置 box-sizing: border-box；3) 版心(.container)最大宽度 1200px、水平居中、左右 padding 20px；4) 头部(.header)高 64px、背景 #333、白色文字；5) 主体(.main)使用 Flex 布局：侧边栏(.sidebar)宽 300px、背景 #f5f5f5，内容区(.content)占剩余空间 flex: 1；6) 底部(.footer)高 80px、背景 #222、文字居中。",
+    "answer": "<!-- HTML -->\n<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/normalize.css/normalize.css\">\n\n/* CSS */\n* {\n  box-sizing: border-box;\n}\n\n.container {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 0 20px;\n}\n\n.header {\n  height: 64px;\n  background: #333;\n  color: #fff;\n}\n\n.main {\n  display: flex;\n}\n\n.sidebar {\n  width: 300px;\n  background: #f5f5f5;\n}\n\n.content {\n  flex: 1;\n}\n\n.footer {\n  height: 80px;\n  background: #222;\n  text-align: center;\n}",
+    "explanation": "Normalize.css 统一浏览器默认样式；box-sizing: border-box 让宽高包含 padding 和 border；max-width + margin: 0 auto 实现响应式版心；Flex 布局实现侧边栏+内容区双栏布局；flex: 1 让内容区占据剩余空间。",
+    "score": 10
+  },
+  {
+    "id": 76,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS3基础",
+    "difficulty": "medium",
+    "question": "box-sizing: border-box 的作用是什么？",
+    "options": [
+      { "key": "A", "text": "给元素添加边框" },
+      { "key": "B", "text": "元素的 width 和 height 包含 padding 和 border" },
+      { "key": "C", "text": "隐藏元素的边框" },
+      { "key": "D", "text": "改变盒子模型的默认方向" }
+    ],
+    "answer": "B",
+    "explanation": "border-box 改变了盒模型计算方式：width/height 不再只是内容区的尺寸，而是包含了 padding 和 border。这使得元素的实际尺寸更直观可控，是现代开发的最佳实践之一。",
+    "score": 5
+  },
+  {
+    "id": 77,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS3基础",
+    "difficulty": "medium",
+    "question": "以下哪个属性可以给元素添加外阴影效果？",
+    "options": [
+      { "key": "A", "text": "text-shadow" },
+      { "key": "B", "text": "box-shadow" },
+      { "key": "C", "text": "filter: drop-shadow()" },
+      { "key": "D", "text": "outline" }
+    ],
+    "answer": "B",
+    "explanation": "box-shadow 用于给元素盒子添加阴影（外阴影或内阴影）。text-shadow 给文字添加阴影；filter: drop-shadow() 给整个图像（包括透明区域）添加阴影；outline 是轮廓线，不产生阴影效果。",
+    "score": 5
+  },
+  {
+    "id": 78,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS3基础",
+    "difficulty": "medium",
+    "question": "以下哪些是 CSS3 引入的新特性？（多选）",
+    "options": [
+      { "key": "A", "text": "box-shadow 盒阴影" },
+      { "key": "B", "text": "border-radius 圆角" },
+      { "key": "C", "text": "opacity 透明度" },
+      { "key": "D", "text": "box-sizing 盒模型切换" }
+    ],
+    "answer": "ABCD",
+    "explanation": "以上四个都是 CSS3 引入的重要新特性。box-shadow 添加阴影，border-radius 实现圆角，opacity 控制透明度，box-sizing 切换盒模型计算方式。CSS3 极大丰富了网页的视觉表现力。",
+    "score": 5
+  },
+  {
+    "id": 79,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS3基础",
+    "difficulty": "hard",
+    "question": "以下卡片样式设置了阴影，但阴影方向写反了导致看起来不自然。请修正阴影参数使其呈现正常的卡片浮起效果。",
+    "codeBefore": ".card {\n  background: #fff;\n  border-radius: 8px;\n  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);\n  opacity: 0.5;\n}",
+    "codeAfter": ".card {\n  background: #fff;\n  border-radius: 8px;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n  opacity: 1;\n}",
+    "answer": ".card {\n  background: #fff;\n  border-radius: 8px;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n  opacity: 1;\n}",
+    "explanation": "两处问题：1) box-shadow 的垂直偏移 -4px 表示阴影在上方，视觉上不自然，正常卡片阴影应在下方（正值 4px）；2) opacity: 0.5 让整个卡片半透明，通常卡片不需要设置透明度，应设为 1 或去掉。",
+    "score": 10
+  },
+  {
+    "id": 80,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS3基础",
+    "difficulty": "hard",
+    "question": "请编写 CSS 代码创建一个现代风格的卡片组件，综合使用 CSS3 特性：1) 全局设置 box-sizing: border-box；2) 卡片(.card)宽 350px、背景白色、圆角 16px、阴影 0 8px 24px rgba(0,0,0,0.12)、hover 时阴影加深为 0 12px 32px rgba(0,0,0,0.18)、过渡 0.3s ease、透明度 1、overflow: hidden；3) 卡片图片(.card-img)宽 100%、高 200px、背景图片 cover；4) 标签(.tag)背景 rgba(64,158,255,0.1)、文字色 #409eff、圆角 4px、字号 12px、padding: 2px 8px。",
+    "answer": "* {\n  box-sizing: border-box;\n}\n\n.card {\n  width: 350px;\n  background: #fff;\n  border-radius: 16px;\n  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);\n  transition: box-shadow 0.3s ease;\n  opacity: 1;\n  overflow: hidden;\n}\n\n.card:hover {\n  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);\n}\n\n.card-img {\n  width: 100%;\n  height: 200px;\n  object-fit: cover;\n}\n\n.tag {\n  background: rgba(64, 158, 255, 0.1);\n  color: #409eff;\n  border-radius: 4px;\n  font-size: 12px;\n  padding: 2px 8px;\n  display: inline-block;\n}",
+    "explanation": "综合运用 CSS3 特性：border-radius 圆角、box-shadow 阴影、transition 过渡（hover 时阴影平滑变化）、opacity 透明度、background 中的 rgba 半透明颜色、object-fit: cover 图片裁剪。overflow: hidden 配合圆角裁剪溢出内容。",
+    "score": 10
+  },
+  {
+    "id": 81,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS3进阶",
+    "difficulty": "hard",
+    "question": "background-clip: padding-box 的作用是什么？",
+    "options": [
+      { "key": "A", "text": "背景裁剪到内容区域" },
+      { "key": "B", "text": "背景裁剪到内边距区域（不包括 border）" },
+      { "key": "C", "text": "背景裁剪到边框区域" },
+      { "key": "D", "text": "背景延伸到 margin 区域" }
+    ],
+    "answer": "B",
+    "explanation": "background-clip 控制背景的绘制区域。border-box（默认）背景延伸到边框下；padding-box 背景只到 padding 区域（不覆盖 border）；content-box 只到内容区域。",
+    "score": 5
+  },
+  {
+    "id": 82,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS3进阶",
+    "difficulty": "hard",
+    "question": "以下哪个渐变写法是正确的？",
+    "options": [
+      { "key": "A", "text": "background: gradient(left, red, blue)" },
+      { "key": "B", "text": "background: linear-gradient(to right, #667eea, #764ba2)" },
+      { "key": "C", "text": "background: radial(color1=red, color2=blue)" },
+      { "key": "D", "text": "background: gradient-linear(red, blue)" }
+    ],
+    "answer": "B",
+    "explanation": "CSS 渐变的正确语法为 linear-gradient(方向, 颜色1, 颜色2, ...) 和 radial-gradient(形状, 颜色1, 颜色2, ...)。渐变值是 background-image 类型，不是单独的属性。",
+    "score": 5
+  },
+  {
+    "id": 83,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS3进阶",
+    "difficulty": "hard",
+    "question": "以下关于 CSS3 背景和边框的特性，哪些描述是正确的？（多选）",
+    "options": [
+      { "key": "A", "text": "background-size: cover 会让背景图完全覆盖元素，可能裁剪图片" },
+      { "key": "B", "text": "border-image 可以使用图片作为边框" },
+      { "key": "C", "text": "text-shadow 可以给文字添加阴影" },
+      { "key": "D", "text": "@font-face 可以引入自定义 Web 字体" }
+    ],
+    "answer": "ABCD",
+    "explanation": "全部正确。background-size: cover 覆盖元素并保持比例（可能裁剪）；border-image 用图片做边框；text-shadow 文字阴影；@font-face 引入自定义字体。这些都是 CSS3 重要的视觉增强特性。",
+    "score": 5
+  },
+  {
+    "id": 84,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS3进阶",
+    "difficulty": "hard",
+    "question": "以下代码想设置一个从左上到右下的线性渐变，但渐变方向语法有误。请修正。",
+    "codeBefore": ".gradient-box {\n  width: 300px;\n  height: 200px;\n  background: linear-gradient(left top, right bottom, #667eea, #764ba2);\n}",
+    "codeAfter": ".gradient-box {\n  width: 300px;\n  height: 200px;\n  background: linear-gradient(to right bottom, #667eea, #764ba2);\n}",
+    "answer": ".gradient-box {\n  width: 300px;\n  height: 200px;\n  background: linear-gradient(to right bottom, #667eea, #764ba2);\n}",
+    "explanation": "linear-gradient 的方向语法应使用 to + 方向关键字（如 to right、to bottom、to right bottom）。如果要使用角度，写法为 45deg。原代码 left top, right bottom 是错误语法。",
+    "score": 10
+  },
+  {
+    "id": 85,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS3进阶",
+    "difficulty": "hard",
+    "question": "请编写 CSS 代码创建一个视觉丰富的 Hero 区域：1) 容器(.hero)高 500px、背景使用线性渐变(to right, #667eea → #764ba2)、文字居中、Flex 居中；2) 标题(.hero-title)字号 48px、白色、文字阴影 2px 2px 8px rgba(0,0,0,0.3)；3) 副标题(.hero-subtitle)字号 18px、rgba(255,255,255,0.8)、letter-spacing: 2px；4) 按钮(.hero-btn)使用 border-image 装饰边框、padding: 12px 32px、白色文字、圆角 30px。",
+    "answer": ".hero {\n  height: 500px;\n  background: linear-gradient(to right, #667eea, #764ba2);\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.hero-title {\n  font-size: 48px;\n  color: #fff;\n  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);\n}\n\n.hero-subtitle {\n  font-size: 18px;\n  color: rgba(255, 255, 255, 0.8);\n  letter-spacing: 2px;\n}\n\n.hero-btn {\n  border: 2px solid #fff;\n  padding: 12px 32px;\n  color: #fff;\n  border-radius: 30px;\n  background: transparent;\n  cursor: pointer;\n  font-size: 16px;\n}",
+    "explanation": "综合应用 CSS3 特性：linear-gradient 渐变背景、text-shadow 文字阴影、rgba 半透明颜色、letter-spacing 字间距、border-radius 圆角按钮。Flex 居中布局使内容在 Hero 区域垂直水平居中。",
+    "score": 10
+  },
+  {
+    "id": 86,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS3变换",
+    "difficulty": "hard",
+    "question": "transform: rotate(45deg) 的作用是什么？",
+    "options": [
+      { "key": "A", "text": "元素向右平移 45 像素" },
+      { "key": "B", "text": "元素顺时针旋转 45 度" },
+      { "key": "C", "text": "元素放大 45%" },
+      { "key": "D", "text": "元素倾斜 45 度" }
+    ],
+    "answer": "B",
+    "explanation": "rotate(45deg) 使元素顺时针旋转 45 度（deg = 角度）。translate 是平移，scale 是缩放，skew 是倾斜。多个变换可组合：transform: translate(50px, 20px) rotate(45deg)。",
+    "score": 5
+  },
+  {
+    "id": 87,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS3变换",
+    "difficulty": "hard",
+    "question": "perspective 属性用于什么场景？",
+    "options": [
+      { "key": "A", "text": "设置元素的透明度" },
+      { "key": "B", "text": "为 3D 变换提供透视效果" },
+      { "key": "C", "text": "设置元素的显示层级" },
+      { "key": "D", "text": "控制元素的定位方式" }
+    ],
+    "answer": "B",
+    "explanation": "perspective 为 3D 变换场景提供透视效果（近大远小），值越小透视感越强。通常设置在父元素上，让子元素的 3D 变换有立体感。配合 transform-style: preserve-3d 使用。",
+    "score": 5
+  },
+  {
+    "id": 88,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS3变换",
+    "difficulty": "hard",
+    "question": "以下哪些是 CSS transform 函数的合法值？（多选）",
+    "options": [
+      { "key": "A", "text": "translate(50px, 20px) —— 平移" },
+      { "key": "B", "text": "scale(1.2) —— 缩放" },
+      { "key": "C", "text": "rotateX(45deg) —— 绕 X 轴 3D 旋转" },
+      { "key": "D", "text": "skew(10deg, 5deg) —— 倾斜" }
+    ],
+    "answer": "ABCD",
+    "explanation": "全部是合法的 transform 函数：translate 平移、scale 缩放、rotateX/rotateY/rotateZ 分别绕各轴旋转、skew 倾斜。这些函数可以组合使用，用空格分隔。",
+    "score": 5
+  },
+  {
+    "id": 89,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS3变换",
+    "difficulty": "hard",
+    "question": "以下代码想让卡片在 hover 时绕 Y 轴旋转 180 度显示背面，但 3D 效果没有生效。请修正。",
+    "codeBefore": ".card {\n  width: 200px;\n  height: 300px;\n  transition: transform 0.6s;\n}\n\n.card:hover {\n  transform: rotateY(180deg);\n}",
+    "codeAfter": ".scene {\n  perspective: 800px;\n}\n\n.card {\n  width: 200px;\n  height: 300px;\n  transition: transform 0.6s;\n  transform-style: preserve-3d;\n}\n\n.card:hover {\n  transform: rotateY(180deg);\n}",
+    "answer": ".scene {\n  perspective: 800px;\n}\n\n.card {\n  width: 200px;\n  height: 300px;\n  transition: transform 0.6s;\n  transform-style: preserve-3d;\n}\n\n.card:hover {\n  transform: rotateY(180deg);\n}",
+    "explanation": "3D 变换需要两个关键属性：父元素设置 perspective 提供透视效果（近大远小），子元素设置 transform-style: preserve-3d 保持 3D 空间。缺少这两个属性，rotateY 只是 2D 缩放效果。",
+    "score": 10
+  },
+  {
+    "id": 90,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS3变换",
+    "difficulty": "hard",
+    "question": "请编写 CSS 代码实现一个 hover 时放大的图片卡片效果：1) 卡片(.img-card)宽 280px、高 200px、overflow: hidden、圆角 12px、perspective: 600px；2) 图片(.img-card img)宽 100%、高 100%、object-fit: cover、过渡 transform 0.5s ease；3) hover 时图片 scale(1.15) 并轻微旋转 rotate(2deg)；4) 遮罩层(.img-overlay)使用 transform 从底部滑入：默认 translateY(100%)，hover 时 translateY(0)，背景 rgba(0,0,0,0.5)。",
+    "answer": ".img-card {\n  width: 280px;\n  height: 200px;\n  overflow: hidden;\n  border-radius: 12px;\n  position: relative;\n}\n\n.img-card img {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  transition: transform 0.5s ease;\n}\n\n.img-card:hover img {\n  transform: scale(1.15) rotate(2deg);\n}\n\n.img-overlay {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 40%;\n  background: rgba(0, 0, 0, 0.5);\n  transform: translateY(100%);\n  transition: transform 0.4s ease;\n}\n\n.img-card:hover .img-overlay {\n  transform: translateY(0);\n}",
+    "explanation": "综合运用 transform 的 scale 和 rotate 实现 hover 放大+微旋转效果。遮罩层使用 translateY(100%) 隐藏在底部，hover 时 translateY(0) 滑入，配合 transition 实现平滑动画。overflow: hidden 裁剪溢出内容。",
+    "score": 10
+  },
+  {
+    "id": 91,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS3过渡与动画",
+    "difficulty": "hard",
+    "question": "以下关于 CSS transition 的描述，哪个是正确的？",
+    "options": [
+      { "key": "A", "text": "transition 可以让属性值瞬间改变" },
+      { "key": "B", "text": "transition 需要触发条件（如 :hover）才能执行" },
+      { "key": "C", "text": "transition 可以自动循环播放" },
+      { "key": "D", "text": "transition 只能用于颜色属性" }
+    ],
+    "answer": "B",
+    "explanation": "transition（过渡）需要触发条件（如 :hover、:focus）才能在两个状态间平滑过渡。animation（动画）可以自动播放和循环。transition 适用于需要状态切换的场景，animation 适用于自动或复杂动画。",
+    "score": 5
+  },
+  {
+    "id": 92,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS3过渡与动画",
+    "difficulty": "hard",
+    "question": "@keyframes 定义的动画中，以下哪个属性值可以让动画无限循环？",
+    "options": [
+      { "key": "A", "text": "animation-iteration-count: 1" },
+      { "key": "B", "text": "animation-iteration-count: infinite" },
+      { "key": "C", "text": "animation-loop: true" },
+      { "key": "D", "text": "animation-repeat: always" }
+    ],
+    "answer": "B",
+    "explanation": "animation-iteration-count: infinite 让动画无限循环播放。animation-iteration-count 也可以设置具体数字（如 3 表示播放 3 次）。animation-loop 和 animation-repeat 是虚构的属性。",
+    "score": 5
+  },
+  {
+    "id": 93,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS3过渡与动画",
+    "difficulty": "hard",
+    "question": "以下关于 CSS 动画的属性，哪些描述是正确的？（多选）",
+    "options": [
+      { "key": "A", "text": "animation-name 用于指定 @keyframes 定义的动画名称" },
+      { "key": "B", "text": "animation-duration 设置动画时长" },
+      { "key": "C", "text": "animation-delay 设置动画延迟开始时间" },
+      { "key": "D", "text": "animation-fill-mode: forwards 让动画结束后保持最终状态" }
+    ],
+    "answer": "ABCD",
+    "explanation": "全部正确。animation 简写属性包含：name（动画名）、duration（时长）、timing-function（缓动）、delay（延迟）、iteration-count（次数）、direction（方向）、fill-mode（填充模式）。forwards 保持动画最终状态。",
+    "score": 5
+  },
+  {
+    "id": 94,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS3过渡与动画",
+    "difficulty": "hard",
+    "question": "以下弹跳动画播放后元素回到起始位置，期望动画结束后停留在最终位置。请修正。",
+    "codeBefore": "@keyframes bounce {\n  0% { transform: translateY(0); }\n  50% { transform: translateY(-30px); }\n  100% { transform: translateY(0); }\n}\n\n.ball {\n  animation: bounce 1s ease-in-out;\n}",
+    "codeAfter": "@keyframes bounce {\n  0% { transform: translateY(0); }\n  50% { transform: translateY(-30px); }\n  100% { transform: translateY(0); }\n}\n\n.ball {\n  animation: bounce 1s ease-in-out forwards;\n}",
+    "answer": "@keyframes bounce {\n  0% { transform: translateY(0); }\n  50% { transform: translateY(-30px); }\n  100% { transform: translateY(0); }\n}\n\n.ball {\n  animation: bounce 1s ease-in-out forwards;\n}",
+    "explanation": "默认情况下动画结束后元素回到初始状态。添加 animation-fill-mode: forwards（简写中用 forwards）可以让动画结束后保持最后一帧（100%）的状态。注意此动画 100% 和 0% 相同，forwards 主要影响动画终止后的状态保持。",
+    "score": 10
+  },
+  {
+    "id": 95,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS3过渡与动画",
+    "difficulty": "hard",
+    "question": "请编写 CSS 代码实现一个加载动画(Spinner)：1) 容器(.spinner)宽 40px、高 40px、圆形边框 4px solid #eee、上边框颜色 #409eff、圆角 50%；2) 使用 @keyframes 定义旋转动画 spin：从 0deg 到 360deg；3) 动画持续 0.8s、线性匀速(linear)、无限循环(infinite)；4) 同时写一个脉冲动画(.pulse)：缩放从 1 到 1.1 再回到 1，持续 1.5s 无限循环，用于按钮的呼吸灯效果。",
+    "answer": ".spinner {\n  width: 40px;\n  height: 40px;\n  border: 4px solid #eee;\n  border-top-color: #409eff;\n  border-radius: 50%;\n  animation: spin 0.8s linear infinite;\n}\n\n@keyframes spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n\n.pulse {\n  animation: pulse 1.5s ease-in-out infinite;\n}\n\n@keyframes pulse {\n  0%, 100% { transform: scale(1); }\n  50% { transform: scale(1.1); }\n}",
+    "explanation": "Spinner 利用 border 四边不同颜色 + 旋转动画实现加载效果。border-radius: 50% 创建圆形。pulse 脉冲动画通过 scale 缩放实现呼吸灯效果。两个动画都使用 infinite 无限循环。",
+    "score": 10
+  },
+  {
+    "id": 96,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS3综合",
+    "difficulty": "hard",
+    "question": "以下哪个属性用于实现多列文本布局？",
+    "options": [
+      { "key": "A", "text": "display: columns" },
+      { "key": "B", "text": "column-count" },
+      { "key": "C", "text": "flex-wrap: column" },
+      { "key": "D", "text": "grid-template-columns" }
+    ],
+    "answer": "B",
+    "explanation": "column-count 用于多列文本布局（如报纸排版），指定列数；column-gap 设置列间距；column-rule 设置列分隔线。flex-wrap 和 grid-template-columns 用于 Flex/Grid 布局，display: columns 不存在。",
+    "score": 5
+  },
+  {
+    "id": 97,
+    "type": "single-choice",
+    "topic": "CSS",
+    "chapter": "CSS3综合",
+    "difficulty": "hard",
+    "question": "以下 CSS 学习路径的推荐顺序，最合理的是？",
+    "options": [
+      { "key": "A", "text": "CSS3 动画 → 选择器 → 盒模型 → 定位" },
+      { "key": "B", "text": "基础语法 → 选择器与优先级 → 盒模型 → 定位 → Flexbox/Grid → CSS3 动画与响应式" },
+      { "key": "C", "text": "浮动 → CSS3 变换 → 基础语法 → 选择器" },
+      { "key": "D", "text": "盒模型 → CSS3 动画 → 选择器 → 基础语法" }
+    ],
+    "answer": "B",
+    "explanation": "正确的学习路径是：基础语法 → 选择器与优先级 → 盒模型 → 定位 → Flexbox/Grid → CSS3 动画与响应式。由浅入深，先掌握基础再学进阶特性。",
+    "score": 5
+  },
+  {
+    "id": 98,
+    "type": "multiple-choice",
+    "topic": "CSS",
+    "chapter": "CSS3综合",
+    "difficulty": "hard",
+    "question": "以下关于现代 CSS 开发的说法，哪些是正确的？（多选）",
+    "options": [
+      { "key": "A", "text": "Flexbox 和 Grid 已逐步取代浮动用于页面布局" },
+      { "key": "B", "text": "Autoprefixer 可以自动添加浏览器私有前缀（-webkit- 等）" },
+      { "key": "C", "text": "box-sizing: border-box 已成为现代项目的最佳实践" },
+      { "key": "D", "text": "CSS 只负责样式，HTML 负责结构，两者配合呈现美观页面" }
+    ],
+    "answer": "ABCD",
+    "explanation": "全部正确。Flexbox/Grid 取代浮动；Autoprefixer 自动处理浏览器前缀；border-box 让盒模型更直观；CSS + HTML 的分工是 Web 开发的基本原则。",
+    "score": 5
+  },
+  {
+    "id": 99,
+    "type": "code-fix",
+    "topic": "CSS",
+    "chapter": "CSS3综合",
+    "difficulty": "hard",
+    "question": "以下代码试图创建三列文章布局，但列间距和分隔线没有生效。请修正。",
+    "codeBefore": ".article {\n  column-count: 3;\n  column-gap: 30;\n  column-rule: solid #ddd 1px;\n}",
+    "codeAfter": ".article {\n  column-count: 3;\n  column-gap: 30px;\n  column-rule: 1px solid #ddd;\n}",
+    "answer": ".article {\n  column-count: 3;\n  column-gap: 30px;\n  column-rule: 1px solid #ddd;\n}",
+    "explanation": "两处错误：1) column-gap 的值 30 缺少单位 px，应为 30px；2) column-rule 的属性顺序错误，正确顺序应为 宽度 样式 颜色（1px solid #ddd），与 border 简写类似。",
+    "score": 10
+  },
+  {
+    "id": 100,
+    "type": "programming",
+    "topic": "CSS",
+    "chapter": "CSS3综合",
+    "difficulty": "hard",
+    "question": "请编写一个综合性的 CSS 样式文件，融合所学知识：1) 全局 box-sizing: border-box；2) body 字体 16px/1.6 'Microsoft YaHei'，颜色 #333，margin: 0；3) 版心(.container) max-width: 1200px、居中、padding: 0 20px；4) 导航(.nav)使用 Flex 布局水平排列，背景 #333，高 60px，项目(.nav-item)padding: 0 20px、颜色白色、hover 时背景变亮 #555、过渡 0.3s；5) 页面底部(.footer)使用多列布局(column-count: 3)、背景 #222、白色文字、padding: 40px、列间距 30px、列分隔线 1px solid #444。",
+    "answer": "* {\n  box-sizing: border-box;\n}\n\nbody {\n  font: 16px/1.6 \"Microsoft YaHei\", sans-serif;\n  color: #333;\n  margin: 0;\n}\n\n.container {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 0 20px;\n}\n\n.nav {\n  display: flex;\n  background: #333;\n  height: 60px;\n  align-items: center;\n}\n\n.nav-item {\n  padding: 0 20px;\n  color: #fff;\n  transition: background 0.3s;\n  cursor: pointer;\n  line-height: 60px;\n}\n\n.nav-item:hover {\n  background: #555;\n}\n\n.footer {\n  background: #222;\n  color: #fff;\n  padding: 40px;\n  column-count: 3;\n  column-gap: 30px;\n  column-rule: 1px solid #444;\n}",
+    "explanation": "综合运用 CSS 核心知识点：box-sizing 全局设置、body 字体设置、版心居中、Flex 导航布局、transition 过渡效果、column 多列布局。这是现代 CSS 项目结构的典型模板。",
+    "score": 10
+  }
+]

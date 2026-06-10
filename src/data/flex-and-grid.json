@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex与Grid基础概念",
+    "difficulty": "easy",
+    "question": "Flexbox 是一种几维布局方案？",
+    "options": [
+      { "key": "A", "text": "零维" },
+      { "key": "B", "text": "一维" },
+      { "key": "C", "text": "二维" },
+      { "key": "D", "text": "三维" }
+    ],
+    "answer": "B",
+    "explanation": "Flexbox 是一维布局方案，沿主轴（行或列）排列子项，每次只能控制一个方向。CSS Grid 才是二维布局，同时控制行与列。",
+    "score": 5
+  },
+  {
+    "id": 2,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex与Grid基础概念",
+    "difficulty": "easy",
+    "question": "以下哪种场景最适合使用 CSS Grid？",
+    "options": [
+      { "key": "A", "text": "水平排列导航菜单项" },
+      { "key": "B", "text": "让一个按钮在容器内水平垂直居中" },
+      { "key": "C", "text": "构建包含页头、侧边栏、主内容区、页脚的整页布局" },
+      { "key": "D", "text": "让三个卡片均匀分布在一行中" }
+    ],
+    "answer": "C",
+    "explanation": "构建同时包含行和列的整页骨架是 Grid 的典型场景（二维布局）。导航栏、按钮居中、卡片均匀分布都是一维需求，更适合 Flexbox。",
+    "score": 5
+  },
+  {
+    "id": 3,
+    "type": "multiple-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex与Grid基础概念",
+    "difficulty": "easy",
+    "question": "关于 Flexbox 和 CSS Grid 的区别，以下哪些说法是正确的？（多选）",
+    "options": [
+      { "key": "A", "text": "Flexbox 是一维布局，Grid 是二维布局" },
+      { "key": "B", "text": "Flexbox 有 grid-template-areas 功能" },
+      { "key": "C", "text": "实践中常组合使用：外层 Grid 定骨架，内层 Flex 做局部对齐" },
+      { "key": "D", "text": "Grid 使用 fr 单位分配空间，Flexbox 使用 flex-grow 分配空间" }
+    ],
+    "answer": "ACD",
+    "explanation": "A、C、D 均正确。B 错误：grid-template-areas 是 Grid 独有的属性，Flexbox 没有区域命名功能。",
+    "score": 5
+  },
+  {
+    "id": 4,
+    "type": "code-fix",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex与Grid基础概念",
+    "difficulty": "easy",
+    "question": "以下代码试图创建 Flex 和 Grid 布局，但存在错误，请修正。",
+    "codeBefore": ".nav { display: flexbox; gap: 1rem; }\n.layout { display: grid; grid-template: 200px 1fr; }",
+    "codeAfter": ".nav { display: flex; gap: 1rem; }\n.layout { display: grid; grid-template-columns: 200px 1fr; }",
+    "answer": ".nav { display: flex; gap: 1rem; }\n.layout { display: grid; grid-template-columns: 200px 1fr; }",
+    "explanation": "两处错误：1. display 的值应为 flex，不是 flexbox；2. grid-template 是 grid-template-rows / grid-template-columns 的简写，写成 grid-template: 200px 1fr 只定义了行。要定义列需用 grid-template-columns。",
+    "score": 10
+  },
+  {
+    "id": 5,
+    "type": "programming",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex与Grid基础概念",
+    "difficulty": "easy",
+    "question": "请编写一个 HTML 页面，要求：1) 使用 Flexbox 创建一个水平导航栏，包含四个菜单项（首页、关于、服务、联系）；2) 菜单项之间有 1.5rem 的间距；3) 使用 CSS Grid 创建一个两列布局（左侧 200px 侧边栏，右侧自适应主内容区）；4) 侧边栏和主内容区之间间距为 1rem。",
+    "answer": "<style>\n.nav { display: flex; gap: 1.5rem; }\n.layout { display: grid; grid-template-columns: 200px 1fr; gap: 1rem; }\n</style>\n<nav class=\"nav\">\n  <span>首页</span>\n  <span>关于</span>\n  <span>服务</span>\n  <span>联系</span>\n</nav>\n<div class=\"layout\">\n  <aside>侧边栏</aside>\n  <main>主内容区</main>\n</div>",
+    "explanation": "Flexbox 用于一维导航栏（display: flex + gap），Grid 用于二维页面骨架（grid-template-columns: 200px 1fr）。这是 Flex 与 Grid 组合使用的典型方式。",
+    "score": 10
+  },
+  {
+    "id": 6,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex容器属性",
+    "difficulty": "easy",
+    "question": "在 Flexbox 中，flex-direction 的默认值是？",
+    "options": [
+      { "key": "A", "text": "column" },
+      { "key": "B", "text": "row-reverse" },
+      { "key": "C", "text": "row" },
+      { "key": "D", "text": "column-reverse" }
+    ],
+    "answer": "C",
+    "explanation": "flex-direction 默认值为 row，主轴方向为水平从左到右。column 使主轴变为垂直方向，*-reverse 则反转排列顺序。",
+    "score": 5
+  },
+  {
+    "id": 7,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex容器属性",
+    "difficulty": "easy",
+    "question": "要使 Flex 容器的子项在主轴上均匀分布、首尾贴边，应使用 justify-content 的哪个值？",
+    "options": [
+      { "key": "A", "text": "center" },
+      { "key": "B", "text": "space-around" },
+      { "key": "C", "text": "space-between" },
+      { "key": "D", "text": "flex-start" }
+    ],
+    "answer": "C",
+    "explanation": "space-between 让第一个子项贴起始边、最后一个子项贴结束边，中间子项均匀分布。space-around 则每个子项两侧有相等空间（两端有半倍间距），center 居中，flex-start 靠起始边。",
+    "score": 5
+  },
+  {
+    "id": 8,
+    "type": "multiple-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex容器属性",
+    "difficulty": "easy",
+    "question": "以下哪些是 flex-wrap 属性的合法取值？（多选）",
+    "options": [
+      { "key": "A", "text": "nowrap" },
+      { "key": "B", "text": "wrap" },
+      { "key": "C", "text": "wrap-reverse" },
+      { "key": "D", "text": "wrap-between" }
+    ],
+    "answer": "ABC",
+    "explanation": "flex-wrap 只有三个合法值：nowrap（不换行，默认）、wrap（换行）、wrap-reverse（反向换行）。wrap-between 不是有效值。",
+    "score": 5
+  },
+  {
+    "id": 9,
+    "type": "code-fix",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex容器属性",
+    "difficulty": "easy",
+    "question": "以下代码试图用 Flexbox 实现水平垂直居中，但有错误，请修正。",
+    "codeBefore": ".center-box {\n  display: flex;\n  justify-content: center;\n  align-items: middle;\n  height: 300px;\n}",
+    "codeAfter": ".center-box {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 300px;\n}",
+    "answer": ".center-box {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 300px;\n}",
+    "explanation": "align-items 没有 middle 这个值，应使用 center。Flexbox 中水平垂直居中的标准写法是 justify-content: center（主轴居中）+ align-items: center（交叉轴居中）。",
+    "score": 10
+  },
+  {
+    "id": 10,
+    "type": "programming",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex容器属性",
+    "difficulty": "easy",
+    "question": "请编写一个 Flexbox 工具栏，要求：1) 容器使用 flex-direction: row，允许换行（flex-wrap: wrap）；2) 子项在主轴两端对齐（space-between）；3) 当空间不足换行后，多行之间间距为 12px；4) 包含 5 个按钮（btn1~btn5），各按钮之间有 16px 的间距。",
+    "answer": "<style>\n.toolbar {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  align-content: flex-start;\n  gap: 16px;\n  row-gap: 12px;\n}\n</style>\n<div class=\"toolbar\">\n  <button>btn1</button>\n  <button>btn2</button>\n  <button>btn3</button>\n  <button>btn4</button>\n  <button>btn5</button>\n</div>",
+    "explanation": "flex-direction: row 设置主轴为水平方向，flex-wrap: wrap 允许换行，justify-content: space-between 让按钮在主轴两端对齐，gap 统一控制间距，row-gap 控制多行之间的间距。",
+    "score": 10
+  },
+  {
+    "id": 11,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex容器对齐",
+    "difficulty": "medium",
+    "question": "在 Flexbox 中，align-content 属性生效的前提条件是？",
+    "options": [
+      { "key": "A", "text": "flex-direction 为 column" },
+      { "key": "B", "text": "容器设置了固定高度" },
+      { "key": "C", "text": "存在多行（flex-wrap: wrap 且子项换行）" },
+      { "key": "D", "text": "子项数量超过 3 个" }
+    ],
+    "answer": "C",
+    "explanation": "align-content 控制多行在交叉轴上的对齐方式，只有在 flex-wrap: wrap 且子项实际发生换行时才生效。单行情况下应使用 align-items。",
+    "score": 5
+  },
+  {
+    "id": 12,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex容器对齐",
+    "difficulty": "medium",
+    "question": "使用 flex-flow: column wrap 后，主轴的排列方向是？",
+    "options": [
+      { "key": "A", "text": "水平方向，从左到右，自动换行" },
+      { "key": "B", "text": "垂直方向，从上到下，列满后换到下一列" },
+      { "key": "C", "text": "垂直方向，从上到下，永不换行" },
+      { "key": "D", "text": "水平方向，从右到左，自动换行" }
+    ],
+    "answer": "B",
+    "explanation": "flex-flow 是 flex-direction 和 flex-wrap 的简写。column 使主轴为垂直方向，wrap 允许换行，所以子项沿垂直方向排列，列满后换到下一列。",
+    "score": 5
+  },
+  {
+    "id": 13,
+    "type": "multiple-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex容器对齐",
+    "difficulty": "medium",
+    "question": "以下哪些是 justify-content 属性的合法取值？（多选）",
+    "options": [
+      { "key": "A", "text": "space-between" },
+      { "key": "B", "text": "space-evenly" },
+      { "key": "C", "text": "space-around" },
+      { "key": "D", "text": "space-fill" }
+    ],
+    "answer": "ABC",
+    "explanation": "space-between（两端对齐）、space-evenly（均匀分布，间距相等）、space-around（每个子项两侧间距相等）都是合法值。space-fill 不存在，CSS 中也没有这个值。",
+    "score": 5
+  },
+  {
+    "id": 14,
+    "type": "code-fix",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex容器对齐",
+    "difficulty": "medium",
+    "question": "以下代码试图让子项在交叉轴上居中对齐，但写法有误，请修正。",
+    "codeBefore": ".container {\n  display: flex;\n  flex-direction: row;\n  align-contents: center;\n  justify-items: center;\n  height: 400px;\n}",
+    "codeAfter": ".container {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: center;\n  height: 400px;\n}",
+    "answer": ".container {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: center;\n  height: 400px;\n}",
+    "explanation": "两处错误：1. align-contents 应为 align-items（属性名错误，且单行情况不需要 align-content）；2. justify-items 在 Flexbox 中无效（该属性属于 Grid），应使用 justify-content 控制主轴对齐。",
+    "score": 10
+  },
+  {
+    "id": 15,
+    "type": "programming",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex容器对齐",
+    "difficulty": "medium",
+    "question": "请编写一个 Flexbox 卡片容器，要求：1) 容器内有 4 张卡片，允许换行；2) 卡片在主轴上均匀分布（space-evenly）；3) 卡片在交叉轴上居中对齐；4) 多行时行间距为 20px；5) 每张卡片宽 200px、高 150px，卡片之间有 24px 间距。",
+    "answer": "<style>\n.card-container {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-evenly;\n  align-items: center;\n  align-content: flex-start;\n  gap: 24px;\n  row-gap: 20px;\n}\n.card {\n  width: 200px;\n  height: 150px;\n  background: #f0f0f0;\n}\n</style>\n<div class=\"card-container\">\n  <div class=\"card\">卡片1</div>\n  <div class=\"card\">卡片2</div>\n  <div class=\"card\">卡片3</div>\n  <div class=\"card\">卡片4</div>\n</div>",
+    "explanation": "使用 space-evenly 使卡片在主轴上均匀分布（两端间距与中间间距相同）；align-items: center 使每行卡片在交叉轴上居中；gap 统一控制间距；row-gap 控制行间距。",
+    "score": 10
+  },
+  {
+    "id": 16,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex项目属性",
+    "difficulty": "medium",
+    "question": "在 Flexbox 中，flex-grow 的默认值是多少？",
+    "options": [
+      { "key": "A", "text": "1" },
+      { "key": "B", "text": "0" },
+      { "key": "C", "text": "auto" },
+      { "key": "D", "text": "100%" }
+    ],
+    "answer": "B",
+    "explanation": "flex-grow 默认值为 0，表示子项不会自动扩展占据剩余空间。设置为 1 或更大值时，子项会按比例分配容器的剩余空间。",
+    "score": 5
+  },
+  {
+    "id": 17,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex项目属性",
+    "difficulty": "medium",
+    "question": "以下哪个 flex 属性用于控制子项在空间不足时的收缩能力？",
+    "options": [
+      { "key": "A", "text": "flex-basis" },
+      { "key": "B", "text": "flex-grow" },
+      { "key": "C", "text": "flex-shrink" },
+      { "key": "D", "text": "flex-order" }
+    ],
+    "answer": "C",
+    "explanation": "flex-shrink 控制子项在容器空间不足时的收缩比例，默认值为 1（允许收缩）。flex-grow 是扩展，flex-basis 是初始尺寸，flex-order 不存在（应为 order 属性）。",
+    "score": 5
+  },
+  {
+    "id": 18,
+    "type": "multiple-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex项目属性",
+    "difficulty": "medium",
+    "question": "以下哪些是 Flexbox 中子项（flex item）可以使用的属性？（多选）",
+    "options": [
+      { "key": "A", "text": "order" },
+      { "key": "B", "text": "align-self" },
+      { "key": "C", "text": "flex-grow" },
+      { "key": "D", "text": "justify-content" }
+    ],
+    "answer": "ABC",
+    "explanation": "order、align-self、flex-grow 都是 Flex 子项属性。justify-content 是 Flex 容器属性，不是子项属性，子项无法单独设置 justify-content。",
+    "score": 5
+  },
+  {
+    "id": 19,
+    "type": "code-fix",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex项目属性",
+    "difficulty": "medium",
+    "question": "以下代码定义了一个三栏 Flex 布局，但 flex 简写有误，请修正。",
+    "codeBefore": ".container { display: flex; }\n.sidebar { flex: 0 1 200px; }\n.main { flex: 2 0 auto; }\n.extra { flex: 0 0; }",
+    "codeAfter": ".container { display: flex; }\n.sidebar { flex: 0 0 200px; }\n.main { flex: 2 1 auto; }\n.extra { flex: 0 0 200px; }",
+    "answer": ".container { display: flex; }\n.sidebar { flex: 0 0 200px; }\n.main { flex: 2 1 auto; }\n.extra { flex: 0 0 200px; }",
+    "explanation": "三处问题：1. .sidebar 需要固定 200px，shrink 也应为 0（flex: 0 0 200px）；2. .main 的 flex-shrink 通常设为 1 允许收缩（flex: 2 1 auto）；3. .extra 缺少 flex-basis 值，flex: 0 0 表示 grow=0 shrink=0 basis=0，无法显示内容。",
+    "score": 10
+  },
+  {
+    "id": 20,
+    "type": "programming",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex项目属性",
+    "difficulty": "medium",
+    "question": "请编写一个 Flexbox 三栏布局，要求：1) 左侧固定 240px，不可伸缩；2) 中间占满剩余空间，可扩展和收缩；3) 右侧固定 180px，不可伸缩；4) 使用 align-self 让中间栏在交叉轴上靠底部对齐；5) 容器高度为 500px。",
+    "answer": "<style>\n.container {\n  display: flex;\n  height: 500px;\n}\n.sidebar {\n  flex: 0 0 240px;\n  background: #eee;\n}\n.main {\n  flex: 1;\n  align-self: flex-end;\n  background: #ddd;\n}\n.extra {\n  flex: 0 0 180px;\n  background: #eee;\n}\n</style>\n<div class=\"container\">\n  <div class=\"sidebar\">左侧栏</div>\n  <div class=\"main\">主内容</div>\n  <div class=\"extra\">右侧栏</div>\n</div>",
+    "explanation": "flex: 0 0 240px 固定宽度不可伸缩，flex: 1 等于 flex: 1 1 0 占满剩余空间。align-self: flex-end 让中间栏在交叉轴底部对齐，覆盖容器的 align-items 默认值。",
+    "score": 10
+  },
+  {
+    "id": 21,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid容器属性",
+    "difficulty": "medium",
+    "question": "在 CSS Grid 中，grid-template-columns: repeat(3, 1fr) 表示什么？",
+    "options": [
+      { "key": "A", "text": "创建 3 行，每行高度均分" },
+      { "key": "B", "text": "创建 3 列，每列均分容器宽度" },
+      { "key": "C", "text": "创建 3 列，每列固定 1px 宽" },
+      { "key": "D", "text": "创建 1 列，重复 3 次" }
+    ],
+    "answer": "B",
+    "explanation": "grid-template-columns 定义列轨道。repeat(3, 1fr) 表示创建 3 列，每列使用 1 个 fr 单位（fraction，等分剩余空间），最终三列宽度相等。",
+    "score": 5
+  },
+  {
+    "id": 22,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid容器属性",
+    "difficulty": "medium",
+    "question": "CSS Grid 中的 fr 单位表示什么？",
+    "options": [
+      { "key": "A", "text": "固定像素值" },
+      { "key": "B", "text": "相对于父元素宽度的百分比" },
+      { "key": "C", "text": "弹性系数，按比例分配可用空间" },
+      { "key": "D", "text": "字体大小的倍数" }
+    ],
+    "answer": "C",
+    "explanation": "fr（fraction）是 Grid 专用的弹性单位，表示可用空间的一份。例如 grid-template-columns: 1fr 2fr 表示两列分别占 1/3 和 2/3 的可用空间（减去固定尺寸后）。",
+    "score": 5
+  },
+  {
+    "id": 23,
+    "type": "multiple-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid容器属性",
+    "difficulty": "medium",
+    "question": "以下哪些 CSS 属性用于定义 Grid 容器的轨道（tracks）？（多选）",
+    "options": [
+      { "key": "A", "text": "grid-template-columns" },
+      { "key": "B", "text": "grid-template-rows" },
+      { "key": "C", "text": "grid-template-areas" },
+      { "key": "D", "text": "grid-auto-columns" }
+    ],
+    "answer": "ABCD",
+    "explanation": "grid-template-columns 和 grid-template-rows 定义显式行列轨道；grid-template-areas 通过命名区域定义轨道；grid-auto-columns 和 grid-auto-rows 定义隐式轨道。四个都是轨道相关属性。",
+    "score": 5
+  },
+  {
+    "id": 24,
+    "type": "code-fix",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid容器属性",
+    "difficulty": "medium",
+    "question": "以下代码试图使用 grid-template-areas 创建布局，但有错误，请修正。",
+    "codeBefore": ".layout {\n  display: grid;\n  grid-template-areas:\n    \"header header\"\n    \"sidebar main\"\n    \"footer footer\";\n  grid-template: 60px 1fr 40px;\n}\n.header { grid-area: header; }",
+    "codeAfter": ".layout {\n  display: grid;\n  grid-template-areas:\n    \"header header\"\n    \"sidebar main\"\n    \"footer footer\";\n  grid-template-columns: 200px 1fr;\n  grid-template-rows: 60px 1fr 40px;\n}\n.header { grid-area: header; }",
+    "answer": ".layout {\n  display: grid;\n  grid-template-areas:\n    \"header header\"\n    \"sidebar main\"\n    \"footer footer\";\n  grid-template-columns: 200px 1fr;\n  grid-template-rows: 60px 1fr 40px;\n}\n.header { grid-area: header; }",
+    "explanation": "错误在于 grid-template: 60px 1fr 40px 这个简写缺少列定义（需使用 / 分隔行列）。更清晰的写法是分别用 grid-template-columns 和 grid-template-rows 定义，且 areas 定义了两列，columns 必须与之匹配。",
+    "score": 10
+  },
+  {
+    "id": 25,
+    "type": "programming",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid容器属性",
+    "difficulty": "medium",
+    "question": "请使用 CSS Grid 编写一个经典的三行两列页面布局，要求：1) 使用 grid-template-areas 命名区域；2) 区域为：header（跨两列，高 80px）、sidebar（宽 220px）、main（自适应）、footer（跨两列，高 50px）；3) 行列间距均为 16px；4) 中间行高度自适应。",
+    "answer": "<style>\n.layout {\n  display: grid;\n  grid-template-areas:\n    \"header header\"\n    \"sidebar main\"\n    \"footer footer\";\n  grid-template-columns: 220px 1fr;\n  grid-template-rows: 80px 1fr 50px;\n  gap: 16px;\n  min-height: 100vh;\n}\n.header { grid-area: header; background: #ccc; }\n.sidebar { grid-area: sidebar; background: #ddd; }\n.main { grid-area: main; background: #eee; }\n.footer { grid-area: footer; background: #ccc; }\n</style>\n<div class=\"layout\">\n  <div class=\"header\">页头</div>\n  <div class=\"sidebar\">侧边栏</div>\n  <div class=\"main\">主内容</div>\n  <div class=\"footer\">页脚</div>\n</div>",
+    "explanation": "grid-template-areas 用字符串矩阵定义区域布局，每个子项通过 grid-area 绑定到对应区域。grid-template-columns 和 grid-template-rows 定义行列尺寸。gap 统一控制间距。",
+    "score": 10
+  },
+  {
+    "id": 26,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid对齐属性",
+    "difficulty": "hard",
+    "question": "在 CSS Grid 中，place-items: center 是以下哪两个属性的简写？",
+    "options": [
+      { "key": "A", "text": "justify-content 和 align-content" },
+      { "key": "B", "text": "justify-items 和 align-items" },
+      { "key": "C", "text": "justify-self 和 align-self" },
+      { "key": "D", "text": "place-content 和 place-self" }
+    ],
+    "answer": "B",
+    "explanation": "place-items 是 justify-items 和 align-items 的简写，控制子项在各自单元格内的对齐方式。place-content 是 justify-content 和 align-content 的简写，控制整个网格在容器内的对齐。",
+    "score": 5
+  },
+  {
+    "id": 27,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid隐式轨道",
+    "difficulty": "hard",
+    "question": "在 CSS Grid 瀑布流布局中，grid-auto-flow: dense 的作用是？",
+    "options": [
+      { "key": "A", "text": "按行顺序填充，不满一行则换行" },
+      { "key": "B", "text": "按列顺序填充，不满一列则换列" },
+      { "key": "C", "text": "启用紧凑模式，尝试填充网格中出现的空隙" },
+      { "key": "D", "text": "将所有子项居中排列" }
+    ],
+    "answer": "C",
+    "explanation": "dense 是 grid-auto-flow 的一个关键字，启用紧凑填充模式。当网格中出现空隙时，浏览器会尝试将后面的子项提前填充进去，减少空白区域，常用于瀑布流布局。",
+    "score": 5
+  },
+  {
+    "id": 28,
+    "type": "multiple-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid对齐属性",
+    "difficulty": "hard",
+    "question": "在 CSS Grid 中，以下哪些属性用于控制子项在各自单元格内的对齐方式？（多选）",
+    "options": [
+      { "key": "A", "text": "justify-items" },
+      { "key": "B", "text": "align-items" },
+      { "key": "C", "text": "justify-content" },
+      { "key": "D", "text": "align-content" }
+    ],
+    "answer": "AB",
+    "explanation": "justify-items 和 align-items 控制子项在单元格内的对齐（行内方向和块方向）。justify-content 和 align-content 控制整个网格在容器内的对齐，属于网格整体定位。",
+    "score": 5
+  },
+  {
+    "id": 29,
+    "type": "code-fix",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid隐式轨道",
+    "difficulty": "hard",
+    "question": "以下代码试图创建自动填充列的网格，并控制隐式行高，但有错误，请修正。",
+    "codeBefore": ".grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n  grid-auto-row: 150px;\n  grid-auto-flow: row;\n  gap: 16px;\n}",
+    "codeAfter": ".grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n  grid-auto-rows: 150px;\n  grid-auto-flow: row;\n  gap: 16px;\n}",
+    "answer": ".grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n  grid-auto-rows: 150px;\n  grid-auto-flow: row;\n  gap: 16px;\n}",
+    "explanation": "属性名错误：控制隐式行高的属性是 grid-auto-rows（复数），不是 grid-auto-row。隐式轨道由 grid-auto-rows 和 grid-auto-columns 控制，用于未在 grid-template 中声明的行列。",
+    "score": 10
+  },
+  {
+    "id": 30,
+    "type": "programming",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid隐式轨道",
+    "difficulty": "hard",
+    "question": "请编写一个 CSS Grid 瀑布流风格的卡片网格，要求：1) 使用 auto-fill + minmax 实现响应式列数（最小 200px，最大 1fr）；2) 隐式行高为 10px；3) 使用 grid-auto-flow: dense 紧凑填充；4) 列间距 12px，行间距 8px；5) 每张卡片通过 CSS 变量 --row-span 控制其跨越的行数（grid-row-end: span var(--row-span)）；6) 至少定义一张跨 8 行的卡片和一张跨 10 行的卡片。",
+    "answer": "<style>\n.waterfall {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n  grid-auto-rows: 10px;\n  grid-auto-flow: dense;\n  column-gap: 12px;\n  row-gap: 8px;\n}\n.card {\n  background: #ddd;\n  border-radius: 4px;\n}\n.card:nth-child(1) { --row-span: 15; grid-row-end: span 15; }\n.card:nth-child(2) { --row-span: 8; grid-row-end: span 8; }\n.card:nth-child(3) { --row-span: 10; grid-row-end: span 10; }\n.card:nth-child(4) { --row-span: 12; grid-row-end: span 12; }\n</style>\n<div class=\"waterfall\">\n  <div class=\"card\">卡片1</div>\n  <div class=\"card\">卡片2</div>\n  <div class=\"card\">卡片3</div>\n  <div class=\"card\">卡片4</div>\n</div>",
+    "explanation": "grid-auto-rows: 10px 设置最小的行高单位，卡片通过 grid-row-end: span N 按该单位的倍数跨越。dense 模式让浏览器紧凑排列，减少空隙。auto-fill + minmax 使列数随视口自动调整。",
+    "score": 10
+  },
+  {
+    "id": 31,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid项目属性",
+    "difficulty": "hard",
+    "question": "在 CSS Grid 中，grid-column: 1 / -1 表示什么？",
+    "options": [
+      { "key": "A", "text": "从第 1 列开始，跨越到倒数第 1 列（即占满全部列）" },
+      { "key": "B", "text": "从第 1 列开始，跨越 1 列" },
+      { "key": "C", "text": "表示该子项不参与网格布局" },
+      { "key": "D", "text": "从第 1 列开始，但列数为负数时会报错" }
+    ],
+    "answer": "A",
+    "explanation": "负索引表示从网格末尾开始倒数。-1 表示最后一列的结束线（或最后一行）。grid-column: 1 / -1 表示从第 1 条列线跨越到倒数第 1 条列线，即占满所有列。",
+    "score": 5
+  },
+  {
+    "id": 32,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid项目属性",
+    "difficulty": "hard",
+    "question": "grid-area 属性有哪两种用法？",
+    "options": [
+      { "key": "A", "text": "只能用作 grid-template-areas 的名称引用" },
+      { "key": "B", "text": "只能用作 row-start / col-start / row-end / col-end 的简写" },
+      { "key": "C", "text": "可以引用 grid-template-areas 的区域名称，也可以作为行列位置的简写" },
+      { "key": "D", "text": "只能设置网格项目的面积大小" }
+    ],
+    "answer": "C",
+    "explanation": "grid-area 有两种用法：1) 引用命名区域（如 grid-area: header）；2) 作为 grid-row-start / grid-column-start / grid-row-end / grid-column-end 的简写（如 grid-area: 1 / 1 / 3 / 3）。",
+    "score": 5
+  },
+  {
+    "id": 33,
+    "type": "multiple-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid项目属性",
+    "difficulty": "hard",
+    "question": "以下哪些属性可以用于 Grid 子项的精确定位？（多选）",
+    "options": [
+      { "key": "A", "text": "grid-column" },
+      { "key": "B", "text": "grid-row" },
+      { "key": "C", "text": "grid-area" },
+      { "key": "D", "text": "order" }
+    ],
+    "answer": "ABC",
+    "explanation": "grid-column、grid-row 和 grid-area 都可以精确定位 Grid 子项在网格中的位置。order 是 Flexbox 的属性，虽然在 Grid 中也可用，但它只调整视觉顺序，不属于精确定位。",
+    "score": 5
+  },
+  {
+    "id": 34,
+    "type": "code-fix",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid项目属性",
+    "difficulty": "hard",
+    "question": "以下代码试图让某个子项跨越多列并覆盖其他子项，但写法有误，请修正。",
+    "codeBefore": ".grid { display: grid; grid-template-columns: repeat(4, 1fr); }\n.special {\n  grid-column: 2 / span 3;\n  grid-row: 1 / 1;\n  z-index: 10;\n}",
+    "codeAfter": ".grid { display: grid; grid-template-columns: repeat(4, 1fr); }\n.special {\n  grid-column: 2 / span 2;\n  grid-row: 1 / 2;\n  z-index: 10;\n}",
+    "answer": ".grid { display: grid; grid-template-columns: repeat(4, 1fr); }\n.special {\n  grid-column: 2 / span 2;\n  grid-row: 1 / 2;\n  z-index: 10;\n}",
+    "explanation": "两处错误：1. 共 4 列，grid-column: 2 / span 3 从第 2 列起跨 3 列会超出（2+3-1=4，刚好到第 4 列结束线，但应为 span 2）；2. grid-row: 1 / 1 起止相同表示 0 行不会显示，应改为 grid-row: 1 / 2 表示占第 1 行。",
+    "score": 10
+  },
+  {
+    "id": 35,
+    "type": "programming",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid项目属性",
+    "difficulty": "hard",
+    "question": "请编写一个 CSS Grid 仪表盘布局，要求：1) 创建 4 列 × 3 行网格，列均分；2) 第一个子项（统计总览）横跨 4 列，占第 1 行，高 120px；3) 第二个子项（图表区）横跨 3 列、纵跨 2 行（从第 2 行到第 4 行起始线）；4) 第三个子项（数据面板）在第 4 列、第 2 行；5) 第四个子项（通知区）在第 4 列、第 3 行；6) 使用 gap: 12px。",
+    "answer": "<style>\n.dashboard {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  grid-template-rows: 120px 1fr 1fr;\n  gap: 12px;\n  height: 600px;\n}\n.overview { grid-column: 1 / -1; grid-row: 1; background: #e0e0e0; }\n.chart { grid-column: 1 / 4; grid-row: 2 / 4; background: #d0d0d0; }\n.data-panel { grid-column: 4; grid-row: 2; background: #c0c0c0; }\n.notification { grid-column: 4; grid-row: 3; background: #b0b0b0; }\n</style>\n<div class=\"dashboard\">\n  <div class=\"overview\">统计总览</div>\n  <div class=\"chart\">图表区</div>\n  <div class=\"data-panel\">数据面板</div>\n  <div class=\"notification\">通知区</div>\n</div>",
+    "explanation": "grid-column: 1 / -1 横跨全部列；grid-row: 2 / 4 从第 2 条行线到第 4 条行线（跨越第 2 和第 3 行）。这是使用 Grid 子项属性实现复杂仪表盘布局的典型方式。",
+    "score": 10
+  },
+  {
+    "id": 36,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex与Grid实战对比",
+    "difficulty": "hard",
+    "question": "对于以下场景：『一个页面的整体骨架（页头、内容区、页脚），内容区又分为左侧导航和右侧主区域，导航区域内的菜单项需要水平排列』，最佳的技术选型是？",
+    "options": [
+      { "key": "A", "text": "全部使用 Flexbox" },
+      { "key": "B", "text": "全部使用 CSS Grid" },
+      { "key": "C", "text": "页面骨架用 Grid，导航菜单用 Flex" },
+      { "key": "D", "text": "页面骨架用 Flex，导航菜单用 Grid" }
+    ],
+    "answer": "C",
+    "explanation": "页面骨架（页头+内容区+页脚+左侧导航+右侧主区域）是二维布局，适合 Grid。导航菜单项水平排列是一维问题，适合 Flex。这是 Grid 做骨架 + Flex 做局部对齐的最佳实践。",
+    "score": 5
+  },
+  {
+    "id": 37,
+    "type": "single-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid响应式",
+    "difficulty": "hard",
+    "question": "在 Grid 响应式布局中，auto-fit 和 auto-fill 的主要区别是什么？",
+    "options": [
+      { "key": "A", "text": "auto-fit 填满容器，auto-fill 保留空轨道" },
+      { "key": "B", "text": "auto-fit 只适用于列，auto-fill 只适用于行" },
+      { "key": "C", "text": "两者没有任何区别" },
+      { "key": "D", "text": "auto-fit 自动适应内容，auto-fill 固定宽度" }
+    ],
+    "answer": "A",
+    "explanation": "当容器宽度大于所有列的最小宽度之和时，auto-fit 会收缩空轨道使已有列填满容器；auto-fill 则保留空轨道空间（子项可能不占满容器）。两者都用于 repeat() 函数中实现响应式列数。",
+    "score": 5
+  },
+  {
+    "id": 38,
+    "type": "multiple-choice",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex与Grid实战对比",
+    "difficulty": "hard",
+    "question": "以下哪些场景更适合使用 Flexbox 而非 CSS Grid？（多选）",
+    "options": [
+      { "key": "A", "text": "让一个按钮在容器中水平垂直居中" },
+      { "key": "B", "text": "创建水平排列的导航菜单" },
+      { "key": "C", "text": "构建带固定行列的复杂仪表盘" },
+      { "key": "D", "text": "让一组标签（tag）自动换行排列" }
+    ],
+    "answer": "ABD",
+    "explanation": "居中、导航菜单、标签排列都是一维的线性排列场景，适合 Flexbox。仪表盘需要同时控制行列的二维布局，更适合 Grid。",
+    "score": 5
+  },
+  {
+    "id": 39,
+    "type": "code-fix",
+    "topic": "Flexbox与Grid",
+    "chapter": "Grid响应式",
+    "difficulty": "hard",
+    "question": "以下响应式布局代码存在多处错误，请修正。",
+    "codeBefore": ".page {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n  gap: 1.5rem;\n}\n@media (max-width: 768px) {\n  .page { grid-template: 1fr; }\n  .toolbar { flex: column; }\n}",
+    "codeAfter": ".page {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n  gap: 1.5rem;\n}\n@media (max-width: 768px) {\n  .page { grid-template-columns: 1fr; }\n  .toolbar { flex-direction: column; }\n}",
+    "answer": ".page {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n  gap: 1.5rem;\n}\n@media (max-width: 768px) {\n  .page { grid-template-columns: 1fr; }\n  .toolbar { flex-direction: column; }\n}",
+    "explanation": "两处错误：1. grid-template: 1fr 缺少列/行方向指定，应使用 grid-template-columns: 1fr；2. flex: column 不是有效属性，应使用 flex-direction: column 将 Flex 容器的主轴改为垂直方向。",
+    "score": 10
+  },
+  {
+    "id": 40,
+    "type": "programming",
+    "topic": "Flexbox与Grid",
+    "chapter": "Flex与Grid综合应用",
+    "difficulty": "hard",
+    "question": "请编写一个完整的响应式后台管理页面，要求：1) 使用 Grid 做整体布局：header（高 60px，跨全宽）、sidebar（宽 200px）、main（自适应）、footer（高 40px，跨全宽）；2) header 内部使用 Flexbox 水平排列 logo、导航菜单和用户头像，两端对齐；3) 使用 Media Query，当屏幕宽度 ≤ 768px 时：Grid 变为单列布局，sidebar 移到 main 上方；4) header 在窄屏时改为垂直排列（flex-direction: column），居中对齐；5) 整体使用 gap: 12px。",
+    "answer": "<style>\n.layout {\n  display: grid;\n  grid-template-areas:\n    \"header header\"\n    \"sidebar main\"\n    \"footer footer\";\n  grid-template-columns: 200px 1fr;\n  grid-template-rows: 60px 1fr 40px;\n  gap: 12px;\n  min-height: 100vh;\n}\n.header {\n  grid-area: header;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background: #333;\n  color: #fff;\n  padding: 0 16px;\n}\n.sidebar { grid-area: sidebar; background: #f5f5f5; }\n.main { grid-area: main; background: #fff; }\n.footer { grid-area: footer; background: #333; color: #fff; }\n@media (max-width: 768px) {\n  .layout {\n    grid-template-areas:\n      \"header\"\n      \"sidebar\"\n      \"main\"\n      \"footer\";\n    grid-template-columns: 1fr;\n  }\n  .header {\n    flex-direction: column;\n    justify-content: center;\n  }\n}\n</style>\n<div class=\"layout\">\n  <header class=\"header\">\n    <span>Logo</span>\n    <nav>导航菜单</nav>\n    <span>用户头像</span>\n  </header>\n  <aside class=\"sidebar\">侧边栏</aside>\n  <main class=\"main\">主内容</main>\n  <footer class=\"footer\">页脚</footer>\n</div>",
+    "explanation": "综合运用：Grid 的 grid-template-areas 定义页面骨架 + Media Query 切换为单列；Flexbox 的 justify-content: space-between 实现 header 两端对齐 + Media Query 切换为垂直居中。完美体现 Grid + Flex 组合使用的最佳实践。",
+    "score": 10
+  }
+]

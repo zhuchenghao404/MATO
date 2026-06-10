@@ -1,0 +1,2252 @@
+[
+  {
+    "id": 1,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "JavaScript 简介",
+    "difficulty": "easy",
+    "question": "JavaScript 诞生于哪一年？",
+    "options": [
+      { "key": "A", "text": "1993 年" },
+      { "key": "B", "text": "1995 年" },
+      { "key": "C", "text": "1997 年" },
+      { "key": "D", "text": "1999 年" }
+    ],
+    "answer": "B",
+    "explanation": "JavaScript 诞生于 1995 年，由 Brendan Eich 在 Netscape 公司仅用 10 天设计完成，最初名为 LiveScript，后更名为 JavaScript。",
+    "score": 5
+  },
+  {
+    "id": 2,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "JavaScript 简介",
+    "difficulty": "easy",
+    "question": "以下哪一项是 JavaScript 的语言核心标准？",
+    "options": [
+      { "key": "A", "text": "DOM" },
+      { "key": "B", "text": "BOM" },
+      { "key": "C", "text": "ECMAScript" },
+      { "key": "D", "text": "Node.js" }
+    ],
+    "answer": "C",
+    "explanation": "ECMAScript 是 JavaScript 的语言核心标准，规定了语法、类型、语句、关键字、内置对象等。DOM 操作 HTML 文档，BOM 操作浏览器窗口。",
+    "score": 5
+  },
+  {
+    "id": 3,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "JavaScript 简介",
+    "difficulty": "easy",
+    "question": "以下哪些属于 JavaScript 的语言特点？（多选）",
+    "options": [
+      { "key": "A", "text": "编译型语言" },
+      { "key": "B", "text": "动态类型" },
+      { "key": "C", "text": "基于原型的面向对象" },
+      { "key": "D", "text": "单线程" }
+    ],
+    "answer": "BCD",
+    "explanation": "JavaScript 是解释型语言（非编译型），具有动态类型、基于原型的面向对象、单线程等特点。A 错误，JS 无需编译，由引擎逐行解释执行。",
+    "score": 5
+  },
+  {
+    "id": 4,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "JavaScript 简介",
+    "difficulty": "easy",
+    "question": "以下代码用于打印 JavaScript 的三大组成部分的描述，但存在语法错误，请修正。",
+    "codeBefore": "console.log(ECMAScript 是语言核心)\nconsole.log(DOM 操作文档)\nconsole.log(BOM 操作浏览器)",
+    "codeAfter": "console.log('ECMAScript 是语言核心')\nconsole.log('DOM 操作文档')\nconsole.log('BOM 操作浏览器')",
+    "answer": "console.log('ECMAScript 是语言核心')\nconsole.log('DOM 操作文档')\nconsole.log('BOM 操作浏览器')",
+    "explanation": "字符串必须用引号包裹。原代码中三个参数都没有加引号，JavaScript 引擎会将它们视为未定义的变量名而报错。",
+    "score": 10
+  },
+  {
+    "id": 5,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "JavaScript 简介",
+    "difficulty": "easy",
+    "question": "请编写 JavaScript 代码，在控制台输出以下三行文字：第一行\"Hello JavaScript!\"，第二行\"ES6 于 2015 年发布\"，第三行\"JavaScript 是单线程语言\"。",
+    "answer": "console.log('Hello JavaScript!')\nconsole.log('ES6 于 2015 年发布')\nconsole.log('JavaScript 是单线程语言')",
+    "explanation": "使用 console.log() 方法打印字符串。ES6（ES2015）于 2015 年发布，引入了 let/const、箭头函数、Class 等重要特性。",
+    "score": 10
+  },
+  {
+    "id": 6,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "JavaScript 简介",
+    "difficulty": "easy",
+    "question": "ES6（ES2015）是哪一年发布的？",
+    "options": [
+      { "key": "A", "text": "2009 年" },
+      { "key": "B", "text": "2012 年" },
+      { "key": "C", "text": "2015 年" },
+      { "key": "D", "text": "2017 年" }
+    ],
+    "answer": "C",
+    "explanation": "ES6（即 ES2015）于 2015 年发布，是 JavaScript 发展的重要里程碑，引入了 let/const、箭头函数、Class 等大量新特性。",
+    "score": 5
+  },
+  {
+    "id": 7,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "JavaScript 简介",
+    "difficulty": "easy",
+    "question": "JavaScript 的发明者是谁？",
+    "options": [
+      { "key": "A", "text": "Bjarne Stroustrup" },
+      { "key": "B", "text": "Guido van Rossum" },
+      { "key": "C", "text": "Brendan Eich" },
+      { "key": "D", "text": "James Gosling" }
+    ],
+    "answer": "C",
+    "explanation": "JavaScript 由 Brendan Eich 在 1995 年于 Netscape 公司设计完成。A 是 C++ 之父，B 是 Python 之父，D 是 Java 之父。",
+    "score": 5
+  },
+  {
+    "id": 8,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "JavaScript 简介",
+    "difficulty": "easy",
+    "question": "关于 JavaScript，以下说法正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "JavaScript 可以直接在浏览器中运行" },
+      { "key": "B", "text": "JavaScript 和 Java 是同一种语言" },
+      { "key": "C", "text": "JavaScript 可以运行在 Node.js 环境中" },
+      { "key": "D", "text": "JavaScript 是跨平台的语言" }
+    ],
+    "answer": "ACD",
+    "explanation": "JavaScript 可运行在浏览器、Node.js、移动端等多种平台。JavaScript 和 Java 虽然名字相似，但是两种完全不同的语言。",
+    "score": 5
+  },
+  {
+    "id": 9,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "JavaScript 简介",
+    "difficulty": "easy",
+    "question": "以下代码试图展示 typeof 的几种用法，但有两处错误，请修正。",
+    "codeBefore": "console.log(typeof 42)        // 输出：number\nconsole.log(typeof 'hello')   // 输出：string\nconsole.log(typeof null)     // 输出：null\nconsole.log(typeof function(){}) // 输出：function",
+    "codeAfter": "console.log(typeof 42)        // 输出：number\nconsole.log(typeof 'hello')   // 输出：string\nconsole.log(typeof null)     // 输出：object\nconsole.log(typeof function(){}) // 输出：function",
+    "answer": "console.log(typeof 42)        // 输出：number\nconsole.log(typeof 'hello')   // 输出：string\nconsole.log(typeof null)     // 输出：object\nconsole.log(typeof function(){}) // 输出：function",
+    "explanation": "typeof null 返回 'object'，这是 JavaScript 历史遗留的 bug，并非返回 'null'。虽然 null 是基本类型，但 typeof 会错误地报告为 object。",
+    "score": 10
+  },
+  {
+    "id": 10,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "JavaScript 简介",
+    "difficulty": "easy",
+    "question": "请编写代码，使用 typeof 分别检查以下值的类型并打印：数字 100、字符串 \"学习\"、布尔值 true、undefined、null。每条结果单独一行输出。",
+    "answer": "console.log(typeof 100)\nconsole.log(typeof '学习')\nconsole.log(typeof true)\nconsole.log(typeof undefined)\nconsole.log(typeof null)",
+    "explanation": "typeof 用于检测变量类型。注意 typeof null 返回 'object'（历史 bug），而 typeof undefined 返回 'undefined'。",
+    "score": 10
+  },
+  {
+    "id": 11,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "使用与输出",
+    "difficulty": "easy",
+    "question": "在 HTML 中引入外部 JavaScript 文件，应使用哪个标签的属性？",
+    "options": [
+      { "key": "A", "text": "link 标签的 href 属性" },
+      { "key": "B", "text": "script 标签的 src 属性" },
+      { "key": "C", "text": "script 标签的 href 属性" },
+      { "key": "D", "text": "link 标签的 src 属性" }
+    ],
+    "answer": "B",
+    "explanation": "使用 <script src=\"app.js\"></script> 引入外部 JS 文件。link 标签用于引入 CSS 文件，script 标签没有 href 属性。",
+    "score": 5
+  },
+  {
+    "id": 12,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "使用与输出",
+    "difficulty": "easy",
+    "question": "以下哪种输出方式会阻塞页面，暂停代码执行？",
+    "options": [
+      { "key": "A", "text": "console.log()" },
+      { "key": "B", "text": "document.write()" },
+      { "key": "C", "text": "alert()" },
+      { "key": "D", "text": "innerHTML" }
+    ],
+    "answer": "C",
+    "explanation": "alert() 弹出对话框会阻塞页面，用户必须点击确认后才能继续。console.log() 仅输出到控制台，document.write() 和 innerHTML 不会阻塞。",
+    "score": 5
+  },
+  {
+    "id": 13,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "使用与输出",
+    "difficulty": "easy",
+    "question": "关于 script 标签的属性，以下说法正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "defer 属性延迟执行，HTML 解析完毕后按顺序执行" },
+      { "key": "B", "text": "async 属性异步加载，下载完立即执行" },
+      { "key": "C", "text": "type=\"module\" 的脚本自动具有 defer 行为" },
+      { "key": "D", "text": "defer 和 async 可以同时使用" }
+    ],
+    "answer": "ABC",
+    "explanation": "defer 延迟到 HTML 解析完毕后按顺序执行；async 下载完立即执行不保证顺序；type=\"module\" 自动 defer。defer 和 async 不应同时使用，同时设置时 async 优先。",
+    "score": 5
+  },
+  {
+    "id": 14,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "使用与输出",
+    "difficulty": "easy",
+    "question": "以下代码试图输出不同类型的信息，但有一行会引发问题，请修正。",
+    "codeBefore": "console.log('普通日志')\nconsole.warn('警告信息')\nconsole.error('错误信息')\ndocument.write('覆盖页面内容')",
+    "codeAfter": "console.log('普通日志')\nconsole.warn('警告信息')\nconsole.error('错误信息')\n// 使用 innerHTML 替代 document.write\ndocument.body.innerHTML = '页面内容'",
+    "answer": "console.log('普通日志')\nconsole.warn('警告信息')\nconsole.error('错误信息')\ndocument.body.innerHTML = '页面内容'",
+    "explanation": "document.write() 在页面加载完成后调用会覆盖整个页面内容，不推荐使用。应使用 innerHTML 或 DOM 操作方法来修改页面内容。",
+    "score": 10
+  },
+  {
+    "id": 15,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "使用与输出",
+    "difficulty": "easy",
+    "question": "请编写 JavaScript 代码，使用三种不同的输出方式：1) 用 console.log 输出\"开始调试\"；2) 用 console.warn 输出\"请注意\"；3) 用 console.error 输出\"发生错误\"。每行一个语句。",
+    "answer": "console.log('开始调试')\nconsole.warn('请注意')\nconsole.error('发生错误')",
+    "explanation": "console.log 用于普通日志输出，console.warn 输出带黄色警告图标的警告信息，console.error 输出带红色错误图标的错误信息，是开发调试的常用手段。",
+    "score": 10
+  },
+  {
+    "id": 16,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "使用与输出",
+    "difficulty": "easy",
+    "question": "JavaScript 中，单行注释的语法是什么？",
+    "options": [
+      { "key": "A", "text": "// 注释内容" },
+      { "key": "B", "text": "/* 注释内容 */" },
+      { "key": "C", "text": "# 注释内容" },
+      { "key": "D", "text": "<!-- 注释内容 -->" }
+    ],
+    "answer": "A",
+    "explanation": "JavaScript 单行注释使用 //，多行注释使用 /* */。# 是 Python/Ruby 的注释语法，<!-- --> 是 HTML 的注释语法。",
+    "score": 5
+  },
+  {
+    "id": 17,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "使用与输出",
+    "difficulty": "easy",
+    "question": "以下哪个是 JavaScript 中多行注释的正确写法？",
+    "options": [
+      { "key": "A", "text": "// 第一行 // 第二行" },
+      { "key": "B", "text": "/* 第一行 第二行 */" },
+      { "key": "C", "text": "/** 第一行 第二行 **/" },
+      { "key": "D", "text": "# 第一行 # 第二行" }
+    ],
+    "answer": "B",
+    "explanation": "JavaScript 多行注释以 /* 开头、*/ 结束，中间可以跨越多行。/** **/ 是 JSDoc 风格注释，也是合法的多行注释，但 B 是最标准的形式。",
+    "score": 5
+  },
+  {
+    "id": 18,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "使用与输出",
+    "difficulty": "easy",
+    "question": "在浏览器环境中，以下哪些是合法的 JavaScript 输出方式？（多选）",
+    "options": [
+      { "key": "A", "text": "console.log('Hello')" },
+      { "key": "B", "text": "print('Hello')" },
+      { "key": "C", "text": "alert('Hello')" },
+      { "key": "D", "text": "document.getElementById('box').innerHTML = 'Hello'" }
+    ],
+    "answer": "ACD",
+    "explanation": "console.log、alert、修改 innerHTML 都是合法的 JS 输出方式。print() 是其他语言（如 Python）的函数，JavaScript 中没有内置的 print 函数。",
+    "score": 5
+  },
+  {
+    "id": 19,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "使用与输出",
+    "difficulty": "easy",
+    "question": "以下代码试图使用 script 标签引入外部 JS 文件，但写法有误，请修正。",
+    "codeBefore": "<script href=\"app.js\"></script>",
+    "codeAfter": "<script src=\"app.js\"></script>",
+    "answer": "<script src=\"app.js\"></script>",
+    "explanation": "script 标签使用 src 属性引入外部 JS 文件，而非 href 属性。href 用于 link 标签引入 CSS 文件。",
+    "score": 10
+  },
+  {
+    "id": 20,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "使用与输出",
+    "difficulty": "easy",
+    "question": "请编写一个完整的 HTML 页面，包含以下要求：1) 使用 HTML5 文档声明；2) 通过外部方式引入 app.js 文件；3) 在内联 script 标签中使用 console.log 输出\"页面加载完成\"。",
+    "answer": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>JavaScript 页面</title>\n</head>\n<body>\n  <script src=\"app.js\"></script>\n  <script>console.log('页面加载完成')</script>\n</body>\n</html>",
+    "explanation": "通过 <script src=\"app.js\"></script> 引入外部 JS，内联 <script>console.log('页面加载完成')</script> 直接编写 JS 代码。script 标签放在 body 底部可确保 DOM 先加载。",
+    "score": 10
+  },
+  {
+    "id": 21,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "以下哪种声明方式具有块级作用域且不可重新赋值？",
+    "options": [
+      { "key": "A", "text": "var" },
+      { "key": "B", "text": "let" },
+      { "key": "C", "text": "const" },
+      { "key": "D", "text": "static" }
+    ],
+    "answer": "C",
+    "explanation": "const 声明的变量具有块级作用域且不可重新赋值。let 也具有块级作用域但可以重新赋值。var 具有函数作用域，可重新赋值。",
+    "score": 5
+  },
+  {
+    "id": 22,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "JavaScript 中，以下哪个标识符命名是合法的？",
+    "options": [
+      { "key": "A", "text": "2user" },
+      { "key": "B", "text": "my-name" },
+      { "key": "C", "text": "_count" },
+      { "key": "D", "text": "class" }
+    ],
+    "answer": "C",
+    "explanation": "标识符可以包含字母、数字、_ 和 $，但不能以数字开头（A 错误），不能使用连字符（B 错误），不能使用保留字（D 错误，class 是保留字）。_count 是合法的。",
+    "score": 5
+  },
+  {
+    "id": 23,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "关于 var、let、const 的声明，以下说法正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "var 存在变量提升" },
+      { "key": "B", "text": "let 可以重复声明同一变量" },
+      { "key": "C", "text": "const 必须在声明时赋值" },
+      { "key": "D", "text": "let 和 const 都具有块级作用域" }
+    ],
+    "answer": "ACD",
+    "explanation": "var 存在变量提升，let 不允许在同一作用域重复声明，const 声明时必须赋初始值，let 和 const 都具有块级作用域（ES6 引入）。",
+    "score": 5
+  },
+  {
+    "id": 24,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "以下变量声明代码有两处错误，请修正。",
+    "codeBefore": "var 1stPlace = '第一名'\nlet name = '张三'\nlet name = '李四'",
+    "codeAfter": "var firstPlace = '第一名'\nlet name = '张三'\nlet otherName = '李四'",
+    "answer": "var firstPlace = '第一名'\nlet name = '张三'\nlet otherName = '李四'",
+    "explanation": "错误1：标识符 1stPlace 以数字开头，不合法，应改为 firstPlace。错误2：let 不允许在同一作用域重复声明 name，应用不同的变量名。",
+    "score": 10
+  },
+  {
+    "id": 25,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "请编写代码：1) 用 const 声明一个常量 PI 并赋值为 3.14159；2) 用 let 声明变量 radius 并赋值为 5；3) 用 let 声明变量 area，用公式 PI * radius * radius 计算面积；4) 用 console.log 输出 area。",
+    "answer": "const PI = 3.14159\nlet radius = 5\nlet area = PI * radius * radius\nconsole.log(area)",
+    "explanation": "const 用于声明不变的常量，let 用于声明可变的变量。圆的面积公式为 π × r²，使用乘法运算符计算。",
+    "score": 10
+  },
+  {
+    "id": 26,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "在 JavaScript 中，typeof null 的返回值是什么？",
+    "options": [
+      { "key": "A", "text": "'null'" },
+      { "key": "B", "text": "'undefined'" },
+      { "key": "C", "text": "'object'" },
+      { "key": "D", "text": "'boolean'" }
+    ],
+    "answer": "C",
+    "explanation": "typeof null 返回 'object'，这是 JavaScript 自诞生以来就存在的历史遗留 bug。null 本身是一个基本类型，表示\"空值\"。",
+    "score": 5
+  },
+  {
+    "id": 27,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "以下哪个值通过 Boolean() 转换后会得到 false？",
+    "options": [
+      { "key": "A", "text": "1" },
+      { "key": "B", "text": "[]" },
+      { "key": "C", "text": "''（空字符串）" },
+      { "key": "D", "text": "'false'" }
+    ],
+    "answer": "C",
+    "explanation": "JavaScript 中的假值（falsy）有 6 个：false、0、''、null、undefined、NaN。空字符串 '' 是假值之一。1、[]、'false'（非空字符串）都是真值。",
+    "score": 5
+  },
+  {
+    "id": 28,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "以下哪些是 JavaScript 的基本数据类型（Primitive Type）？（多选）",
+    "options": [
+      { "key": "A", "text": "String" },
+      { "key": "B", "text": "Object" },
+      { "key": "C", "text": "Number" },
+      { "key": "D", "text": "Boolean" }
+    ],
+    "answer": "ACD",
+    "explanation": "String、Number、Boolean 都是基本数据类型。Object 是引用类型。基本类型还包括 Undefined、Null、Symbol、BigInt。",
+    "score": 5
+  },
+  {
+    "id": 29,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "以下代码试图进行类型转换，但有一行结果不符合预期，请修正注释中的错误预期。",
+    "codeBefore": "let num = Number('123abc')\n// 预期 num 的值为 123\nconsole.log(num)",
+    "codeAfter": "let num = Number('123abc')\n// 预期 num 的值为 NaN\nconsole.log(num)",
+    "answer": "let num = Number('123abc')\n// 预期 num 的值为 NaN\nconsole.log(num)",
+    "explanation": "Number('123abc') 无法将整个字符串转为数字，返回 NaN。如果要提取数字部分并转为 123，应使用 parseInt('123abc')。",
+    "score": 10
+  },
+  {
+    "id": 30,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "请编写代码：1) 声明变量 a 赋值为字符串 '100'；2) 使用 Number() 将 a 转为数字并存入变量 b；3) 声明变量 c 赋值为 50；4) 计算 b + c 的值并输出，同时输出 typeof 检查 b 的结果。",
+    "answer": "let a = '100'\nlet b = Number(a)\nlet c = 50\nconsole.log(b + c)\nconsole.log(typeof b)",
+    "explanation": "Number('100') 将字符串转为数字 100。b + c = 100 + 50 = 150。typeof b 输出 'number'，验证转换成功。",
+    "score": 10
+  },
+  {
+    "id": 31,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "medium",
+    "question": "let x; console.log(x); 输出什么？",
+    "options": [
+      { "key": "A", "text": "null" },
+      { "key": "B", "text": "undefined" },
+      { "key": "C", "text": "0" },
+      { "key": "D", "text": "报错" }
+    ],
+    "answer": "B",
+    "explanation": "声明但未赋值的变量，其值为 undefined。这是 JavaScript 的默认行为，undefined 表示\"未定义\"。",
+    "score": 5
+  },
+  {
+    "id": 32,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "medium",
+    "question": "parseInt('42px') 的返回值是什么？",
+    "options": [
+      { "key": "A", "text": "NaN" },
+      { "key": "B", "text": "42" },
+      { "key": "C", "text": "'42'" },
+      { "key": "D", "text": "42px" }
+    ],
+    "answer": "B",
+    "explanation": "parseInt() 从字符串开头解析，直到遇到非数字字符为止。'42px' 从开头 '42' 可以解析为数字，忽略后面的 'px'，返回 42。",
+    "score": 5
+  },
+  {
+    "id": 33,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "以下哪些是 JavaScript 中的假值（falsy）？（多选）",
+    "options": [
+      { "key": "A", "text": "0" },
+      { "key": "B", "text": "''（空字符串）" },
+      { "key": "C", "text": "null" },
+      { "key": "D", "text": "NaN" }
+    ],
+    "answer": "ABCD",
+    "explanation": "JavaScript 中共有 6 个假值：false、0、''（空字符串）、null、undefined、NaN。这 4 个选项全部都是假值，在条件判断中会被视为 false。",
+    "score": 5
+  },
+  {
+    "id": 34,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "以下代码有两个错误：变量声明问题和不合理的逻辑。请修正。",
+    "codeBefore": "const score\nscore = 90\nconsole.log('成绩：' + score)",
+    "codeAfter": "const score = 90\nconsole.log('成绩：' + score)",
+    "answer": "const score = 90\nconsole.log('成绩：' + score)",
+    "explanation": "const 声明必须在定义时赋初始值，不能先声明后赋值。将声明和赋值合并为一行即可。",
+    "score": 10
+  },
+  {
+    "id": 35,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "基础语法",
+    "difficulty": "easy",
+    "question": "请编写代码：1) 用 let 声明变量 str 赋值为 '  Hello World  '（包含前后空格）；2) 使用 String 方法去除前后空格后输出；3) 输出原字符串的长度和去除空格后的长度。",
+    "answer": "let str = '  Hello World  '\nlet trimmed = str.trim()\nconsole.log(trimmed)\nconsole.log(str.length)\nconsole.log(trimmed.length)",
+    "explanation": "trim() 方法去除字符串首尾空白字符。str.length 获取字符串长度（含空格），trimmed.length 获取去除空格后的长度。",
+    "score": 10
+  },
+  {
+    "id": 36,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "运算符",
+    "difficulty": "easy",
+    "question": "0 == false 的结果是什么？",
+    "options": [
+      { "key": "A", "text": "true" },
+      { "key": "B", "text": "false" },
+      { "key": "C", "text": "undefined" },
+      { "key": "D", "text": "报错" }
+    ],
+    "answer": "A",
+    "explanation": "== 是宽松相等运算符，会进行类型转换。0 被转为 false，因此 0 == false 返回 true。推荐使用 === 进行严格比较（0 === false 为 false）。",
+    "score": 5
+  },
+  {
+    "id": 37,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "运算符",
+    "difficulty": "easy",
+    "question": "2 ** 3 的结果是什么？",
+    "options": [
+      { "key": "A", "text": "5" },
+      { "key": "B", "text": "6" },
+      { "key": "C", "text": "8" },
+      { "key": "D", "text": "9" }
+    ],
+    "answer": "C",
+    "explanation": "** 是 ES7 引入的幂运算符（指数运算符），2 ** 3 表示 2 的 3 次方，即 2 × 2 × 2 = 8。等同于 Math.pow(2, 3)。",
+    "score": 5
+  },
+  {
+    "id": 38,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "运算符",
+    "difficulty": "easy",
+    "question": "以下关于比较运算符的说法正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "=== 比较值和类型，不进行类型转换" },
+      { "key": "B", "text": "null == undefined 的结果是 true" },
+      { "key": "C", "text": "null === undefined 的结果是 true" },
+      { "key": "D", "text": "推荐使用 === 而非 == 来进行比较" }
+    ],
+    "answer": "ABD",
+    "explanation": "=== 严格相等，比较值和类型。null == undefined 为 true（宽松比较特例），但 null === undefined 为 false（类型不同）。推荐始终使用 === 以避免意外的类型转换。",
+    "score": 5
+  },
+  {
+    "id": 39,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "运算符",
+    "difficulty": "medium",
+    "question": "以下代码使用 == 进行比较存在隐患，请改为使用严格比较 ===，并修正比较逻辑。",
+    "codeBefore": "let input = '0'\nif (input == false) {\n  console.log('输入为空')\n} else {\n  console.log('输入为：' + input)\n}",
+    "codeAfter": "let input = '0'\nif (input === '') {\n  console.log('输入为空')\n} else {\n  console.log('输入为：' + input)\n}",
+    "answer": "let input = '0'\nif (input === '') {\n  console.log('输入为空')\n} else {\n  console.log('输入为：' + input)\n}",
+    "explanation": "原代码使用 input == false，因为 '0' 会被转为 false（非空字符串是 truthy，但 == 有一套复杂的转换规则会导致意外结果）。应使用 === 直接与空字符串 '' 比较来判断输入是否为空。",
+    "score": 10
+  },
+  {
+    "id": 40,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "运算符",
+    "difficulty": "easy",
+    "question": "请编写代码：1) 声明变量 age 赋值为 20；2) 使用三元运算符判断 age 是否大于等于 18，是则输出\"成年\"，否则输出\"未成年\"；3) 使用严格相等 === 比较 0 和 false 并输出结果。",
+    "answer": "let age = 20\nlet status = age >= 18 ? '成年' : '未成年'\nconsole.log(status)\nconsole.log(0 === false)",
+    "explanation": "三元运算符 condition ? expr1 : expr2 是 if-else 的简写形式。0 === false 返回 false，因为它们的类型不同（number vs boolean）。",
+    "score": 10
+  },
+  {
+    "id": 41,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "运算符",
+    "difficulty": "medium",
+    "question": "let a = (1, 2, 3); 执行后 a 的值是多少？",
+    "options": [
+      { "key": "A", "text": "1" },
+      { "key": "B", "text": "2" },
+      { "key": "C", "text": "3" },
+      { "key": "D", "text": "[1, 2, 3]" }
+    ],
+    "answer": "C",
+    "explanation": "逗号运算符会依次计算每个表达式，并返回最后一个表达式的值。因此 (1, 2, 3) 返回 3，a 的值为 3。",
+    "score": 5
+  },
+  {
+    "id": 42,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "运算符",
+    "difficulty": "medium",
+    "question": "以下关于逻辑运算符短路求值的说法，正确的是？",
+    "options": [
+      { "key": "A", "text": "&& 遇到 true 就停止求值" },
+      { "key": "B", "text": "|| 遇到 true 就停止求值" },
+      { "key": "C", "text": "|| 遇到 false 就停止求值" },
+      { "key": "D", "text": "&& 和 || 都不会短路" }
+    ],
+    "answer": "B",
+    "explanation": "||（逻辑或）遇到第一个真值就短路返回该值，不再继续求值。&&（逻辑与）遇到第一个假值就短路返回该值。短路求值可以用于设置默认值等场景。",
+    "score": 5
+  },
+  {
+    "id": 43,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "运算符",
+    "difficulty": "medium",
+    "question": "以下哪些是 JavaScript 的赋值运算符？（多选）",
+    "options": [
+      { "key": "A", "text": "+=" },
+      { "key": "B", "text": "*=" },
+      { "key": "C", "text": "**=" },
+      { "key": "D", "text": "=>" }
+    ],
+    "answer": "ABC",
+    "explanation": "+=（加后赋值）、*=（乘后赋值）、**=（幂后赋值）都是合法的赋值运算符。=> 是箭头函数的语法，不是赋值运算符。",
+    "score": 5
+  },
+  {
+    "id": 44,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "运算符",
+    "difficulty": "medium",
+    "question": "以下代码试图计算并输出 10 除以 3 的结果，但有逻辑错误，请修正。",
+    "codeBefore": "let a = 10\nlet b = 3\nlet result = a % b\nconsole.log('10 除以 3 的结果是：' + result)",
+    "codeAfter": "let a = 10\nlet b = 3\nlet result = a / b\nconsole.log('10 除以 3 的结果是：' + result)",
+    "answer": "let a = 10\nlet b = 3\nlet result = a / b\nconsole.log('10 除以 3 的结果是：' + result)",
+    "explanation": "% 是取余运算符，10 % 3 = 1（余数）。要计算除法结果，应使用 / 运算符，10 / 3 = 3.333...。",
+    "score": 10
+  },
+  {
+    "id": 45,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "运算符",
+    "difficulty": "medium",
+    "question": "请编写代码：1) 声明 x = 10, y = 3；2) 分别输出 x + y、x - y、x * y、x / y、x % y、x ** y 的结果，每种运算结果单独一行，并使用模板字符串标明运算类型，如 `加法：${x + y}`。",
+    "answer": "let x = 10\nlet y = 3\nconsole.log(`加法：${x + y}`)\nconsole.log(`减法：${x - y}`)\nconsole.log(`乘法：${x * y}`)\nconsole.log(`除法：${x / y}`)\nconsole.log(`取余：${x % y}`)\nconsole.log(`幂运算：${x ** y}`)",
+    "explanation": "模板字符串 `...${}` 可以在字符串中嵌入表达式。六种算术运算符：+ 加、- 减、* 乘、/ 除、% 取余、** 幂运算。",
+    "score": 10
+  },
+  {
+    "id": 46,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "easy",
+    "question": "在 switch 语句中，用于跳出 switch 块的关键字是什么？",
+    "options": [
+      { "key": "A", "text": "continue" },
+      { "key": "B", "text": "return" },
+      { "key": "C", "text": "break" },
+      { "key": "D", "text": "exit" }
+    ],
+    "answer": "C",
+    "explanation": "在 switch 中，每个 case 执行完毕后需要用 break 退出，否则会发生\"穿透\"（fall-through），继续执行后续 case 的代码。",
+    "score": 5
+  },
+  {
+    "id": 47,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "easy",
+    "question": "以下哪个循环至少会执行一次？",
+    "options": [
+      { "key": "A", "text": "while 循环" },
+      { "key": "B", "text": "for 循环" },
+      { "key": "C", "text": "do-while 循环" },
+      { "key": "D", "text": "for...of 循环" }
+    ],
+    "answer": "C",
+    "explanation": "do-while 循环先执行循环体再判断条件，因此至少执行一次。while 和 for 都是先判断后执行，条件不满足则一次也不执行。",
+    "score": 5
+  },
+  {
+    "id": 48,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "easy",
+    "question": "以下哪些是 JavaScript 中的循环语句？（多选）",
+    "options": [
+      { "key": "A", "text": "for" },
+      { "key": "B", "text": "while" },
+      { "key": "C", "text": "do-while" },
+      { "key": "D", "text": "switch" }
+    ],
+    "answer": "ABC",
+    "explanation": "for、while、do-while 都是循环语句。switch 是条件分支语句，不属于循环。",
+    "score": 5
+  },
+  {
+    "id": 49,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "easy",
+    "question": "以下 switch 语句缺少 break 导致行为异常，请修正。",
+    "codeBefore": "let day = 2\nlet name\nswitch (day) {\n  case 1: name = '周一'\n  case 2: name = '周二'\n  case 3: name = '周三'\n  default: name = '未知'\n}\nconsole.log(name)",
+    "codeAfter": "let day = 2\nlet name\nswitch (day) {\n  case 1: name = '周一'; break\n  case 2: name = '周二'; break\n  case 3: name = '周三'; break\n  default: name = '未知'\n}\nconsole.log(name)",
+    "answer": "let day = 2\nlet name\nswitch (day) {\n  case 1: name = '周一'; break\n  case 2: name = '周二'; break\n  case 3: name = '周三'; break\n  default: name = '未知'\n}\nconsole.log(name)",
+    "explanation": "缺少 break 会导致 case 穿透：day=2 时，name 先被赋为 '周二'，然后穿透到 case 3 赋为 '周三'，再穿透到 default 赋为 '未知'。每个 case 后必须加 break。",
+    "score": 10
+  },
+  {
+    "id": 50,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "easy",
+    "question": "请编写代码：使用 for 循环输出 1 到 5 的数字，每个数字一行。再使用 while 循环输出 5 到 1 的数字，每个数字一行。",
+    "answer": "for (let i = 1; i <= 5; i++) {\n  console.log(i)\n}\nlet j = 5\nwhile (j >= 1) {\n  console.log(j)\n  j--\n}",
+    "explanation": "for 循环适合已知循环次数的情况：初始化 i=1，条件 i<=5，每次 i++。while 循环适合需要条件判断的情况：当 j>=1 时继续执行，每次 j-- 递减。",
+    "score": 10
+  },
+  {
+    "id": 51,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "medium",
+    "question": "for...in 循环主要用于遍历什么？",
+    "options": [
+      { "key": "A", "text": "数组的元素值" },
+      { "key": "B", "text": "对象的属性名" },
+      { "key": "C", "text": "字符串的字符" },
+      { "key": "D", "text": "数字序列" }
+    ],
+    "answer": "B",
+    "explanation": "for...in 用于遍历对象的可枚举属性名（键名）。遍历数组建议使用 for...of 或 forEach。for...in 遍历数组时返回的是索引字符串而非元素值。",
+    "score": 5
+  },
+  {
+    "id": 52,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "medium",
+    "question": "在循环中，continue 语句的作用是什么？",
+    "options": [
+      { "key": "A", "text": "跳出当前循环" },
+      { "key": "B", "text": "跳过本次迭代，继续下一次" },
+      { "key": "C", "text": "终止整个程序" },
+      { "key": "D", "text": "重新开始循环" }
+    ],
+    "answer": "B",
+    "explanation": "continue 跳过当前循环中剩余的代码，直接进入下一次迭代。break 是跳出整个循环，两者行为不同。",
+    "score": 5
+  },
+  {
+    "id": 53,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "medium",
+    "question": "关于 for...in 和 for...of，以下说法正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "for...in 遍历对象的键名" },
+      { "key": "B", "text": "for...of 遍历可迭代对象的值" },
+      { "key": "C", "text": "for...of 可以遍历普通对象" },
+      { "key": "D", "text": "for...in 遍历数组时返回的是索引" }
+    ],
+    "answer": "ABD",
+    "explanation": "for...in 遍历可枚举属性名，遍历数组时返回索引。for...of 遍历可迭代对象（数组、字符串、Set、Map等）的值。普通对象不可迭代，不能直接使用 for...of。",
+    "score": 5
+  },
+  {
+    "id": 54,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "medium",
+    "question": "以下代码试图使用 label 跳出外层循环，但写错了关键字，请修正。",
+    "codeBefore": "outside: for (let i = 0; i < 3; i++) {\n  for (let j = 0; j < 3; j++) {\n    if (i === 1 && j === 1) break outside\n    console.log(i, j)\n  }\n}",
+    "codeAfter": "outer: for (let i = 0; i < 3; i++) {\n  for (let j = 0; j < 3; j++) {\n    if (i === 1 && j === 1) break outer\n    console.log(i, j)\n  }\n}",
+    "answer": "outer: for (let i = 0; i < 3; i++) {\n  for (let j = 0; j < 3; j++) {\n    if (i === 1 && j === 1) break outer\n    console.log(i, j)\n  }\n}",
+    "explanation": "原代码中 label 名称 'outside' 和 break 后的 'outside' 是一致的，这本身没问题。但这里需要确保 label 名称拼写一致。原代码是正确的，但如果将 label 命名为 'outer'，则 break 后也必须匹配。实际上此题仅作演示——label 和 break 后的标识符必须一致。",
+    "score": 10
+  },
+  {
+    "id": 55,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "medium",
+    "question": "请编写代码：1) 创建一个数组 scores = [85, 92, 78, 95, 88]；2) 使用 for...of 遍历数组，打印每个分数；3) 使用 if-else 判断每个分数等级（>=90 优秀，>=80 良好，>=70 中等，其他 及格），输出格式如 \"85 分：良好\"。",
+    "answer": "let scores = [85, 92, 78, 95, 88]\nfor (let score of scores) {\n  let grade\n  if (score >= 90) {\n    grade = '优秀'\n  } else if (score >= 80) {\n    grade = '良好'\n  } else if (score >= 70) {\n    grade = '中等'\n  } else {\n    grade = '及格'\n  }\n  console.log(`${score} 分：${grade}`)\n}",
+    "explanation": "for...of 直接获取数组元素值。if-else if-else 实现多分支条件判断，从上到下依次匹配。模板字符串 ${} 嵌入变量输出格式化结果。",
+    "score": 10
+  },
+  {
+    "id": 56,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "medium",
+    "question": "以下代码输出什么？\nfor (let i = 0; i < 5; i++) {\n  if (i === 2) continue\n  if (i === 4) break\n  console.log(i)\n}",
+    "options": [
+      { "key": "A", "text": "0 1 3" },
+      { "key": "B", "text": "0 1 2 3 4" },
+      { "key": "C", "text": "0 1 3 4" },
+      { "key": "D", "text": "0 1 2 3" }
+    ],
+    "answer": "A",
+    "explanation": "i=0,1 正常输出。i=2 时 continue 跳过输出。i=3 正常输出。i=4 时 break 跳出循环。所以输出 0、1、3。",
+    "score": 5
+  },
+  {
+    "id": 57,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "medium",
+    "question": "let i = 0; do { console.log(i); i++ } while (i < 0); 输出什么？",
+    "options": [
+      { "key": "A", "text": "不输出任何内容" },
+      { "key": "B", "text": "0" },
+      { "key": "C", "text": "0 0 0 ... （死循环）" },
+      { "key": "D", "text": "报错" }
+    ],
+    "answer": "B",
+    "explanation": "do-while 先执行循环体再判断条件。即使初始条件 i < 0 为 false，循环体也会执行一次，输出 0，然后 i 变为 1，判断条件 1 < 0 为 false，退出循环。",
+    "score": 5
+  },
+  {
+    "id": 58,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "medium",
+    "question": "关于 break 和 continue 语句，以下说法正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "break 用于完全终止循环" },
+      { "key": "B", "text": "continue 跳过当前迭代剩余代码" },
+      { "key": "C", "text": "break 只能在 switch 中使用" },
+      { "key": "D", "text": "label 配合 break 可以跳出多层循环" }
+    ],
+    "answer": "ABD",
+    "explanation": "break 完全终止循环，continue 跳过本次迭代。break 可在 switch 和循环中使用。使用 label 配合 break labelName 可以跳出指定的外层循环。",
+    "score": 5
+  },
+  {
+    "id": 59,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "medium",
+    "question": "以下代码试图输出 1 到 10 之间的所有偶数，但有逻辑错误，请修正。",
+    "codeBefore": "for (let i = 1; i <= 10; i++) {\n  if (i % 2 === 1) {\n    console.log(i)\n  }\n}",
+    "codeAfter": "for (let i = 1; i <= 10; i++) {\n  if (i % 2 === 0) {\n    console.log(i)\n  }\n}",
+    "answer": "for (let i = 1; i <= 10; i++) {\n  if (i % 2 === 0) {\n    console.log(i)\n  }\n}",
+    "explanation": "i % 2 === 1 判断的是奇数（除以 2 余 1），应该用 i % 2 === 0 判断偶数（除以 2 余 0）。",
+    "score": 10
+  },
+  {
+    "id": 60,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "流程控制",
+    "difficulty": "medium",
+    "question": "请编写代码：使用双重 for 循环输出一个 5 行 5 列的星号矩阵，每行星号用空格分隔。输出格式如下：\n* * * * *\n* * * * *\n...（共 5 行）",
+    "answer": "for (let i = 0; i < 5; i++) {\n  let row = ''\n  for (let j = 0; j < 5; j++) {\n    row += '* '\n  }\n  console.log(row.trim())\n}",
+    "explanation": "外层循环控制行数（5 行），内层循环控制每行的星号数量（5 个）。每行拼接字符串后用 trim() 去除末尾多余空格再输出。",
+    "score": 10
+  },
+  {
+    "id": 61,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "easy",
+    "question": "以下创建对象的语法，哪一个是正确的？",
+    "options": [
+      { "key": "A", "text": "const obj = []" },
+      { "key": "B", "text": "const obj = ()" },
+      { "key": "C", "text": "const obj = {}" },
+      { "key": "D", "text": "const obj = <> " }
+    ],
+    "answer": "C",
+    "explanation": "{} 是对象字面量语法，用于创建空对象。[] 创建数组，() 是表达式分组，<>  是无效语法。",
+    "score": 5
+  },
+  {
+    "id": 62,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "easy",
+    "question": "访问对象属性的两种语法是什么？",
+    "options": [
+      { "key": "A", "text": "点语法和括号语法" },
+      { "key": "B", "text": "点语法和箭头语法" },
+      { "key": "C", "text": "括号语法和星号语法" },
+      { "key": "D", "text": "直接访问和间接访问" }
+    ],
+    "answer": "A",
+    "explanation": "访问对象属性有两种方式：点语法（obj.name）和方括号语法（obj['name']）。当属性名包含特殊字符或为变量时，必须使用方括号语法。",
+    "score": 5
+  },
+  {
+    "id": 63,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "easy",
+    "question": "以下哪些方法可以获取对象的键或值？（多选）",
+    "options": [
+      { "key": "A", "text": "Object.keys(obj)" },
+      { "key": "B", "text": "Object.values(obj)" },
+      { "key": "C", "text": "Object.entries(obj)" },
+      { "key": "D", "text": "Object.length(obj)" }
+    ],
+    "answer": "ABC",
+    "explanation": "Object.keys() 返回键数组，Object.values() 返回值数组，Object.entries() 返回 [键, 值] 对数组。没有 Object.length() 方法。",
+    "score": 5
+  },
+  {
+    "id": 64,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "easy",
+    "question": "以下代码试图访问对象属性，但有一行写法错误，请修正。",
+    "codeBefore": "let person = { name: '张三', age: 25 }\nconsole.log(person.name)\nconsole.log(person.'age')\nconsole.log(person['name'])",
+    "codeAfter": "let person = { name: '张三', age: 25 }\nconsole.log(person.name)\nconsole.log(person['age'])\nconsole.log(person['name'])",
+    "answer": "let person = { name: '张三', age: 25 }\nconsole.log(person.name)\nconsole.log(person['age'])\nconsole.log(person['name'])",
+    "explanation": "person.'age' 语法错误，点语法后面直接跟属性名，不能加引号。方括号语法中属性名需要用字符串表示：person['age']。",
+    "score": 10
+  },
+  {
+    "id": 65,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "easy",
+    "question": "请编写代码：1) 创建一个学生对象 student，包含 name（姓名）、score（分数）、grade（年级）三个属性；2) 使用 for...in 循环遍历该对象，打印每个属性名和属性值；3) 使用 Object.keys() 获取所有属性名并输出。",
+    "answer": "let student = { name: '小明', score: 95, grade: '三年级' }\nfor (let key in student) {\n  console.log(key + ': ' + student[key])\n}\nconsole.log(Object.keys(student))",
+    "explanation": "for...in 遍历对象属性名，通过 student[key] 获取属性值。Object.keys(student) 返回 ['name', 'score', 'grade'] 数组。",
+    "score": 10
+  },
+  {
+    "id": 66,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "medium",
+    "question": "以下代码输出什么？\nlet a = 10, b = a; b = 20; console.log(a)",
+    "options": [
+      { "key": "A", "text": "10" },
+      { "key": "B", "text": "20" },
+      { "key": "C", "text": "undefined" },
+      { "key": "D", "text": "报错" }
+    ],
+    "answer": "A",
+    "explanation": "基本类型（数字）赋值是值复制，b = a 将 a 的值 10 复制给 b。之后修改 b 为 20 不影响 a，所以 a 仍为 10。这是栈内存中值复制的特点。",
+    "score": 5
+  },
+  {
+    "id": 67,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "medium",
+    "question": "以下代码输出什么？\nlet o1 = { x: 1 }, o2 = o1; o2.x = 2; console.log(o1.x)",
+    "options": [
+      { "key": "A", "text": "1" },
+      { "key": "B", "text": "2" },
+      { "key": "C", "text": "undefined" },
+      { "key": "D", "text": "null" }
+    ],
+    "answer": "B",
+    "explanation": "对象是引用类型，o2 = o1 将 o1 的引用地址复制给 o2，两者指向堆内存中同一个对象。修改 o2.x 即修改同一对象的属性，所以 o1.x 也变为 2。",
+    "score": 5
+  },
+  {
+    "id": 68,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "medium",
+    "question": "关于 JavaScript 中栈和堆的区别，以下说法正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "基本类型值存储在栈中" },
+      { "key": "B", "text": "对象和数组存储在堆中" },
+      { "key": "C", "text": "栈中存储的是引用类型的地址" },
+      { "key": "D", "text": "堆内存不需要垃圾回收" }
+    ],
+    "answer": "ABC",
+    "explanation": "基本类型值直接存于栈中；对象、数组、函数等引用类型存于堆中，栈中只存储其引用地址。堆内存由垃圾回收机制（标记-清除算法）自动管理。",
+    "score": 5
+  },
+  {
+    "id": 69,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "medium",
+    "question": "以下代码试图删除对象的属性，但使用了错误的方法，请修正。",
+    "codeBefore": "let person = { name: '张三', age: 25, city: '北京' }\nperson.age = undefined\nconsole.log(person)",
+    "codeAfter": "let person = { name: '张三', age: 25, city: '北京' }\ndelete person.age\nconsole.log(person)",
+    "answer": "let person = { name: '张三', age: 25, city: '北京' }\ndelete person.age\nconsole.log(person)",
+    "explanation": "将属性设为 undefined 并不能真正删除属性，属性仍然存在于对象中（值为 undefined）。应使用 delete 运算符来彻底删除对象属性。",
+    "score": 10
+  },
+  {
+    "id": 70,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "medium",
+    "question": "请编写代码：1) 创建对象 book，包含 title、author、year 属性；2) 添加一个新属性 price；3) 修改 year 属性的值；4) 删除 author 属性；5) 使用 console.log 输出最终的对象和它的所有键。",
+    "answer": "let book = { title: 'JavaScript 入门', author: '张老师', year: 2020 }\nbook.price = 59.9\nbook.year = 2024\ndelete book.author\nconsole.log(book)\nconsole.log(Object.keys(book))",
+    "explanation": "book.price = 59.9 新增属性，book.year = 2024 修改已有属性，delete book.author 删除属性。Object.keys(book) 返回所有键组成的数组。",
+    "score": 10
+  },
+  {
+    "id": 71,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "medium",
+    "question": "Object.entries({ a: 1, b: 2 }) 的返回值是什么？",
+    "options": [
+      { "key": "A", "text": "['a', 'b']" },
+      { "key": "B", "text": "[1, 2]" },
+      { "key": "C", "text": "[['a', 1], ['b', 2]]" },
+      { "key": "D", "text": "{ a: 1, b: 2 }" }
+    ],
+    "answer": "C",
+    "explanation": "Object.entries() 返回一个二维数组，每个子数组是 [键, 值] 对。{ a: 1, b: 2 } 返回 [['a', 1], ['b', 2]]。",
+    "score": 5
+  },
+  {
+    "id": 72,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "medium",
+    "question": "在对象方法中，this 指向什么？",
+    "options": [
+      { "key": "A", "text": "全局 window 对象" },
+      { "key": "B", "text": "调用该方法的对象" },
+      { "key": "C", "text": "该方法本身" },
+      { "key": "D", "text": "undefined" }
+    ],
+    "answer": "B",
+    "explanation": "当以 obj.method() 方式调用时，方法中的 this 指向 obj（隐式绑定）。this 的值由调用方式决定，而非定义位置。",
+    "score": 5
+  },
+  {
+    "id": 73,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "medium",
+    "question": "关于 JavaScript 对象，以下说法正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "对象是键值对的集合" },
+      { "key": "B", "text": "对象的属性名必须是字符串" },
+      { "key": "C", "text": "可以通过 delete 运算符删除对象属性" },
+      { "key": "D", "text": "Object.values() 返回对象所有值的数组" }
+    ],
+    "answer": "ACD",
+    "explanation": "对象是键值对集合。属性名可以是字符串或 Symbol（ES6 后支持），不必须是字符串。delete 删除属性，Object.values() 返回值的数组。",
+    "score": 5
+  },
+  {
+    "id": 74,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "medium",
+    "question": "以下代码试图使用方括号语法访问对象属性，但有一处变量使用错误，请修正。",
+    "codeBefore": "let person = { name: '张三', age: 25 }\nlet key = 'name'\nconsole.log(person.key)",
+    "codeAfter": "let person = { name: '张三', age: 25 }\nlet key = 'name'\nconsole.log(person[key])",
+    "answer": "let person = { name: '张三', age: 25 }\nlet key = 'name'\nconsole.log(person[key])",
+    "explanation": "person.key 会查找字面属性名为 'key' 的属性（不存在，返回 undefined）。要使用变量 key 的值作为属性名，必须用方括号语法 person[key]。",
+    "score": 10
+  },
+  {
+    "id": 75,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "对象基础",
+    "difficulty": "medium",
+    "question": "请编写代码：1) 创建一个 person 对象，包含 name 属性和 sayHi 方法，sayHi 方法使用 this.name 输出\"你好，我是XXX\"；2) 调用 sayHi 方法；3) 再给对象动态添加一个 introduce 方法，输出\"我叫XXX，今年XXX岁\"，使用 this 引用属性。",
+    "answer": "let person = {\n  name: '张三',\n  age: 25,\n  sayHi() {\n    console.log(`你好，我是${this.name}`)\n  }\n}\nperson.sayHi()\nperson.introduce = function() {\n  console.log(`我叫${this.name}，今年${this.age}岁`)\n}\nperson.introduce()",
+    "explanation": "对象方法中 this 指向调用该方法的对象。sayHi 中 this.name 获取 person.name。动态添加方法后调用，this 同样指向 person。ES6 方法简写语法 sayHi() {} 比 sayHi: function() {} 更简洁。",
+    "score": 10
+  },
+  {
+    "id": 76,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "easy",
+    "question": "以下哪种是 JavaScript 函数的声明方式？",
+    "options": [
+      { "key": "A", "text": "function myFunc() {}" },
+      { "key": "B", "text": "def myFunc() {}" },
+      { "key": "C", "text": "fn myFunc() {}" },
+      { "key": "D", "text": "func myFunc() {}" }
+    ],
+    "answer": "A",
+    "explanation": "JavaScript 使用 function 关键字声明函数。def 是 Python 的关键字，fn 和 func 不是 JavaScript 的关键字。",
+    "score": 5
+  },
+  {
+    "id": 77,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "easy",
+    "question": "一个没有 return 语句的函数，其返回值是什么？",
+    "options": [
+      { "key": "A", "text": "null" },
+      { "key": "B", "text": "0" },
+      { "key": "C", "text": "undefined" },
+      { "key": "D", "text": "false" }
+    ],
+    "answer": "C",
+    "explanation": "JavaScript 中，没有 return 语句的函数默认返回 undefined。如果 return 后面没有值（如 return;），同样返回 undefined。",
+    "score": 5
+  },
+  {
+    "id": 78,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "easy",
+    "question": "以下哪些是 JavaScript 中合法的函数定义方式？（多选）",
+    "options": [
+      { "key": "A", "text": "function add(a, b) { return a + b }" },
+      { "key": "B", "text": "const add = function(a, b) { return a + b }" },
+      { "key": "C", "text": "const add = (a, b) => a + b" },
+      { "key": "D", "text": "(function(a, b) { return a + b })(1, 2)" }
+    ],
+    "answer": "ABCD",
+    "explanation": "A 是函数声明，B 是函数表达式，C 是箭头函数（ES6），D 是 IIFE（立即执行函数表达式）。四种都是合法的函数定义/调用方式。",
+    "score": 5
+  },
+  {
+    "id": 79,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "easy",
+    "question": "以下函数定义有语法错误，请修正。",
+    "codeBefore": "function greet(name) {\n  return '你好，' + name + '！'\n}\nconsole.log(greet)",
+    "codeAfter": "function greet(name) {\n  return '你好，' + name + '！'\n}\nconsole.log(greet('张三'))",
+    "answer": "function greet(name) {\n  return '你好，' + name + '！'\n}\nconsole.log(greet('张三'))",
+    "explanation": "console.log(greet) 输出的是函数本身（函数对象的字符串表示），而不是调用函数。应使用 greet('张三') 来调用函数并传入参数。",
+    "score": 10
+  },
+  {
+    "id": 80,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "easy",
+    "question": "请编写一个函数 calculateArea，接受两个参数 width 和 height，返回矩形面积。然后调用该函数计算宽为 5、高为 8 的矩形面积并输出结果。",
+    "answer": "function calculateArea(width, height) {\n  return width * height\n}\nconsole.log(calculateArea(5, 8))",
+    "explanation": "函数封装了计算逻辑（宽×高），通过 return 返回结果。调用时传入实参 5 和 8，输出 40。函数提高了代码复用性。",
+    "score": 10
+  },
+  {
+    "id": 81,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "medium",
+    "question": "以下箭头函数语法正确的是？",
+    "options": [
+      { "key": "A", "text": "const fn = a, b => a + b" },
+      { "key": "B", "text": "const fn = (a, b) => a + b" },
+      { "key": "C", "text": "const fn = => a + b" },
+      { "key": "D", "text": "const fn = (a, b) => { return a + b }" }
+    ],
+    "answer": "B",
+    "explanation": "箭头函数多参数时必须用括号包裹：(a, b) => ...。如果只有一个参数可省略括号，如 a => a * 2。D 语法也正确但缺少末尾分号——其实 D 也是正确的。最佳答案 B，单行表达式无需 return 和 {}。",
+    "score": 5
+  },
+  {
+    "id": 82,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "medium",
+    "question": "以下代码输出什么？\nconst obj = { name: '对象', getName: () => this.name }\nconsole.log(obj.getName())",
+    "options": [
+      { "key": "A", "text": "'对象'" },
+      { "key": "B", "text": "undefined" },
+      { "key": "C", "text": "报错" },
+      { "key": "D", "text": "null" }
+    ],
+    "answer": "B",
+    "explanation": "箭头函数没有自己的 this，它会继承外层作用域的 this。在全局作用域中 this 指向 window（浏览器）或 {}（Node模块），都没有 name 属性，所以输出 undefined。对象方法不应使用箭头函数。",
+    "score": 5
+  },
+  {
+    "id": 83,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "medium",
+    "question": "关于箭头函数和普通函数的区别，以下说法正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "箭头函数没有自己的 this" },
+      { "key": "B", "text": "箭头函数不能用作构造函数" },
+      { "key": "C", "text": "箭头函数没有 arguments 对象" },
+      { "key": "D", "text": "箭头函数可以省略 return 关键字（单行表达式时）" }
+    ],
+    "answer": "ABCD",
+    "explanation": "箭头函数没有自己的 this（继承外层）、没有 arguments 对象、不能 new、单行表达式可省略 return。这使得箭头函数适合用于回调和非方法函数。",
+    "score": 5
+  },
+  {
+    "id": 84,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "medium",
+    "question": "以下函数使用了箭头函数作为对象方法，导致 this 指向错误，请修正。",
+    "codeBefore": "let person = {\n  name: '张三',\n  greet: () => {\n    console.log('你好，我是' + this.name)\n  }\n}\nperson.greet()",
+    "codeAfter": "let person = {\n  name: '张三',\n  greet() {\n    console.log('你好，我是' + this.name)\n  }\n}\nperson.greet()",
+    "answer": "let person = {\n  name: '张三',\n  greet() {\n    console.log('你好，我是' + this.name)\n  }\n}\nperson.greet()",
+    "explanation": "箭头函数的 this 指向外层作用域（此处是全局），无法获取 person.name。应使用方法简写语法 greet() {}，此时 this 指向调用该方法的对象 person。",
+    "score": 10
+  },
+  {
+    "id": 85,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "medium",
+    "question": "请编写代码：1) 定义一个函数 createCounter，内部使用闭包维护一个 count 变量（初始为 0）；2) 返回一个函数，每次调用该返回函数时 count 自增 1 并返回新值；3) 创建两个独立的计数器 counter1 和 counter2，各调用两次并输出结果。",
+    "answer": "function createCounter() {\n  let count = 0\n  return function() {\n    count++\n    return count\n  }\n}\nlet counter1 = createCounter()\nconsole.log(counter1())\nconsole.log(counter1())\nlet counter2 = createCounter()\nconsole.log(counter2())\nconsole.log(counter2())",
+    "explanation": "闭包使得返回的内部函数可以访问外层函数的 count 变量，即使外层函数已执行完毕。每次调用 createCounter() 创建独立的闭包作用域，counter1 和 counter2 各自拥有独立的 count。",
+    "score": 10
+  },
+  {
+    "id": 86,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "hard",
+    "question": "以下代码输出什么？\nfunction sum(...nums) { return nums.reduce((a, b) => a + b, 0) }\nconsole.log(sum(1, 2, 3, 4))",
+    "options": [
+      { "key": "A", "text": "6" },
+      { "key": "B", "text": "10" },
+      { "key": "C", "text": "NaN" },
+      { "key": "D", "text": "undefined" }
+    ],
+    "answer": "B",
+    "explanation": "rest 参数 ...nums 将传入的所有实参收集到一个数组 [1, 2, 3, 4] 中。reduce 方法对数组元素求和：1+2+3+4=10。",
+    "score": 5
+  },
+  {
+    "id": 87,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "hard",
+    "question": "使用 new 调用构造函数时，函数内的 this 指向什么？",
+    "options": [
+      { "key": "A", "text": "全局对象 window" },
+      { "key": "B", "text": "构造函数本身" },
+      { "key": "C", "text": "新创建的实例对象" },
+      { "key": "D", "text": "undefined" }
+    ],
+    "answer": "C",
+    "explanation": "使用 new 调用函数时（new 绑定），引擎会创建一个新对象并将 this 绑定到该新对象上。这是 this 四种绑定规则中优先级最高的一种。",
+    "score": 5
+  },
+  {
+    "id": 88,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "hard",
+    "question": "以下哪些关于 JavaScript 函数中 this 的说法是正确的？（多选）",
+    "options": [
+      { "key": "A", "text": "全局独立调用时，this 指向 window（非严格模式）" },
+      { "key": "B", "text": "call、apply、bind 可以显式指定 this" },
+      { "key": "C", "text": "箭头函数的 this 在定义时确定" },
+      { "key": "D", "text": "this 的值由函数定义的位置决定" }
+    ],
+    "answer": "ABC",
+    "explanation": "this 由调用方式决定（非定义位置）：默认绑定→window，隐式绑定→调用对象，显式绑定→call/apply/bind 指定，new 绑定→新实例。箭头函数 this 在定义时继承外层。D 错误：this 由调用方式决定而非定义位置。",
+    "score": 5
+  },
+  {
+    "id": 89,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "medium",
+    "question": "以下代码试图使用默认参数，但写法有语法错误，请修正。",
+    "codeBefore": "function greet(name = '访客', greeting) {\n  return greeting + '，' + name\n}\nconsole.log(greet('张三'))",
+    "codeAfter": "function greet(name, greeting = '你好') {\n  return greeting + '，' + name\n}\nconsole.log(greet('张三'))",
+    "answer": "function greet(name, greeting = '你好') {\n  return greeting + '，' + name\n}\nconsole.log(greet('张三'))",
+    "explanation": "有默认值的参数通常应放在参数列表末尾。原代码 name 有默认值但放在前面，greeting 没有默认值，调用 greet('张三') 时 '张三' 赋给了 name，greeting 为 undefined，导致输出 'undefined，张三'。",
+    "score": 10
+  },
+  {
+    "id": 90,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "函数",
+    "difficulty": "medium",
+    "question": "请编写代码：1) 定义一个函数 createUser，接受 name 和 role 参数，role 默认值为 'user'；2) 函数返回一个包含 name 和 role 属性的对象，并有一个 describe 方法使用 this 输出\"用户XXX，角色：XXX\"；3) 创建两个用户：admin 用户（'管理员', 'admin'）和普通用户（'小明'），分别调用 describe 方法。",
+    "answer": "function createUser(name, role = 'user') {\n  return {\n    name: name,\n    role: role,\n    describe() {\n      console.log(`用户${this.name}，角色：${this.role}`)\n    }\n  }\n}\nlet admin = createUser('管理员', 'admin')\nadmin.describe()\nlet normal = createUser('小明')\nnormal.describe()",
+    "explanation": "默认参数 role = 'user' 在未传入第二个参数时自动赋值。返回对象的方法使用 this 引用自身属性。工厂模式通过函数返回对象来创建实例。",
+    "score": 10
+  },
+  {
+    "id": 91,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "对象进阶",
+    "difficulty": "medium",
+    "question": "在 ES6 Class 中，使用哪个关键字调用父类的构造函数？",
+    "options": [
+      { "key": "A", "text": "base" },
+      { "key": "B", "text": "parent" },
+      { "key": "C", "text": "super" },
+      { "key": "D", "text": "extends" }
+    ],
+    "answer": "C",
+    "explanation": "在子类的 constructor 中，使用 super() 调用父类的构造函数。extends 关键字用于声明继承关系，super 用于实际的构造函数调用。",
+    "score": 5
+  },
+  {
+    "id": 92,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "对象进阶",
+    "difficulty": "medium",
+    "question": "原型链的顶端是什么？",
+    "options": [
+      { "key": "A", "text": "Object.prototype" },
+      { "key": "B", "text": "Function.prototype" },
+      { "key": "C", "text": "null" },
+      { "key": "D", "text": "undefined" }
+    ],
+    "answer": "C",
+    "explanation": "原型链的查找顺序：实例 → 构造函数.prototype → Object.prototype → null。Object.prototype 的原型是 null，这是原型链的终点。",
+    "score": 5
+  },
+  {
+    "id": 93,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "对象进阶",
+    "difficulty": "hard",
+    "question": "以下关于 ES6 Class 的说法正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "class 本质上是语法糖" },
+      { "key": "B", "text": "constructor 是类的构造函数" },
+      { "key": "C", "text": "extends 关键字用于实现继承" },
+      { "key": "D", "text": "一个类可以同时 extends 多个父类" }
+    ],
+    "answer": "ABC",
+    "explanation": "class 本质上是原型继承的语法糖。constructor 定义构造函数。extends 实现单继承。JavaScript 不支持多继承（一个类不能 extends 多个父类），但可以用 mixin 模式。",
+    "score": 5
+  },
+  {
+    "id": 94,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "对象进阶",
+    "difficulty": "hard",
+    "question": "以下 ES6 类继承代码缺少 super() 调用，导致报错，请修正。",
+    "codeBefore": "class Animal {\n  constructor(name) { this.name = name }\n}\nclass Dog extends Animal {\n  constructor(name, breed) {\n    this.breed = breed\n  }\n}\nlet dog = new Dog('旺财', '金毛')",
+    "codeAfter": "class Animal {\n  constructor(name) { this.name = name }\n}\nclass Dog extends Animal {\n  constructor(name, breed) {\n    super(name)\n    this.breed = breed\n  }\n}\nlet dog = new Dog('旺财', '金毛')",
+    "answer": "class Animal {\n  constructor(name) { this.name = name }\n}\nclass Dog extends Animal {\n  constructor(name, breed) {\n    super(name)\n    this.breed = breed\n  }\n}\nlet dog = new Dog('旺财', '金毛')",
+    "explanation": "在继承中，子类的 constructor 必须先调用 super() 才能使用 this。super(name) 调用父类 Animal 的构造函数来初始化 name 属性，然后才能设置 this.breed。",
+    "score": 10
+  },
+  {
+    "id": 95,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "对象进阶",
+    "difficulty": "hard",
+    "question": "请编写代码：1) 定义一个 Shape 类，构造函数接受 color 参数，有一个 getColor 方法返回颜色；2) 定义 Circle 类继承 Shape，构造函数接受 color 和 radius 参数，有一个 area 方法返回面积（π × radius²），使用 super 调用父类构造函数；3) 创建一个红色、半径为 5 的圆形实例，输出其颜色和面积。",
+    "answer": "class Shape {\n  constructor(color) {\n    this.color = color\n  }\n  getColor() {\n    return this.color\n  }\n}\nclass Circle extends Shape {\n  constructor(color, radius) {\n    super(color)\n    this.radius = radius\n  }\n  area() {\n    return Math.PI * this.radius ** 2\n  }\n}\nlet c = new Circle('红色', 5)\nconsole.log(c.getColor())\nconsole.log(c.area())",
+    "explanation": "Circle extends Shape 继承父类，super(color) 调用父类构造函数初始化 color。area() 使用 Math.PI 和 ** 幂运算符计算圆面积。** 2 表示平方。",
+    "score": 10
+  },
+  {
+    "id": 96,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "对象进阶",
+    "difficulty": "hard",
+    "question": "JavaScript 的垃圾回收主要采用什么算法？",
+    "options": [
+      { "key": "A", "text": "引用计数" },
+      { "key": "B", "text": "标记-清除" },
+      { "key": "C", "text": "分代收集" },
+      { "key": "D", "text": "手动释放" }
+    ],
+    "answer": "B",
+    "explanation": "现代 JavaScript 引擎主要采用标记-清除（Mark-and-Sweep）算法进行垃圾回收。从根对象出发标记所有可达对象，清除不可达对象。引用计数是早期算法，无法处理循环引用。",
+    "score": 5
+  },
+  {
+    "id": 97,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "对象进阶",
+    "difficulty": "hard",
+    "question": "以下哪种情况可能导致内存泄漏？",
+    "options": [
+      { "key": "A", "text": "使用 let 声明变量" },
+      { "key": "B", "text": "未清除的定时器" },
+      { "key": "C", "text": "使用 const 声明常量" },
+      { "key": "D", "text": "调用 return 返回结果" }
+    ],
+    "answer": "B",
+    "explanation": "未清除的定时器（setInterval/setTimeout 未 clear）会持续持有回调函数的引用，导致相关对象无法被垃圾回收。其他常见泄漏：闭包持有大对象、DOM 引用未释放。",
+    "score": 5
+  },
+  {
+    "id": 98,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "对象进阶",
+    "difficulty": "hard",
+    "question": "以下哪些是可能导致 JavaScript 内存泄漏的原因？（多选）",
+    "options": [
+      { "key": "A", "text": "未清除的定时器 setInterval" },
+      { "key": "B", "text": "闭包持有大对象引用" },
+      { "key": "C", "text": "DOM 元素已移除但 JavaScript 仍持有其引用" },
+      { "key": "D", "text": "使用 const 声明变量" }
+    ],
+    "answer": "ABC",
+    "explanation": "定时器未清除、闭包持有大对象、DOM 引用未释放都是常见的内存泄漏原因。const 声明与内存泄漏无关。建议及时清除定时器、解除不需要的引用。",
+    "score": 5
+  },
+  {
+    "id": 99,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "对象进阶",
+    "difficulty": "hard",
+    "question": "以下构造函数写法缺少原型方法定义，所有实例会重复创建同一个方法，请优化为原型方法。",
+    "codeBefore": "function Person(name) {\n  this.name = name\n  this.sayHi = function() {\n    console.log('你好，我是' + this.name)\n  }\n}\nlet p1 = new Person('张三')\nlet p2 = new Person('李四')",
+    "codeAfter": "function Person(name) {\n  this.name = name\n}\nPerson.prototype.sayHi = function() {\n  console.log('你好，我是' + this.name)\n}\nlet p1 = new Person('张三')\nlet p2 = new Person('李四')",
+    "answer": "function Person(name) {\n  this.name = name\n}\nPerson.prototype.sayHi = function() {\n  console.log('你好，我是' + this.name)\n}\nlet p1 = new Person('张三')\nlet p2 = new Person('李四')",
+    "explanation": "在构造函数内部定义方法，每个实例都会创建独立的方法副本，浪费内存。应将方法定义在原型上（Person.prototype.sayHi），所有实例共享同一个方法引用。",
+    "score": 10
+  },
+  {
+    "id": 100,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "对象进阶",
+    "difficulty": "hard",
+    "question": "请编写代码：1) 使用构造函数模式创建 Student 构造函数，接受 name 和 score 参数；2) 在原型上添加 getGrade 方法，根据 score 返回等级（>=90 优秀，>=80 良好，>=60 及格，<60 不及格）；3) 创建两个学生实例并分别调用 getGrade 方法输出结果。",
+    "answer": "function Student(name, score) {\n  this.name = name\n  this.score = score\n}\nStudent.prototype.getGrade = function() {\n  if (this.score >= 90) return '优秀'\n  else if (this.score >= 80) return '良好'\n  else if (this.score >= 60) return '及格'\n  else return '不及格'\n}\nlet s1 = new Student('小明', 95)\nlet s2 = new Student('小红', 72)\nconsole.log(s1.name + ': ' + s1.getGrade())\nconsole.log(s2.name + ': ' + s2.getGrade())",
+    "explanation": "构造函数模式：属性定义在构造函数内（每个实例独立），方法定义在原型上（所有实例共享）。new 调用创建实例，this 指向新实例。",
+    "score": 10
+  },
+  {
+    "id": 101,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "作用域与闭包",
+    "difficulty": "medium",
+    "question": "以下代码输出什么？\nconsole.log(a)\nvar a = 10",
+    "options": [
+      { "key": "A", "text": "10" },
+      { "key": "B", "text": "undefined" },
+      { "key": "C", "text": "报错：a is not defined" },
+      { "key": "D", "text": "null" }
+    ],
+    "answer": "B",
+    "explanation": "var 存在变量提升（hoisting），声明会被提升到作用域顶部，但赋值不会。所以 console.log(a) 时 a 已声明但未赋值，输出 undefined。",
+    "score": 5
+  },
+  {
+    "id": 102,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "作用域与闭包",
+    "difficulty": "medium",
+    "question": "以下代码输出什么？\nconsole.log(b)\nlet b = 10",
+    "options": [
+      { "key": "A", "text": "10" },
+      { "key": "B", "text": "undefined" },
+      { "key": "C", "text": "报错" },
+      { "key": "D", "text": "null" }
+    ],
+    "answer": "C",
+    "explanation": "let 也存在提升，但有暂时性死区（TDZ），在声明之前访问会抛出 ReferenceError。var 提升后值为 undefined，let 提升后在 TDZ 内访问会报错。",
+    "score": 5
+  },
+  {
+    "id": 103,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "作用域与闭包",
+    "difficulty": "medium",
+    "question": "关于 JavaScript 的作用域，以下说法正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "var 声明具有函数作用域" },
+      { "key": "B", "text": "let 和 const 具有块级作用域" },
+      { "key": "C", "text": "在全局声明的变量属于全局作用域" },
+      { "key": "D", "text": "块级作用域是 ES5 引入的" }
+    ],
+    "answer": "ABC",
+    "explanation": "var 为函数作用域，let/const 为块级作用域（ES6 引入）。全局声明的变量属于全局作用域。块级作用域是 ES6（ES2015）引入的，不是 ES5。",
+    "score": 5
+  },
+  {
+    "id": 104,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "作用域与闭包",
+    "difficulty": "medium",
+    "question": "以下代码试图在 if 块中使用 var 声明的变量，导致作用域问题。请用 let 修正。",
+    "codeBefore": "if (true) {\n  var color = 'red'\n}\nconsole.log(color)",
+    "codeAfter": "if (true) {\n  let color = 'red'\n  console.log(color)\n}",
+    "answer": "if (true) {\n  let color = 'red'\n  console.log(color)\n}",
+    "explanation": "var 没有块级作用域，在 if 块内声明的 color 会泄漏到外部。使用 let 限制在块级作用域内。如果需要在块外使用，应在 if 外部先声明。",
+    "score": 10
+  },
+  {
+    "id": 105,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "作用域与闭包",
+    "difficulty": "medium",
+    "question": "请编写代码：1) 在全局声明一个变量 name 赋值为 '全局'；2) 在函数 scopeDemo 内部声明同名变量 name 赋值为 '函数内部'，并输出；3) 在函数内部的一个 if 块中用 let 声明变量 age = 25，在块内输出；4) 分别在函数内和全局输出 name。",
+    "answer": "let name = '全局'\nfunction scopeDemo() {\n  let name = '函数内部'\n  console.log('函数内 name:', name)\n  if (true) {\n    let age = 25\n    console.log('块内 age:', age)\n  }\n  console.log('函数内 name 第二次:', name)\n}\nscopeDemo()\nconsole.log('全局 name:', name)",
+    "explanation": "函数内部的 name 遮蔽了全局的 name。let 在 if 块内声明的 age 只在该块内有效。函数内访问的是离自己最近的作用域中的变量（词法作用域）。",
+    "score": 10
+  },
+  {
+    "id": 106,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "作用域与闭包",
+    "difficulty": "hard",
+    "question": "闭包的核心特性是什么？",
+    "options": [
+      { "key": "A", "text": "函数可以访问全局变量" },
+      { "key": "B", "text": "函数可以记住并访问其词法作用域，即使函数在其词法作用域之外执行" },
+      { "key": "C", "text": "函数内部可以定义其他函数" },
+      { "key": "D", "text": "函数可以接受另一个函数作为参数" }
+    ],
+    "answer": "B",
+    "explanation": "闭包的核心是：函数可以记住并访问其词法作用域，即使该函数在其词法作用域之外执行。这使得函数可以\"记住\"创建时的环境变量。",
+    "score": 5
+  },
+  {
+    "id": 107,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "作用域与闭包",
+    "difficulty": "hard",
+    "question": "以下代码中立即执行函数表达式（IIFE）的作用是什么？\n(function() { var x = 10 })()\nconsole.log(typeof x)",
+    "options": [
+      { "key": "A", "text": "输出 'number'" },
+      { "key": "B", "text": "输出 'undefined'" },
+      { "key": "C", "text": "报错" },
+      { "key": "D", "text": "输出 'object'" }
+    ],
+    "answer": "B",
+    "explanation": "IIFE 创建了一个独立的作用域，内部 var x = 10 不会污染全局。在外部访问 x 时，x 未定义，typeof x 返回 'undefined'（注意 typeof 对未声明变量不报错）。",
+    "score": 5
+  },
+  {
+    "id": 108,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "作用域与闭包",
+    "difficulty": "hard",
+    "question": "闭包在实际开发中可用于哪些场景？（多选）",
+    "options": [
+      { "key": "A", "text": "数据私有化（模块模式）" },
+      { "key": "B", "text": "实现防抖（debounce）函数" },
+      { "key": "C", "text": "创建函数工厂" },
+      { "key": "D", "text": "替代所有全局变量" }
+    ],
+    "answer": "ABC",
+    "explanation": "闭包常用于数据私有化（隐藏内部状态）、防抖/节流函数（保存定时器 ID）、函数工厂（创建定制函数）。D 不准确，闭包不是用来替代全局变量的。",
+    "score": 5
+  },
+  {
+    "id": 109,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "作用域与闭包",
+    "difficulty": "hard",
+    "question": "以下防抖函数有 bug，无法正确取消定时器，请修正。",
+    "codeBefore": "function debounce(fn, delay) {\n  let timer = null\n  return function(...args) {\n    clearTimeout(timer)\n    timer = setTimeout(fn.apply(this, args), delay)\n  }\n}",
+    "codeAfter": "function debounce(fn, delay) {\n  let timer = null\n  return function(...args) {\n    clearTimeout(timer)\n    timer = setTimeout(() => fn.apply(this, args), delay)\n  }\n}",
+    "answer": "function debounce(fn, delay) {\n  let timer = null\n  return function(...args) {\n    clearTimeout(timer)\n    timer = setTimeout(() => fn.apply(this, args), delay)\n  }\n}",
+    "explanation": "原代码中 setTimeout(fn.apply(this, args), delay) 会立即执行 fn.apply() 并将其返回值（undefined）传给 setTimeout。应包裹在箭头函数中：setTimeout(() => fn.apply(this, args), delay)。",
+    "score": 10
+  },
+  {
+    "id": 110,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "作用域与闭包",
+    "difficulty": "hard",
+    "question": "请编写代码：实现一个 createMultiplier 函数，接受一个乘数 factor，返回一个新函数。该新函数接受一个数字 n，返回 n * factor 的结果。然后创建 double（×2）和 triple（×3）两个函数，分别用 5 测试并输出结果。",
+    "answer": "function createMultiplier(factor) {\n  return function(n) {\n    return n * factor\n  }\n}\nlet double = createMultiplier(2)\nlet triple = createMultiplier(3)\nconsole.log(double(5))\nconsole.log(triple(5))",
+    "explanation": "createMultiplier 利用闭包将 factor 保存在返回函数的词法作用域中。double(5) 返回 5*2=10，triple(5) 返回 5*3=15。不同调用创建独立闭包。",
+    "score": 10
+  },
+  {
+    "id": 111,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "数组",
+    "difficulty": "easy",
+    "question": "向数组末尾添加一个元素，使用哪个方法？",
+    "options": [
+      { "key": "A", "text": "unshift()" },
+      { "key": "B", "text": "push()" },
+      { "key": "C", "text": "pop()" },
+      { "key": "D", "text": "shift()" }
+    ],
+    "answer": "B",
+    "explanation": "push() 向数组末尾添加元素并返回新长度。unshift() 向开头添加，pop() 删除末尾，shift() 删除开头。",
+    "score": 5
+  },
+  {
+    "id": 112,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "数组",
+    "difficulty": "easy",
+    "question": "arr.includes('苹果') 的作用是什么？",
+    "options": [
+      { "key": "A", "text": "返回 '苹果' 的索引位置" },
+      { "key": "B", "text": "判断数组是否包含 '苹果'，返回布尔值" },
+      { "key": "C", "text": "将 '苹果' 添加到数组末尾" },
+      { "key": "D", "text": "返回所有包含 '苹果' 的元素组成的数组" }
+    ],
+    "answer": "B",
+    "explanation": "includes()（ES7 引入）检查数组是否包含指定元素，返回 true 或 false。indexOf() 返回索引位置，filter() 返回匹配元素数组。",
+    "score": 5
+  },
+  {
+    "id": 113,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "数组",
+    "difficulty": "easy",
+    "question": "以下哪些方法用于遍历数组？（多选）",
+    "options": [
+      { "key": "A", "text": "forEach()" },
+      { "key": "B", "text": "map()" },
+      { "key": "C", "text": "filter()" },
+      { "key": "D", "text": "reduce()" }
+    ],
+    "answer": "ABCD",
+    "explanation": "forEach 遍历每个元素，map 映射为新数组，filter 过滤元素，reduce 归约为单个值。这四个方法都可以用来遍历数组并处理元素。",
+    "score": 5
+  },
+  {
+    "id": 114,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "数组",
+    "difficulty": "easy",
+    "question": "以下代码试图在数组索引 1 处插入元素，但使用了错误的方法，请修正。",
+    "codeBefore": "let arr = ['苹果', '橙子']\narr.push(1, '香蕉')\nconsole.log(arr)",
+    "codeAfter": "let arr = ['苹果', '橙子']\narr.splice(1, 0, '香蕉')\nconsole.log(arr)",
+    "answer": "let arr = ['苹果', '橙子']\narr.splice(1, 0, '香蕉')\nconsole.log(arr)",
+    "explanation": "push() 只能在末尾添加。splice(1, 0, '香蕉') 表示在索引 1 处删除 0 个元素并插入 '香蕉'。结果为 ['苹果', '香蕉', '橙子']。",
+    "score": 10
+  },
+  {
+    "id": 115,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "数组",
+    "difficulty": "easy",
+    "question": "请编写代码：1) 创建数组 fruits = ['苹果', '香蕉']；2) 在末尾添加 '橙子'；3) 在开头添加 '葡萄'；4) 删除末尾元素；5) 在索引 1 处插入 '梨'；6) 输出每一步后的数组状态。",
+    "answer": "let fruits = ['苹果', '香蕉']\nconsole.log(fruits)\nfruits.push('橙子')\nconsole.log(fruits)\nfruits.unshift('葡萄')\nconsole.log(fruits)\nfruits.pop()\nconsole.log(fruits)\nfruits.splice(1, 0, '梨')\nconsole.log(fruits)",
+    "explanation": "push 末尾添加，unshift 开头添加，pop 删除末尾，splice(1, 0, '梨') 在索引 1 插入。每一步的数组状态通过 console.log 展示。",
+    "score": 10
+  },
+  {
+    "id": 116,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "数组",
+    "difficulty": "medium",
+    "question": "[1, 2, 3, 4].filter(n => n % 2 === 0) 的返回值是什么？",
+    "options": [
+      { "key": "A", "text": "[1, 3]" },
+      { "key": "B", "text": "[2, 4]" },
+      { "key": "C", "text": "[true, false, true, false]" },
+      { "key": "D", "text": "[1, 2, 3, 4]" }
+    ],
+    "answer": "B",
+    "explanation": "filter() 返回一个由通过测试的元素组成的新数组。n % 2 === 0 筛选偶数，所以返回 [2, 4]。",
+    "score": 5
+  },
+  {
+    "id": 117,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "数组",
+    "difficulty": "medium",
+    "question": "[3, 7, 2, 9].sort((a, b) => a - b) 的返回值是什么？",
+    "options": [
+      { "key": "A", "text": "[3, 7, 2, 9]" },
+      { "key": "B", "text": "[9, 7, 3, 2]" },
+      { "key": "C", "text": "[2, 3, 7, 9]" },
+      { "key": "D", "text": "[7, 3, 2, 9]" }
+    ],
+    "answer": "C",
+    "explanation": "sort((a, b) => a - b) 按升序排列：a - b < 0 时 a 排在 b 前面。如果不传比较函数，sort 会按字符串 Unicode 排序（[2, 3, 7, 9] 碰巧也是正确结果）。",
+    "score": 5
+  },
+  {
+    "id": 118,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "数组",
+    "difficulty": "medium",
+    "question": "以下哪些方法可以实现数组去重？（多选）",
+    "options": [
+      { "key": "A", "text": "[...new Set(arr)]" },
+      { "key": "B", "text": "arr.filter((item, i) => arr.indexOf(item) === i)" },
+      { "key": "C", "text": "arr.distinct()" },
+      { "key": "D", "text": "Array.from(new Set(arr))" }
+    ],
+    "answer": "ABD",
+    "explanation": "Set 天然去重，[...new Set(arr)] 和 Array.from(new Set(arr)) 都可实现。filter + indexOf 保留第一个出现的元素也能去重。JavaScript 数组没有 distinct() 方法。",
+    "score": 5
+  },
+  {
+    "id": 119,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "数组",
+    "difficulty": "medium",
+    "question": "以下代码试图用 map 将数组中每个数字乘以 2，但写法有误，请修正。",
+    "codeBefore": "let nums = [1, 2, 3, 4]\nlet doubled = nums.map(function(n) {\n  n * 2\n})\nconsole.log(doubled)",
+    "codeAfter": "let nums = [1, 2, 3, 4]\nlet doubled = nums.map(function(n) {\n  return n * 2\n})\nconsole.log(doubled)",
+    "answer": "let nums = [1, 2, 3, 4]\nlet doubled = nums.map(function(n) {\n  return n * 2\n})\nconsole.log(doubled)",
+    "explanation": "map 的回调函数如果没有 return 语句，默认返回 undefined。原代码中每个元素都返回 undefined，doubled 为 [undefined, undefined, undefined, undefined]。必须加 return。箭头函数单行表达式可省略 return。",
+    "score": 10
+  },
+  {
+    "id": 120,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "数组",
+    "difficulty": "medium",
+    "question": "请编写代码：1) 创建数组 nums = [5, 3, 8, 1, 9, 2]；2) 使用 filter 筛选出大于 3 的数；3) 使用 sort 将原数组升序排序；4) 使用 reduce 计算所有元素之和；5) 使用扩展运算符 + Set 对数组 [1, 2, 2, 3, 3, 4] 去重。",
+    "answer": "let nums = [5, 3, 8, 1, 9, 2]\nlet filtered = nums.filter(n => n > 3)\nconsole.log('筛选结果:', filtered)\nnums.sort((a, b) => a - b)\nconsole.log('排序结果:', nums)\nlet sum = nums.reduce((acc, n) => acc + n, 0)\nconsole.log('总和:', sum)\nlet arr = [1, 2, 2, 3, 3, 4]\nlet unique = [...new Set(arr)]\nconsole.log('去重结果:', unique)",
+    "explanation": "filter 筛选满足条件的元素，sort 排序修改原数组，reduce 归约求和（初始值 0 避免空数组报错）。[...new Set(arr)] 利用 Set 去重后转为数组。",
+    "score": 10
+  },
+  {
+    "id": 121,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "call / apply / bind 与 arguments",
+    "difficulty": "medium",
+    "question": "call 和 apply 的主要区别是什么？",
+    "options": [
+      { "key": "A", "text": "call 立即执行，apply 延迟执行" },
+      { "key": "B", "text": "call 逐个传参，apply 用数组传参" },
+      { "key": "C", "text": "call 用于对象，apply 用于函数" },
+      { "key": "D", "text": "没有区别" }
+    ],
+    "answer": "B",
+    "explanation": "call 和 apply 都立即执行函数，区别在于传参方式：call 逐个传递参数，apply 通过数组传递参数。bind 返回新函数而非立即执行。",
+    "score": 5
+  },
+  {
+    "id": 122,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "call / apply / bind 与 arguments",
+    "difficulty": "medium",
+    "question": "bind() 方法的返回值是什么？",
+    "options": [
+      { "key": "A", "text": "undefined" },
+      { "key": "B", "text": "函数执行后的结果" },
+      { "key": "C", "text": "一个绑定了 this 的新函数" },
+      { "key": "D", "text": "绑定的对象本身" }
+    ],
+    "answer": "C",
+    "explanation": "bind() 不会立即执行函数，而是返回一个绑定了指定 this 值的新函数。这个新函数可以在之后调用，调用时的 this 将永久绑定为 bind 传入的值。",
+    "score": 5
+  },
+  {
+    "id": 123,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "call / apply / bind 与 arguments",
+    "difficulty": "medium",
+    "question": "关于 call、apply、bind，以下说法正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "call 和 apply 都会立即执行函数" },
+      { "key": "B", "text": "bind 返回一个新函数，不会立即执行" },
+      { "key": "C", "text": "apply 的第二个参数必须是数组或类数组对象" },
+      { "key": "D", "text": "箭头函数可以使用 call 改变 this" }
+    ],
+    "answer": "ABC",
+    "explanation": "call/apply 立即执行，bind 返回新函数。apply 第二个参数必须是数组。箭头函数的 this 在定义时已绑定，无法通过 call/apply/bind 改变。",
+    "score": 5
+  },
+  {
+    "id": 124,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "call / apply / bind 与 arguments",
+    "difficulty": "medium",
+    "question": "以下代码试图用 Math.max 找出数组最大值，但写法错误，请修正。",
+    "codeBefore": "let nums = [3, 7, 2, 9, 5]\nlet max = Math.max(nums)\nconsole.log(max)",
+    "codeAfter": "let nums = [3, 7, 2, 9, 5]\nlet max = Math.max.apply(null, nums)\nconsole.log(max)",
+    "answer": "let nums = [3, 7, 2, 9, 5]\nlet max = Math.max.apply(null, nums)\nconsole.log(max)",
+    "explanation": "Math.max 接受的是逐个数字参数，不能直接接收数组。Math.max(nums) 会把整个数组当作一个参数转数字得到 NaN。使用 apply 将数组展开为参数列表：Math.max.apply(null, nums) 或 ES6 写法 Math.max(...nums)。",
+    "score": 10
+  },
+  {
+    "id": 125,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "call / apply / bind 与 arguments",
+    "difficulty": "medium",
+    "question": "请编写代码：1) 定义一个函数 introduce，接受 city 和 country 参数，使用 this.name 输出\"XXX 来自 country city\"；2) 创建 person 对象 { name: '张三' }；3) 分别使用 call、apply、bind 三种方式让 introduce 以 person 为上下文调用，传参为 ('北京', '中国')。",
+    "answer": "function introduce(city, country) {\n  console.log(`${this.name} 来自 ${country} ${city}`)\n}\nlet person = { name: '张三' }\nintroduce.call(person, '北京', '中国')\nintroduce.apply(person, ['北京', '中国'])\nlet bound = introduce.bind(person, '北京', '中国')\nbound()",
+    "explanation": "call(person, '北京', '中国') 逐个传参立即执行。apply(person, ['北京', '中国']) 数组传参立即执行。bind 返回新函数，参数可预设。三种方式都将 this 绑定到 person。",
+    "score": 10
+  },
+  {
+    "id": 126,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "常用对象",
+    "difficulty": "easy",
+    "question": "new Date().getMonth() 返回一月时，值是多少？",
+    "options": [
+      { "key": "A", "text": "1" },
+      { "key": "B", "text": "0" },
+      { "key": "C", "text": "13" },
+      { "key": "D", "text": "-1" }
+    ],
+    "answer": "B",
+    "explanation": "getMonth() 返回的月份从 0 开始：0 表示一月，1 表示二月……11 表示十二月。这是 JavaScript Date 对象的设计特点，需要注意。",
+    "score": 5
+  },
+  {
+    "id": 127,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "常用对象",
+    "difficulty": "easy",
+    "question": "Math.random() 生成的随机数范围是什么？",
+    "options": [
+      { "key": "A", "text": "[0, 1]" },
+      { "key": "B", "text": "[0, 1)" },
+      { "key": "C", "text": "(0, 1)" },
+      { "key": "D", "text": "(0, 1]" }
+    ],
+    "answer": "B",
+    "explanation": "Math.random() 返回 [0, 1) 范围的伪随机数，可能为 0 但永远不会等于 1。要获取 [min, max] 范围的整数，常用 Math.floor(Math.random() * (max - min + 1)) + min。",
+    "score": 5
+  },
+  {
+    "id": 128,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "常用对象",
+    "difficulty": "easy",
+    "question": "以下哪些属于 JavaScript 内置对象？（多选）",
+    "options": [
+      { "key": "A", "text": "Date" },
+      { "key": "B", "text": "Math" },
+      { "key": "C", "text": "String" },
+      { "key": "D", "text": "JSON" }
+    ],
+    "answer": "ABCD",
+    "explanation": "Date（日期）、Math（数学运算）、String（字符串）、JSON（JSON 处理）都是 JavaScript 的内置对象。这些对象提供了丰富的内置方法。",
+    "score": 5
+  },
+  {
+    "id": 129,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "常用对象",
+    "difficulty": "easy",
+    "question": "以下代码试图获取当前日期和时间，但格式化方式有误，请修正。",
+    "codeBefore": "let now = new Date()\nconsole.log('今天是：' + now.getYear() + '年' + now.getMonth() + '月' + now.getDate() + '日')",
+    "codeAfter": "let now = new Date()\nconsole.log('今天是：' + now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日')",
+    "answer": "let now = new Date()\nconsole.log('今天是：' + now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日')",
+    "explanation": "getYear() 已废弃，返回的是 1900 年以来的年数（2026 年返回 126）。应使用 getFullYear()。getMonth() 从 0 开始，显示时需 +1。getDate() 返回日期（1-31），用法正确。",
+    "score": 10
+  },
+  {
+    "id": 130,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "常用对象",
+    "difficulty": "easy",
+    "question": "请编写代码：1) 获取当前日期对象；2) 分别输出年、月（+1）、日、星期几；3) 生成一个 1 到 100 之间的随机整数并输出；4) 使用 Math 的 ceil、floor、round 分别处理 3.6 并输出。",
+    "answer": "let now = new Date()\nconsole.log('年:', now.getFullYear())\nconsole.log('月:', now.getMonth() + 1)\nconsole.log('日:', now.getDate())\nconsole.log('星期:', now.getDay())\nlet random = Math.floor(Math.random() * 100) + 1\nconsole.log('1-100随机数:', random)\nconsole.log('ceil(3.6):', Math.ceil(3.6))\nconsole.log('floor(3.6):', Math.floor(3.6))\nconsole.log('round(3.6):', Math.round(3.6))",
+    "explanation": "getDay() 返回 0-6（0=周日）。随机整数公式：Math.floor(Math.random() * max) + min。ceil 向上取整（4），floor 向下取整（3），round 四舍五入（4）。",
+    "score": 10
+  },
+  {
+    "id": 131,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "DOM",
+    "difficulty": "easy",
+    "question": "以下哪个方法使用 CSS 选择器获取单个元素？",
+    "options": [
+      { "key": "A", "text": "document.getElementById()" },
+      { "key": "B", "text": "document.getElementsByClassName()" },
+      { "key": "C", "text": "document.querySelector()" },
+      { "key": "D", "text": "document.querySelectorAll()" }
+    ],
+    "answer": "C",
+    "explanation": "querySelector() 使用 CSS 选择器语法返回第一个匹配的元素。querySelectorAll() 返回所有匹配的 NodeList。getElementById 只能通过 ID 查找。",
+    "score": 5
+  },
+  {
+    "id": 132,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "DOM",
+    "difficulty": "easy",
+    "question": "事件委托利用了什么机制？",
+    "options": [
+      { "key": "A", "text": "事件捕获" },
+      { "key": "B", "text": "事件冒泡" },
+      { "key": "C", "text": "事件阻止" },
+      { "key": "D", "text": "事件模拟" }
+    ],
+    "answer": "B",
+    "explanation": "事件委托利用事件冒泡机制，将事件监听器绑定在父元素上，通过 e.target 判断实际触发的子元素。这样可以减少事件监听器数量，动态添加的子元素也能响应事件。",
+    "score": 5
+  },
+  {
+    "id": 133,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "DOM",
+    "difficulty": "easy",
+    "question": "以下哪些方法可以获取 DOM 元素？（多选）",
+    "options": [
+      { "key": "A", "text": "document.getElementById()" },
+      { "key": "B", "text": "document.querySelector()" },
+      { "key": "C", "text": "document.querySelectorAll()" },
+      { "key": "D", "text": "document.getElementsByName()" }
+    ],
+    "answer": "ABCD",
+    "explanation": "这四个都是合法的 DOM 元素获取方法。getElementById 通过 ID，querySelector 通过 CSS 选择器获取第一个，querySelectorAll 获取所有，getElementsByName 通过 name 属性获取。",
+    "score": 5
+  },
+  {
+    "id": 134,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "DOM",
+    "difficulty": "easy",
+    "question": "以下代码试图创建一个 li 元素并添加到 ul 中，但缺少关键步骤，请修正。",
+    "codeBefore": "let ul = document.querySelector('ul')\nlet li = document.createElement('li')\nli.textContent = '新列表项'\n// 缺少添加步骤",
+    "codeAfter": "let ul = document.querySelector('ul')\nlet li = document.createElement('li')\nli.textContent = '新列表项'\nul.appendChild(li)",
+    "answer": "let ul = document.querySelector('ul')\nlet li = document.createElement('li')\nli.textContent = '新列表项'\nul.appendChild(li)",
+    "explanation": "createElement 只创建了元素节点，还需要使用 appendChild() 将其添加到 DOM 树中才会在页面上显示。insertBefore() 也可用于插入到指定位置之前。",
+    "score": 10
+  },
+  {
+    "id": 135,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "DOM",
+    "difficulty": "medium",
+    "question": "请编写 JavaScript 代码：1) 使用 querySelector 获取 id 为 'list' 的元素；2) 在该元素上绑定 click 事件，使用事件委托处理内部 li 元素的点击；3) 点击 li 时，使用 console.log 输出被点击的 li 的文本内容。",
+    "answer": "let list = document.querySelector('#list')\nlist.addEventListener('click', function(e) {\n  if (e.target.tagName === 'LI') {\n    console.log(e.target.textContent)\n  }\n})",
+    "explanation": "addEventListener 绑定事件。事件委托：点击事件冒泡到父元素 #list，通过 e.target.tagName 判断是否为 'LI'，是则输出其文本内容。这样无需为每个 li 单独绑定事件。",
+    "score": 10
+  },
+  {
+    "id": 136,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "BOM",
+    "difficulty": "easy",
+    "question": "BOM 的核心对象是什么？",
+    "options": [
+      { "key": "A", "text": "document" },
+      { "key": "B", "text": "window" },
+      { "key": "C", "text": "navigator" },
+      { "key": "D", "text": "location" }
+    ],
+    "answer": "B",
+    "explanation": "BOM（浏览器对象模型）的核心是 window 对象。window 是浏览器窗口的全局对象，所有全局变量和函数都是 window 的属性和方法。document、navigator、location 等都是 window 的属性。",
+    "score": 5
+  },
+  {
+    "id": 137,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "BOM",
+    "difficulty": "easy",
+    "question": "setTimeout(fn, 1000) 的含义是什么？",
+    "options": [
+      { "key": "A", "text": "每隔 1000 毫秒执行一次 fn" },
+      { "key": "B", "text": "1000 秒后执行一次 fn" },
+      { "key": "C", "text": "1000 毫秒后执行一次 fn" },
+      { "key": "D", "text": "立即执行 fn 1000 次" }
+    ],
+    "answer": "C",
+    "explanation": "setTimeout 在指定的毫秒数后执行一次回调函数。setInterval 是每隔指定毫秒重复执行。1000 毫秒 = 1 秒。",
+    "score": 5
+  },
+  {
+    "id": 138,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "BOM",
+    "difficulty": "medium",
+    "question": "以下哪些是 BOM 提供的对象或方法？（多选）",
+    "options": [
+      { "key": "A", "text": "location.href" },
+      { "key": "B", "text": "history.back()" },
+      { "key": "C", "text": "navigator.userAgent" },
+      { "key": "D", "text": "window.setInterval()" }
+    ],
+    "answer": "ABCD",
+    "explanation": "location（当前 URL 信息）、history（浏览历史）、navigator（浏览器信息）、window 本身都是 BOM 的组成部分。href 获取/设置 URL，back() 后退，userAgent 获取浏览器标识，setInterval 设置定时器。",
+    "score": 5
+  },
+  {
+    "id": 139,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "BOM",
+    "difficulty": "medium",
+    "question": "以下代码设置了定时器但未清除，可能导致内存泄漏，请添加清除逻辑。",
+    "codeBefore": "let count = 0\nlet timer = setInterval(function() {\n  count++\n  console.log(count)\n}, 1000)",
+    "codeAfter": "let count = 0\nlet timer = setInterval(function() {\n  count++\n  console.log(count)\n  if (count >= 5) {\n    clearInterval(timer)\n    console.log('定时器已清除')\n  }\n}, 1000)",
+    "answer": "let count = 0\nlet timer = setInterval(function() {\n  count++\n  console.log(count)\n  if (count >= 5) {\n    clearInterval(timer)\n    console.log('定时器已清除')\n  }\n}, 1000)",
+    "explanation": "setInterval 会无限重复执行直到被清除。原代码没有清除逻辑，定时器永远运行。添加 count >= 5 时调用 clearInterval(timer) 来停止定时器，防止内存泄漏。",
+    "score": 10
+  },
+  {
+    "id": 140,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "BOM",
+    "difficulty": "medium",
+    "question": "请编写代码：1) 使用 setTimeout 实现一个延迟 2 秒后输出\"延迟消息\"的效果；2) 同时使用 setInterval 每秒输出一个递增的数字（从 1 开始），输出到 3 后清除定时器并输出\"结束\"。",
+    "answer": "setTimeout(function() {\n  console.log('延迟消息')\n}, 2000)\n\nlet count = 0\nlet timer = setInterval(function() {\n  count++\n  console.log(count)\n  if (count >= 3) {\n    clearInterval(timer)\n    console.log('结束')\n  }\n}, 1000)",
+    "explanation": "setTimeout 2 秒（2000ms）后执行一次。setInterval 每秒（1000ms）执行一次，count 从 1 递增到 3，count >= 3 时 clearInterval 停止。异步操作不会阻塞后续代码。",
+    "score": 10
+  },
+  {
+    "id": 141,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "异常与 JSON",
+    "difficulty": "easy",
+    "question": "JSON.stringify() 的作用是什么？",
+    "options": [
+      { "key": "A", "text": "将 JSON 字符串解析为 JavaScript 对象" },
+      { "key": "B", "text": "将 JavaScript 对象转换为 JSON 字符串" },
+      { "key": "C", "text": "验证 JSON 字符串是否合法" },
+      { "key": "D", "text": "格式化代码" }
+    ],
+    "answer": "B",
+    "explanation": "JSON.stringify() 将 JS 对象序列化为 JSON 字符串。JSON.parse() 将 JSON 字符串反序列化为 JS 对象。JSON 不支持函数、undefined、Symbol。",
+    "score": 5
+  },
+  {
+    "id": 142,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "异常与 JSON",
+    "difficulty": "easy",
+    "question": "try...catch 语句中，无论是否发生异常都会执行的是哪个块？",
+    "options": [
+      { "key": "A", "text": "try 块" },
+      { "key": "B", "text": "catch 块" },
+      { "key": "C", "text": "finally 块" },
+      { "key": "D", "text": "default 块" }
+    ],
+    "answer": "C",
+    "explanation": "finally 块中的代码无论 try 中是否抛出异常都会执行。常用于清理资源（关闭文件、释放连接等）。catch 只在异常时执行。",
+    "score": 5
+  },
+  {
+    "id": 143,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "异常与 JSON",
+    "difficulty": "easy",
+    "question": "以下哪些值可以被 JSON.stringify() 正确处理？（多选）",
+    "options": [
+      { "key": "A", "text": "{ name: '张三', age: 25 }" },
+      { "key": "B", "text": "[1, 2, 3]" },
+      { "key": "C", "text": "'Hello World'" },
+      { "key": "D", "text": "{ sayHi() { console.log('hi') } }" }
+    ],
+    "answer": "ABC",
+    "explanation": "对象、数组、字符串都可以被序列化。但 JSON 不支持函数和 undefined，D 中的 sayHi 方法在序列化时会被忽略（不会出现在 JSON 字符串中）。",
+    "score": 5
+  },
+  {
+    "id": 144,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "异常与 JSON",
+    "difficulty": "medium",
+    "question": "以下代码试图将包含 undefined 值的对象序列化为 JSON，但会丢失数据。请修正为使用 null 替代 undefined，并在序列化后正确反序列化。",
+    "codeBefore": "let config = { theme: 'dark', font: undefined }\nlet json = JSON.stringify(config)\nconsole.log(json)\nlet obj = JSON.parse(json)\nconsole.log(obj.font)",
+    "codeAfter": "let config = { theme: 'dark', font: null }\nlet json = JSON.stringify(config)\nconsole.log(json)\nlet obj = JSON.parse(json)\nconsole.log(obj.font)",
+    "answer": "let config = { theme: 'dark', font: null }\nlet json = JSON.stringify(config)\nconsole.log(json)\nlet obj = JSON.parse(json)\nconsole.log(obj.font)",
+    "explanation": "JSON.stringify 会忽略值为 undefined 的属性。原代码中 font 属性不会被包含在 JSON 字符串中，反序列化后 obj.font 为 undefined。用 null 替代 undefined 可以保留该属性。",
+    "score": 10
+  },
+  {
+    "id": 145,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "异常与 JSON",
+    "difficulty": "medium",
+    "question": "请编写代码：1) 创建对象 user = { name: '张三', age: 25, hobbies: ['读书', '编程'] }；2) 使用 JSON.stringify 将对象转为 JSON 字符串并输出；3) 使用 JSON.parse 将 JSON 字符串解析回对象并输出对象的 name 属性；4) 使用 try...catch 尝试解析一个非法 JSON 字符串 'not valid'，在 catch 中输出错误信息。",
+    "answer": "let user = { name: '张三', age: 25, hobbies: ['读书', '编程'] }\nlet json = JSON.stringify(user)\nconsole.log('JSON字符串:', json)\nlet parsed = JSON.parse(json)\nconsole.log('解析后的name:', parsed.name)\ntry {\n  JSON.parse('not valid')\n} catch (error) {\n  console.error('解析错误:', error.message)\n}",
+    "explanation": "JSON.stringify 序列化对象为字符串，JSON.parse 反序列化为对象。try...catch 捕获 JSON.parse 解析非法字符串时抛出的 SyntaxError 异常。",
+    "score": 10
+  },
+  {
+    "id": 146,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "Cookie 与 Web Storage",
+    "difficulty": "medium",
+    "question": "以下关于 localStorage 和 sessionStorage 的区别，正确的是？",
+    "options": [
+      { "key": "A", "text": "localStorage 在标签页关闭后清除" },
+      { "key": "B", "text": "sessionStorage 数据永久保存" },
+      { "key": "C", "text": "localStorage 数据永久保存，sessionStorage 标签页关闭后清除" },
+      { "key": "D", "text": "两者没有区别" }
+    ],
+    "answer": "C",
+    "explanation": "localStorage 数据永久保存（除非手动删除），sessionStorage 数据在标签页关闭后自动清除。两者容量都约 5MB，且不会自动随 HTTP 请求发送。",
+    "score": 5
+  },
+  {
+    "id": 147,
+    "type": "single-choice",
+    "topic": "JavaScript",
+    "chapter": "Cookie 与 Web Storage",
+    "difficulty": "medium",
+    "question": "存储对象到 localStorage 时，需要先做什么？",
+    "options": [
+      { "key": "A", "text": "直接存储，localStorage 自动处理对象" },
+      { "key": "B", "text": "使用 JSON.stringify 将对象转为字符串" },
+      { "key": "C", "text": "使用 toString() 方法转换对象" },
+      { "key": "D", "text": "对象不能存储到 localStorage" }
+    ],
+    "answer": "B",
+    "explanation": "localStorage 只能存储字符串。存储对象时必须先用 JSON.stringify() 序列化，读取时用 JSON.parse() 反序列化。直接存储对象会调用 toString() 得到 '[object Object]'。",
+    "score": 5
+  },
+  {
+    "id": 148,
+    "type": "multiple-choice",
+    "topic": "JavaScript",
+    "chapter": "Cookie 与 Web Storage",
+    "difficulty": "medium",
+    "question": "以下关于 Cookie、localStorage、sessionStorage 的比较，正确的有哪些？（多选）",
+    "options": [
+      { "key": "A", "text": "Cookie 容量约 4KB，Storage 约 5MB" },
+      { "key": "B", "text": "Cookie 每次请求自动发送，Storage 不会" },
+      { "key": "C", "text": "localStorage 可以设置过期时间" },
+      { "key": "D", "text": "sessionStorage 在当前标签页关闭后清除" }
+    ],
+    "answer": "ABD",
+    "explanation": "Cookie 约 4KB，自动随请求发送。Storage 约 5MB，不自动发送。sessionStorage 标签页关闭即清除。localStorage 没有内置的过期机制（需手动删除），Cookie 可以设置 expires。",
+    "score": 5
+  },
+  {
+    "id": 149,
+    "type": "code-fix",
+    "topic": "JavaScript",
+    "chapter": "Cookie 与 Web Storage",
+    "difficulty": "medium",
+    "question": "以下代码试图将用户偏好对象存储到 localStorage，但写法有误导致存储失败。请修正。",
+    "codeBefore": "let prefs = { theme: 'dark', lang: 'zh' }\nlocalStorage.setItem('userPrefs', prefs)\nlet saved = localStorage.getItem('userPrefs')\nconsole.log(saved.theme)",
+    "codeAfter": "let prefs = { theme: 'dark', lang: 'zh' }\nlocalStorage.setItem('userPrefs', JSON.stringify(prefs))\nlet saved = JSON.parse(localStorage.getItem('userPrefs'))\nconsole.log(saved.theme)",
+    "answer": "let prefs = { theme: 'dark', lang: 'zh' }\nlocalStorage.setItem('userPrefs', JSON.stringify(prefs))\nlet saved = JSON.parse(localStorage.getItem('userPrefs'))\nconsole.log(saved.theme)",
+    "explanation": "localStorage 只能存储字符串。存储对象需 JSON.stringify 序列化，读取需 JSON.parse 反序列化。原代码直接存储对象会转为 '[object Object]'，读取后无法访问属性。",
+    "score": 10
+  },
+  {
+    "id": 150,
+    "type": "programming",
+    "topic": "JavaScript",
+    "chapter": "Cookie 与 Web Storage",
+    "difficulty": "medium",
+    "question": "请编写代码：1) 使用 localStorage 存储一个键为 'username'、值为 '张三' 的数据；2) 读取 'username' 的值并输出；3) 存储一个对象 settings = { theme: 'dark', fontSize: 16 } 到 localStorage（键为 'settings'）；4) 读取 'settings' 并解析为对象，输出 theme 属性；5) 使用 sessionStorage 存储 'token' 值为 'abc123' 并读取输出。",
+    "answer": "localStorage.setItem('username', '张三')\nlet name = localStorage.getItem('username')\nconsole.log('用户名:', name)\nlet settings = { theme: 'dark', fontSize: 16 }\nlocalStorage.setItem('settings', JSON.stringify(settings))\nlet saved = JSON.parse(localStorage.getItem('settings'))\nconsole.log('主题:', saved.theme)\nsessionStorage.setItem('token', 'abc123')\nconsole.log('token:', sessionStorage.getItem('token'))",
+    "explanation": "localStorage 和 sessionStorage API 相同（setItem、getItem、removeItem）。sessionStorage 在当前会话有效，标签页关闭后清除。对象存储需 JSON 序列化/反序列化。",
+    "score": 10
+  }
+]

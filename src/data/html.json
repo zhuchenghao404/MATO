@@ -1,0 +1,1502 @@
+[
+  {
+    "id": 1,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "HTML基础结构",
+    "difficulty": "easy",
+    "question": "以下哪个标签声明文档类型为 HTML5？",
+    "options": [
+      { "key": "A", "text": "<!DOCTYPE html PUBLIC>" },
+      { "key": "B", "text": "<!DOCTYPE html>" },
+      { "key": "C", "text": "<!DOCTYPE HTML5>" },
+      { "key": "D", "text": "<html5>" }
+    ],
+    "answer": "B",
+    "explanation": "<!DOCTYPE html> 是 HTML5 的文档类型声明，简洁且不区分大小写。HTML4 的声明较长（如 <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\">），HTML5 大大简化了。",
+    "score": 5
+  },
+  {
+    "id": 2,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "HTML基础结构",
+    "difficulty": "easy",
+    "question": "HTML 文档的根元素是哪个标签？",
+    "options": [
+      { "key": "A", "text": "<head>" },
+      { "key": "B", "text": "<body>" },
+      { "key": "C", "text": "<html>" },
+      { "key": "D", "text": "<!DOCTYPE>" }
+    ],
+    "answer": "C",
+    "explanation": "<html> 是 HTML 文档的根元素，包裹了 <head> 和 <body> 等所有其他元素。<head> 存放元数据，<body> 存放可见内容。",
+    "score": 5
+  },
+  {
+    "id": 3,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "HTML基础结构",
+    "difficulty": "easy",
+    "question": "以下哪些标签通常放在 HTML 文档的 <head> 内部？（多选）",
+    "options": [
+      { "key": "A", "text": "<title>" },
+      { "key": "B", "text": "<meta>" },
+      { "key": "C", "text": "<h1>" },
+      { "key": "D", "text": "<link>" }
+    ],
+    "answer": "ABD",
+    "explanation": "<title>（页面标题）、<meta>（元数据）、<link>（引入外部资源如 CSS）都放在 <head> 内。<h1> 是可见内容标签，应放在 <body> 中。",
+    "score": 5
+  },
+  {
+    "id": 4,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "HTML基础结构",
+    "difficulty": "easy",
+    "question": "以下 HTML 基础结构有几处错误？请写出修正后的完整代码。",
+    "codeBefore": "<DOCTYPE html>\n<htm>\n<hed>\n  <meta charset=\"UTF-8\">\n  <title>我的网页</title>\n</hed>\n<bod>\n  <h1>欢迎</h1>\n</bod>\n</htm>",
+    "codeAfter": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>我的网页</title>\n</head>\n<body>\n  <h1>欢迎</h1>\n</body>\n</html>",
+    "answer": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>我的网页</title>\n</head>\n<body>\n  <h1>欢迎</h1>\n</body>\n</html>",
+    "explanation": "共 6 处错误：1. <DOCTYPE> 应为 <!DOCTYPE>；2. <htm> 应为 <html>；3. <hed> 应为 <head>；4. </hed> 应为 </head>；5. <bod> 应为 <body>；6. </bod> 应为 </body>。正确拼写是完整 HTML 页面的基础。",
+    "score": 10
+  },
+  {
+    "id": 5,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "HTML基础结构",
+    "difficulty": "easy",
+    "question": "请编写一个完整的 HTML 页面，要求：1) 使用 HTML5 文档声明；2) 设置字符编码为 UTF-8；3) 页面标题为\"我的学习笔记\"；4) 页面中显示一个一级标题\"HTML 学习\"和一个段落\"从基础开始\"。",
+    "answer": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>我的学习笔记</title>\n</head>\n<body>\n  <h1>HTML 学习</h1>\n  <p>从基础开始</p>\n</body>\n</html>",
+    "explanation": "HTML5 基础页面结构包含 <!DOCTYPE html> 声明、<html> 根元素、<head> 元数据区（含 <meta charset> 和 <title>）以及 <body> 可见内容区（含 <h1> 和 <p> 标签）。",
+    "score": 10
+  },
+  {
+    "id": 6,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "HTML标签认知",
+    "difficulty": "easy",
+    "question": "HTML 标签中的双标签包含哪两部分？",
+    "options": [
+      { "key": "A", "text": "开始标签和属性标签" },
+      { "key": "B", "text": "开始标签和结束标签" },
+      { "key": "C", "text": "头部标签和内容标签" },
+      { "key": "D", "text": "打开标签和闭合引号" }
+    ],
+    "answer": "B",
+    "explanation": "双标签由开始标签（如 <p>）和结束标签（如 </p>）组成，中间包裹标签体。单标签（如 <br>）只有开始标签，/ 可省略。",
+    "score": 5
+  },
+  {
+    "id": 7,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "HTML标签认知",
+    "difficulty": "easy",
+    "question": "以下哪个标签用于定义最大的标题？",
+    "options": [
+      { "key": "A", "text": "<title>" },
+      { "key": "B", "text": "<h6>" },
+      { "key": "C", "text": "<h1>" },
+      { "key": "D", "text": "<header>" }
+    ],
+    "answer": "C",
+    "explanation": "<h1> 到 <h6> 是标题标签，数字越小标题级别越高。<h1> 是最大的一级标题，通常一个页面只有一个 <h1>。<title> 是浏览器标签页标题，<header> 是 HTML5 的页眉区域标签。",
+    "score": 5
+  },
+  {
+    "id": 8,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "HTML标签认知",
+    "difficulty": "easy",
+    "question": "以下哪些属于排版标签？（多选）",
+    "options": [
+      { "key": "A", "text": "<p>" },
+      { "key": "B", "text": "<div>" },
+      { "key": "C", "text": "<h1>" },
+      { "key": "D", "text": "<img>" }
+    ],
+    "answer": "ABC",
+    "explanation": "<p>（段落）、<div>（块级容器）、<h1>（标题）都属于排版标签。<img> 是图片标签，不属于排版标签。排版标签主要用于控制文档结构和内容排列方式。",
+    "score": 5
+  },
+  {
+    "id": 9,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "HTML标签认知",
+    "difficulty": "medium",
+    "question": "以下代码中标题嵌套和标签使用不规范，请修正为语义正确的 HTML。",
+    "codeBefore": "<p>欢迎来到我的网站</p>\n<h2>最新文章</h2>\n<h4>文章一：如何学习前端</h4>\n<div>\n  <p>这是一个段落。</p>\n</div>",
+    "codeAfter": "<h1>欢迎来到我的网站</h1>\n<section>\n  <h2>最新文章</h2>\n  <h3>文章一：如何学习前端</h3>\n  <p>这是一个段落。</p>\n</section>",
+    "answer": "<h1>欢迎来到我的网站</h1>\n<section>\n  <h2>最新文章</h2>\n  <h3>文章一：如何学习前端</h3>\n  <p>这是一个段落。</p>\n</section>",
+    "explanation": "1. 页面主标题应使用 <h1> 而非 <p>；2. 标题层级应连贯：<h1> → <h2> → <h3>，不应跳过 <h3> 直接用 <h4>；3. 用 <section> 替代裸 <div> 更有语义。",
+    "score": 10
+  },
+  {
+    "id": 10,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "HTML标签认知",
+    "difficulty": "easy",
+    "question": "请使用排版标签编写一篇简单的博客文章结构：1) 文章主标题为\"前端学习之路\"（使用 h1）；2) 一个副标题\"第一部分：HTML\"（使用 h2）；3) 正文包含两个段落（使用 p 标签），第一段内容为\"HTML 是网页的基础\"，第二段内容为\"掌握 HTML 是前端入门的第一步\"；4) 用 div 包裹整个文章内容。",
+    "answer": "<div>\n  <h1>前端学习之路</h1>\n  <h2>第一部分：HTML</h2>\n  <p>HTML 是网页的基础</p>\n  <p>掌握 HTML 是前端入门的第一步</p>\n</div>",
+    "explanation": "使用 <div> 作为容器包裹所有内容，<h1> 和 <h2> 构成标题层级，<p> 标签容纳段落文字。这是标准的内容排版结构。",
+    "score": 10
+  },
+  {
+    "id": 11,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "语义化标签",
+    "difficulty": "easy",
+    "question": "以下哪个标签表示特别重要的内容，比 <em> 的强调程度更高？",
+    "options": [
+      { "key": "A", "text": "<b>" },
+      { "key": "B", "text": "<i>" },
+      { "key": "C", "text": "<strong>" },
+      { "key": "D", "text": "<mark>" }
+    ],
+    "answer": "C",
+    "explanation": "<strong> 表示非常重要的内容，强调级别高于 <em>。<b> 和 <i> 只是视觉加粗/斜体，无语义；<mark> 是HTML5标签，用于标记高亮搜索结果。",
+    "score": 5
+  },
+  {
+    "id": 12,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "块级与行内元素",
+    "difficulty": "medium",
+    "question": "关于块级元素和行内元素，以下说法正确的是？",
+    "options": [
+      { "key": "A", "text": "行内元素可以包含块级元素" },
+      { "key": "B", "text": "块级元素不能包含行内元素" },
+      { "key": "C", "text": "块级元素独占一行，可以包含行内和块级元素" },
+      { "key": "D", "text": "行内元素和块级元素都可以独占一行" }
+    ],
+    "answer": "C",
+    "explanation": "块级元素（如 <div>、<p>）独占一行，可包含块级和行内元素。行内元素（如 <span>、<a>）不独占一行，只能包含行内元素，不能包含块级元素。",
+    "score": 5
+  },
+  {
+    "id": 13,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "语义化标签",
+    "difficulty": "medium",
+    "question": "使用语义化标签的好处包括？（多选）",
+    "options": [
+      { "key": "A", "text": "代码更清晰易读" },
+      { "key": "B", "text": "有利于 SEO（搜索引擎优化）" },
+      { "key": "C", "text": "方便屏幕阅读器等设备解析" },
+      { "key": "D", "text": "让网页加载更快" }
+    ],
+    "answer": "ABC",
+    "explanation": "语义化标签让代码结构清晰（A）、帮助搜索引擎理解页面结构（B）、方便辅助设备解析内容（C）。语义化标签本身不会直接提升加载速度（D）。",
+    "score": 5
+  },
+  {
+    "id": 14,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "块级与行内元素",
+    "difficulty": "medium",
+    "question": "以下代码中块级和行内元素的嵌套有误，请修正。",
+    "codeBefore": "<span>\n  <div>这是一个 div 内容</div>\n</span>\n<em>\n  <p>这是重点段落</p>\n</em>",
+    "codeAfter": "<div>\n  <span>这是一个 span 内容</span>\n</div>\n<p>\n  <em>这是重点段落</em>\n</p>",
+    "answer": "<div>\n  <span>这是一个 span 内容</span>\n</div>\n<p>\n  <em>这是重点段落</em>\n</p>",
+    "explanation": "行内元素（<span>、<em>）不能嵌套块级元素（<div>、<p>）。修正方法：将块级元素放在外层，行内元素放在内层。",
+    "score": 10
+  },
+  {
+    "id": 15,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "语义化标签",
+    "difficulty": "medium",
+    "question": "请使用语义化标签编写以下内容：1) 一个导航区域（nav），包含\"首页\"、\"关于\"、\"联系\"三个链接；2) 主要内容区（main），包含一篇独立文章（article），文章标题为\"学习语义化 HTML\"（h2），文章包含一段文字\"语义化标签让网页更有结构\"（p），以及一个特别重要的提醒\"一定要学好 HTML！\"（strong）；3) 页面底部信息区（footer），包含\"© 2026 我的网站\"（p）。",
+    "answer": "<nav>\n  <a href=\"#\">首页</a>\n  <a href=\"#\">关于</a>\n  <a href=\"#\">联系</a>\n</nav>\n<main>\n  <article>\n    <h2>学习语义化 HTML</h2>\n    <p>语义化标签让网页更有结构</p>\n    <strong>一定要学好 HTML！</strong>\n  </article>\n</main>\n<footer>\n  <p>© 2026 我的网站</p>\n</footer>",
+    "explanation": "使用 <nav> 定义导航区，<main> 定义主内容区，<article> 包裹独立文章内容，<footer> 定义页脚，搭配 <h2>、<p>、<strong> 实现完整语义化结构。",
+    "score": 10
+  },
+  {
+    "id": 16,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "图片标签",
+    "difficulty": "easy",
+    "question": "<img> 标签中，用于设置图片无法加载时显示替代文本的属性是？",
+    "options": [
+      { "key": "A", "text": "src" },
+      { "key": "B", "text": "title" },
+      { "key": "C", "text": "alt" },
+      { "key": "D", "text": "name" }
+    ],
+    "answer": "C",
+    "explanation": "alt 属性（alternative text）用于在图片无法加载时显示替代描述文本，也有助于无障碍访问和 SEO。src 指定图片路径，title 是鼠标悬停提示。",
+    "score": 5
+  },
+  {
+    "id": 17,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "文本标签",
+    "difficulty": "easy",
+    "question": "<span> 标签通常被称为什么？",
+    "options": [
+      { "key": "A", "text": "小型的 <div>" },
+      { "key": "B", "text": "小型的 <p>" },
+      { "key": "C", "text": "小型的 <h1>" },
+      { "key": "D", "text": "小型的 <body>" }
+    ],
+    "answer": "A",
+    "explanation": "<span> 是行内元素中的无语义容器，<div> 是块级元素中的无语义容器，因此 <span> 常被称为 \"小型的 <div>\"，用于包裹短语或文字片段。",
+    "score": 5
+  },
+  {
+    "id": 18,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "图片标签",
+    "difficulty": "medium",
+    "question": "关于 <img> 标签，以下说法正确的有？（多选）",
+    "options": [
+      { "key": "A", "text": "<img> 是单标签" },
+      { "key": "B", "text": "src 属性指定图片的路径" },
+      { "key": "C", "text": "width 和 height 属性可以控制图片尺寸" },
+      { "key": "D", "text": "alt 属性是必填的" }
+    ],
+    "answer": "ABC",
+    "explanation": "<img> 是单标签（自闭合），src 指定图片路径，width/height 控制宽高。虽然 alt 属性强烈建议添加（利于无障碍和 SEO），但技术上不是必填属性。",
+    "score": 5
+  },
+  {
+    "id": 19,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "图片标签",
+    "difficulty": "medium",
+    "question": "以下图片标签代码有错误，请修正它。",
+    "codeBefore": "<img src='photo.jpg'></img>\n<img source='avatar.png' alt='头像'>\n<img src='banner.jpg' alt='横幅图' width='800'></img>",
+    "codeAfter": "<img src='photo.jpg' alt='照片'>\n<img src='avatar.png' alt='头像'>\n<img src='banner.jpg' alt='横幅图' width='800'>",
+    "answer": "<img src='photo.jpg' alt='照片'>\n<img src='avatar.png' alt='头像'>\n<img src='banner.jpg' alt='横幅图' width='800'>",
+    "explanation": "三处错误：1. <img> 是单标签，不应有 </img> 结束标签；2. 图片地址属性是 src 不是 source；3. 第一张图片缺少 alt 属性。",
+    "score": 10
+  },
+  {
+    "id": 20,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "图片与文本标签",
+    "difficulty": "medium",
+    "question": "请编写一段 HTML 代码：1) 插入一张图片，路径为 \"logo.png\"，替代文本为\"网站Logo\"，宽度 200px；2) 紧接图片下方，用 <span> 包裹一段说明文字\"点击上方图片可放大\"，并用 <em> 强调词语\"放大\"。",
+    "answer": "<img src=\"logo.png\" alt=\"网站Logo\" width=\"200\">\n<p><span>点击上方图片可<em>放大</em></span></p>",
+    "explanation": "<img> 单标签使用 src/alt/width 属性展示图片；<span> 行内包裹说明文字；<em> 嵌套在 <span> 中强调特定词语，符合行内元素嵌套规则。",
+    "score": 10
+  },
+  {
+    "id": 21,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "超链接",
+    "difficulty": "easy",
+    "question": "在 <a> 标签中，哪个属性用于指定链接在新窗口打开？",
+    "options": [
+      { "key": "A", "text": "target=\"_new\"" },
+      { "key": "B", "text": "target=\"_blank\"" },
+      { "key": "C", "text": "window=\"_blank\"" },
+      { "key": "D", "text": "href=\"_blank\"" }
+    ],
+    "answer": "B",
+    "explanation": "target=\"_blank\" 让链接在新标签页/窗口中打开。target=\"_self\"（默认）在当前窗口打开。_new 和 window 属性不是标准用法。",
+    "score": 5
+  },
+  {
+    "id": 22,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "超链接",
+    "difficulty": "easy",
+    "question": "以下哪个代码可以创建一个发送邮件的链接？",
+    "options": [
+      { "key": "A", "text": "<a href=\"email:user@qq.com\">发邮件</a>" },
+      { "key": "B", "text": "<a href=\"mailto:user@qq.com\">发邮件</a>" },
+      { "key": "C", "text": "<a type=\"email\" href=\"user@qq.com\">发邮件</a>" },
+      { "key": "D", "text": "<a send=\"user@qq.com\">发邮件</a>" }
+    ],
+    "answer": "B",
+    "explanation": "创建邮件链接使用 mailto: 协议前缀：<a href=\"mailto:xxx@qq.com\">。<a href=\"tel:10086\"> 可拨打电话，<a href=\"sms:10086\"> 可发短信。",
+    "score": 5
+  },
+  {
+    "id": 23,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "超链接",
+    "difficulty": "medium",
+    "question": "<a> 标签支持唤起以下哪些设备应用？（多选）",
+    "options": [
+      { "key": "A", "text": "电话应用（tel:）" },
+      { "key": "B", "text": "邮件客户端（mailto:）" },
+      { "key": "C", "text": "短信应用（sms:）" },
+      { "key": "D", "text": "微信应用（wechat:）" }
+    ],
+    "answer": "ABC",
+    "explanation": "HTML 标准支持 tel:（电话）、mailto:（邮件）、sms:（短信）协议来唤起对应设备应用。wechat: 不是标准的 HTML 协议，微信需要通过 JSSDK 或 scheme URL 调用。",
+    "score": 5
+  },
+  {
+    "id": 24,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "超链接",
+    "difficulty": "medium",
+    "question": "以下链接代码存在错误和安全风险，请修正。",
+    "codeBefore": "<a href=\"www.baidu.com\">百度</a>\n<a href=\"https://example.com\" target=\"_blank\">外部链接</a>",
+    "codeAfter": "<a href=\"https://www.baidu.com\">百度</a>\n<a href=\"https://example.com\" target=\"_blank\" rel=\"noopener noreferrer\">外部链接</a>",
+    "answer": "<a href=\"https://www.baidu.com\">百度</a>\n<a href=\"https://example.com\" target=\"_blank\" rel=\"noopener noreferrer\">外部链接</a>",
+    "explanation": "1. href 需要完整的协议前缀（https://），仅写 www.baidu.com 会被当作相对路径；2. 使用 target=\"_blank\" 时应添加 rel=\"noopener noreferrer\" 防止安全漏洞（新页面可通过 window.opener 操控原页面）。",
+    "score": 10
+  },
+  {
+    "id": 25,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "超链接",
+    "difficulty": "medium",
+    "question": "请编写一个导航代码：1) 创建一个无序列表（ul），包含4个列表项（li）；2) 每个列表项内有一个链接：\"首页\"链接到 index.html、\"关于\"链接到 about.html、\"联系\"链接包含一个可拨打电话的链接（tel:10086）、\"邮箱\"链接包含一个可发送邮件的链接（mailto:admin@mato.com）；3) \"关于\"链接在当前窗口打开，其他链接在新窗口打开。",
+    "answer": "<ul>\n  <li><a href=\"index.html\" target=\"_blank\">首页</a></li>\n  <li><a href=\"about.html\" target=\"_self\">关于</a></li>\n  <li><a href=\"tel:10086\" target=\"_blank\">联系</a></li>\n  <li><a href=\"mailto:admin@mato.com\" target=\"_blank\">邮箱</a></li>\n</ul>",
+    "explanation": "使用 <ul><li> 创建导航列表，<a> 标签分别使用 href 属性指向页面（相对路径）、电话（tel: 协议）和邮件（mailto: 协议），通过 target=\"_self\" 和 target=\"_blank\" 控制打开方式。",
+    "score": 10
+  },
+  {
+    "id": 26,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "列表",
+    "difficulty": "easy",
+    "question": "以下哪个标签用于创建有序列表？",
+    "options": [
+      { "key": "A", "text": "<ul>" },
+      { "key": "B", "text": "<ol>" },
+      { "key": "C", "text": "<dl>" },
+      { "key": "D", "text": "<list>" }
+    ],
+    "answer": "B",
+    "explanation": "<ol>（Ordered List）创建有序列表，列表项前显示数字编号。<ul>（Unordered List）是无序列表，显示圆点。<dl> 是自定义列表。HTML 中没有 <list> 标签。",
+    "score": 5
+  },
+  {
+    "id": 27,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "列表",
+    "difficulty": "easy",
+    "question": "在自定义列表 <dl> 中，用于定义术语名称的标签是？",
+    "options": [
+      { "key": "A", "text": "<dd>" },
+      { "key": "B", "text": "<dt>" },
+      { "key": "C", "text": "<li>" },
+      { "key": "D", "text": "<dl>" }
+    ],
+    "answer": "B",
+    "explanation": "<dt>（Definition Term）定义术语名称，<dd>（Definition Description）定义术语的解释说明。<li> 是常规列表项，用于 <ol> 和 <ul>。",
+    "score": 5
+  },
+  {
+    "id": 28,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "列表",
+    "difficulty": "medium",
+    "question": "以下是 HTML 中合法的列表类型有？（多选）",
+    "options": [
+      { "key": "A", "text": "有序列表 <ol>" },
+      { "key": "B", "text": "无序列表 <ul>" },
+      { "key": "C", "text": "自定义列表 <dl>" },
+      { "key": "D", "text": "混合列表 <ml>" }
+    ],
+    "answer": "ABC",
+    "explanation": "HTML 支持三种列表类型：<ol>（有序列表）、<ul>（无序列表）和 <dl>（自定义列表/描述列表）。<ml> 不是合法的 HTML 标签。",
+    "score": 5
+  },
+  {
+    "id": 29,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "列表",
+    "difficulty": "medium",
+    "question": "以下自定义列表的结构有误，请修正。",
+    "codeBefore": "<dl>\n  <li>HTML</li>\n  <li>超文本标记语言</li>\n  <li>CSS</li>\n  <li>层叠样式表</li>\n</dl>",
+    "codeAfter": "<dl>\n  <dt>HTML</dt>\n  <dd>超文本标记语言</dd>\n  <dt>CSS</dt>\n  <dd>层叠样式表</dd>\n</dl>",
+    "answer": "<dl>\n  <dt>HTML</dt>\n  <dd>超文本标记语言</dd>\n  <dt>CSS</dt>\n  <dd>层叠样式表</dd>\n</dl>",
+    "explanation": "<dl> 内部只能包含 <dt>（术语）和 <dd>（描述），不能直接放 <li>。<li> 只能在 <ol> 或 <ul> 中使用。此题中 <dt> 放术语名称，<dd> 放解释说明。",
+    "score": 10
+  },
+  {
+    "id": 30,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "列表",
+    "difficulty": "medium",
+    "question": "请编写以下内容：1) 一个有序列表（ol），包含学习 HTML 的三个步骤：\"了解基础概念\"、\"学习常用标签\"、\"动手实践练习\"；2) 在有序列表下方，使用自定义列表（dl）定义两个术语：\"标签\"的解释为\"HTML 的基本组成单元\"，\"属性\"的解释为\"标签的附加信息\"。",
+    "answer": "<ol>\n  <li>了解基础概念</li>\n  <li>学习常用标签</li>\n  <li>动手实践练习</li>\n</ol>\n<dl>\n  <dt>标签</dt>\n  <dd>HTML 的基本组成单元</dd>\n  <dt>属性</dt>\n  <dd>标签的附加信息</dd>\n</dl>",
+    "explanation": "<ol> 用 <li> 表示有序步骤；<dl> 用 <dt>（术语）和 <dd>（描述）定义术语解释。两种列表类型展示了 HTML 中不同的结构化内容方式。",
+    "score": 10
+  },
+  {
+    "id": 31,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "表格",
+    "difficulty": "easy",
+    "question": "在 HTML 表格中，哪个标签用于定义表头单元格？",
+    "options": [
+      { "key": "A", "text": "<td>" },
+      { "key": "B", "text": "<tr>" },
+      { "key": "C", "text": "<th>" },
+      { "key": "D", "text": "<thead>" }
+    ],
+    "answer": "C",
+    "explanation": "<th>（Table Header）定义表头单元格，文字默认加粗居中。<td> 是普通数据单元格，<tr> 是表格行，<thead> 是表格头部区域标签。",
+    "score": 5
+  },
+  {
+    "id": 32,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "表格",
+    "difficulty": "medium",
+    "question": "在表格中，colspan 属性的作用是？",
+    "options": [
+      { "key": "A", "text": "合并多列" },
+      { "key": "B", "text": "合并多行" },
+      { "key": "C", "text": "设置列宽" },
+      { "key": "D", "text": "设置列间距" }
+    ],
+    "answer": "A",
+    "explanation": "colspan（column span）用于合并多列，rowspan 用于合并多行。cellspacing 设置单元格间距，cellpadding 设置内容与边框间距。",
+    "score": 5
+  },
+  {
+    "id": 33,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "表格",
+    "difficulty": "medium",
+    "question": "以下哪些是 <table> 中可以使用的区域标签？（多选）",
+    "options": [
+      { "key": "A", "text": "<thead>" },
+      { "key": "B", "text": "<tbody>" },
+      { "key": "C", "text": "<tfoot>" },
+      { "key": "D", "text": "<tmid>" }
+    ],
+    "answer": "ABC",
+    "explanation": "<thead>（表头）、<tbody>（表体）、<tfoot>（表脚）是表格的三大区域标签，帮助浏览器分块渲染和打印时分页重复表头。<tmid> 不存在。",
+    "score": 5
+  },
+  {
+    "id": 34,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "表格",
+    "difficulty": "medium",
+    "question": "以下表格代码有多处错误，请修正为正确的三行三列表格。",
+    "codeBefore": "<table>\n  <tr>\n    <th>姓名</th>\n    <th>年龄</th>\n    <th>城市</th>\n  </tr>\n  <tr>\n    <td>张三</td>\n    <td>25</td>\n  </tr>\n  <tr>\n    <td>李四</td>\n    <td>30</td>\n    <td>上海</td>\n  </tr>\n</table>",
+    "codeAfter": "<table>\n  <thead>\n    <tr>\n      <th>姓名</th>\n      <th>年龄</th>\n      <th>城市</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>张三</td>\n      <td>25</td>\n      <td>北京</td>\n    </tr>\n    <tr>\n      <td>李四</td>\n      <td>30</td>\n      <td>上海</td>\n    </tr>\n  </tbody>\n</table>",
+    "answer": "<table>\n  <thead>\n    <tr>\n      <th>姓名</th>\n      <th>年龄</th>\n      <th>城市</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>张三</td>\n      <td>25</td>\n      <td>北京</td>\n    </tr>\n    <tr>\n      <td>李四</td>\n      <td>30</td>\n      <td>上海</td>\n    </tr>\n  </tbody>\n</table>",
+    "explanation": "两处问题：1. 张三的数据行缺少城市列的 <td>，导致列数不一致；2. 建议添加 <thead> 和 <tbody> 使表格结构更清晰语义化。",
+    "score": 10
+  },
+  {
+    "id": 35,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "表格",
+    "difficulty": "hard",
+    "question": "请编写一个课程表表格：1) 表格有标题\"课程表\"（caption）；2) 表头包含三列：\"课程名称\"、\"时间\"、\"教师\"；3) 表体包含两行数据：第一行\"HTML基础 / 周一 9:00-11:00 / 王老师\"，第二行\"CSS进阶 / 周三 14:00-16:00 / 李老师\"；4) 表脚有一行总结性文字\"共2门课程\"（跨三列合并）。5) 使用 thead、tbody、tfoot 结构化表格。",
+    "answer": "<table>\n  <caption>课程表</caption>\n  <thead>\n    <tr>\n      <th>课程名称</th>\n      <th>时间</th>\n      <th>教师</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>HTML基础</td>\n      <td>周一 9:00-11:00</td>\n      <td>王老师</td>\n    </tr>\n    <tr>\n      <td>CSS进阶</td>\n      <td>周三 14:00-16:00</td>\n      <td>李老师</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <td colspan=\"3\">共2门课程</td>\n    </tr>\n  </tfoot>\n</table>",
+    "explanation": "使用 <caption> 设置表格标题；<thead>/<tbody>/<tfoot> 分区；<th> 做表头；<td> 填充数据；colspan=\"3\" 让表脚文字跨三列合并，实现完整的语义化表格。",
+    "score": 10
+  },
+  {
+    "id": 36,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "常用标签补充",
+    "difficulty": "easy",
+    "question": "<br> 标签的作用是？",
+    "options": [
+      { "key": "A", "text": "添加分割线" },
+      { "key": "B", "text": "强制换行" },
+      { "key": "C", "text": "添加空格" },
+      { "key": "D", "text": "创建段落" }
+    ],
+    "answer": "B",
+    "explanation": "<br> 是换行标签（Break），强制文本在此处换行。<hr> 是分割线（Horizontal Rule），<p> 是段落。<br> 是单标签，自闭合。",
+    "score": 5
+  },
+  {
+    "id": 37,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "表单基础",
+    "difficulty": "easy",
+    "question": "表单标签 <form> 的作用是？",
+    "options": [
+      { "key": "A", "text": "定义样式" },
+      { "key": "B", "text": "收集用户数据并向服务器发送" },
+      { "key": "C", "text": "创建表格" },
+      { "key": "D", "text": "插入图片" }
+    ],
+    "answer": "B",
+    "explanation": "<form> 用于创建交互式表单，收集用户输入的数据并发送到服务器进行处理。它是用户与后端交互的核心入口。",
+    "score": 5
+  },
+  {
+    "id": 38,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "常用标签补充",
+    "difficulty": "easy",
+    "question": "关于 <pre> 标签，以下说法正确的有？（多选）",
+    "options": [
+      { "key": "A", "text": "保留原文中的空格和换行" },
+      { "key": "B", "text": "通常以等宽字体显示" },
+      { "key": "C", "text": "是双标签" },
+      { "key": "D", "text": "会自动格式化代码" }
+    ],
+    "answer": "ABC",
+    "explanation": "<pre>（Preformatted Text）保留原文的空格和换行，以等宽字体显示，是双标签。它不会自动格式化代码（如添加语法高亮），只是保留原始空白格式。",
+    "score": 5
+  },
+  {
+    "id": 39,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "表单基础",
+    "difficulty": "medium",
+    "question": "以下表单代码有错误，请修正。",
+    "codeBefore": "<form>\n  用户名：<input type=\"text\">\n  密码：<input type=\"password\">\n  <input type=\"submit\" value=\"登录\">\n</form>",
+    "codeAfter": "<form action=\"/login\" method=\"post\">\n  用户名：<input type=\"text\" name=\"username\" placeholder=\"请输入用户名\">\n  密码：<input type=\"password\" name=\"password\" placeholder=\"请输入密码\">\n  <input type=\"submit\" value=\"登录\">\n</form>",
+    "answer": "<form action=\"/login\" method=\"post\">\n  用户名：<input type=\"text\" name=\"username\" placeholder=\"请输入用户名\">\n  密码：<input type=\"password\" name=\"password\" placeholder=\"请输入密码\">\n  <input type=\"submit\" value=\"登录\">\n</form>",
+    "explanation": "三个问题：1. input 缺少 name 属性，提交时数据无法被后端识别；2. form 缺少 action（提交地址）和 method（提交方式）；3. 建议添加 placeholder 提供输入提示。",
+    "score": 10
+  },
+  {
+    "id": 40,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "表单基础",
+    "difficulty": "hard",
+    "question": "请编写一个用户注册表单：1) 表单提交地址为 /register，方式为 post；2) 包含文本输入框\"用户名\"（name=\"username\"，placeholder=\"请输入用户名\"）；3) 密码框\"密码\"（name=\"password\"，placeholder=\"请输入密码\"）；4) 单选框\"性别\"，选项为\"男\"（value=\"male\"）和\"女\"（value=\"female\"），默认选中\"男\"；5) 复选框\"同意用户协议\"（name=\"agree\"，value=\"yes\"）；6) 提交按钮\"注册\"和重置按钮\"重置\"。",
+    "answer": "<form action=\"/register\" method=\"post\">\n  用户名：<input type=\"text\" name=\"username\" placeholder=\"请输入用户名\"><br>\n  密码：<input type=\"password\" name=\"password\" placeholder=\"请输入密码\"><br>\n  性别：\n  <input type=\"radio\" name=\"gender\" value=\"male\" checked> 男\n  <input type=\"radio\" name=\"gender\" value=\"female\"> 女<br>\n  <input type=\"checkbox\" name=\"agree\" value=\"yes\"> 同意用户协议<br>\n  <input type=\"submit\" value=\"注册\">\n  <input type=\"reset\" value=\"重置\">\n</form>",
+    "explanation": "表单使用 action/method 定义提交目标；input 的 type 分别使用 text/password/radio/checkbox；radio 通过相同 name 分组互斥，checked 设置默认选中；submit 和 reset 分别提交和重置表单。",
+    "score": 10
+  },
+  {
+    "id": 41,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "表单-input",
+    "difficulty": "easy",
+    "question": "以下哪个 input 的 type 值用于创建单选按钮？",
+    "options": [
+      { "key": "A", "text": "checkbox" },
+      { "key": "B", "text": "radio" },
+      { "key": "C", "text": "select" },
+      { "key": "D", "text": "button" }
+    ],
+    "answer": "B",
+    "explanation": "radio 创建单选按钮，同一组 radio 需设置相同的 name 属性来实现互斥。checkbox 是多选框，select 是下拉框（不是 input 的 type），button 是普通按钮。",
+    "score": 5
+  },
+  {
+    "id": 42,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "表单-textarea",
+    "difficulty": "easy",
+    "question": "<textarea> 标签中，用于设置默认行列的属性是？",
+    "options": [
+      { "key": "A", "text": "width 和 height" },
+      { "key": "B", "text": "cols 和 rows" },
+      { "key": "C", "text": "size 和 maxlength" },
+      { "key": "D", "text": "colspan 和 rowspan" }
+    ],
+    "answer": "B",
+    "explanation": "<textarea> 使用 cols（列数/宽度）和 rows（行数/高度）来设置默认显示大小。width/height 是 CSS 属性，colspan/rowspan 是表格属性。",
+    "score": 5
+  },
+  {
+    "id": 43,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "表单-input",
+    "difficulty": "medium",
+    "question": "以下哪些是 <input> 标签合法的 type 属性值？（多选）",
+    "options": [
+      { "key": "A", "text": "text" },
+      { "key": "B", "text": "password" },
+      { "key": "C", "text": "hidden" },
+      { "key": "D", "text": "dropdown" }
+    ],
+    "answer": "ABC",
+    "explanation": "text（文本输入）、password（密码输入）、hidden（隐藏域）都是合法的 input type 值。dropdown 不是，下拉选择应使用 <select> 标签。",
+    "score": 5
+  },
+  {
+    "id": 44,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "表单-textarea",
+    "difficulty": "medium",
+    "question": "以下 textarea 标签有几处错误，请修正。",
+    "codeBefore": "<textarea type=\"text\" width=\"300\" height=\"200\" placeholder=\"请输入内容\"></textarea>\n<textarea rows=\"5\" cols=\"30\">默认文字\n</textarea>",
+    "codeAfter": "<textarea rows=\"10\" cols=\"50\" placeholder=\"请输入内容\"></textarea>\n<textarea rows=\"5\" cols=\"30\">默认文字</textarea>",
+    "answer": "<textarea rows=\"10\" cols=\"50\" placeholder=\"请输入内容\"></textarea>\n<textarea rows=\"5\" cols=\"30\">默认文字</textarea>",
+    "explanation": "三处错误：1. <textarea> 没有 type 属性，type 是 input 的属性；2. 控制 textarea 大小应用 rows 和 cols，而非 width/height 属性；3. 第二个 textarea 的闭合标签前不应有多余换行，'默认文字' 之后的换行会成为文本域内的初始空白行。",
+    "score": 10
+  },
+  {
+    "id": 45,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "表单-input",
+    "difficulty": "medium",
+    "question": "请编写一个包含多种 input 类型的表单：1) 文本输入框\"昵称\"（name=\"nickname\"），输入提示为\"请输入昵称\"；2) 密码输入框\"密码\"（name=\"pwd\"），提示\"请输入密码\"；3) 隐藏域（name=\"token\"，value=\"abc123\"）；4) 两个单选按钮，name 都设为\"gender\"，第一个 value=\"male\"默认选中，第二个 value=\"female\"；5) 两个复选框\"兴趣\"，一个 value=\"coding\"，一个 value=\"design\"；6) 提交和重置按钮。",
+    "answer": "<form>\n  昵称：<input type=\"text\" name=\"nickname\" placeholder=\"请输入昵称\"><br>\n  密码：<input type=\"password\" name=\"pwd\" placeholder=\"请输入密码\"><br>\n  <input type=\"hidden\" name=\"token\" value=\"abc123\">\n  性别：\n  <input type=\"radio\" name=\"gender\" value=\"male\" checked> 男\n  <input type=\"radio\" name=\"gender\" value=\"female\"> 女<br>\n  兴趣：\n  <input type=\"checkbox\" name=\"hobby\" value=\"coding\"> 编程\n  <input type=\"checkbox\" name=\"hobby\" value=\"design\"> 设计<br>\n  <input type=\"submit\" value=\"提交\">\n  <input type=\"reset\" value=\"重置\">\n</form>",
+    "explanation": "综合使用 text/password/hidden/radio/checkbox 五种 input type，radio 通过相同 name 互斥，checked 设默认值，hidden 在页面不可见但随表单提交。",
+    "score": 10
+  },
+  {
+    "id": 46,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "表单-select",
+    "difficulty": "easy",
+    "question": "在 <select> 中，哪个属性用于设置默认选中项？",
+    "options": [
+      { "key": "A", "text": "checked" },
+      { "key": "B", "text": "selected" },
+      { "key": "C", "text": "default" },
+      { "key": "D", "text": "value" }
+    ],
+    "answer": "B",
+    "explanation": "<option> 的 selected 属性使该选项成为下拉框的默认选中项。checked 用于 radio 和 checkbox，value 是选项的值，default 不是 HTML 属性。",
+    "score": 5
+  },
+  {
+    "id": 47,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "表单-label",
+    "difficulty": "medium",
+    "question": "关于 <label> 标签，以下说法正确的是？",
+    "options": [
+      { "key": "A", "text": "<label> 只能用在 input 上" },
+      { "key": "B", "text": "通过 for 属性等于控件的 id 来关联" },
+      { "key": "C", "text": "<label> 没有实际功能" },
+      { "key": "D", "text": "一个 label 只能关联一个控件" }
+    ],
+    "answer": "B",
+    "explanation": "<label> 的 for 属性值等于目标控件的 id 即可建立关联，点击 label 文字会自动聚焦/选中控件。也可以直接把控件嵌套在 <label> 内部。label 能关联多种表单控件，不限于 input。",
+    "score": 5
+  },
+  {
+    "id": 48,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "表单-label",
+    "difficulty": "medium",
+    "question": "以下哪些方式可以让 <label> 与表单控件正确关联？（多选）",
+    "options": [
+      { "key": "A", "text": "<label for=\"email\">邮箱</label><input id=\"email\">" },
+      { "key": "B", "text": "<label><input type=\"checkbox\"> 同意</label>" },
+      { "key": "C", "text": "<label name=\"email\">邮箱</label><input name=\"email\">" },
+      { "key": "D", "text": "<label href=\"#email\">邮箱</label><input id=\"email\">" }
+    ],
+    "answer": "AB",
+    "explanation": "A 通过 for 属性匹配 id 关联，B 直接将控件嵌套在 <label> 内部，都是正确的关联方式。C 使用 name 无法关联（label 没有 name 属性用于关联），D 的 href 不是 label 的属性。",
+    "score": 5
+  },
+  {
+    "id": 49,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "表单-select",
+    "difficulty": "hard",
+    "question": "以下 select 下拉框代码有几处问题，请修正。",
+    "codeBefore": "<select name=\"city\" default=\"北京\">\n  <option value=\"\">请选择</option>\n  <option value=\"北京\">北京</option>\n  <option value=\"上海\">上海</option>\n  <option value=\"广州\">广州</option>\n</select>",
+    "codeAfter": "<select name=\"city\">\n  <option value=\"\">请选择</option>\n  <option value=\"北京\">北京</option>\n  <option value=\"上海\" selected>上海</option>\n  <option value=\"广州\">广州</option>\n</select>",
+    "answer": "<select name=\"city\">\n  <option value=\"\">请选择</option>\n  <option value=\"北京\">北京</option>\n  <option value=\"上海\" selected>上海</option>\n  <option value=\"广州\">广州</option>\n</select>",
+    "explanation": "1. <select> 没有 default 属性，设置默认选中应在 <option> 上使用 selected 属性；2. 当 option 设置 value 后，选中时提交 value 值而非中间文字，性能更好。",
+    "score": 10
+  },
+  {
+    "id": 50,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "表单-select-label",
+    "difficulty": "hard",
+    "question": "请编写一个包含 select 和 label 的表单：1) 使用 label（for=\"province\"）关联一个下拉框；2) 下拉框 id=\"province\"，name=\"province\"，包含4个选项：\"请选择省份\"（value=\"\"）、\"广东\"（value=\"gd\"，默认选中）、\"北京\"（value=\"bj\"）、\"上海\"（value=\"sh\"）；3) 再使用嵌套方式将\"我同意服务条款\"的复选框（name=\"terms\"，value=\"yes\"）放入 label 标签内；4) 添加一个提交按钮。",
+    "answer": "<form>\n  <label for=\"province\">所在省份：</label>\n  <select id=\"province\" name=\"province\">\n    <option value=\"\">请选择省份</option>\n    <option value=\"gd\" selected>广东</option>\n    <option value=\"bj\">北京</option>\n    <option value=\"sh\">上海</option>\n  </select>\n  <br>\n  <label>\n    <input type=\"checkbox\" name=\"terms\" value=\"yes\"> 我同意服务条款\n  </label>\n  <br>\n  <input type=\"submit\" value=\"提交\">\n</form>",
+    "explanation": "展示了 label 的两种关联方式：1. for+id 匹配关联 select；2. 嵌套控件到 label 内关联 checkbox。select 中 option 设置 value 属性，selected 设定默认选中项。",
+    "score": 10
+  },
+  {
+    "id": 51,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "框架标签",
+    "difficulty": "easy",
+    "question": "以下哪个标签用于在页面中嵌入另一个页面？",
+    "options": [
+      { "key": "A", "text": "<frame>" },
+      { "key": "B", "text": "<embed>" },
+      { "key": "C", "text": "<iframe>" },
+      { "key": "D", "text": "<object>" }
+    ],
+    "answer": "C",
+    "explanation": "<iframe>（Inline Frame）用于在当前页面中嵌入另一个 HTML 页面。<frame> 是旧版框架标签，HTML5 已废弃。<embed> 主要用于嵌入外部插件内容，<object> 用于嵌入对象。",
+    "score": 5
+  },
+  {
+    "id": 52,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "全局属性",
+    "difficulty": "easy",
+    "question": "以下哪个 HTML 全局属性用于为元素设置唯一标识？",
+    "options": [
+      { "key": "A", "text": "class" },
+      { "key": "B", "text": "name" },
+      { "key": "C", "text": "id" },
+      { "key": "D", "text": "style" }
+    ],
+    "answer": "C",
+    "explanation": "id 属性用于为元素设置唯一标识符，一个页面中 id 值不能重复。class 可以给多个元素共用，style 设置内联样式，name 主要用于表单控件的提交名称。",
+    "score": 5
+  },
+  {
+    "id": 53,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "全局属性",
+    "difficulty": "medium",
+    "question": "以下哪些是 HTML 的全局属性（即所有 HTML 元素都可使用的属性）？（多选）",
+    "options": [
+      { "key": "A", "text": "id" },
+      { "key": "B", "text": "class" },
+      { "key": "C", "text": "style" },
+      { "key": "D", "text": "src" }
+    ],
+    "answer": "ABC",
+    "explanation": "id、class、style 是全局属性，几乎所有 HTML 元素都能使用。src 不是全局属性，它只适用于 <img>、<script>、<iframe>、<video> 等特定元素。",
+    "score": 5
+  },
+  {
+    "id": 54,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "全局属性",
+    "difficulty": "medium",
+    "question": "以下代码中全局属性的使用有误，请修正。",
+    "codeBefore": "<div class=\"box\" class=\"container\" id=\"main\">内容</div>\n<p style=\"color: red\" style=\"font-size: 16px\">段落</p>\n<span id=\"unique\">文字一</span>\n<span id=\"unique\">文字二</span>",
+    "codeAfter": "<div class=\"box container\" id=\"main\">内容</div>\n<p style=\"color: red; font-size: 16px\">段落</p>\n<span id=\"unique1\">文字一</span>\n<span id=\"unique2\">文字二</span>",
+    "answer": "<div class=\"box container\" id=\"main\">内容</div>\n<p style=\"color: red; font-size: 16px\">段落</p>\n<span id=\"unique1\">文字一</span>\n<span id=\"unique2\">文字二</span>",
+    "explanation": "三处错误：1. class 属性不能重复声明，多个类名应空格分隔写在一个 class 里（class=\"box container\"）；2. style 同理，多个样式应分号分隔；3. id 在同一页面必须唯一，两个 span 不能用相同的 id。",
+    "score": 10
+  },
+  {
+    "id": 55,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "全局属性与框架",
+    "difficulty": "hard",
+    "question": "请编写以下 HTML：1) 一个 div（id=\"profile\"，class=\"user-card vip\"），内容为\"用户信息\"（用 h2 标签）；2) 在 div 下方嵌入一个 iframe，src 为\"https://example.com/map\"，宽度 600，高度 400，无边框（使用 frameborder 或 style）；3) 为该 iframe 添加 title 属性，值为\"地图页面\"。",
+    "answer": "<div id=\"profile\" class=\"user-card vip\">\n  <h2>用户信息</h2>\n</div>\n<iframe src=\"https://example.com/map\" width=\"600\" height=\"400\" style=\"border: none;\" title=\"地图页面\"></iframe>",
+    "explanation": "id 全局唯一标识 div，class 空格分隔多个类名；iframe 用 src 嵌入外部页面，width/height 控制尺寸，style 去除边框，title 属性提升无障碍访问体验。",
+    "score": 10
+  },
+  {
+    "id": 56,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "meta元信息",
+    "difficulty": "easy",
+    "question": "<meta charset=\"UTF-8\"> 的作用是？",
+    "options": [
+      { "key": "A", "text": "设置页面标题" },
+      { "key": "B", "text": "设置网页字符编码" },
+      { "key": "C", "text": "设置网页作者" },
+      { "key": "D", "text": "设置网页关键词" }
+    ],
+    "answer": "B",
+    "explanation": "<meta charset=\"UTF-8\"> 声明文档的字符编码为 UTF-8，确保中文等多语言字符正确显示。若不设置，浏览器可能用错误编码导致乱码。",
+    "score": 5
+  },
+  {
+    "id": 57,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "meta元信息",
+    "difficulty": "medium",
+    "question": "以下哪个 meta 标签用于设置网页的关键词（用于 SEO）？",
+    "options": [
+      { "key": "A", "text": "<meta charset=\"UTF-8\">" },
+      { "key": "B", "text": "<meta name=\"viewport\" content=\"...\">" },
+      { "key": "C", "text": "<meta name=\"keywords\" content=\"...\">" },
+      { "key": "D", "text": "<meta http-equiv=\"refresh\" content=\"...\">" }
+    ],
+    "answer": "C",
+    "explanation": "<meta name=\"keywords\" content=\"关键词1,关键词2\"> 设置网页关键词。<meta name=\"description\"> 设置网站描述。<meta name=\"viewport\"> 控制移动端视口。<meta http-equiv=\"refresh\"> 定时刷新跳转。",
+    "score": 5
+  },
+  {
+    "id": 58,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "meta元信息",
+    "difficulty": "hard",
+    "question": "以下 meta 标签中，与 SEO 相关的有？（多选）",
+    "options": [
+      { "key": "A", "text": "<meta name=\"keywords\" content=\"前端,HTML\">" },
+      { "key": "B", "text": "<meta name=\"description\" content=\"MATO前端学习网站\">" },
+      { "key": "C", "text": "<meta name=\"author\" content=\"MATO\">" },
+      { "key": "D", "text": "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">" }
+    ],
+    "answer": "ABC",
+    "explanation": "keywords（关键词）、description（描述）、author（作者）都与 SEO 相关，搜索引擎会读取这些信息。X-UA-Compatible 是兼容性设置（指定 IE 用最新渲染模式），与 SEO 无关。",
+    "score": 5
+  },
+  {
+    "id": 59,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "meta元信息",
+    "difficulty": "hard",
+    "question": "以下 HTML head 部分的 meta 标签有多处错误，请修正。",
+    "codeBefore": "<head>\n  <meta charSet=\"utf8\">\n  <meta keyword=\"HTML,前端,学习\">\n  <meta description=\"最好的前端学习网站\">\n  <meta http-equiv=\"refresh\" contents=\"5\">\n</head>",
+    "codeAfter": "<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"keywords\" content=\"HTML,前端,学习\">\n  <meta name=\"description\" content=\"最好的前端学习网站\">\n  <meta http-equiv=\"refresh\" content=\"5\">\n</head>",
+    "answer": "<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"keywords\" content=\"HTML,前端,学习\">\n  <meta name=\"description\" content=\"最好的前端学习网站\">\n  <meta http-equiv=\"refresh\" content=\"5\">\n</head>",
+    "explanation": "四处错误：1. charset 属性名正确拼写是 charset 不是 charSet，值应为 \"UTF-8\"；2-3. keywords 和 description 需要用 name 属性（name=\"keywords\"）配合 content 属性，不能写成 meta keyword=\"...\" 的形式；4. http-equiv 的 refresh 使用的是 content 属性不是 contents。",
+    "score": 10
+  },
+  {
+    "id": 60,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "meta元信息",
+    "difficulty": "hard",
+    "question": "请编写一个完整的 HTML 文档的 head 部分，要求包含：1) 字符编码设置为 UTF-8；2) 移动端视口设置（viewport），宽度为设备宽度，初始缩放1.0；3) SEO 关键词为\"前端学习,HTML,CSS,JavaScript\"；4) 网站描述为\"MATO - 最有趣的前端学习平台\"；5) 作者为\"MATO Team\"；6) 页面标题为\"MATO前端课堂\"。",
+    "answer": "<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"keywords\" content=\"前端学习,HTML,CSS,JavaScript\">\n  <meta name=\"description\" content=\"MATO - 最有趣的前端学习平台\">\n  <meta name=\"author\" content=\"MATO Team\">\n  <title>MATO前端课堂</title>\n</head>",
+    "explanation": "charset 设置字符编码；viewport 让移动端正确缩放；keywords/description 提升 SEO；author 标识作者；title 设置浏览器标签页标题。这是标准 HTML5 页面的 head 配置。",
+    "score": 10
+  },
+  {
+    "id": 61,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "HTML5新增布局标签",
+    "difficulty": "easy",
+    "question": "HTML5 中，哪个语义化标签用于定义页面的导航区域？",
+    "options": [
+      { "key": "A", "text": "<header>" },
+      { "key": "B", "text": "<nav>" },
+      { "key": "C", "text": "<aside>" },
+      { "key": "D", "text": "<footer>" }
+    ],
+    "answer": "B",
+    "explanation": "<nav> 定义导航链接区域。<header> 是页眉，<aside> 是侧边栏，<footer> 是页脚。每个都有明确的语义含义。",
+    "score": 5
+  },
+  {
+    "id": 62,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "HTML5新增布局标签",
+    "difficulty": "medium",
+    "question": "下列关于 <article> 和 <section> 的区别，正确的是？",
+    "options": [
+      { "key": "A", "text": "两者完全一样，可互换使用" },
+      { "key": "B", "text": "<article> 强调独立性，<section> 强调分段" },
+      { "key": "C", "text": "<section> 强调独立性，<article> 强调分段" },
+      { "key": "D", "text": "<article> 只能用于新闻，<section> 只能用于文章" }
+    ],
+    "answer": "B",
+    "explanation": "<article> 强调内容的独立性（如一篇博客、一条新闻），可以脱离上下文独立存在。<section> 强调内容的分段性（如章节），是文档中的一个区域块。两者不能互换。",
+    "score": 5
+  },
+  {
+    "id": 63,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "HTML5新增布局标签",
+    "difficulty": "medium",
+    "question": "以下哪些是 HTML5 新增的语义化布局标签？（多选）",
+    "options": [
+      { "key": "A", "text": "<header>" },
+      { "key": "B", "text": "<main>" },
+      { "key": "C", "text": "<div>" },
+      { "key": "D", "text": "<aside>" }
+    ],
+    "answer": "ABD",
+    "explanation": "<header>、<main>、<aside> 都是 HTML5 新增语义标签。<div> 是 HTML4 就存在的通用容器标签，没有语义含义。HTML5 还新增了 <nav>、<article>、<section>、<footer> 等。",
+    "score": 5
+  },
+  {
+    "id": 64,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "HTML5新增布局标签",
+    "difficulty": "hard",
+    "question": "以下页面布局中语义标签使用不当，请用 HTML5 语义标签改写成正确的语义结构。",
+    "codeBefore": "<div id=\"header\">页眉</div>\n<div id=\"nav\">导航</div>\n<div id=\"main\">\n  <div id=\"article\">\n    文章内容\n  </div>\n  <div id=\"sidebar\">侧边栏</div>\n</div>\n<div id=\"footer\">页脚</div>",
+    "codeAfter": "<header>页眉</header>\n<nav>导航</nav>\n<main>\n  <article>\n    文章内容\n  </article>\n  <aside>侧边栏</aside>\n</main>\n<footer>页脚</footer>",
+    "answer": "<header>页眉</header>\n<nav>导航</nav>\n<main>\n  <article>\n    文章内容\n  </article>\n  <aside>侧边栏</aside>\n</main>\n<footer>页脚</footer>",
+    "explanation": "用 HTML5 语义标签替换 div+id 的方式：<header> 替代 id=\"header\"，<nav> 替代 id=\"nav\"，<main> 替代 id=\"main\"，<article> 替代 id=\"article\"，<aside> 替代 id=\"sidebar\"，<footer> 替代 id=\"footer\"。语义化标签比 div+id 更清晰且无需 id。",
+    "score": 10
+  },
+  {
+    "id": 65,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "HTML5新增布局标签",
+    "difficulty": "hard",
+    "question": "请使用 HTML5 语义标签编写一个完整的博客页面布局（不包含具体文章内容，只做布局骨架）：1) 页眉（header）含页面标题\"我的技术博客\"；2) 导航栏（nav）含三个链接\"首页\"、\"归档\"、\"关于\"；3) 主体（main）分为主内容区（article）和一个侧边栏（aside）；4) article 中只有标题\"最新文章\"（h2）；5) aside 中含标题\"关于作者\"（h3）和简介文字\"一个热爱前端的开发者\"；6) 页脚（footer）含\"© 2026 我的技术博客\"。每个区域都使用语义标签。",
+    "answer": "<header>\n  <h1>我的技术博客</h1>\n</header>\n<nav>\n  <a href=\"#\">首页</a>\n  <a href=\"#\">归档</a>\n  <a href=\"#\">关于</a>\n</nav>\n<main>\n  <article>\n    <h2>最新文章</h2>\n  </article>\n  <aside>\n    <h3>关于作者</h3>\n    <p>一个热爱前端的开发者</p>\n  </aside>\n</main>\n<footer>\n  <p>© 2026 我的技术博客</p>\n</footer>",
+    "explanation": "header/nav/main/article/aside/footer 构成完整的语义化页面骨架。各标签各司其职：页眉放标题，nav 放导航，main 包主体，article 包主内容，aside 放侧边，footer 放版权信息。",
+    "score": 10
+  },
+  {
+    "id": 66,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "HTML5新增状态标签",
+    "difficulty": "medium",
+    "question": "HTML5 中，哪个标签用于表示任务的完成进度？",
+    "options": [
+      { "key": "A", "text": "<meter>" },
+      { "key": "B", "text": "<progress>" },
+      { "key": "C", "text": "<range>" },
+      { "key": "D", "text": "<bar>" }
+    ],
+    "answer": "B",
+    "explanation": "<progress> 表示任务进度（如文件上传进度），具有 value 和 max 属性。<meter> 表示标量测量（如磁盘使用量、评分），使用 high/low/optimum 设定阈值。<range> 和 <bar> 不是 HTML 标签。",
+    "score": 5
+  },
+  {
+    "id": 67,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "HTML5新增列表标签",
+    "difficulty": "medium",
+    "question": "<details> 标签搭配哪个子标签来定义可见的摘要标题？",
+    "options": [
+      { "key": "A", "text": "<title>" },
+      { "key": "B", "text": "<caption>" },
+      { "key": "C", "text": "<summary>" },
+      { "key": "D", "text": "<heading>" }
+    ],
+    "answer": "C",
+    "explanation": "<details> 创建可展开/折叠的内容区，<summary> 定义其可见的摘要标题。用户点击 summary 文字可以切换 details 内容的展开与收起。",
+    "score": 5
+  },
+  {
+    "id": 68,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "HTML5新增状态标签",
+    "difficulty": "hard",
+    "question": "关于 <meter> 标签的属性，以下哪些是合法的？（多选）",
+    "options": [
+      { "key": "A", "text": "value（当前值）" },
+      { "key": "B", "text": "min 和 max（范围）" },
+      { "key": "C", "text": "low 和 high（警示阈值）" },
+      { "key": "D", "text": "step（步长）" }
+    ],
+    "answer": "ABC",
+    "explanation": "<meter> 支持的属性包括 value（当前值）、min/max（最小/最大值）、low/high（低/高警示阈值）、optimum（最佳值）。step 不是 <meter> 的属性，它是 <input type=\"number\"> 的属性。",
+    "score": 5
+  },
+  {
+    "id": 69,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "HTML5新增状态标签",
+    "difficulty": "hard",
+    "question": "以下 progress 和 meter 标签使用有误，请修正。",
+    "codeBefore": "<progress value=\"70\" max=\"100\" min=\"0\">70%</progress>\n<meter value=\"60\" max=\"100\" low=\"20\" optimum=\"50\" step=\"5\">60</meter>",
+    "codeAfter": "<progress value=\"70\" max=\"100\">70%</progress>\n<meter value=\"60\" min=\"0\" max=\"100\" low=\"20\" high=\"80\" optimum=\"100\">60</meter>",
+    "answer": "<progress value=\"70\" max=\"100\">70%</progress>\n<meter value=\"60\" min=\"0\" max=\"100\" low=\"20\" high=\"80\" optimum=\"100\">60</meter>",
+    "explanation": "1. <progress> 没有 min 属性（默认 min=0），删除 min；2. <meter> 没有 step 属性，删除 step；3. <meter> 通常需要 high 属性配合 low 来定义正常范围，添加 high=\"80\"。",
+    "score": 10
+  },
+  {
+    "id": 70,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "HTML5新增列表与状态标签",
+    "difficulty": "hard",
+    "question": "请编写以下 HTML5 代码：1) 一个 input 文本框，配合 <datalist> 提供自动补全建议，id 为 \"skill\"，datalist 包含选项\"HTML\"、\"CSS\"、\"JavaScript\"、\"Vue3\"；2) 一个可折叠的 <details> 区域，摘要（summary）为\"什么是HTML？\"，展开内容为一段文字\"HTML 是超文本标记语言，用于构建网页结构。\"；3) 一个 progress 进度条，value=\"45\"，max=\"100\"。",
+    "answer": "<input type=\"text\" id=\"skill\" list=\"skillList\" placeholder=\"请输入技能\">\n<datalist id=\"skillList\">\n  <option value=\"HTML\">\n  <option value=\"CSS\">\n  <option value=\"JavaScript\">\n  <option value=\"Vue3\">\n</datalist>\n\n<details>\n  <summary>什么是HTML？</summary>\n  <p>HTML 是超文本标记语言，用于构建网页结构。</p>\n</details>\n\n<progress value=\"45\" max=\"100\"></progress>",
+    "explanation": "datalist 通过 list 属性与 input 关联提供下拉建议；details+summary 实现可折叠内容区；progress 用 value/max 展示进度。这些是 HTML5 提供的实用交互组件。",
+    "score": 10
+  },
+  {
+    "id": 71,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "HTML5新增文本标签",
+    "difficulty": "medium",
+    "question": "HTML5 中 <mark> 标签的作用是？",
+    "options": [
+      { "key": "A", "text": "加粗文本" },
+      { "key": "B", "text": "标记/高亮搜索结果中的关键字" },
+      { "key": "C", "text": "添加删除线" },
+      { "key": "D", "text": "标记需要修改的内容" }
+    ],
+    "answer": "B",
+    "explanation": "<mark> 用于高亮标记文本（如搜索结果中的匹配关键词），背景默认黄色。加粗用 <strong> 或 <b>，删除线用 <del>，标记修改建议用 <ins> 或 <del>。",
+    "score": 5
+  },
+  {
+    "id": 72,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "HTML5新增表单功能",
+    "difficulty": "medium",
+    "question": "HTML5 中，哪个 input 属性用于设置输入框中的提示文字？",
+    "options": [
+      { "key": "A", "text": "value" },
+      { "key": "B", "text": "placeholder" },
+      { "key": "C", "text": "default" },
+      { "key": "D", "text": "label" }
+    ],
+    "answer": "B",
+    "explanation": "placeholder 属性在输入框为空时显示灰色提示文字，用户开始输入后自动消失。value 是输入框的初始值，default 不是标准属性，label 是独立的标签元素。",
+    "score": 5
+  },
+  {
+    "id": 73,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "HTML5新增表单功能",
+    "difficulty": "hard",
+    "question": "以下哪些是 HTML5 新增的 input 新属性？（多选）",
+    "options": [
+      { "key": "A", "text": "placeholder" },
+      { "key": "B", "text": "required" },
+      { "key": "C", "text": "autofocus" },
+      { "key": "D", "text": "maxlength" }
+    ],
+    "answer": "ABC",
+    "explanation": "placeholder（输入提示）、required（必填验证）、autofocus（自动聚焦）是 HTML5 新增属性。maxlength 是 HTML4 就有的属性（限制最大输入长度），不是 HTML5 新增。",
+    "score": 5
+  },
+  {
+    "id": 74,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "HTML5新增表单功能",
+    "difficulty": "hard",
+    "question": "以下表单没有使用 HTML5 新功能，请用 HTML5 属性优化它。要求：添加必填验证、输入提示、自动聚焦和正则验证。",
+    "codeBefore": "<form>\n  用户名：<input type=\"text\" name=\"username\">\n  手机号：<input type=\"text\" name=\"phone\">\n  <input type=\"submit\" value=\"提交\">\n</form>",
+    "codeAfter": "<form>\n  用户名：<input type=\"text\" name=\"username\" placeholder=\"请输入用户名\" required autofocus>\n  手机号：<input type=\"tel\" name=\"phone\" placeholder=\"请输入11位手机号\" required pattern=\"[0-9]{11}\">\n  <input type=\"submit\" value=\"提交\">\n</form>",
+    "answer": "<form>\n  用户名：<input type=\"text\" name=\"username\" placeholder=\"请输入用户名\" required autofocus>\n  手机号：<input type=\"tel\" name=\"phone\" placeholder=\"请输入11位手机号\" required pattern=\"[0-9]{11}\">\n  <input type=\"submit\" value=\"提交\">\n</form>",
+    "explanation": "添加了 placeholder（输入提示）、required（必填验证）、autofocus（页面加载自动聚焦到用户名框）、pattern（正则验证手机号必须11位数字）、tel（语义化的电话输入类型）。",
+    "score": 10
+  },
+  {
+    "id": 75,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "HTML5新增表单功能",
+    "difficulty": "hard",
+    "question": "请编写一个使用 HTML5 新功能的数据填报表单：1) 用户名输入框（name=\"username\"），必填，提示\"请输入用户名\"，自动聚焦，最小长度3，最大长度20；2) 邮箱输入框（name=\"email\"），使用 email 类型，必填，提示\"请输入邮箱\"; 3) 年龄输入框（name=\"age\"），使用 number 类型，最小值为1，最大值为120，默认值为18；4) 个人主页（name=\"url\"），使用 url 类型，提示\"请输入网址\"；5) 表单添加 novalidate 属性以跳过浏览器默认验证（后续用 JS 验证）；6) 提交按钮。",
+    "answer": "<form novalidate>\n  <input type=\"text\" name=\"username\" placeholder=\"请输入用户名\" required autofocus minlength=\"3\" maxlength=\"20\"><br>\n  <input type=\"email\" name=\"email\" placeholder=\"请输入邮箱\" required><br>\n  <input type=\"number\" name=\"age\" min=\"1\" max=\"120\" value=\"18\"><br>\n  <input type=\"url\" name=\"url\" placeholder=\"请输入网址\"><br>\n  <input type=\"submit\" value=\"提交\">\n</form>",
+    "explanation": "使用 HTML5 新功能：email/url/number 类型做格式验证，placeholder/required/autofocus/minlength/maxlength 做前端约束，novalidate 关闭浏览器默认验证配合 JS 自定义验证。",
+    "score": 10
+  },
+  {
+    "id": 76,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "HTML5新增input类型",
+    "difficulty": "medium",
+    "question": "HTML5 中，以下哪个 input type 用于选择日期？",
+    "options": [
+      { "key": "A", "text": "datetime" },
+      { "key": "B", "text": "date" },
+      { "key": "C", "text": "calendar" },
+      { "key": "D", "text": "picker" }
+    ],
+    "answer": "B",
+    "explanation": "type=\"date\" 弹出日期选择器。HTML5 还提供了 month、week、time 等时间相关类型。datetime 是旧的类型（已被 date+time 替代），calendar 和 picker 不是合法的 type 值。",
+    "score": 5
+  },
+  {
+    "id": 77,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "HTML5新增input类型",
+    "difficulty": "medium",
+    "question": "HTML5 中 <form> 标签的 novalidate 属性的作用是？",
+    "options": [
+      { "key": "A", "text": "强制进行表单验证" },
+      { "key": "B", "text": "提交时跳过浏览器默认的表单验证" },
+      { "key": "C", "text": "禁止表单提交" },
+      { "key": "D", "text": "重置表单数据" }
+    ],
+    "answer": "B",
+    "explanation": "novalidate 属性告诉浏览器在提交表单时不进行自带验证（如 required、pattern 等），常用于配合 JS 自定义验证逻辑。",
+    "score": 5
+  },
+  {
+    "id": 78,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "HTML5新增input类型",
+    "difficulty": "hard",
+    "question": "以下哪些是 HTML5 合法的 input type 值？（多选）",
+    "options": [
+      { "key": "A", "text": "color" },
+      { "key": "B", "text": "range" },
+      { "key": "C", "text": "search" },
+      { "key": "D", "text": "phone" }
+    ],
+    "answer": "ABC",
+    "explanation": "color（颜色选择器）、range（滑块范围选择）、search（搜索框）都是 HTML5 合法的 type 值。phone 不是，应使用 type=\"tel\" 表示电话号码输入框。",
+    "score": 5
+  },
+  {
+    "id": 79,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "HTML5新增input类型",
+    "difficulty": "hard",
+    "question": "以下代码中的 HTML5 新 type 使用有误，请修正。",
+    "codeBefore": "<input type=\"email\" name=\"mail\">\n<input type=\"color\" value=\"blue\" name=\"favColor\">\n<input type=\"range\" name=\"volume\" value=\"80\" min=\"0\" max=\"100\" step=\"10\">\n<input type=\"date\" name=\"birthday\" placeholder=\"选择生日\">",
+    "codeAfter": "<input type=\"email\" name=\"mail\">\n<input type=\"color\" value=\"#0000ff\" name=\"favColor\">\n<input type=\"range\" name=\"volume\" value=\"80\" min=\"0\" max=\"100\" step=\"10\">\n<input type=\"date\" name=\"birthday\">",
+    "answer": "<input type=\"email\" name=\"mail\">\n<input type=\"color\" value=\"#0000ff\" name=\"favColor\">\n<input type=\"range\" name=\"volume\" value=\"80\" min=\"0\" max=\"100\" step=\"10\">\n<input type=\"date\" name=\"birthday\">",
+    "explanation": "两处错误：1. <input type=\"color\"> 的 value 必须是十六进制颜色值（如 #0000ff），不能使用颜色名；2. <input type=\"date\"> 不支持 placeholder 属性（浏览器日期选择器有自带UI），去掉即可。",
+    "score": 10
+  },
+  {
+    "id": 80,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "HTML5新增表单input类型",
+    "difficulty": "hard",
+    "question": "请编写一个使用了5种以上 HTML5 新 input type 的表单：1) 搜索框（type=\"search\"），name=\"q\"，placeholder=\"搜索…\"；2) 邮箱（type=\"email\"），name=\"email\"；3) 电话号码（type=\"tel\"），name=\"phone\"；4) 滑块音量调节（type=\"range\"），name=\"volume\"，min=\"0\"，max=\"100\"，value=\"50\"；5) 颜色选择器（type=\"color\"），name=\"bgColor\"，默认值红色（#ff0000）；6) 日期选择器（type=\"date\"），name=\"eventDate\"；7) 提交按钮。",
+    "answer": "<form>\n  <input type=\"search\" name=\"q\" placeholder=\"搜索…\"><br>\n  <input type=\"email\" name=\"email\" placeholder=\"邮箱\"><br>\n  <input type=\"tel\" name=\"phone\" placeholder=\"电话号码\"><br>\n  音量：<input type=\"range\" name=\"volume\" min=\"0\" max=\"100\" value=\"50\"><br>\n  颜色：<input type=\"color\" name=\"bgColor\" value=\"#ff0000\"><br>\n  <input type=\"date\" name=\"eventDate\"><br>\n  <input type=\"submit\" value=\"提交\">\n</form>",
+    "explanation": "综合使用 search/email/tel/range/color/date 六种 HTML5 新 type。search 样式的搜索框、range 的滑块、color 的颜色面板、date 的日期选择器都是 HTML5 的原生交互组件。",
+    "score": 10
+  },
+  {
+    "id": 81,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "视频video",
+    "difficulty": "medium",
+    "question": "在 <video> 标签中，哪个属性用于显示用户控制条（播放/暂停/音量等）？",
+    "options": [
+      { "key": "A", "text": "controls" },
+      { "key": "B", "text": "autoplay" },
+      { "key": "C", "text": "play" },
+      { "key": "D", "text": "show" }
+    ],
+    "answer": "A",
+    "explanation": "controls 属性让浏览器显示视频播放控制条（播放、暂停、音量、进度条等），是布尔属性。autoplay 是自动播放，play 不是 HTML 属性（是 JS 方法），show 不存在。",
+    "score": 5
+  },
+  {
+    "id": 82,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "视频video",
+    "difficulty": "medium",
+    "question": "<video> 标签中，poster 属性的作用是？",
+    "options": [
+      { "key": "A", "text": "设置视频播放前的封面图" },
+      { "key": "B", "text": "设置视频结束后的展示图" },
+      { "key": "C", "text": "设置视频水印" },
+      { "key": "D", "text": "设置视频预览缩略图" }
+    ],
+    "answer": "A",
+    "explanation": "poster 属性指定视频加载时或未播放前显示的封面图片。视频开始播放后，poster 图片会隐藏。它不影响视频内容本身。",
+    "score": 5
+  },
+  {
+    "id": 83,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "视频video",
+    "difficulty": "hard",
+    "question": "<video> 标签的 preload 属性可以取哪些值？（多选）",
+    "options": [
+      { "key": "A", "text": "none（不预加载）" },
+      { "key": "B", "text": "metadata（仅预加载元数据）" },
+      { "key": "C", "text": "auto（预加载整个视频）" },
+      { "key": "D", "text": "full（完全预加载并缓存）" }
+    ],
+    "answer": "ABC",
+    "explanation": "preload 有三个合法值：none（不预加载任何数据）、metadata（仅加载时长、尺寸等元信息）、auto（浏览器自行决定预加载策略，可能是全部或部分）。full 不是合法值。",
+    "score": 5
+  },
+  {
+    "id": 84,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "视频video",
+    "difficulty": "hard",
+    "question": "以下视频标签有多处问题，请修正。",
+    "codeBefore": "<video source=\"demo.mp4\" autoplay=\"true\" controls=\"true\" muted=\"false\" poster=\"cover.jpg\">\n  您的浏览器不支持视频播放\n</video>",
+    "codeAfter": "<video src=\"demo.mp4\" autoplay muted controls poster=\"cover.jpg\" width=\"640\" height=\"360\">\n  您的浏览器不支持视频播放\n</video>",
+    "answer": "<video src=\"demo.mp4\" autoplay muted controls poster=\"cover.jpg\" width=\"640\" height=\"360\">\n  您的浏览器不支持视频播放\n</video>",
+    "explanation": "四处错误：1. 视频地址属性是 src 不是 source；2. autoplay 和 controls 是布尔属性，不需要值，直接写属性名就行（autoplay 不是 autoplay=\"true\"）；3. muted 应设为存在（autoplay 通常需要搭配 muted 才能生效）；4. 一般建议添加 width 和 height 属性控制尺寸。",
+    "score": 10
+  },
+  {
+    "id": 85,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "视频video",
+    "difficulty": "hard",
+    "question": "请编写一个完整的视频播放代码：1) 视频源为 \"tutorial.mp4\"，宽 800px，高 450px；2) 显示播放控制条；3) 设置封面图为 \"thumbnail.jpg\"；4) 设置预加载策略为仅元数据；5) 视频静音自动循环播放；6) 视频不支持时显示文字\"您的浏览器版本太低，请升级浏览器后再观看。\"",
+    "answer": "<video src=\"tutorial.mp4\" width=\"800\" height=\"450\" controls poster=\"thumbnail.jpg\" preload=\"metadata\" autoplay muted loop>\n  您的浏览器版本太低，请升级浏览器后再观看。\n</video>",
+    "explanation": "src 指定视频源；width/height 控制尺寸；controls 显示控制条；poster 设置封面；preload=\"metadata\" 仅预加载元信息节省带宽；autoplay+muted+loop 实现静音自动循环播放；标签内部文字是降级方案提示。",
+    "score": 10
+  },
+  {
+    "id": 86,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "音频audio",
+    "difficulty": "medium",
+    "question": "<audio> 标签中，哪个属性让音频循环播放？",
+    "options": [
+      { "key": "A", "text": "repeat" },
+      { "key": "B", "text": "cycle" },
+      { "key": "C", "text": "loop" },
+      { "key": "D", "text": "replay" }
+    ],
+    "answer": "C",
+    "explanation": "loop 是布尔属性，设置后音频播放完会自动重新开始播放。repeat、cycle、replay 都不是合法的 HTML 属性。",
+    "score": 5
+  },
+  {
+    "id": 87,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "音频audio",
+    "difficulty": "medium",
+    "question": "<audio> 和 <video> 标签共有的属性不包括？",
+    "options": [
+      { "key": "A", "text": "controls" },
+      { "key": "B", "text": "autoplay" },
+      { "key": "C", "text": "poster" },
+      { "key": "D", "text": "muted" }
+    ],
+    "answer": "C",
+    "explanation": "poster（封面图）是 <video> 独有的属性，<audio> 没有画面自然不需要封面。controls、autoplay、muted、loop、preload 是两者共有的属性。",
+    "score": 5
+  },
+  {
+    "id": 88,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "音频audio",
+    "difficulty": "medium",
+    "question": "以下哪些属性是 <audio> 标签支持的？（多选）",
+    "options": [
+      { "key": "A", "text": "src" },
+      { "key": "B", "text": "controls" },
+      { "key": "C", "text": "autoplay" },
+      { "key": "D", "text": "width" }
+    ],
+    "answer": "ABC",
+    "explanation": "<audio> 支持 src（音频源）、controls（控制条）、autoplay（自动播放）等属性。width 是 <video> 的属性，<audio> 没有视觉尺寸不需要 width/height。",
+    "score": 5
+  },
+  {
+    "id": 89,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "音频audio",
+    "difficulty": "medium",
+    "question": "以下音频标签代码有误，请修正。",
+    "codeBefore": "<audio source=\"bgm.mp3\" autoplay=\"on\" loop=\"true\" controls=\"yes\">\n  您的浏览器不支持音频\n</audio>",
+    "codeAfter": "<audio src=\"bgm.mp3\" autoplay loop controls>\n  您的浏览器不支持音频\n</audio>",
+    "answer": "<audio src=\"bgm.mp3\" autoplay loop controls>\n  您的浏览器不支持音频\n</audio>",
+    "explanation": "三处错误：1. 音频源属性是 src 不是 source；2. 布尔属性（autoplay、loop、controls）直接写属性名即可，不需要赋值为 \"on\"、\"true\"、\"yes\" 等，写属性名本身就表示启用。",
+    "score": 10
+  },
+  {
+    "id": 90,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "音频与视频综合",
+    "difficulty": "hard",
+    "question": "请编写一个多媒体展示页面：1) 页面标题为\"多媒体展示\"（h2）；2) 第一个部分为音频播放区：音频文件为 \"bgm.mp3\"，显示控制条，静音，循环播放，不支持时显示\"您的浏览器不支持音频播放\"；3) 第二条分割线 hr；4) 第二个部分为视频播放区：视频文件为 \"intro.mp4\"，宽 640px，高 360px，显示控制条，封面图为 \"poster.jpg\"，不支持时显示\"您的浏览器不支持视频播放\"。",
+    "answer": "<h2>多媒体展示</h2>\n\n<audio src=\"bgm.mp3\" controls muted loop>\n  您的浏览器不支持音频播放\n</audio>\n\n<hr>\n\n<video src=\"intro.mp4\" width=\"640\" height=\"360\" controls poster=\"poster.jpg\">\n  您的浏览器不支持视频播放\n</video>",
+    "explanation": "综合使用 <audio> 和 <video> 标签：src 指定媒体源，controls 显示控制条，muted/loop 控制播放行为，poster 设置视频封面，<hr> 做内容分割。标签内部文字提供降级方案。",
+    "score": 10
+  },
+  {
+    "id": 91,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "综合-语义化与SEO",
+    "difficulty": "hard",
+    "question": "从 SEO 角度考虑，以下哪个标题结构最合理？",
+    "options": [
+      { "key": "A", "text": "<h1>网站名</h1><h3>文章标题</h3><h2>小节</h2>" },
+      { "key": "B", "text": "<h1>网站名</h1><h2>文章标题</h2><h3>小节标题</h3>" },
+      { "key": "C", "text": "<h2>网站名</h2><h1>文章标题</h1><h1>小节标题</h1>" },
+      { "key": "D", "text": "<div>网站名</div><div>文章标题</div><div>小节标题</div>" }
+    ],
+    "answer": "B",
+    "explanation": "标题层级应遵循 h1 > h2 > h3 由大到小的嵌套结构。B 选项：h1 为页面主标题，h2 为二级标题，h3 为三级标题，层级清晰，利于 SEO 和可读性。A 的 h3 跳到 h2 层级混乱，C 滥用 h1，D 完全不用标题标签。",
+    "score": 5
+  },
+  {
+    "id": 92,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "综合-语义化与SEO",
+    "difficulty": "hard",
+    "question": "以下哪种图片引入方式对 SEO 最友好？",
+    "options": [
+      { "key": "A", "text": "<img src=\"photo.jpg\">" },
+      { "key": "B", "text": "<img src=\"photo.jpg\" alt=\"夕阳下的海滩风景\">" },
+      { "key": "C", "text": "<div style=\"background-image: url('photo.jpg')\"></div>" },
+      { "key": "D", "text": "<img src=\"photo.jpg\" title=\"点击放大\">" }
+    ],
+    "answer": "B",
+    "explanation": "alt 属性为图片提供描述性文字，搜索引擎通过 alt 理解图片内容，提升图片搜索排名和页面 SEO。C 用 CSS 背景图，搜索引擎无法读取。D 只有 title（悬停提示），没有 alt 描述。A 缺少 alt 属性。",
+    "score": 5
+  },
+  {
+    "id": 93,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "综合-语义化与SEO",
+    "difficulty": "hard",
+    "question": "以下做法有利于网页 SEO 的有？（多选）",
+    "options": [
+      { "key": "A", "text": "使用语义化标签（header/nav/article等）" },
+      { "key": "B", "text": "合理使用 h1-h6 标题层级" },
+      { "key": "C", "text": "为图片添加有意义的 alt 属性" },
+      { "key": "D", "text": "把所有内容放在一个 <div> 中减少标签数量" }
+    ],
+    "answer": "ABC",
+    "explanation": "语义化标签（A）帮助搜索引擎理解页面结构；合理的标题层级（B）明确内容层次；alt 属性（C）让搜索引擎解读图片内容。D 相反——把所有内容放一个 <div> 丧失了结构信息，对 SEO 不利。",
+    "score": 5
+  },
+  {
+    "id": 94,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "综合-语义化与SEO",
+    "difficulty": "hard",
+    "question": "以下页面结构对 SEO 不友好，请用语义化标签和正确的标题层级重构它。",
+    "codeBefore": "<div>\n  <div class=\"title\">前端开发技术</div>\n  <div class=\"subtitle\">HTML 篇</div>\n  <div class=\"content\">\n    <div class=\"text\">HTML 是网页的基础。重要提醒：一定要学好基础标签。</div>\n  </div>\n  <img src=\"html5.png\">\n  <div class=\"footer\">上一页 | 下一页</div>\n</div>",
+    "codeAfter": "<article>\n  <h1>前端开发技术</h1>\n  <section>\n    <h2>HTML 篇</h2>\n    <p>HTML 是网页的基础。<strong>重要提醒：一定要学好基础标签。</strong></p>\n    <img src=\"html5.png\" alt=\"HTML5 教程封面图\">\n  </section>\n  <footer>\n    <nav>\n      <a href=\"#\">上一页</a> | <a href=\"#\">下一页</a>\n    </nav>\n  </footer>\n</article>",
+    "answer": "<article>\n  <h1>前端开发技术</h1>\n  <section>\n    <h2>HTML 篇</h2>\n    <p>HTML 是网页的基础。<strong>重要提醒：一定要学好基础标签。</strong></p>\n    <img src=\"html5.png\" alt=\"HTML5 教程封面图\">\n  </section>\n  <footer>\n    <nav>\n      <a href=\"#\">上一页</a> | <a href=\"#\">下一页</a>\n    </nav>\n  </footer>\n</article>",
+    "explanation": "重构要点：1. div+class 改为语义标签（article/section/footer/nav）；2. 标题用 h1/h2 替代 div.title/div.subtitle；3. 图片添加 alt 属性；4. 重要内容用 <strong> 强调；5. 分页导航用 <nav>+<a>。这些改进显著提升 SEO 和可读性。",
+    "score": 10
+  },
+  {
+    "id": 95,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "综合-语义化与SEO",
+    "difficulty": "hard",
+    "question": "请编写一个对 SEO 友好的页面（不包含 head 部分）：1) 页面使用 article 作为最外层容器；2) 主标题 h1 为\"HTML 完全指南\"；3) 包含三个 section，标题分别为 h2\"基础标签\"、h2\"表单与输入\"、h2\"多媒体标签\"；4) 每个 section 内有一段描述文字和一个图片（用占位 alt 描述）；5) 最底部用 footer 包含版权信息\"© MATO 前端学堂\"；6) 在\"表单与输入\" section 中使用 <strong> 强调\"必填字段\"四字。",
+    "answer": "<article>\n  <h1>HTML 完全指南</h1>\n\n  <section>\n    <h2>基础标签</h2>\n    <p>HTML 基础标签是构建网页的基石，包括标题、段落、链接等元素。</p>\n    <img src=\"basic-tags.png\" alt=\"HTML基础标签示意图\">\n  </section>\n\n  <section>\n    <h2>表单与输入</h2>\n    <p>表单是用户与网页交互的核心，<strong>必填字段</strong>需要使用 required 属性标记。</p>\n    <img src=\"form-input.png\" alt=\"HTML表单输入控件示意图\">\n  </section>\n\n  <section>\n    <h2>多媒体标签</h2>\n    <p>HTML5 新增了 video 和 audio 标签，让网页原生支持音视频播放。</p>\n    <img src=\"multimedia.png\" alt=\"HTML5多媒体标签示意图\">\n  </section>\n\n  <footer>\n    <p>© MATO 前端学堂</p>\n  </footer>\n</article>",
+    "explanation": "article 为独立内容容器；h1→h2 层级清晰；三个 section 各司其职；每张 img 都有描述性 alt；<strong> 强调关键信息；footer 放版权。这是搜索引擎友好的标准页面结构。",
+    "score": 10
+  },
+  {
+    "id": 96,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "综合-HTML文档结构",
+    "difficulty": "hard",
+    "question": "一个完整的 HTML 页面中，CSS 外部样式表通常应该放在哪个位置？",
+    "options": [
+      { "key": "A", "text": "<body> 的最顶部" },
+      { "key": "B", "text": "<head> 中通过 <link> 引入" },
+      { "key": "C", "text": "<body> 的最底部" },
+      { "key": "D", "text": "任意位置都可以" }
+    ],
+    "answer": "B",
+    "explanation": "CSS 应通过 <link> 标签放在 <head> 中引入，这样浏览器在渲染内容前就能加载样式，避免页面闪烁（FOUC）。JS 脚本通常放在 </body> 前，以免阻塞页面渲染。",
+    "score": 5
+  },
+  {
+    "id": 97,
+    "type": "single-choice",
+    "topic": "HTML",
+    "chapter": "综合-HTML文档结构",
+    "difficulty": "hard",
+    "question": "对于移动端响应式网页，哪个 meta 标签是必须设置的？",
+    "options": [
+      { "key": "A", "text": "<meta charset=\"UTF-8\">" },
+      { "key": "B", "text": "<meta name=\"description\" content=\"...\">" },
+      { "key": "C", "text": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" },
+      { "key": "D", "text": "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">" }
+    ],
+    "answer": "C",
+    "explanation": "viewport meta 标签是移动端响应式的关键，它告诉移动浏览器以设备宽度为视口宽度、初始缩放为1.0。缺少此标签会导致移动端页面缩放异常，显示为缩小版的桌面页面。",
+    "score": 5
+  },
+  {
+    "id": 98,
+    "type": "multiple-choice",
+    "topic": "HTML",
+    "chapter": "综合-HTML文档结构",
+    "difficulty": "hard",
+    "question": "以下哪些是 HTML 文档中应该放在 <head> 中的内容？（多选）",
+    "options": [
+      { "key": "A", "text": "<title> 页面标题" },
+      { "key": "B", "text": "<link> 引入 CSS" },
+      { "key": "C", "text": "<meta> 元信息标签" },
+      { "key": "D", "text": "<h1> 页面主标题" }
+    ],
+    "answer": "ABC",
+    "explanation": "<title>、<link>、<meta> 都放在 <head> 中，用于定义页面元数据、引入资源和设置编码。<h1> 是可见内容标签，必须放在 <body> 中，搜索引擎会据此理解页面主题。",
+    "score": 5
+  },
+  {
+    "id": 99,
+    "type": "code-fix",
+    "topic": "HTML",
+    "chapter": "综合-HTML文档结构",
+    "difficulty": "hard",
+    "question": "以下 HTML 页面结构混乱——CSS放错位置、缺失关键 meta、标题层级跳跃、表单缺少必要属性。请修正为规范的 HTML5 页面。",
+    "codeBefore": "<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>注册</title>\n</head>\n<body>\n  <h2>用户注册</h2>\n  <h4>基本信息</h4>\n  <style>body{font-family:sans-serif}</style>\n  <form method=\"post\">\n    姓名：<input type=\"text\"><br>\n    邮箱：<input type=\"text\"><br>\n    <input type=\"submit\" value=\"注册\">\n  </form>\n</body>\n</html>",
+    "codeAfter": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>注册</title>\n  <style>body{font-family:sans-serif}</style>\n</head>\n<body>\n  <h1>用户注册</h1>\n  <h2>基本信息</h2>\n  <form action=\"/register\" method=\"post\">\n    姓名：<input type=\"text\" name=\"name\" required><br>\n    邮箱：<input type=\"email\" name=\"email\" required><br>\n    <input type=\"submit\" value=\"注册\">\n  </form>\n</body>\n</html>",
+    "answer": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>注册</title>\n  <style>body{font-family:sans-serif}</style>\n</head>\n<body>\n  <h1>用户注册</h1>\n  <h2>基本信息</h2>\n  <form action=\"/register\" method=\"post\">\n    姓名：<input type=\"text\" name=\"name\" required><br>\n    邮箱：<input type=\"email\" name=\"email\" required><br>\n    <input type=\"submit\" value=\"注册\">\n  </form>\n</body>\n</html>",
+    "explanation": "五处修正：1. 添加 <!DOCTYPE html> 声明；2. 添加 viewport meta 标签支持移动端；3. <style> 应从 <body> 移到 <head>；4. 标题层级从 h2→h4 改为 h1→h2 不跳跃；5. 表单 input 添加 name/type/required 属性，邮箱用 type=\"email\"。",
+    "score": 10
+  },
+  {
+    "id": 100,
+    "type": "programming",
+    "topic": "HTML",
+    "chapter": "综合-HTML文档结构",
+    "difficulty": "hard",
+    "question": "请编写一个完整的 MATO 前端学习网站首页（完整的 HTML5 文档）：要求包含以下全部元素——1) head 中设置 charset、viewport、keywords（HTML,CSS,JavaScript,Vue3,前端学习）、description（MATO - 最有趣的前端学习平台，漫画风格互动教程）、title（MATO前端学堂）；2) body 中使用语义化标签：header 包含 h1\"MATO 前端学堂\"和 nav（链接\"HTML\"、\"CSS\"、\"JavaScript\"、\"Vue3\"）；3) main 中包含一个 article，内含 h2\"开始你的前端之旅\"、一段 p 文字和一个用 <strong> 强调的\"免费学习\"；4) aside 侧边栏包含 h3\"学习进度\"和 progress 进度条（value=30 max=100）；5) footer 包含地址链接 mailto:hello@mato.com 和 © 版权信息；6) 所有链接使用 target=\"_blank\" 在新窗口打开。",
+    "answer": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"keywords\" content=\"HTML,CSS,JavaScript,Vue3,前端学习\">\n  <meta name=\"description\" content=\"MATO - 最有趣的前端学习平台，漫画风格互动教程\">\n  <title>MATO前端学堂</title>\n</head>\n<body>\n  <header>\n    <h1>MATO 前端学堂</h1>\n    <nav>\n      <a href=\"#\" target=\"_blank\">HTML</a>\n      <a href=\"#\" target=\"_blank\">CSS</a>\n      <a href=\"#\" target=\"_blank\">JavaScript</a>\n      <a href=\"#\" target=\"_blank\">Vue3</a>\n    </nav>\n  </header>\n\n  <main>\n    <article>\n      <h2>开始你的前端之旅</h2>\n      <p>加入 MATO，开启 <strong>免费学习</strong> 前端技术的旅程！</p>\n    </article>\n\n    <aside>\n      <h3>学习进度</h3>\n      <progress value=\"30\" max=\"100\"></progress>\n    </aside>\n  </main>\n\n  <footer>\n    <p>\n      <a href=\"mailto:hello@mato.com\" target=\"_blank\">联系我们</a>\n    </p>\n    <p>© 2026 MATO 前端学堂</p>\n  </footer>\n</body>\n</html>",
+    "explanation": "完整的 HTML5 文档：head 配置 SEO 元信息；语义化布局 header+nav/main+article+aside/footer；标题层级 h1→h2→h3 不跳跃；<strong> 强调关键信息；mailto: 的邮件链接；progress 展示学习进度；所有链接 target=\"_blank\"。涵盖全部 HTML 核心知识。",
+    "score": 10
+  }
+]

@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "type": "single-choice",
+    "topic": "AJAX",
+    "chapter": "AJAX概述",
+    "difficulty": "easy",
+    "question": "AJAX 的全称是什么？",
+    "options": [
+      { "key": "A", "text": "Async Java and XML" },
+      { "key": "B", "text": "Async JavaScript and XML" },
+      { "key": "C", "text": "Advanced JavaScript and XPath" },
+      { "key": "D", "text": "Async JSON and XMLHttpRequest" }
+    ],
+    "answer": "B",
+    "explanation": "AJAX 全称是 Async JavaScript and XML（异步 JavaScript 和 XML），是一种使用现有标准的新方法，用于在不刷新页面的情况下与服务器交互。",
+    "score": 5
+  },
+  {
+    "id": 2,
+    "type": "single-choice",
+    "topic": "AJAX",
+    "chapter": "AJAX概述",
+    "difficulty": "easy",
+    "question": "以下关于 AJAX 的描述，哪一项是正确的？",
+    "options": [
+      { "key": "A", "text": "AJAX 是一种全新的编程语言" },
+      { "key": "B", "text": "AJAX 只能在同步模式下使用" },
+      { "key": "C", "text": "AJAX 可以在不刷新页面的情况下更新页面内容" },
+      { "key": "D", "text": "AJAX 必须配合 XML 数据格式使用" }
+    ],
+    "answer": "C",
+    "explanation": "AJAX 不是一门新语言，而是使用现有标准的新方法，其核心优势是无需刷新页面即可更新内容。AJAX 默认异步，也可以使用 JSON 等格式。",
+    "score": 5
+  },
+  {
+    "id": 3,
+    "type": "multiple-choice",
+    "topic": "AJAX",
+    "chapter": "AJAX概述",
+    "difficulty": "easy",
+    "question": "以下哪些是 AJAX 的优势？（多选）",
+    "options": [
+      { "key": "A", "text": "无需安装任何浏览器插件" },
+      { "key": "B", "text": "提升用户体验，无需刷新页面即可获取数据" },
+      { "key": "C", "text": "降低服务端与带宽的压力" },
+      { "key": "D", "text": "搜索引擎对动态内容抓取支持度极高" }
+    ],
+    "answer": "ABC",
+    "explanation": "AJAX 三大优势：无需插件（原生 JS 即可）、用户体验好（无刷新获取数据）、减轻服务端与带宽负担。而搜索引擎对动态数据支持度不够恰恰是 AJAX 的缺点。",
+    "score": 5
+  },
+  {
+    "id": 4,
+    "type": "code-fix",
+    "topic": "AJAX",
+    "chapter": "AJAX概述",
+    "difficulty": "easy",
+    "question": "以下代码试图使用 AJAX 发送 GET 请求到 './data.php'。请指出其中的错误并写出修正后的完整代码。",
+    "codeBefore": "const xhr = new XMLHttpRequest();\nxhr.open('get', './data.php', false);\nxhr.send();\n\nif (xhr.readyState === 4) {\n  console.log(xhr.responseText);\n}",
+    "codeAfter": "const xhr = new XMLHttpRequest();\nxhr.open('get', './data.php', true);\n\nxhr.onreadystatechange = function () {\n  if (xhr.readyState === 4 && xhr.status === 200) {\n    console.log(xhr.responseText);\n  }\n};\n\nxhr.send();",
+    "answer": "const xhr = new XMLHttpRequest();\nxhr.open('get', './data.php', true);\n\nxhr.onreadystatechange = function () {\n  if (xhr.readyState === 4 && xhr.status === 200) {\n    console.log(xhr.responseText);\n  }\n};\n\nxhr.send();",
+    "explanation": "共 3 处问题：1. open 第三个参数 false 表示同步请求，应改为 true（异步）；2. 缺少 onreadystatechange 事件监听，无法正确获取响应时机；3. 判断条件中缺少 HTTP 状态码 xhr.status === 200 的检查。",
+    "score": 10
+  },
+  {
+    "id": 5,
+    "type": "programming",
+    "topic": "AJAX",
+    "chapter": "AJAX概述",
+    "difficulty": "easy",
+    "question": "请使用 XMLHttpRequest 编写一个完整的 AJAX GET 请求。要求：1) 请求地址为 './api/users.php'；2) 使用异步方式；3) 通过 onreadystatechange 监听响应；4) 同时检查 readyState 和 HTTP 状态码；5) 在控制台打印返回数据。",
+    "answer": "const xhr = new XMLHttpRequest();\nxhr.open('get', './api/users.php', true);\n\nxhr.onreadystatechange = function () {\n  if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {\n    console.log(xhr.responseText);\n  }\n};\n\nxhr.send();",
+    "explanation": "标准 AJAX GET 请求步骤：1. 创建 XMLHttpRequest 对象；2. open 配置请求方式和地址（第三个参数 true 表示异步）；3. 通过 onreadystatechange 事件监听状态变化；4. 在回调中同时判断 readyState === 4（响应完成）和 HTTP 状态码 200-299（请求成功）；5. send 发送请求。",
+    "score": 10
+  },
+  {
+    "id": 6,
+    "type": "single-choice",
+    "topic": "AJAX",
+    "chapter": "AJAX状态码",
+    "difficulty": "medium",
+    "question": "AJAX 的 readyState 值为 4 时表示什么？",
+    "options": [
+      { "key": "A", "text": "未初始化，open 方法还未执行" },
+      { "key": "B", "text": "open 方法已执行，配置完成" },
+      { "key": "C", "text": "send 方法已执行，正在发送请求" },
+      { "key": "D", "text": "响应内容解析完毕，可以使用" }
+    ],
+    "answer": "D",
+    "explanation": "readyState 各值含义：0-未初始化（open 未执行）、1-open 已执行（配置完成）、2-send 已执行、3-正在解析响应内容、4-解析完毕，响应内容可用。",
+    "score": 5
+  },
+  {
+    "id": 7,
+    "type": "single-choice",
+    "topic": "AJAX",
+    "chapter": "AJAX请求方式",
+    "difficulty": "medium",
+    "question": "以下哪种场景最适合使用 POST 请求？",
+    "options": [
+      { "key": "A", "text": "查询商品列表，数据简单且需要缓存" },
+      { "key": "B", "text": "获取公共文章内容" },
+      { "key": "C", "text": "提交用户注册表单，写入数据库" },
+      { "key": "D", "text": "读取首页配置信息" }
+    ],
+    "answer": "C",
+    "explanation": "POST 适合：更新服务器文件/数据库、发送大量数据、未知字符的用户输入等场景。GET 适合简单、可缓存的查询操作。用户注册需要写入数据库，应使用 POST。",
+    "score": 5
+  },
+  {
+    "id": 8,
+    "type": "multiple-choice",
+    "topic": "AJAX",
+    "chapter": "AJAX状态码",
+    "difficulty": "medium",
+    "question": "关于 AJAX 的 readyState 状态码，以下哪些说法是正确的？（多选）",
+    "options": [
+      { "key": "A", "text": "readyState 为 0 表示 XMLHttpRequest 对象已创建但 open 尚未执行" },
+      { "key": "B", "text": "readyState 为 2 表示 open 方法已执行，配置完成" },
+      { "key": "C", "text": "readyState 为 3 表示正在解析响应内容" },
+      { "key": "D", "text": "readyState 为 4 时响应内容才完全可用" }
+    ],
+    "answer": "ACD",
+    "explanation": "readyState 各值：0-未初始化，1-open 已执行（配置完成），2-send 已执行，3-正在解析响应，4-解析完毕可用。选项 B 中 2 的描述实际对应的是 1，因此 B 错误。",
+    "score": 5
+  },
+  {
+    "id": 9,
+    "type": "code-fix",
+    "topic": "AJAX",
+    "chapter": "AJAX请求方式",
+    "difficulty": "medium",
+    "question": "以下代码尝试用 POST 方式发送带参数的表单数据。请指出错误并写出修正后的完整代码。",
+    "codeBefore": "const xhr = new XMLHttpRequest();\nxhr.open('post', './login.php?a=100&b=200', true);\nxhr.send();\n\nxhr.onreadystatechange = function () {\n  if (xhr.readyState === 4 && xhr.status === 200) {\n    console.log(xhr.responseText);\n  }\n};",
+    "codeAfter": "const xhr = new XMLHttpRequest();\nxhr.open('post', './login.php', true);\nxhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');\nxhr.send('a=100&b=200');\n\nxhr.onreadystatechange = function () {\n  if (xhr.readyState === 4 && xhr.status === 200) {\n    console.log(xhr.responseText);\n  }\n};",
+    "answer": "const xhr = new XMLHttpRequest();\nxhr.open('post', './login.php', true);\nxhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');\nxhr.send('a=100&b=200');\n\nxhr.onreadystatechange = function () {\n  if (xhr.readyState === 4 && xhr.status === 200) {\n    console.log(xhr.responseText);\n  }\n};",
+    "explanation": "共 3 处错误：1. POST 请求参数不应拼接在 URL 中（'?a=100&b=200'），应放在 send 方法中通过请求体发送；2. 缺少 setRequestHeader 设置 Content-Type 为 'application/x-www-form-urlencoded'；3. onreadystatechange 应在 send 之前绑定，更规范的做法是在 send 前注册事件。",
+    "score": 10
+  },
+  {
+    "id": 10,
+    "type": "programming",
+    "topic": "AJAX",
+    "chapter": "AJAX请求方式",
+    "difficulty": "medium",
+    "question": "请使用 XMLHttpRequest 编写一个 POST 请求，向 './api/login.php' 发送用户名和密码。要求：1) 使用 POST 方式异步发送；2) 设置正确的 Content-Type 请求头；3) 参数格式为 'username=admin&password=123456'；4) 请求成功后在控制台打印 '登录成功：' 和返回数据，失败时打印 '请求失败'。",
+    "answer": "const xhr = new XMLHttpRequest();\nxhr.open('post', './api/login.php', true);\nxhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');\n\nxhr.onreadystatechange = function () {\n  if (xhr.readyState === 4) {\n    if (xhr.status >= 200 && xhr.status < 300) {\n      console.log('登录成功：' + xhr.responseText);\n    } else {\n      console.log('请求失败');\n    }\n  }\n};\n\nxhr.send('username=admin&password=123456');",
+    "explanation": "POST 请求要点：1. 参数放在 send() 的请求体中，不拼接在 URL；2. 必须通过 setRequestHeader 设置 Content-Type 为 'application/x-www-form-urlencoded'；3. 先在 send 前绑定 onreadystatechange 事件；4. 校验 readyState === 4 且 HTTP 状态码为 2xx。",
+    "score": 10
+  },
+  {
+    "id": 11,
+    "type": "single-choice",
+    "topic": "AJAX",
+    "chapter": "AJAX封装",
+    "difficulty": "medium",
+    "question": "在 $ajax 封装函数中，querystring 函数的作用是什么？",
+    "options": [
+      { "key": "A", "text": "将 JSON 字符串解析为对象" },
+      { "key": "B", "text": "将对象转换为 URL 参数字符串格式" },
+      { "key": "C", "text": "对 URL 进行编码防止 XSS 攻击" },
+      { "key": "D", "text": "检测请求是否超时" }
+    ],
+    "answer": "B",
+    "explanation": "querystring 函数将 { username: '小明', age: 18 } 这样的对象转换为 'username=小明&age=18' 的 URL 参数字符串，用于 GET 请求拼接 URL 或 POST 请求体。",
+    "score": 5
+  },
+  {
+    "id": 12,
+    "type": "single-choice",
+    "topic": "AJAX",
+    "chapter": "AJAX封装",
+    "difficulty": "medium",
+    "question": "在 $ajax 封装中，为什么需要使用 try...catch 创建 XMLHttpRequest 对象？",
+    "options": [
+      { "key": "A", "text": "为了捕获网络请求异常" },
+      { "key": "B", "text": "为了兼容低版本 IE 浏览器" },
+      { "key": "C", "text": "为了处理 JSON 解析错误" },
+      { "key": "D", "text": "为了防止内存泄漏" }
+    ],
+    "answer": "B",
+    "explanation": "低版本 IE（IE9 以下）不支持 XMLHttpRequest 构造函数，需要使用 ActiveXObject('Microsoft.XMLHTTP')。try...catch 先尝试现代方式，失败则降级使用 IE 兼容方式。",
+    "score": 5
+  },
+  {
+    "id": 13,
+    "type": "multiple-choice",
+    "topic": "AJAX",
+    "chapter": "AJAX封装",
+    "difficulty": "hard",
+    "question": "关于 $ajax 封装函数的设计，以下哪些说法是正确的？（多选）",
+    "options": [
+      { "key": "A", "text": "GET 请求时参数会拼接到 URL 后面" },
+      { "key": "B", "text": "POST 请求时参数放在 send 方法的请求体中" },
+      { "key": "C", "text": "success 和 error 回调函数可以省略不传" },
+      { "key": "D", "text": "无论成功还是失败，readyState 为 4 时都会触发 onreadystatechange 回调" }
+    ],
+    "answer": "ABCD",
+    "explanation": "在 $ajax 封装中，GET 请求参数通过 querystring 拼接到 URL；POST 请求参数通过 send 方法传递并设置 Content-Type；success 和 error 通过 && 短路运算，未传则跳过；onreadystatechange 在每次 readyState 变化都触发，但内部仅在 readyState === 4 时做判断。四种说法都正确。",
+    "score": 5
+  },
+  {
+    "id": 14,
+    "type": "code-fix",
+    "topic": "AJAX",
+    "chapter": "AJAX封装",
+    "difficulty": "hard",
+    "question": "以下是一个简化版 AJAX 封装函数，其中存在多处错误。请修正并写出完整代码。",
+    "codeBefore": "function myAjax({ type, url, data, callback }) {\n  const xhr = new XMLHttpRequest();\n\n  if (type === 'get' && data) {\n    url = url + '?' + data;\n  }\n\n  xhr.open(type, url, true);\n  xhr.send();\n\n  xhr.onreadystatechange = function () {\n    if (xhr.readyState === 4) {\n      callback(xhr.responseText);\n    }\n  };\n}",
+    "codeAfter": "function myAjax({ type = 'get', url, data, callback }) {\n  const xhr = new XMLHttpRequest();\n\n  let params = '';\n  if (data) {\n    const arr = [];\n    for (const key in data) {\n      arr.push(key + '=' + data[key]);\n    }\n    params = arr.join('&');\n  }\n\n  if (type === 'get' && params) {\n    url = url + '?' + params;\n  }\n\n  xhr.open(type, url, true);\n\n  if (type === 'get') {\n    xhr.send();\n  } else {\n    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');\n    xhr.send(params);\n  }\n\n  xhr.onreadystatechange = function () {\n    if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {\n      callback && callback(xhr.responseText);\n    }\n  };\n}",
+    "answer": "function myAjax({ type = 'get', url, data, callback }) {\n  const xhr = new XMLHttpRequest();\n\n  let params = '';\n  if (data) {\n    const arr = [];\n    for (const key in data) {\n      arr.push(key + '=' + data[key]);\n    }\n    params = arr.join('&');\n  }\n\n  if (type === 'get' && params) {\n    url = url + '?' + params;\n  }\n\n  xhr.open(type, url, true);\n\n  if (type === 'get') {\n    xhr.send();\n  } else {\n    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');\n    xhr.send(params);\n  }\n\n  xhr.onreadystatechange = function () {\n    if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {\n      callback && callback(xhr.responseText);\n    }\n  };\n}",
+    "explanation": "共 5 处问题：1. type 参数没有默认值，调用时容易出错；2. data 直接拼接到 URL（它是对象不是字符串），需要先转为 'key=value&key=value' 格式；3. POST 请求缺少 setRequestHeader 设置 Content-Type；4. POST 请求参数只应该放在 send 方法中；5. 缺少 HTTP 状态码判断，200-299 范围外也应视为失败。",
+    "score": 10
+  },
+  {
+    "id": 15,
+    "type": "programming",
+    "topic": "AJAX",
+    "chapter": "AJAX封装",
+    "difficulty": "hard",
+    "question": "请编写一个 queryString 工具函数，将传入的对象转换为 URL 查询字符串格式。要求：1) 函数名为 queryString；2) 接收一个对象参数；3) 遍历对象的可枚举属性，拼接为 'key1=value1&key2=value2' 格式；4) 末尾不能有多余的 '&'；5) 空对象返回空字符串。",
+    "answer": "function queryString(obj) {\n  let str = '';\n  for (const key in obj) {\n    str += key + '=' + obj[key] + '&';\n  }\n  return str ? str.substring(0, str.length - 1) : '';\n}",
+    "explanation": "queryString 核心逻辑：使用 for...in 遍历对象属性，每次拼接 'key=value&'，最后用 substring 去掉末尾多余的 '&'。空对象时 for...in 不执行，str 为空，返回空字符串。这是 AJAX 封装中参数序列化的常用方法。",
+    "score": 10
+  },
+  {
+    "id": 16,
+    "type": "single-choice",
+    "topic": "AJAX",
+    "chapter": "Fetch API",
+    "difficulty": "medium",
+    "question": "以下关于 fetch API 的描述，哪一项是正确的？",
+    "options": [
+      { "key": "A", "text": "fetch 是 XMLHttpRequest 的别名，功能完全相同" },
+      { "key": "B", "text": "fetch 基于 Promise，返回的 res.json() 也返回一个 Promise" },
+      { "key": "C", "text": "fetch 只能发送 GET 请求，不能发送 POST 请求" },
+      { "key": "D", "text": "fetch 会自动处理 HTTP 错误状态码并进入 catch" }
+    ],
+    "answer": "B",
+    "explanation": "fetch 是现代浏览器内置的 API，基于 Promise 实现。res.json() 方法是异步的，也返回一个 Promise，因此需要第二个 .then() 才能获取到解析后的数据。fetch 支持各种请求方式，且只有网络故障时才会进入 catch，HTTP 错误状态码（如 404）不会触发 catch。",
+    "score": 5
+  },
+  {
+    "id": 17,
+    "type": "single-choice",
+    "topic": "AJAX",
+    "chapter": "AJAX概述",
+    "difficulty": "medium",
+    "question": "关于 AJAX 的同步和异步请求，以下说法正确的是？",
+    "options": [
+      { "key": "A", "text": "同步请求时用户可以正常操作页面" },
+      { "key": "B", "text": "异步请求会阻塞页面直到响应返回" },
+      { "key": "C", "text": "异步请求发送时不影响用户的其他操作" },
+      { "key": "D", "text": "AJAX 默认使用同步方式发送请求" }
+    ],
+    "answer": "C",
+    "explanation": "异步请求发送后不影响用户的其他操作，请求与用户操作走两条路互不干扰。同步请求则会使页面「卡住」，用户必须等待返回。AJAX 默认使用异步方式（open 的第三个参数默认为 true）。",
+    "score": 5
+  },
+  {
+    "id": 18,
+    "type": "multiple-choice",
+    "topic": "AJAX",
+    "chapter": "Fetch API",
+    "difficulty": "hard",
+    "question": "关于 XMLHttpRequest 和 fetch API 的区别，以下哪些说法是正确的？（多选）",
+    "options": [
+      { "key": "A", "text": "XMLHttpRequest 通过事件监听处理响应，fetch 通过 Promise 链式调用处理" },
+      { "key": "B", "text": "fetch 无法设置请求头，只能发送简单请求" },
+      { "key": "C", "text": "XMLHttpRequest 可以通过 xhr.status 获取 HTTP 状态码" },
+      { "key": "D", "text": "fetch 的 .json() 方法是异步的，需要配合 .then() 或 await 使用" }
+    ],
+    "answer": "ACD",
+    "explanation": "XMLHttpRequest 使用 onreadystatechange 事件监听状态，fetch 使用 Promise 的 .then() 链式调用。xhr.status 可以获取 HTTP 状态码。fetch 的 .json() 返回 Promise，需 .then() 或 await 处理。fetch 可以通过第二个参数设置 method、headers 等，因此 B 错误。",
+    "score": 5
+  },
+  {
+    "id": 19,
+    "type": "code-fix",
+    "topic": "AJAX",
+    "chapter": "Fetch API",
+    "difficulty": "hard",
+    "question": "以下代码尝试使用 fetch 获取数据并渲染到页面。请指出错误并写出修正后的代码。",
+    "codeBefore": "fetch('https://api.example.com/users')\n  .then(function (res) {\n    let data = res.json();\n    document.getElementById('list').innerHTML = data.name;\n  })\n  .catch(function (err) {\n    console.log(err);\n  });",
+    "codeAfter": "fetch('https://api.example.com/users')\n  .then(function (res) {\n    return res.json();\n  })\n  .then(function (data) {\n    document.getElementById('list').innerHTML = data.name;\n  })\n  .catch(function (err) {\n    console.error(err);\n  });",
+    "answer": "fetch('https://api.example.com/users')\n  .then(function (res) {\n    return res.json();\n  })\n  .then(function (data) {\n    document.getElementById('list').innerHTML = data.name;\n  })\n  .catch(function (err) {\n    console.error(err);\n  });",
+    "explanation": "核心错误：res.json() 返回的是一个 Promise，不能直接赋值给 data 使用。正确做法是先 return res.json()，再通过链式 .then() 接收解析后的数据。另外 console.log 改为 console.error 更规范，区分错误日志。",
+    "score": 10
+  },
+  {
+    "id": 20,
+    "type": "programming",
+    "topic": "AJAX",
+    "chapter": "Fetch API",
+    "difficulty": "hard",
+    "question": "请使用 fetch API 编写代码，从 'https://api.example.com/products' 获取商品列表数据。要求：1) 使用 fetch 发送 GET 请求；2) 将响应解析为 JSON；3) 成功后将数据数组的长度显示在 id 为 'count' 的元素中；4) 请求失败时在控制台打印错误信息。",
+    "answer": "fetch('https://api.example.com/products')\n  .then(function (res) {\n    return res.json();\n  })\n  .then(function (data) {\n    document.getElementById('count').textContent = data.length;\n  })\n  .catch(function (err) {\n    console.error(err);\n  });",
+    "explanation": "fetch 请求三步走：1. fetch(url) 发起请求，返回 Promise；2. 第一个 .then() 中 return res.json() 解析 JSON，这也返回 Promise；3. 第二个 .then() 获取解析后的数据，操作 DOM 更新页面；4. .catch() 统一捕获网络异常。",
+    "score": 10
+  }
+]

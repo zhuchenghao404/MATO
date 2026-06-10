@@ -1,0 +1,573 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* :root 在这里可以更改网站颜色的主色调 */
+:root {
+    --comic-black: #0a0a0a;
+    --comic-white: #f8f8f8;
+    --comic-gray: #333;
+    --accent: #000;
+    /* 可换成红色 #c00 做点睛 */
+}
+
+body {
+    background: #f5f5f5;   /* 浅灰底，模拟旧漫画纸质感 */
+    font-family: 'Comic Neue', 'Comic Neue', 'Courier New', monospace;
+    /* 全局波点纹理 (漫画网点效果) */
+    background-image: radial-gradient(circle at 30% 40%, rgba(0,0,0,0.08) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+/* 漫画面板效果 */
+.comic-panel {
+    background: var(--comic-white);
+    color: var(--comic-black);
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0 #000;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 900px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+
+/* 漫画标题大字 */
+h1,
+h2 {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 3rem;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    text-shadow: 4px 4px 0 #000;
+    color: var(--comic-white);
+    padding-bottom: 10px;
+}
+
+
+
+
+/* 网点/半调效果（可选） */
+.comic-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.08) 41%);
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+
+
+
+/* 速度线背景示例 */
+.speed-lines {
+    background: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 10px,
+            rgba(255, 255, 255, 0.1) 10px,
+            rgba(255, 255, 255, 0.1) 20px);
+}
+
+
+
+
+
+
+
+ /* btn */
+ /* #region */
+ .comic-btn {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     padding: 1rem 2.2rem;
+     font-family: 'Bangers', 'Impact', sans-serif;
+     font-size: 1.2rem;
+     font-weight: 900;
+     text-transform: uppercase;
+     letter-spacing: 1.5px;
+     color: #fff;
+     background: #000;
+     border: 3px solid #fff;
+     box-shadow: 4px 4px 0 #fff,
+         6px 6px 0 #000;
+     transition: all 0.1s ease;
+     cursor: pointer;
+     user-select: none;
+     position: relative;
+     overflow: hidden;
+     text-decoration: none;
+     min-width: 160px;
+ }
+ /* 悬停效果 - 像被“按下去”一样 */
+ .comic-btn:hover {
+     transform: translate(2px, 2px);
+     box-shadow: 4px 4px 0 #fff,
+         6px 6px 0 #000;
+     background: #1a1a1a;
+ }
+ /* 点击时更明显的按压效果 */
+ .comic-btn:active {
+     transform: translate(6px, 6px);
+     box-shadow: 2px 2px 0 #fff,
+         3px 3px 0 #000;
+     background: #333;
+ }
+ /* 白色按钮（反色） */
+ .comic-btn.white {
+     background: #fff;
+     color: #000;
+     border-color: #000;
+     box-shadow: 6px 6px 0 #000,
+         8px 8px 0 #fff;
+ }
+ .comic-btn.white:hover {
+     background: #f0f0f0;
+ }
+ /* 小型按钮 */
+ .comic-btn.small {
+     padding: 0.7rem 1.2rem;
+     font-size: 1rem;
+     min-width: auto;
+ }
+ /* 危险/强调按钮（加红色点缀） */
+ .comic-btn.danger {
+     background: #c00;
+     border-color: #fff;
+     box-shadow: 6px 6px 0 #fff,
+         8px 8px 0 #000;
+ }
+ .comic-btn.danger:hover {
+     background: #a00;
+ }
+ /* #endregion */
+
+
+
+
+
+
+
+
+
+
+ /* li-comic */
+/* #region */
+li.comic-li {
+    font-size: clamp(1rem, 1.2vw, 1.4rem);
+    font-weight: 900;
+    font-family: 'Bangers', 'Impact', 'Arial Black', sans-serif;
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.8em 0.4em;
+    margin: 0.7em 0;
+    color: #ffffff;
+    /* 白色主体 */
+    -webkit-text-fill-color: #ffffff;
+    /* 强制白色填充 */
+    -webkit-text-stroke: clamp(1px, 0.1vw, 2.2px) #000000;
+    /* 黑色描边 */
+    text-stroke: clamp(1px, 0.1vw, 2px) #000000;
+    paint-order: stroke fill;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    text-shadow:
+        3px 3px 0 #000,
+        5px 5px 0 rgba(0, 0, 0, 0.7),
+        1px 1px 8px rgba(0, 0, 0, 0.9);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* 悬停效果 - 漫画弹跳感 */
+li.comic-li:hover {
+    color: #fff;
+    -webkit-text-stroke-color: #111;
+    transform: scale(1.12) rotate(-3deg) translateY(-4px);
+    text-shadow:
+        4px 4px 0 #000,
+        6px 6px 0 rgba(0, 0, 0, 0.8),
+        2px 2px 12px rgba(0, 0, 0, 0.95);
+}
+
+/* 下划线动画（漫画风格粗线） */
+li.comic-li::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: 0.6em;
+    width: calc(100% - 1.2em);
+    height: 2.5px;
+    background: #000;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+}
+
+li.comic-li:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+ /* #endregion */
+
+
+
+
+
+
+/* 漫画相框 */
+/* #region */
+/* 动漫漫画专用相框 */
+.comic-frame {
+    position: relative;
+    background: var(--comic-white);
+    color: var(--comic-black);
+    padding: 1.2rem;
+    margin: 2rem auto;
+    max-width: 100%;
+    border: 8px solid var(--comic-black);
+    box-shadow:
+        8px 8px 0 var(--comic-black),
+        /* 主投影 */
+        10px 10px 0 rgba(0, 0, 0, 0.3);
+    /* 第二层阴影 */
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* 可选：内层白边（经典漫画格感觉） */
+.comic-frame::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 3px solid var(--comic-black);
+    pointer-events: none;
+}
+
+/* 网点/半调效果 */
+.comic-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 45%, rgba(0, 0, 0, 0.06) 46%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 图片样式（放在相框里的 img） */
+.comic-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 4px solid var(--comic-black);
+    box-shadow: 4px 4px 0 var(--comic-black);
+}
+
+/* 悬停时增加漫画“弹出”效果 */
+.comic-frame:hover {
+    transform: translate(-2px, -2px);
+    box-shadow:
+        10px 10px 0 var(--comic-black),
+        12px 12px 0 rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+/* 撕纸/不规则边缘效果（更狂野，可选） */
+.comic-frame.jagged {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 98%,
+            95% 100%, 5% 100%, 0% 95%);
+}
+/* #endregion */
+
+
+
+
+
+
+/* 漫画转场 */
+/* #region */
+/* ====================== 漫画风 Loading 遮罩 ====================== */
+.comic-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
+
+.comic-loading-text {
+    font-family: 'Bangers', 'Impact', 'Arial Black', sans-serif;
+    font-size: clamp(4rem, 12vw, 9rem);
+    font-weight: 600;
+    color: var(--comic-black);
+    -webkit-text-stroke: 4px var(--comic-white);
+    text-stroke: 4px var(--comic-white);
+    paint-order: stroke fill;
+    text-shadow:
+        6px 6px 0 var(--comic-black),
+        8px 8px 0 rgba(0, 0, 0, 0.6);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* 动态三个点 */
+.comic-loading-dots {
+    display: inline-block;
+    font-size: clamp(4rem, 12vw, 9rem);
+    color: var(--comic-black);
+    -webkit-text-stroke: 4px var(--comic-white);
+}
+
+.comic-loading-dots::after {
+    content: ' .';
+    animation: loadingDots 1.2s steps(4, end) infinite;
+}
+
+@keyframes loadingDots {
+    0% {
+        content: ' .';
+    }
+
+    25% {
+        content: ' ..';
+    }
+
+    50% {
+        content: ' ...';
+    }
+
+    75% {
+        content: ' ..';
+    }
+}
+
+/* 1秒后自动消失 */
+.comic-loading-overlay.show {
+    animation: hideOverlay 1.2s forwards;
+}
+
+@keyframes hideOverlay {
+    0% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    } 
+}
+/* ==================== 响应式 ==================== */
+
+/* ----- 手机端 (< 768px) ----- */
+@media (max-width: 767px) {
+
+    /* 标题 */
+    h1, h2 {
+        font-size: 1.8rem;
+        letter-spacing: -1px;
+        text-shadow: 2px 2px 0 #000;
+        padding-bottom: 6px;
+    }
+
+    /* 漫画面板 */
+    .comic-panel {
+        border: 3px solid #000;
+        box-shadow: 4px 4px 0 #000;
+        padding: 14px;
+        margin: 20px auto;
+        max-width: 100%;
+    }
+
+    /* 按钮 */
+    .comic-btn {
+        padding: 0.7rem 1.4rem;
+        font-size: 1rem;
+        min-width: 120px;
+        border-width: 2px;
+        box-shadow: 3px 3px 0 #fff,
+                    5px 5px 0 #000;
+    }
+    .comic-btn:hover {
+        transform: translate(1px, 1px);
+        box-shadow: 3px 3px 0 #fff,
+                    5px 5px 0 #000;
+    }
+    .comic-btn:active {
+        transform: translate(4px, 4px);
+        box-shadow: 1px 1px 0 #fff,
+                    2px 2px 0 #000;
+    }
+    .comic-btn.white {
+        box-shadow: 4px 4px 0 #000,
+                    6px 6px 0 #fff;
+    }
+    .comic-btn.small {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+    }
+    .comic-btn.danger {
+        box-shadow: 4px 4px 0 #fff,
+                    6px 6px 0 #000;
+    }
+
+    /* 列表项 */
+    li.comic-li {
+        font-size: clamp(0.85rem, 4vw, 1.1rem);
+        -webkit-text-stroke: clamp(0.5px, 0.3vw, 1.2px) #000000;
+        text-stroke: clamp(0.5px, 0.3vw, 1.2px) #000000;
+        text-shadow:
+            2px 2px 0 #000,
+            3px 3px 0 rgba(0, 0, 0, 0.7),
+            1px 1px 4px rgba(0, 0, 0, 0.9);
+        padding: 0.2em 0.5em 0.3em;
+    }
+    li.comic-li:hover {
+        transform: scale(1.08) rotate(-2deg) translateY(-3px);
+        text-shadow:
+            3px 3px 0 #000,
+            4px 4px 0 rgba(0, 0, 0, 0.8),
+            1px 1px 8px rgba(0, 0, 0, 0.95);
+    }
+
+    /* 相框 */
+    .comic-frame {
+        padding: 0.8rem;
+        margin: 1.2rem auto;
+        border: 5px solid var(--comic-black);
+        box-shadow:
+            5px 5px 0 var(--comic-black),
+            7px 7px 0 rgba(0, 0, 0, 0.3);
+    }
+    .comic-frame::before {
+        inset: 3px;
+        border-width: 2px;
+    }
+    .comic-frame img {
+        border-width: 3px;
+        box-shadow: 3px 3px 0 var(--comic-black);
+    }
+    .comic-frame:hover {
+        transform: translate(-1px, -1px);
+        box-shadow:
+            6px 6px 0 var(--comic-black),
+            8px 8px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    /* Loading 遮罩 */
+    .comic-loading-text {
+        font-size: clamp(2rem, 8vw, 5rem);
+        -webkit-text-stroke: 2px var(--comic-white);
+        text-stroke: 2px var(--comic-white);
+        text-shadow:
+            3px 3px 0 var(--comic-black),
+            5px 5px 0 rgba(0, 0, 0, 0.6);
+    }
+    .comic-loading-dots {
+        font-size: clamp(2rem, 8vw, 5rem);
+        -webkit-text-stroke: 2px var(--comic-white);
+    }
+
+    /* 背景网点缩小 */
+    body {
+        background-size: 12px 12px;
+    }
+}
+
+/* ----- 平板端 (768px - 1023px) ----- */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    /* 标题 */
+    h1, h2 {
+        font-size: 2.4rem;
+        text-shadow: 3px 3px 0 #000;
+    }
+
+    /* 漫画面板 */
+    .comic-panel {
+        border: 4px solid #000;
+        box-shadow: 6px 6px 0 #000;
+        padding: 18px;
+        margin: 25px auto;
+        max-width: 95%;
+    }
+
+    /* 按钮 */
+    .comic-btn {
+        padding: 0.85rem 1.8rem;
+        font-size: 1.1rem;
+        min-width: 140px;
+    }
+
+    /* 相框 */
+    .comic-frame {
+        padding: 1rem;
+        margin: 1.5rem auto;
+        border: 6px solid var(--comic-black);
+        box-shadow:
+            6px 6px 0 var(--comic-black),
+            8px 8px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    /* Loading */
+    .comic-loading-text {
+        font-size: clamp(3rem, 10vw, 7rem);
+    }
+    .comic-loading-dots {
+        font-size: clamp(3rem, 10vw, 7rem);
+    }
+}
+ /* 
+ <!-- 漫画 Loading 遮罩 -->
+ 放到 body 最底部
+<div 
+    v-if="isLoading" 
+    class="comic-loading-overlay"
+    :class="{ 'hide': !isLoading }"
+    >
+    <div>
+        <span class="comic-loading-text">LOADING</span>
+        <span class="comic-loading-dots"></span>
+    </div>
+</div>
+
+js
+const isLoading=ref(false);
+function showComicLoading() {
+    isLoading.value=true;
+
+    // 1.4秒后自动隐藏（可自行调整时间）
+    setTimeout(()=> {
+            isLoading.value=false;
+    }, 1400);
+}
+  */
+ /* #endregion */

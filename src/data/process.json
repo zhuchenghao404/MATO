@@ -1,0 +1,306 @@
+[
+  {
+    "id": 1,
+    "type": "single-choice",
+    "topic": "Promise",
+    "chapter": "Promise 基础",
+    "difficulty": "easy",
+    "question": "以下关于 Promise 的描述，哪一项是正确的？",
+    "options": [
+      { "key": "A", "text": "Promise 是一个普通对象，可以直接使用" },
+      { "key": "B", "text": "Promise 是一个构造函数，需通过 new 创建实例" },
+      { "key": "C", "text": "Promise 只能处理同步操作" },
+      { "key": "D", "text": "Promise 创建后状态可以反复改变" }
+    ],
+    "answer": "B",
+    "explanation": "Promise 是一个构造函数，必须通过 new 关键字来创建实例。它不是普通对象，专门用于处理异步操作，且状态一旦确定就不可改变。",
+    "score": 5
+  },
+  {
+    "id": 2,
+    "type": "single-choice",
+    "topic": "Promise",
+    "chapter": "Promise 基础",
+    "difficulty": "easy",
+    "question": "Promise 的状态从 fulfilled（已成功）可以变为以下哪种状态？",
+    "options": [
+      { "key": "A", "text": "pending（进行中）" },
+      { "key": "B", "text": "rejected（已失败）" },
+      { "key": "C", "text": "既可以变为 pending，也可以变为 rejected" },
+      { "key": "D", "text": "不再改变，状态一旦确定就不可逆" }
+    ],
+    "answer": "D",
+    "explanation": "Promise 的状态一旦改变就不可再变。fulfilled 或 rejected 都不能再变回 pending，也不能在成功和失败之间来回切换。",
+    "score": 5
+  },
+  {
+    "id": 3,
+    "type": "multiple-choice",
+    "topic": "Promise",
+    "chapter": "Promise 基础",
+    "difficulty": "easy",
+    "question": "以下关于 Promise 的说法，正确的有哪些？",
+    "options": [
+      { "key": "A", "text": "Promise 有三种状态：pending、fulfilled、rejected" },
+      { "key": "B", "text": "resolve() 可以将 Promise 状态改为 fulfilled" },
+      { "key": "C", "text": "reject() 可以将 Promise 状态改为 rejected" },
+      { "key": "D", "text": "Promise 的状态可以从 rejected 变为 fulfilled" }
+    ],
+    "answer": "ABC",
+    "explanation": "Promise 有 pending、fulfilled、rejected 三种状态。resolve() 和 reject() 分别将状态改为 fulfilled 和 rejected。状态一旦改变就不可逆，所以 rejected 不能变为 fulfilled。",
+    "score": 5
+  },
+  {
+    "id": 4,
+    "type": "code-fix",
+    "topic": "Promise",
+    "chapter": "Promise 基础",
+    "difficulty": "easy",
+    "question": "以下代码中，resolve 和 reject 同时被调用。请修正代码，确保 Promise 只能 resolve 成功结果。",
+    "codeBefore": "const promise = new Promise((resolve, reject) => {\n  resolve('success')\n  reject('fail')\n})\npromise.then(res => console.log(res))",
+    "codeAfter": "const promise = new Promise((resolve, reject) => {\n  resolve('success')\n})\npromise.then(res => console.log(res))",
+    "answer": "const promise = new Promise((resolve, reject) => {\n  resolve('success')\n})\npromise.then(res => console.log(res))",
+    "explanation": "Promise 状态一旦确定就不可逆。虽然 resolve 后调用 reject 不会生效（状态已锁定），但最佳实践是只调用 resolve 或 reject 中的一个，避免造成误解。应删除多余的 reject 调用。",
+    "score": 10
+  },
+  {
+    "id": 5,
+    "type": "programming",
+    "topic": "Promise",
+    "chapter": "Promise 基础",
+    "difficulty": "easy",
+    "question": "请编写一个函数 delayHello，返回一个 Promise，使其在 1 秒后 resolve 字符串 \"hello\"。",
+    "codeTemplate": "function delayHello() {\n  // 在此处编写代码\n\n}",
+    "answer": "function delayHello() {\n  return new Promise((resolve) => {\n    setTimeout(() => {\n      resolve('hello')\n    }, 1000)\n  })\n}",
+    "explanation": "通过 new Promise 构造函数创建 Promise 实例，在回调中使用 setTimeout 实现 1 秒延迟后调用 resolve('hello')。",
+    "score": 15
+  },
+  {
+    "id": 6,
+    "type": "single-choice",
+    "topic": "Promise",
+    "chapter": "then 与链式调用",
+    "difficulty": "easy",
+    "question": "在 .then() 回调中如果不显式 return 任何值，下一个 .then() 收到的参数是什么？",
+    "options": [
+      { "key": "A", "text": "null" },
+      { "key": "B", "text": "undefined" },
+      { "key": "C", "text": "上一个 Promise 的原始值" },
+      { "key": "D", "text": "会抛出错误" }
+    ],
+    "answer": "B",
+    "explanation": "当 .then() 回调中没有 return 语句时，默认返回 undefined，下一个 .then() 会收到 undefined 作为参数。",
+    "score": 5
+  },
+  {
+    "id": 7,
+    "type": "single-choice",
+    "topic": "Promise",
+    "chapter": "catch 错误处理",
+    "difficulty": "medium",
+    "question": "以下代码的输出是什么？\nPromise.reject('error')\n  .then(res => console.log('then1'))\n  .catch(err => console.log('caught:', err))\n  .then(res => console.log('then2'))",
+    "options": [
+      { "key": "A", "text": "then1  then2" },
+      { "key": "B", "text": "caught: error  then2" },
+      { "key": "C", "text": "caught: error" },
+      { "key": "D", "text": "直接报错，无输出" }
+    ],
+    "answer": "B",
+    "explanation": "Promise.reject('error') 跳过第一个 .then()，被 .catch() 捕获输出 'caught: error'。由于 .catch() 没有重新抛出错误，后续 .then() 正常执行输出 'then2'。",
+    "score": 5
+  },
+  {
+    "id": 8,
+    "type": "multiple-choice",
+    "topic": "Promise",
+    "chapter": "链式调用",
+    "difficulty": "medium",
+    "question": "关于 Promise 链式调用，以下说法正确的有哪些？",
+    "options": [
+      { "key": "A", "text": ".then() 方法返回一个新的 Promise，因此可以链式调用" },
+      { "key": "B", "text": "链中任一环节抛出错误会跳过后续 .then()，直到最近的 .catch()" },
+      { "key": "C", "text": ".finally() 无论成功或失败都会执行" },
+      { "key": "D", "text": ".catch() 只能放在链的最末尾" }
+    ],
+    "answer": "ABC",
+    "explanation": ".then() 返回新 Promise 支持链式调用；错误会沿链向下传播直到最近的 .catch()；.finally() 无论状态如何都会执行。.catch() 不一定要放在最末尾，可以放在链中间处理特定错误后再继续执行。",
+    "score": 5
+  },
+  {
+    "id": 9,
+    "type": "code-fix",
+    "topic": "Promise",
+    "chapter": "链式调用",
+    "difficulty": "medium",
+    "question": "以下代码存在嵌套 Promise 的问题（回调地狱雏形）。请将其改写为正确的链式调用。",
+    "codeBefore": "fetchData().then(data => {\n  saveData(data).then(() => {\n    console.log('done')\n  })\n})",
+    "codeAfter": "fetchData()\n  .then(data => saveData(data))\n  .then(() => console.log('done'))",
+    "answer": "fetchData()\n  .then(data => saveData(data))\n  .then(() => console.log('done'))",
+    "explanation": "嵌套 .then() 会形成回调地狱，降低可读性。应利用 .then() 返回新 Promise 的特性，将嵌套改为扁平链式调用：在第一个 .then() 中 return saveData(data)，然后在下一个 .then() 中处理后续逻辑。",
+    "score": 10
+  },
+  {
+    "id": 10,
+    "type": "programming",
+    "topic": "Promise",
+    "chapter": "链式调用",
+    "difficulty": "medium",
+    "question": "编写一个函数 processNumber，接收一个数字 n，返回一个 Promise。要求：1 秒后将 n 乘以 2 并 resolve，然后链式调用 .then() 再将其加 10，最后 console.log 输出最终结果。",
+    "codeTemplate": "function processNumber(n) {\n  // 在此处编写代码\n\n}",
+    "answer": "function processNumber(n) {\n  return new Promise((resolve) => {\n    setTimeout(() => resolve(n * 2), 1000)\n  })\n    .then(val => val + 10)\n    .then(result => console.log(result))\n}",
+    "explanation": "先创建 Promise 在 1 秒后 resolve(n*2)，然后链式调用 .then(val => val + 10) 对结果加 10，最后 .then(result => console.log(result)) 输出最终结果。每个 .then() 的返回值会自动传递给下一个 .then()。",
+    "score": 15
+  },
+  {
+    "id": 11,
+    "type": "single-choice",
+    "topic": "Promise",
+    "chapter": "Promise 静态方法",
+    "difficulty": "medium",
+    "question": "关于 Promise.all()，以下描述正确的是？",
+    "options": [
+      { "key": "A", "text": "只要有一个 Promise 成功就立即返回" },
+      { "key": "B", "text": "所有 Promise 都成功才成功，任一失败则立即失败" },
+      { "key": "C", "text": "等待所有 Promise settled 后，无论成败都返回每个的结果" },
+      { "key": "D", "text": "按完成先后顺序返回结果" }
+    ],
+    "answer": "B",
+    "explanation": "Promise.all() 采用\"全有或全无\"策略：所有输入的 Promise 都 fulfilled 时才成功，返回结果数组；只要有一个 rejected 就立即失败。适合彼此依赖的并发请求场景。",
+    "score": 5
+  },
+  {
+    "id": 12,
+    "type": "single-choice",
+    "topic": "Promise",
+    "chapter": "Promise 静态方法",
+    "difficulty": "medium",
+    "question": "以下哪个场景最适合使用 Promise.allSettled()？",
+    "options": [
+      { "key": "A", "text": "多个请求彼此依赖，任一失败都应终止" },
+      { "key": "B", "text": "多个互不依赖的异步任务，需要知道每个任务的结果（无论成功或失败）" },
+      { "key": "C", "text": "只需要最快完成的那个请求的结果" },
+      { "key": "D", "text": "只有一个异步操作" }
+    ],
+    "answer": "B",
+    "explanation": "Promise.allSettled() 会等待所有 Promise 都 settled（无论成功失败），返回每个任务的结果数组。适合多个互不依赖的任务，需要分别处理成功和失败结果的场景。而 A 适合 Promise.all()，C 适合 Promise.race()。",
+    "score": 5
+  },
+  {
+    "id": 13,
+    "type": "multiple-choice",
+    "topic": "Promise",
+    "chapter": "Promise 静态方法",
+    "difficulty": "medium",
+    "question": "关于 Promise 静态方法，以下说法正确的有哪些？",
+    "options": [
+      { "key": "A", "text": "Promise.resolve() 返回一个已成功的 Promise" },
+      { "key": "B", "text": "Promise.reject() 返回一个已失败的 Promise" },
+      { "key": "C", "text": "Promise.all() 在任一输入的 Promise rejected 时会立即失败" },
+      { "key": "D", "text": "Promise.allSettled() 返回的结果数组中，成功项包含 value 字段，失败项包含 reason 字段" }
+    ],
+    "answer": "ABCD",
+    "explanation": "四个选项都正确。Promise.resolve/reject 分别快速创建成功/失败的 Promise。Promise.all 任一失败即整体失败。Promise.allSettled 返回形如 { status: 'fulfilled', value: ... } 或 { status: 'rejected', reason: ... } 的数组。",
+    "score": 5
+  },
+  {
+    "id": 14,
+    "type": "code-fix",
+    "topic": "Promise",
+    "chapter": "Promise 静态方法",
+    "difficulty": "medium",
+    "question": "以下代码使用 Promise.all 并发请求两个接口，但第二个请求忘记调用 .json() 解析响应。请修正代码。",
+    "codeBefore": "const [a, b] = await Promise.all([\n  fetch('/api/a').then(r => r.json()),\n  fetch('/api/b')\n])\nconsole.log(a, b.status)",
+    "codeAfter": "const [a, b] = await Promise.all([\n  fetch('/api/a').then(r => r.json()),\n  fetch('/api/b').then(r => r.json())\n])\nconsole.log(a, b)",
+    "answer": "const [a, b] = await Promise.all([\n  fetch('/api/a').then(r => r.json()),\n  fetch('/api/b').then(r => r.json())\n])\nconsole.log(a, b)",
+    "explanation": "fetch() 返回的是 Response 对象，需要调用 .json() 才能获取解析后的 JSON 数据。原代码中 fetch('/api/b') 没有调用 .json()，导致 b 是 Response 对象而非数据。需在第二个 fetch 后也链式调用 .then(r => r.json())。",
+    "score": 10
+  },
+  {
+    "id": 15,
+    "type": "programming",
+    "topic": "Promise",
+    "chapter": "Promise 静态方法",
+    "difficulty": "medium",
+    "question": "编写一个 async 函数 fetchAll(urls)，接收一个 URL 字符串数组 urls。使用 Promise.allSettled 并发发送请求，返回一个数组。要求：成功项为 { ok: true, data: 解析后的JSON }，失败项为 { ok: false, error: 错误信息 }。",
+    "codeTemplate": "async function fetchAll(urls) {\n  // 在此处编写代码\n\n}",
+    "answer": "async function fetchAll(urls) {\n  const results = await Promise.allSettled(\n    urls.map(url => fetch(url).then(r => {\n      if (!r.ok) throw new Error('HTTP ' + r.status)\n      return r.json()\n    }))\n  )\n  return results.map(r => {\n    if (r.status === 'fulfilled') {\n      return { ok: true, data: r.value }\n    } else {\n      return { ok: false, error: r.reason.message || String(r.reason) }\n    }\n  })\n}",
+    "explanation": "使用 Promise.allSettled 等待所有请求完成，通过 urls.map 为每个 URL 创建 fetch Promise。然后遍历 results，根据 status 判断成功或失败，分别返回 { ok: true, data } 或 { ok: false, error }。",
+    "score": 15
+  },
+  {
+    "id": 16,
+    "type": "single-choice",
+    "topic": "Promise",
+    "chapter": "错误处理进阶",
+    "difficulty": "hard",
+    "question": "在 Promise 链中，.catch() 处理错误后如果返回了一个普通值（如 'fallback'），后续的 .then() 会怎样？",
+    "options": [
+      { "key": "A", "text": "跳过后续 .then()，直接到下一个 .catch()" },
+      { "key": "B", "text": "继续正常执行，后续 .then() 接收 .catch() 返回的值" },
+      { "key": "C", "text": "抛出错误" },
+      { "key": "D", "text": "链式调用直接终止" }
+    ],
+    "answer": "B",
+    "explanation": ".catch() 本质是 .then(null, onRejected)，它同样返回一个新的 Promise。如果 .catch() 的回调返回了一个值，这个值会被传递给后续的 .then()，链式调用可以正常继续。这是一种实现降级策略的常用模式。",
+    "score": 5
+  },
+  {
+    "id": 17,
+    "type": "single-choice",
+    "topic": "Promise",
+    "chapter": "async/await",
+    "difficulty": "hard",
+    "question": "关于 async/await，以下说法正确的是？",
+    "options": [
+      { "key": "A", "text": "async 函数内部的 await 会阻塞整个 JavaScript 主线程" },
+      { "key": "B", "text": "async 函数总是返回一个 Promise" },
+      { "key": "C", "text": "await 只能用在 async 函数内部" },
+      { "key": "D", "text": "B 和 C 都正确" }
+    ],
+    "answer": "D",
+    "explanation": "async 函数的返回值会自动包装成 Promise（返回普通值则 Promise.resolve 包裹）。await 只能在 async 函数内使用（ES2022 后顶层 await 在模块中可用，但常规仍以 async 函数内为主）。await 不会阻塞主线程，它只是暂停 async 函数内部的执行。",
+    "score": 5
+  },
+  {
+    "id": 18,
+    "type": "multiple-choice",
+    "topic": "Promise",
+    "chapter": "async/await",
+    "difficulty": "hard",
+    "question": "以下关于 Promise 和 async/await 的说法，正确的有哪些？",
+    "options": [
+      { "key": "A", "text": "async/await 是 Promise 的语法糖，本质仍是 Promise" },
+      { "key": "B", "text": "async 函数中 return 的值会被自动包装成 Promise.resolve()" },
+      { "key": "C", "text": "try/catch 可以捕获 async 函数中 await 后面的 rejected Promise" },
+      { "key": "D", "text": "await 可以搭配 Promise.all 使用，如 await Promise.all([p1, p2])" }
+    ],
+    "answer": "ABCD",
+    "explanation": "四个选项均正确。async/await 底层仍是 Promise；async 函数 return 的值会自动包装；try/catch 可捕获 await 的 rejected Promise；await 可与 Promise.all 等静态方法结合使用，实现并发等待。",
+    "score": 5
+  },
+  {
+    "id": 19,
+    "type": "code-fix",
+    "topic": "Promise",
+    "chapter": "async/await",
+    "difficulty": "hard",
+    "question": "以下 async 函数缺少错误处理，网络请求失败时会抛出未捕获的错误导致程序崩溃。请加上 try/catch 并检查响应状态。",
+    "codeBefore": "async function loadData() {\n  const res = await fetch('/api/data')\n  const data = await res.json()\n  return data\n}",
+    "codeAfter": "async function loadData() {\n  try {\n    const res = await fetch('/api/data')\n    if (!res.ok) throw new Error('HTTP ' + res.status)\n    const data = await res.json()\n    return data\n  } catch (err) {\n    console.error('加载失败:', err)\n    throw err\n  }\n}",
+    "answer": "async function loadData() {\n  try {\n    const res = await fetch('/api/data')\n    if (!res.ok) throw new Error('HTTP ' + res.status)\n    const data = await res.json()\n    return data\n  } catch (err) {\n    console.error('加载失败:', err)\n    throw err\n  }\n}",
+    "explanation": "原代码有两个问题：1) 未检查 res.ok，HTTP 错误状态码（如 404、500）不会触发 fetch 的 reject；2) 没有 try/catch 包裹，网络错误或 JSON 解析错误无法被捕获。修复方案：用 try/catch 包裹，并检查 res.ok。",
+    "score": 10
+  },
+  {
+    "id": 20,
+    "type": "programming",
+    "topic": "Promise",
+    "chapter": "综合实战",
+    "difficulty": "hard",
+    "question": "编写一个 async 函数 retryFetch(url, maxRetries)。使用 fetch 发送请求，如果请求失败（网络错误或 !res.ok），则自动重试，最多重试 maxRetries 次。全部失败则抛出最后一个错误。每次重试前等待 500ms。",
+    "codeTemplate": "async function retryFetch(url, maxRetries) {\n  // 在此处编写代码\n\n}",
+    "answer": "async function retryFetch(url, maxRetries) {\n  let lastError\n  for (let i = 0; i <= maxRetries; i++) {\n    try {\n      const res = await fetch(url)\n      if (!res.ok) throw new Error('HTTP ' + res.status)\n      return await res.json()\n    } catch (err) {\n      lastError = err\n      if (i < maxRetries) {\n        await new Promise(r => setTimeout(r, 500))\n      }\n    }\n  }\n  throw lastError\n}",
+    "explanation": "使用 for 循环控制重试次数（0 到 maxRetries 共 maxRetries + 1 次尝试）。每次用 try/catch 捕获 fetch 和 HTTP 错误，成功则返回解析后的 JSON。失败则保存错误，如果还有重试机会则 await 延迟 500ms 后继续循环。全部失败后抛出最后一个错误。",
+    "score": 15
+  }
+]
