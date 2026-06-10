@@ -4,8 +4,8 @@
   "private": true,
   "description": "MATO - 前端学习平台（Monorepo）",
   "scripts": {
-    "client:dev": "cd client && npm run dev",
-    "client:build": "cd client && npm run build",
+    "browser:dev": "cd browser && npm run dev",
+    "browser:build": "cd browser && npm run build",
     "server:dev": "cd server && npm run dev",
     "server:start": "cd server && npm run start"
   }

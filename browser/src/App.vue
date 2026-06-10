@@ -9,11 +9,15 @@
             <router-view />
         </div>
 
+        <!-- 全局登录/注册弹窗 -->
+        <AuthModal />
+
     </div>
 </template>
 
 <script setup>
 import Tabbar from './components/Tabbar.vue'
+import AuthModal from './components/AuthModal.vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ref, computed, onMounted, onUnmounted, onUpdated } from 'vue'

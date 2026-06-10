@@ -11,6 +11,15 @@ const EXP_CAP = 99999
 const currentUser = ref(null)
 const token = ref(localStorage.getItem('mato_token') || '')
 const levelConfigs = ref([])
+const showAuthModal = ref(false)
+
+function openAuthModal() {
+  showAuthModal.value = true
+}
+
+function closeAuthModal() {
+  showAuthModal.value = false
+}
 
 /** 通用 JSON 请求封装 */
 async function request(url, options = {}) {
@@ -295,5 +304,8 @@ export function useAuth() {
     signIn,
     logout,
     token,
+    showAuthModal,
+    openAuthModal,
+    closeAuthModal,
   }
 }

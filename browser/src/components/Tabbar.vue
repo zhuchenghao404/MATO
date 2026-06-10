@@ -96,7 +96,7 @@ const route = useRoute();
 const router = useRouter();
 
 /* ===== 用户数据 ===== */
-const { isLoggedIn, userName, userAvatar, userLevel, userExp, expMax, logout } = useAuth()
+const { isLoggedIn, userName, userAvatar, userLevel, userExp, expMax, logout, openAuthModal } = useAuth()
 const showUserMenu = ref(false)
 const userWidgetRef = ref(null)
 
@@ -104,7 +104,7 @@ function handleUserClick() {
   if (isLoggedIn.value) {
     showUserMenu.value = !showUserMenu.value
   } else {
-    router.push('/Home?auth=open')
+    openAuthModal()
   }
 }
 
