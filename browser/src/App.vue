@@ -29,7 +29,7 @@ const container = ref(null)
 const tabbar = ref(null)
 const route = useRoute()
 
-const isChallengePage = computed(() => route.path.startsWith('/Challenge'))
+const isChallengePage = computed(() => route.path.startsWith('/Challenge') || route.path.startsWith('/WorkDetail') || route.path.startsWith('/Pen') || route.path.startsWith('/Profile') || route.path.startsWith('/admin'))
 
 let ctx = null
 let isHidden = false

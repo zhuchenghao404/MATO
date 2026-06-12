@@ -59,15 +59,7 @@ h2 {
 
 
 
-/* 网点/半调效果（可选） */
-.comic-panel::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.08) 41%);
-    pointer-events: none;
-    opacity: 0.6;
-}
+
 
 
 
@@ -256,16 +248,6 @@ li.comic-li:hover::after {
     inset: 5px;
     border: 3px solid var(--comic-black);
     pointer-events: none;
-}
-
-/* 网点/半调效果 */
-.comic-frame::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle, transparent 45%, rgba(0, 0, 0, 0.06) 46%);
-    pointer-events: none;
-    z-index: 1;
 }
 
 /* 图片样式（放在相框里的 img） */

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1920px;height:1080px;overflow:hidden;background:#f5f5f5;font-family:'Comic Neue',cursive;position:relative;display:flex;align-items:center;justify-content:center}
+  body::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 30% 40%,rgba(0,0,0,0.06) 1.5px,transparent 1.5px);background-size:18px 18px}
+  .card{position:relative;z-index:1;background:#fff;border:6px solid #0a0a0a;box-shadow:12px 12px 0 rgba(0,0,0,0.15);padding:60px 80px;max-width:1550px}
+  .title{text-align:center;font-family:'Bangers','Impact',sans-serif;font-size:64px;color:#0a0a0a;margin:0 0 50px;text-shadow:3px 3px 0 rgba(0,0,0,0.1)}
+  .layers{display:flex;gap:30px;align-items:stretch}
+  .layer{flex:1;background:#f8f8f8;border:3px solid #0a0a0a;padding:30px;text-align:center}
+  .layer-icon{font-size:48px;margin:0 0 15px}
+  .layer-title{font-family:'Bangers',sans-serif;font-size:28px;color:#0a0a0a;margin:0 0 12px}
+  .layer-items{font-size:18px;color:#555;line-height:2.2}
+  .layer-items b{color:#0a0a0a;font-size:20px;display:inline-block;margin:6px 0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,0.08) 60%)}
+  .tag{display:inline-block;font-family:'Bangers',sans-serif;font-size:14px;color:#fff;background:#0a0a0a;padding:2px 10px;border:1px solid #fff;margin:2px}
+  .sfx{position:absolute;font-family:'Bangers',sans-serif;font-weight:900;color:#0a0a0a;opacity:0.06;pointer-events:none;z-index:0}
+  .sfx1{font-size:180px;bottom:10px;right:30px;transform:rotate(5deg)}
+  .top-title{position:absolute;top:40px;left:100px;font-family:'Bangers','Impact',sans-serif;font-size:48px;color:#0a0a0a;text-shadow:3px 3px 0 rgba(0,0,0,0.1);letter-spacing:3px;z-index:1}
+</style>
+<div class="top-title">技术架构</div>
+<div class="sfx sfx1">STACK!</div>
+<div class="card">
+  <h2 class="title">技术栈一览</h2>
+  <div class="layers">
+    <div class="layer"><div class="layer-icon">🎨</div><div class="layer-title">前端</div><div class="layer-items"><b>Vue 3</b> + Vite<br><span class="tag">GSAP</span> <span class="tag">Element Plus</span><br><span class="tag">Vue Router</span> <span class="tag">Pinia</span><br><span class="tag">CodeMirror</span> <span class="tag">ECharts</span><br>SCSS 响应式三档</div></div>
+    <div class="layer"><div class="layer-icon">⚙️</div><div class="layer-title">后端</div><div class="layer-items"><b>Node.js</b> + Express<br><span class="tag">MySQL</span> <span class="tag">mysql2</span><br><span class="tag">JWT</span> <span class="tag">bcrypt</span><br><span class="tag">Multer</span> 文件上传<br>RESTful API 设计</div></div>
+    <div class="layer"><div class="layer-icon">🗄️</div><div class="layer-title">数据层</div><div class="layer-items"><b>MySQL</b> 关系型<br>users · works · comments<br>work_views · work_likes<br>sign_logs · exp_logs<br>level_configs</div></div>
+    <div class="layer"><div class="layer-icon">🛠️</div><div class="layer-title">工程化</div><div class="layer-items"><b>Vite</b> 构建工具<br>ES Module 开发<br>Axios 请求封装<br>Playwright 测试<br>响应式设计</div></div>
+  </div>
+</div>
+</meta>
+</html>

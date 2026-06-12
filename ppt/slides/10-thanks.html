@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1920px;height:1080px;overflow:hidden;background:#0a0a0a;font-family:'Comic Neue',cursive;position:relative;display:flex;align-items:center;justify-content:center}
+  body::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-15deg,transparent,transparent 8px,rgba(255,255,255,0.04) 8px,rgba(255,255,255,0.04) 16px)}
+  .content{position:relative;z-index:1;text-align:center;max-width:1400px}
+  .title{font-family:'Bangers','Impact',sans-serif;font-size:140px;color:#fff;text-shadow:5px 5px 0 rgba(0,0,0,0.6);letter-spacing:4px;line-height:1;margin:0 0 30px}
+  .subtitle{font-family:'Comic Neue',cursive;font-size:38px;color:rgba(255,255,255,0.7);margin:0 0 20px}
+  .grid{display:flex;gap:30px;justify-content:center;margin:50px 0}
+  .item{background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.12);padding:35px 45px;border-radius:8px;color:#fff}
+  .item-icon{font-size:40px;margin:0 0 10px}
+  .item-label{font-family:'Bangers',sans-serif;font-size:24px;color:rgba(255,255,255,0.8)}
+  .item-detail{font-size:17px;color:rgba(255,255,255,0.5);margin-top:6px}
+  .ending{font-family:'Bangers','Impact',sans-serif;font-size:80px;color:#ff6b35;text-shadow:3px 3px 0 rgba(0,0,0,0.5);margin-top:50px}
+  .sfx{position:absolute;font-family:'Bangers',sans-serif;font-weight:900;color:#fff;opacity:0.08;pointer-events:none}
+  .sfx1{font-size:200px;top:40px;left:60px;transform:rotate(-8deg)}
+  .sfx2{font-size:160px;bottom:30px;right:60px;transform:rotate(6deg)}
+</style>
+<div class="sfx sfx1">THANKS!</div>
+<div class="sfx sfx2">BAM!</div>
+<div class="content">
+  <h1 class="title">感谢聆听</h1>
+  <p class="subtitle">MATO 码途 — 基于 Vue3 的前端学习平台</p>
+  <div class="grid">
+    <div class="item"><div class="item-icon">📚</div><div class="item-label">体系教学</div><div class="item-detail">6 大模块 · 系统化路径</div></div>
+    <div class="item"><div class="item-icon">⚔️</div><div class="item-label">闯关挑战</div><div class="item-detail">3 种题型 · 经验升级</div></div>
+    <div class="item"><div class="item-icon">🎨</div><div class="item-label">自由画笔</div><div class="item-detail">三栏编辑器 · 作品分享</div></div>
+    <div class="item"><div class="item-icon">📊</div><div class="item-label">后台管理</div><div class="item-detail">数据可视化 · 审核系统</div></div>
+  </div>
+  <div class="ending">请老师们批评指正</div>
+</div>
+</meta>
+</html>

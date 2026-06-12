@@ -143,6 +143,23 @@ const todolist = [
 ]
 
 const isLoading = ref(false);
+
+function getVisitedPages() {
+  try {
+    return new Set(JSON.parse(sessionStorage.getItem('visited_pages') || '[]'))
+  } catch { return new Set() }
+}
+
+function markVisited(path) {
+  const visited = getVisitedPages()
+  visited.add(path)
+  sessionStorage.setItem('visited_pages', JSON.stringify([...visited]))
+}
+
+function isVisited(path) {
+  return getVisitedPages().has(path)
+}
+
 function showComicLoading() {
   isLoading.value = true;
   setTimeout(() => {
@@ -156,7 +173,11 @@ function handleNavClick(todo, navigate) {
     navigate();
     return;
   }
-  showComicLoading();
+  // 如果该页面已经访问过，跳过加载遮罩
+  if (!isVisited(todo.path)) {
+    showComicLoading();
+  }
+  markVisited(todo.path)
   navigate();
 }
 
@@ -190,11 +211,10 @@ function handleMouseEnter(e) {
 }
 
 onMounted(() => {
-    // 首次加载时触发遮罩（从挑战页返回则跳过）
-    const skipLoading = sessionStorage.getItem('skip_loading')
-    sessionStorage.removeItem('skip_loading')
-    if (!skipLoading) {
+    // 首次进入网站显示遮罩（Home 只显示一次）
+    if (!isVisited(route.path)) {
         showComicLoading()
+        markVisited(route.path)
     }
 
     const burger = document.getElementById('burgerBtn');

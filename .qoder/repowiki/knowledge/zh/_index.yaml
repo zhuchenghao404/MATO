@@ -1,0 +1,15 @@
+# 知识卡导出索引文件
+schema_version: 1
+locale: zh-CN
+branch: main
+exported_at: "2026-06-12T07:07:18Z"
+modules:
+    browser:
+        dir_name: 前端学习平台与代码编辑器
+        title: 前端学习平台与代码编辑器
+        scope:
+            - browser/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []

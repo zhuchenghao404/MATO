@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1920px;height:1080px;overflow:hidden;background:#0a0a0a;font-family:'Comic Neue',cursive;position:relative;display:flex;align-items:center;justify-content:center}
+  body::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-15deg,transparent,transparent 8px,rgba(255,255,255,0.03) 8px,rgba(255,255,255,0.03) 16px)}
+  .card{position:relative;z-index:1;padding:60px 80px;max-width:1550px;text-align:center}
+  .title{font-family:'Bangers','Impact',sans-serif;font-size:72px;color:#fff;text-shadow:3px 3px 0 rgba(0,0,0,0.5);margin:0 0 60px}
+  .steps{display:flex;gap:20px;align-items:center;justify-content:center}
+  .step{background:#fff;border:4px solid #0a0a0a;padding:40px 30px;flex:1;max-width:280px;text-align:center;box-shadow:6px 6px 0 rgba(255,255,255,0.2)}
+  .step-icon{font-size:56px;margin:0 0 15px}
+  .step-name{font-family:'Bangers','Impact',sans-serif;font-size:36px;color:#0a0a0a;margin:0 0 8px;display:block}
+  .step-badge{display:inline-block;font-family:'Bangers',sans-serif;font-size:16px;color:#fff;background:#0a0a0a;padding:2px 12px;border:1px solid #fff;margin-bottom:8px}
+  .step-desc{font-size:17px;color:#666;line-height:1.5}
+  .arrow{font-family:'Bangers',sans-serif;font-size:48px;color:#fff;font-weight:900}
+  .sfx{position:absolute;font-family:'Bangers',sans-serif;font-weight:900;color:#fff;opacity:0.07;pointer-events:none}
+  .sfx1{font-size:160px;bottom:20px;left:30px;transform:rotate(-6deg)}
+  .sfx2{font-size:100px;top:30px;right:40px;transform:rotate(8deg)}
+  .top-title{position:absolute;top:40px;left:100px;font-family:'Bangers','Impact',sans-serif;font-size:48px;color:#fff;text-shadow:3px 3px 0 rgba(0,0,0,0.5);letter-spacing:3px;z-index:1}
+</style>
+<div class="top-title">学习路径</div>
+<div class="sfx sfx1">LEVEL UP!</div>
+<div class="sfx sfx2">>>></div>
+<div class="card">
+  <h2 class="title">从零到一的学习路径</h2>
+  <div class="steps">
+    <div class="step"><div class="step-icon">🏗️</div><span class="step-name">HTML</span><div class="step-badge">结构</div><div class="step-desc">掌握网页骨架<br>标签 · 语义化 · 表单</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="step-icon">🎨</div><span class="step-name">CSS</span><div class="step-badge">样式</div><div class="step-desc">视觉设计与布局<br>选择器 · Flex · Grid · 动画</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="step-icon">⚡</div><span class="step-name">JavaScript</span><div class="step-badge">交互</div><div class="step-desc">动态逻辑编程<br>DOM · Promise · AJAX</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="step-icon">🖖</div><span class="step-name">Vue3</span><div class="step-badge">框架</div><div class="step-desc">现代框架开发<br>组件化 · 响应式 · 路由</div></div>
+  </div>
+</div>
+</meta>
+</html>

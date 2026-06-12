@@ -8,11 +8,26 @@
 
     <div class="page-inner">
       <!-- 页面头部 -->
-      <header class="page-header">
+      <header
+        class="page-header"
+        :class="{ 'has-custom-bg': headerBg }"
+        :style="headerBg ? { backgroundImage: `url(${headerBg})` } : {}"
+        @click="triggerHeaderBg"
+        title="点击更换页头背景"
+      >
+        <button class="back-home-btn" @click.stop="goBackHome" title="返回首页">← 返回</button>
         <span class="header-badge">★ 个人中心 ★</span>
         <h1 class="page-title">英雄档案</h1>
         <p class="page-desc">你的冒险数据全在这里！</p>
+        <span class="header-hint">🖼 点击更换背景</span>
       </header>
+      <input
+        ref="headerBgInputRef"
+        type="file"
+        accept="image/*"
+        style="display:none"
+        @change="handleHeaderBgChange"
+      />
 
       <div class="profile-grid">
         <!-- 左侧：头像 + 基础信息 -->
@@ -190,6 +205,69 @@
         </div>
       </div>
 
+      <!-- 裁剪头像弹窗 -->
+      <AvatarCropper
+        v-if="cropFile"
+        :file="cropFile"
+        @confirm="handleCropConfirm"
+        @cancel="handleCropCancel"
+      />
+
+      <!-- ====== 作品标签页 ====== -->
+      <section class="works-section">
+        <div class="works-tabs">
+          <button
+            v-for="tab in worksTabs"
+            :key="tab.key"
+            class="works-tab"
+            :class="{ active: activeWorksTab === tab.key }"
+            @click="switchWorksTab(tab.key)"
+          >
+            {{ tab.label }}
+          </button>
+        </div>
+
+        <div v-if="worksLoading" class="empty-state"><p class="empty-text">加载中...</p></div>
+        <div v-else-if="currentWorks.length === 0" class="empty-state">
+          <div class="empty-icon">📭</div>
+          <p class="empty-text">{{ emptyText }}</p>
+        </div>
+        <div v-else class="works-grid">
+          <article
+            v-for="w in currentWorks"
+            :key="w.id"
+            class="work-mini-card"
+            @click="goWorkDetail(w.id)"
+          >
+            <div class="work-mini-preview">
+              <iframe
+                v-if="w.html_code"
+                :src="`/api/works/render/${w.id}`"
+                class="work-mini-iframe"
+                sandbox="allow-scripts"
+                scrolling="no"
+              ></iframe>
+              <img v-else :src="w.cover" :alt="w.title" class="work-mini-cover" />
+            </div>
+            <span v-if="w.status === 0" class="work-status-badge">审核中</span>
+            <div class="work-mini-info">
+              <h4 class="work-mini-title">{{ w.title }}</h4>
+              <div class="work-mini-stats">
+                <span>❤ {{ w.like_count }}</span>
+                <span>★ {{ w.collect_count }}</span>
+                <span>👁 {{ w.view_count }}</span>
+              </div>
+            </div>
+            <button
+              v-if="activeWorksTab === 'my'"
+              class="work-edit-btn"
+              @click.stop="openWorkEdit(w)"
+              title="编辑作品"
+            >✎</button>
+          </article>
+        </div>
+      </section>
+
       <!-- 底部按钮 -->
       <div class="profile-actions">
         <button class="comic-btn" @click="goBack">← 返回首页</button>
@@ -200,6 +278,49 @@
         <p class="footer-tip">💢 继续冒险，变得更强大！ 💢</p>
       </footer>
     </div>
+
+    <!-- ====== 编辑作品弹窗 ====== -->
+    <div v-if="showWorkEdit" class="modal-overlay" @click.self="closeWorkEdit">
+      <div class="work-edit-modal">
+        <div class="modal-header">
+          <span class="modal-title">✎ 编辑作品</span>
+          <button class="modal-close" @click="closeWorkEdit">✕</button>
+        </div>
+        <form class="edit-form" @submit.prevent="handleWorkSave">
+          <div class="form-group">
+            <label class="form-label">作品名称</label>
+            <input v-model.trim="workEditForm.title" class="form-input" maxlength="50" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">描述</label>
+            <input v-model.trim="workEditForm.description" class="form-input" maxlength="200" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">HTML</label>
+            <textarea v-model="workEditForm.html_code" class="form-input form-code" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">CSS</label>
+            <textarea v-model="workEditForm.css_code" class="form-input form-code" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">JavaScript</label>
+            <textarea v-model="workEditForm.js_code" class="form-input form-code" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">外部依赖 <span class="form-hint">(CDN 链接，一行一个)</span></label>
+            <textarea v-model="workEditForm.dependencies" class="form-input form-code" rows="3" placeholder="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></textarea>
+          </div>
+          <span v-if="workEditError" class="form-error">{{ workEditError }}</span>
+          <div class="form-actions">
+            <button type="button" class="comic-btn white small" @click="closeWorkEdit">取消</button>
+            <button type="submit" class="comic-btn small" :disabled="workSaving">
+              {{ workSaving ? '保存中...' : '保存修改' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -207,11 +328,47 @@
 import { computed, reactive, ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../../stores/auth.js'
+import AvatarCropper from '../../components/AvatarCropper.vue'
 
 const router = useRouter()
+const API_BASE = '/api'
+
+// ── 页头背景 ──
+const headerBg = ref(localStorage.getItem('mato_header_bg') || '')
+const headerBgInputRef = ref(null)
+
+function triggerHeaderBg() {
+  headerBgInputRef.value?.click()
+}
+
+function handleHeaderBgChange(e) {
+  const file = e.target.files?.[0]
+  if (!file) return
+
+  const reader = new FileReader()
+  reader.onload = () => {
+    const result = reader.result
+    if (typeof result !== 'string') return
+
+    headerBg.value = result
+    try {
+      localStorage.setItem('mato_header_bg', result)
+    } catch {
+      alert('图片太大，无法保存为页头背景，请换一张小一点的图片')
+    }
+  }
+  reader.readAsDataURL(file)
+
+  if (headerBgInputRef.value) headerBgInputRef.value.value = ''
+}
+
+function goBackHome() {
+  router.push('/Home')
+}
+
 const {
   isLoggedIn, userName, userAvatar, userLevel, userGender,
-  userEmail, userBio, userExp, expMax,
+  userEmail, userBio, userExp, expMax, token,
   logout, updateProfile, uploadAvatar, signIn,
 } = useAuth()
 
@@ -220,20 +377,33 @@ const expPercent = computed(() => {
   return Math.min(Math.round((userExp.value / expMax.value) * 100), 100)
 })
 
-// ===== 头像上传 =====
+// ===== 头像上传（带裁剪） =====
 const fileInputRef = ref(null)
 const uploading = ref(false)
+const cropFile = ref(null)
 
 function triggerUpload() {
   fileInputRef.value?.click()
 }
 
-async function handleAvatarChange(e) {
+function handleAvatarChange(e) {
   const file = e.target.files?.[0]
   if (!file) return
+  // 打开裁剪弹窗
+  cropFile.value = file
+  // 重置 input 以便重复选择同一文件
+  if (fileInputRef.value) fileInputRef.value.value = ''
+}
+
+function handleCropCancel() {
+  cropFile.value = null
+}
+
+async function handleCropConfirm(croppedFile) {
+  cropFile.value = null
   uploading.value = true
   try {
-    const res = await uploadAvatar(file)
+    const res = await uploadAvatar(croppedFile)
     if (!res.success) {
       alert(res.msg || '头像上传失败')
     }
@@ -241,8 +411,6 @@ async function handleAvatarChange(e) {
     alert('网络错误，上传失败')
   } finally {
     uploading.value = false
-    // 重置 input 以便重复选择同一文件
-    if (fileInputRef.value) fileInputRef.value.value = ''
   }
 }
 
@@ -341,8 +509,117 @@ function checkTodaySign() {
   }
 }
 
+// ===== 作品标签页 =====
+const worksTabs = [
+  { key: 'my', label: '我的代码' },
+  { key: 'likes', label: '我的点赞' },
+  { key: 'collections', label: '我的收藏' },
+]
+const activeWorksTab = ref('my')
+const currentWorks = ref([])
+const worksLoading = ref(false)
+
+const emptyText = computed(() => {
+  const map = { my: '你还没有上传作品', likes: '你还没有点赞的作品', collections: '你还没有收藏的作品' }
+  return map[activeWorksTab.value] || ''
+})
+
+async function apiRequest(url, options = {}) {
+  const headers = { ...options.headers }
+  if (token.value) headers['Authorization'] = `Bearer ${token.value}`
+  const res = await fetch(`${API_BASE}${url}`, { ...options, headers })
+  return res.json()
+}
+
+async function fetchWorks() {
+  if (!isLoggedIn.value) return
+  worksLoading.value = true
+  try {
+    const map = { my: '/works/my/works', likes: '/works/my/likes', collections: '/works/my/collections' }
+    const res = await apiRequest(map[activeWorksTab.value])
+    if (res.code === 200) {
+      currentWorks.value = res.data
+    }
+  } catch (e) {
+    console.error('[Profile/works]', e)
+  } finally {
+    worksLoading.value = false
+  }
+}
+
+function switchWorksTab(key) {
+  activeWorksTab.value = key
+  fetchWorks()
+}
+
+function goWorkDetail(id) {
+  router.push(`/WorkDetail/${id}`)
+}
+
+// ===== 编辑作品 =====
+const showWorkEdit = ref(false)
+const workSaving = ref(false)
+const workEditError = ref('')
+const editingWorkId = ref(null)
+const workEditForm = reactive({
+  title: '',
+  description: '',
+  html_code: '',
+  css_code: '',
+  js_code: '',
+  dependencies: '',
+})
+
+function openWorkEdit(work) {
+  editingWorkId.value = work.id
+  workEditForm.title = work.title
+  workEditForm.description = work.description || ''
+  workEditForm.html_code = work.html_code || ''
+  workEditForm.css_code = work.css_code || ''
+  workEditForm.js_code = work.js_code || ''
+  workEditForm.dependencies = work.dependencies || ''
+  workEditError.value = ''
+  showWorkEdit.value = true
+  document.body.style.overflow = 'hidden'
+}
+
+function closeWorkEdit() {
+  showWorkEdit.value = false
+  document.body.style.overflow = ''
+}
+
+async function handleWorkSave() {
+  if (!workEditForm.title) {
+    workEditError.value = '作品名称不能为空'
+    return
+  }
+  workSaving.value = true
+  workEditError.value = ''
+  try {
+    const headers = { 'Content-Type': 'application/json' }
+    if (token.value) headers['Authorization'] = `Bearer ${token.value}`
+    const res = await fetch(`${API_BASE}/works/${editingWorkId.value}`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify(workEditForm),
+    }).then(r => r.json())
+
+    if (res.code === 200) {
+      closeWorkEdit()
+      fetchWorks()
+    } else {
+      workEditError.value = res.msg || '保存失败'
+    }
+  } catch {
+    workEditError.value = '网络错误'
+  } finally {
+    workSaving.value = false
+  }
+}
+
 onMounted(() => {
   checkTodaySign()
+  fetchWorks()
   document.addEventListener('keydown', handleEsc)
 })
 
@@ -352,8 +629,9 @@ onUnmounted(() => {
 })
 
 function handleEsc(e) {
-  if (e.key === 'Escape' && showEditModal.value) {
-    closeEditModal()
+  if (e.key === 'Escape') {
+    if (showWorkEdit.value) closeWorkEdit()
+    else if (showEditModal.value) closeEditModal()
   }
 }
 
@@ -419,7 +697,44 @@ function goBack() {
 /* 页面头部 */
 .page-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0;
+  position: relative;
+  overflow: hidden;
+  padding: 2.5rem 1rem;
+  cursor: pointer;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  bottom: auto;
+  aspect-ratio: 32 / 9;
+  width: 100%;
+  background: linear-gradient(135deg, #000 0%, #333 50%, #ffd700 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 100%);
+  z-index: 0;
+}
+.page-header.has-custom-bg::before { display: none; }
+.page-header.has-custom-bg { background-size: cover; background-position: center; background-repeat: no-repeat; }
+.page-header > * { position: relative; z-index: 1; }
+.header-hint { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); color: #fff; font-family: 'Bangers', sans-serif; font-size: 1.4rem; letter-spacing: 2px; opacity: 0; transition: opacity 0.2s; z-index: 2; pointer-events: none; }
+.page-header:hover .header-hint { opacity: 1; }
+
+.back-home-btn {
+  position: absolute;
+  top: 0.8rem;
+  left: 1rem;
+  z-index: 3;
+  padding: 0.3rem 0.7rem;
+  border: 2px solid #444;
+  background: rgba(0,0,0,0.7);
+  color: #ccc;
+  font-family: 'Bangers', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 4px;
+  &:hover { background: #ffd700; color: #000; border-color: #ffd700; }
 }
 
 .header-badge {
@@ -473,15 +788,6 @@ function goBack() {
   box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
   padding: 2rem;
   overflow: hidden;
-}
-
-.profile-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.06) 41%);
-  pointer-events: none;
-  opacity: 0.5;
 }
 
 /* 胶带 */
@@ -953,6 +1259,15 @@ function goBack() {
   text-transform: uppercase;
 }
 
+.form-hint {
+  font-family: 'Comic Neue', cursive;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #aaa;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
 .form-input {
   width: 100%;
   min-height: 48px;
@@ -967,6 +1282,7 @@ function goBack() {
   box-shadow: 3px 3px 0 #c9c9c9;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   resize: vertical;
+  &::selection { color: #000; }
 }
 
 .form-input:focus {
@@ -1029,6 +1345,170 @@ function goBack() {
   font-size: 0.95rem;
 }
 
+/* ==================== 作品标签页 ==================== */
+
+.works-section {
+  margin-bottom: 2rem;
+}
+
+.works-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 4px solid #000;
+  margin-bottom: 1.2rem;
+}
+
+.works-tab {
+  padding: 0.7rem 1.5rem;
+  font-family: 'Bangers', 'Impact', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  border: 4px solid #000;
+  border-bottom: none;
+  background: #e5e5e5;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.12s;
+  margin-right: 4px;
+  &:hover { background: #ddd; color: #333; }
+  &.active {
+    background: #ffd700;
+    color: #000;
+    box-shadow: 3px -3px 0 rgba(0,0,0,0.15);
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.empty-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+.empty-text {
+  font-family: 'Bangers', 'Impact', sans-serif;
+  font-size: 1.1rem;
+  color: #aaa;
+  letter-spacing: 1px;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.work-mini-card {
+  position: relative;
+  background: #fff;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.12s, box-shadow 0.12s;
+  &:hover { transform: translateY(-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.2); }
+}
+
+.work-mini-preview {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  border-bottom: 2px solid #000;
+  background: #fff;
+}
+
+.work-mini-iframe {
+  width: 200%;
+  height: 200%;
+  border: none;
+  pointer-events: none;
+  transform: scale(0.5);
+  transform-origin: top left;
+}
+
+.work-mini-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.work-status-badge {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: #ffd700;
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-family: 'Bangers', sans-serif;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.work-mini-info {
+  padding: 0.6rem 0.8rem;
+}
+
+.work-mini-title {
+  font-family: 'Bangers', 'Impact', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  color: #000;
+  margin: 0 0 0.3rem;
+}
+
+.work-mini-stats {
+  display: flex;
+  gap: 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #888;
+}
+
+.work-edit-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 28px;
+  height: 28px;
+  border: 2px solid #000;
+  background: #ffd700;
+  font-family: 'Bangers', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  &:hover { background: #000; color: #ffd700; }
+}
+
+/* ==================== 编辑作品弹窗 ==================== */
+
+.work-edit-modal {
+  background: #fff;
+  border: 5px solid #000;
+  box-shadow: 12px 12px 0 rgba(0,0,0,0.3);
+  width: 92%;
+  max-width: 640px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.form-code {
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 0.8rem;
+  background: #1e1e2e;
+  color: #e0e0e0;
+  border-color: #333;
+  min-height: 60px;
+  &::selection { color: #000; }
+}
+
 /* ==================== 响应式 ==================== */
 
 /* 手机端 */
@@ -1059,6 +1539,10 @@ function goBack() {
   }
 
   .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .works-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 

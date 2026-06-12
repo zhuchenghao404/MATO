@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1920px;height:1080px;overflow:hidden;background:#f5f5f5;font-family:'Comic Neue',cursive;position:relative;display:flex;align-items:center;justify-content:center}
+  body::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 30% 40%,rgba(0,0,0,0.06) 1.5px,transparent 1.5px);background-size:18px 18px}
+  .card{position:relative;z-index:1;background:#fff;border:6px solid #0a0a0a;box-shadow:12px 12px 0 rgba(0,0,0,0.15);padding:60px 80px;max-width:1550px;text-align:center}
+  .title{font-family:'Bangers','Impact',sans-serif;font-size:64px;color:#0a0a0a;margin:0 0 40px;text-shadow:3px 3px 0 rgba(0,0,0,0.1)}
+  .layout{display:flex;gap:30px}
+  .sidebar{background:#1d1e2b;width:200px;border-radius:8px;padding:15px;display:flex;flex-direction:column;gap:8px}
+  .menu-item{background:#2d3047;color:#a0a0b8;font-family:'Bangers',sans-serif;font-size:18px;padding:12px 14px;border-radius:4px}
+  .menu-item.active{background:#ff6b35;color:#fff}
+  .main{flex:1;background:#f5f6f8;border-radius:8px;padding:25px;overflow:hidden}
+  .stats{display:flex;gap:15px;margin-bottom:20px}
+  .stat{flex:1;background:#fff;border:2px solid #e0e0e0;border-radius:8px;padding:18px;text-align:center}
+  .stat-val{font-family:'Bangers',sans-serif;font-size:36px;color:#0a0a0a;line-height:1}
+  .stat-label{font-size:14px;color:#999;margin-top:4px}
+  .chart{background:#fff;border:2px solid #e0e0e0;border-radius:8px;padding:20px;height:200px;display:flex;align-items:flex-end;gap:16px;justify-content:center}
+  .bar{width:48px;border-radius:4px 4px 0 0}
+  .tag{position:absolute;top:-14px;left:20px;font-family:'Bangers',sans-serif;font-size:18px;color:#fff;background:#0a0a0a;padding:4px 14px;border:2px solid #fff}
+  .sfx{position:absolute;font-family:'Bangers',sans-serif;font-weight:900;color:#0a0a0a;opacity:0.06;pointer-events:none;z-index:0}
+  .sfx1{font-size:180px;bottom:10px;right:30px;transform:rotate(5deg)}
+  .top-title{position:absolute;top:40px;left:100px;font-family:'Bangers','Impact',sans-serif;font-size:48px;color:#0a0a0a;text-shadow:3px 3px 0 rgba(0,0,0,0.1);letter-spacing:3px;z-index:1}
+</style>
+<div class="top-title">后台管理系统</div>
+<div class="sfx sfx1">ADMIN!</div>
+<div class="card" style="position:relative">
+  <div class="tag">后台管理</div>
+  <h2 class="title">Element Plus 后台管理系统</h2>
+  <div class="layout">
+    <div class="sidebar"><div class="menu-item active">仪表盘</div><div class="menu-item">用户管理</div><div class="menu-item">作品管理</div><div class="menu-item">评论管理</div></div>
+    <div class="main">
+      <div class="stats">
+        <div class="stat"><div class="stat-val">128</div><div class="stat-label">用户总数</div></div>
+        <div class="stat"><div class="stat-val">256</div><div class="stat-label">作品总数</div></div>
+        <div class="stat"><div class="stat-val">1.0K</div><div class="stat-label">评论总数</div></div>
+        <div class="stat"><div class="stat-val">4</div><div class="stat-label">待审核</div></div>
+      </div>
+      <div class="chart">
+        <div class="bar" style="height:60px;background:#409eff"></div>
+        <div class="bar" style="height:120px;background:#409eff"></div>
+        <div class="bar" style="height:80px;background:#409eff"></div>
+        <div class="bar" style="height:170px;background:#409eff"></div>
+        <div class="bar" style="height:100px;background:#409eff"></div>
+        <div class="bar" style="height:140px;background:#409eff"></div>
+        <div class="bar" style="height:90px;background:#409eff"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</meta>
+</html>

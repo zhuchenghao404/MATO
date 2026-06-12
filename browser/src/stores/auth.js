@@ -54,6 +54,8 @@ export function useAuth() {
     return gender === 'female' ? womanAvatar : manAvatar
   })
 
+  const isAdmin = computed(() => currentUser.value?.username === 'admin')
+
   /** 根据累计经验计算当前等级（使用 levelConfigs 或回退逻辑） */
   const userLevel = computed(() => {
     const exp = currentUser.value?.exp ?? 0
@@ -144,6 +146,7 @@ export function useAuth() {
     if (res.code === 200) {
       token.value = res.data.token
       localStorage.setItem('mato_token', res.data.token)
+      localStorage.setItem('mato_username', res.data.username)
       currentUser.value = {
         name: res.data.username,
         username: res.data.username,
@@ -155,20 +158,21 @@ export function useAuth() {
         level: res.data.level,
       }
       fetchLevelConfigs()
-      return { success: true }
+      return { success: true, isAdmin: res.data.username === 'admin' }
     }
     return { success: false, msg: res.msg }
   }
 
   /** 注册 */
-  async function register(username, password, gender, email, code) {
+  async function register(registerUsername, password, gender, email, code) {
     const res = await request('/auth/register', {
       method: 'POST',
-      body: JSON.stringify({ username, password, gender, email, code }),
+      body: JSON.stringify({ username: registerUsername, password, gender, email, code }),
     })
     if (res.code === 200) {
       token.value = res.data.token
       localStorage.setItem('mato_token', res.data.token)
+      localStorage.setItem('mato_username', res.data.username)
       currentUser.value = {
         name: res.data.username,
         username: res.data.username,
@@ -180,7 +184,7 @@ export function useAuth() {
         level: res.data.level,
       }
       fetchLevelConfigs()
-      return { success: true }
+      return { success: true, isAdmin: res.data.username === 'admin' }
     }
     return { success: false, msg: res.msg }
   }
@@ -279,6 +283,7 @@ export function useAuth() {
     token.value = ''
     levelConfigs.value = []
     localStorage.removeItem('mato_token')
+    localStorage.removeItem('mato_username')
   }
 
   // 初始化时尝试恢复会话
@@ -286,6 +291,7 @@ export function useAuth() {
 
   return {
     isLoggedIn,
+    isAdmin,
     userName,
     userAvatar,
     userLevel,

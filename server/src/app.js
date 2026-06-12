@@ -7,6 +7,9 @@ const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
 const quizRoutes = require('./routes/quiz')
 const emailRoutes = require('./routes/email')
+const worksRoutes = require('./routes/works')
+const aiRoutes = require('./routes/ai')
+const adminRoutes = require('./routes/admin')
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -21,6 +24,9 @@ app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/quiz', quizRoutes)
 app.use('/api/email', emailRoutes)
+app.use('/api/works', worksRoutes)
+app.use('/api/ai', aiRoutes)
+app.use('/api/admin', adminRoutes)
 
 // 等级配置（挂到 /api 下，前端直接调 /api/level-configs）
 const pool = require('./db')
@@ -50,7 +56,12 @@ app.use((err, req, res, _next) => {
   res.status(500).json({ code: 500, msg: '服务器内部错误' })
 })
 
-app.listen(PORT, () => {
-  console.log(`\n  MATO Server 已启动 → http://localhost:${PORT}`)
-  console.log(`  健康检查 → http://localhost:${PORT}/api/health\n`)
+const initAdmin = require('./initAdmin')
+
+// 启动服务器
+initAdmin().then(() => {
+  app.listen(PORT, () => {
+    console.log(`\n  MATO Server 已启动 → http://localhost:${PORT}`)
+    console.log(`  健康检查 → http://localhost:${PORT}/api/health\n`)
+  })
 })

@@ -47,13 +47,20 @@
 
           <div v-if="isRegister" class="avatar-preview" :class="{ 'avatar-preview--circle': isRegister }">
             <div class="avatar-picker" :class="{ 'avatar-picker--circle': isRegister }" @click="handleAvatarClick">
-              <img :src="activeAvatar" alt="用户头像预览">
-              <span>上传头像</span>
+              <img :src="customAvatarPreview || activeAvatar" alt="用户头像预览">
+              <span>{{ customAvatarPreview ? '修改' : '上传头像' }}</span>
             </div>
             <div class="avatar-note">
-              <strong>{{ form.gender === 'female' ? '已选择女性默认头像' : '已选择男性默认头像' }}</strong>
-              <span>选择性别即自动设置头像</span>
+              <strong>{{ customAvatarPreview ? '已选择自定义头像' : (form.gender === 'female' ? '已选择女性默认头像' : '已选择男性默认头像') }}</strong>
+              <span>{{ customAvatarPreview ? '点击可重新选择' : '选择性别即自动设置头像' }}</span>
             </div>
+            <input
+              ref="authFileInputRef"
+              type="file"
+              accept="image/*"
+              style="display:none"
+              @change="handleAuthFileChange"
+            />
           </div>
 
           <Transition name="form-swap" mode="out-in">
@@ -251,6 +258,14 @@
               </template>
             </form>
           </Transition>
+
+          <!-- 头像裁剪弹窗（注册流程） -->
+          <AvatarCropper
+            v-if="authCropFile"
+            :file="authCropFile"
+            @confirm="handleAuthCropConfirm"
+            @cancel="handleAuthCropCancel"
+          />
         </main>
       </div>
     </section>
@@ -259,11 +274,14 @@
 
 <script setup>
 import { computed, inject, nextTick, onUnmounted, reactive, ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import manAvatar from '../assets/HOMEImage/man.png'
 import womanAvatar from '../assets/HOMEImage/woman.png'
 import { useAuth } from '../stores/auth.js'
+import AvatarCropper from './AvatarCropper.vue'
 
 const gsap = inject('$gsap')
+const router = useRouter()
 const { showAuthModal, closeAuthModal, login, register, sendEmailCode, resetPassword } = useAuth()
 
 const authMode = ref('login')
@@ -298,6 +316,12 @@ const isForgot = computed(() => authMode.value === 'forgot')
 const defaultAvatar = computed(() => form.gender === 'female' ? womanAvatar : manAvatar)
 const activeAvatar = computed(() => defaultAvatar.value)
 
+// 头像上传（注册流程）
+const authFileInputRef = ref(null)
+const authCropFile = ref(null)
+const customAvatarPreview = ref('')
+const pendingAvatarFile = ref(null)
+
 let authTiltCleanup = null
 let cooldownTimer = null
 
@@ -319,6 +343,13 @@ watch(showAuthModal, (val) => {
 })
 
 function closeAuth() {
+  // 清理头像预览
+  if (customAvatarPreview.value) {
+    URL.revokeObjectURL(customAvatarPreview.value)
+    customAvatarPreview.value = ''
+  }
+  pendingAvatarFile.value = null
+  authCropFile.value = null
   closeAuthModal()
 }
 
@@ -406,6 +437,12 @@ async function handleAuthSubmit() {
     )
     submitting.value = false
     if (success) {
+      // 如果有裁剪后的自定义头像，注册成功后立即上传
+      if (pendingAvatarFile.value) {
+        const { uploadAvatar } = useAuth()
+        await uploadAvatar(pendingAvatarFile.value)
+        pendingAvatarFile.value = null
+      }
       closeAuth()
     } else {
       alert(msg)
@@ -415,10 +452,13 @@ async function handleAuthSubmit() {
       submitting.value = false
       return
     }
-    const { success, msg } = await login(form.name.trim(), form.password)
+    const { success, msg, isAdmin } = await login(form.name.trim(), form.password)
     submitting.value = false
     if (success) {
       closeAuth()
+      if (isAdmin) {
+        router.push('/admin/dashboard')
+      }
     } else {
       alert(msg)
     }
@@ -513,7 +553,28 @@ function animateReset() {
 }
 
 function handleAvatarClick() {
-  alert('此功能不可用')
+  authFileInputRef.value?.click()
+}
+
+function handleAuthFileChange(e) {
+  const file = e.target.files?.[0]
+  if (!file) return
+  authCropFile.value = file
+  if (authFileInputRef.value) authFileInputRef.value.value = ''
+}
+
+function handleAuthCropCancel() {
+  authCropFile.value = null
+}
+
+function handleAuthCropConfirm(croppedFile) {
+  authCropFile.value = null
+  // 创建预览 URL
+  if (customAvatarPreview.value) {
+    URL.revokeObjectURL(customAvatarPreview.value)
+  }
+  customAvatarPreview.value = URL.createObjectURL(croppedFile)
+  pendingAvatarFile.value = croppedFile
 }
 
 function initAuthTilt() {

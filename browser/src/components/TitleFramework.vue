@@ -186,6 +186,14 @@
             </section>
             </template>
         </div>
+
+        <!-- AI助手悬浮窗 -->
+        <AiHelper
+            :question="currentQ.question || ''"
+            :options="currentQ.options || []"
+            :type="currentQ.type || ''"
+            :topic="currentQ.topic || skill"
+        />
     </div>
 </template>
 
@@ -193,6 +201,7 @@
 import { computed, ref, watch, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../stores/auth.js'
+import AiHelper from './AiHelper.vue'
 import htmlQuestions from '../data/html.json'
 import cssQuestions from '../data/css.json'
 import flexAndGridQuestions from '../data/flex-and-grid.json'
@@ -716,15 +725,6 @@ function handleBack() {
     padding: 2rem 2rem 1.5rem;
     overflow: hidden;
     font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', sans-serif;
-
-    &::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.04) 41%);
-        pointer-events: none;
-        opacity: 0.5;
-    }
 }
 .panel-tape {
     position: absolute;

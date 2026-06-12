@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1920px;height:1080px;overflow:hidden;background:#0a0a0a;font-family:'Comic Neue',cursive;position:relative;display:flex;align-items:center;justify-content:center}
+  body::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-15deg,transparent,transparent 10px,rgba(255,255,255,0.03) 10px,rgba(255,255,255,0.03) 20px)}
+  .card{position:relative;z-index:1;background:#fff;border:5px solid #fff;box-shadow:0 0 0 8px #0a0a0a,14px 14px 0 rgba(255,255,255,0.2);padding:70px 100px;max-width:1500px}
+  .title{font-family:'Bangers','Impact',sans-serif;font-size:72px;color:#0a0a0a;text-align:center;margin:0 0 40px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .item{background:#f8f8f8;border:3px solid #0a0a0a;padding:30px 35px;position:relative}
+  .item-num{position:absolute;top:-16px;left:20px;font-family:'Bangers',sans-serif;font-size:22px;color:#fff;background:#0a0a0a;padding:4px 14px;border:2px solid #fff}
+  .item-title{font-family:'Bangers','Impact',sans-serif;font-size:32px;color:#0a0a0a;margin:0 0 10px}
+  .item-desc{font-size:20px;color:#555;line-height:1.7}
+  .sfx{position:absolute;font-family:'Bangers',sans-serif;font-weight:900;color:#fff;opacity:0.07;pointer-events:none}
+  .sfx1{font-size:160px;bottom:20px;right:40px;transform:rotate(8deg)}
+  .sfx2{font-size:100px;top:30px;left:30px;transform:rotate(-6deg)}
+  .top-title{position:absolute;top:40px;left:100px;font-family:'Bangers','Impact',sans-serif;font-size:48px;color:#fff;text-shadow:3px 3px 0 rgba(0,0,0,0.5);letter-spacing:3px;z-index:1}
+</style>
+<div class="top-title">项目背景与意义</div>
+<div class="sfx sfx1">WHY?</div>
+<div class="sfx sfx2">POW!</div>
+<div class="card">
+  <h2 class="title">为什么做 MATO？</h2>
+  <div class="grid">
+    <div class="item"><div class="item-num">痛点 1</div><div class="item-title">学习曲线陡峭</div><div class="item-desc">前端技术栈庞大，从 HTML 到 Vue3，初学者容易迷失方向。缺乏系统化的学习路径引导。</div></div>
+    <div class="item"><div class="item-num">痛点 2</div><div class="item-title">缺乏实践反馈</div><div class="item-desc">传统的视频/文档学习，学了就忘，没有即时练习和反馈机制，学习效果难以评估。</div></div>
+    <div class="item"><div class="item-num">痛点 3</div><div class="item-title">学习动力不足</div><div class="item-desc">枯燥的学习过程缺乏激励，没有游戏化的闯关体验和社区氛围来保持学习动力。</div></div>
+    <div class="item"><div class="item-num">目标</div><div class="item-title">打造趣味学习平台</div><div class="item-desc">构建一个 <b>即学即练、闯关驱动、社区共享</b> 的前端学习平台，让学习像玩游戏一样上瘾。</div></div>
+  </div>
+</div>
+</meta>
+</html>

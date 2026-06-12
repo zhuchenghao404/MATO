@@ -15,16 +15,7 @@
             <header class="page-header">
                 <span class="header-badge">★ SKILL CHALLENGE ★</span>
                 <h1 class="page-title">技能闯关</h1>
-                <p class="page-desc">从基础到进阶，把每份文档都学成自己的技能地图</p>
-                <div class="learning-spark" aria-hidden="true">
-                    <span class="spark-doc spark-doc--1">DOC</span>
-                    <span class="spark-doc spark-doc--2">STEP</span>
-                    <span class="spark-doc spark-doc--3">GO</span>
-                    <span class="spark-beam"></span>
-                    <span class="spark-star spark-star--1">★</span>
-                    <span class="spark-star spark-star--2">✦</span>
-                    <span class="spark-bubble">LEVEL UP!</span>
-                </div>
+                <p class="page-desc">选择一个技能，开始挑战吧！</p>
             </header>
 
             <section class="track-panel">
@@ -322,15 +313,6 @@ function goChallenge(skillName) {
     box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 2.5rem 2rem;
     overflow: hidden;
-
-    &::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.04) 41%);
-        pointer-events: none;
-        opacity: 0.5;
-    }
 }
 
 .panel-tape {

@@ -178,6 +178,8 @@
         v-html="renderedHtml"
       />
 
+      <AiBubble :container-ref="articleRef" :context="currentCourse.title" />
+
       <footer class="doc-footer">
         <button
           v-if="prevCourse"
@@ -220,6 +222,7 @@ import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { courses, getCourseById } from '../../content/learning/index.js'
 import { renderMarkdown, extractHeadings } from '../../utils/markdown.js'
+import AiBubble from '../../components/AiBubble.vue'
 
 const route = useRoute()
 const router = useRouter()
