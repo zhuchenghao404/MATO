@@ -368,9 +368,6 @@ MATO/
 │   │   ├── initDB.js      # 数据库初始化
 │   │   └── db.js          # 数据库连接池
 │   └── app.js             # 入口文件
-├── docs/                  # 项目文档（不上传）
-├── ppt/                   # 演示幻灯片（不上传）
-├── prototype/             # 原型文件（不上传）
 └── package.json           # 根 monorepo 脚本
 ```
 
