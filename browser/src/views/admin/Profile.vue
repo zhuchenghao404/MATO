@@ -12,14 +12,14 @@
         class="page-header"
         :class="{ 'has-custom-bg': headerBg }"
         :style="headerBg ? { backgroundImage: `url(${headerBg})` } : {}"
-        @click="triggerHeaderBg"
-        title="点击更换页头背景"
+        @click="!isViewingOthers && triggerHeaderBg()"
+        :title="isViewingOthers ? '' : '点击更换页头背景'"
       >
-        <button class="back-home-btn" @click.stop="goBackHome" title="返回首页">← 返回</button>
+        <button class="back-home-btn" @click.stop="handleGoBack" title="返回上一页">← 返回</button>
         <span class="header-badge">★ 个人中心 ★</span>
         <h1 class="page-title">英雄档案</h1>
         <p class="page-desc">你的冒险数据全在这里！</p>
-        <span class="header-hint">🖼 点击更换背景</span>
+        <span v-if="!isViewingOthers" class="header-hint">🖼 点击更换背景</span>
       </header>
       <input
         ref="headerBgInputRef"
@@ -36,11 +36,15 @@
           <div class="panel-tape panel-tape--right"></div>
 
           <!-- 头像区域：可点击上传 -->
-          <div class="comic-frame avatar-frame" @click="triggerUpload" title="点击更换头像">
+          <div v-if="!isViewingOthers" class="comic-frame avatar-frame" @click="triggerUpload" title="点击更换头像">
             <div class="avatar-overlay">
               <span class="avatar-overlay-text">📷</span>
             </div>
-            <img :src="userAvatar" alt="用户头像" />
+            <img :src="getAvatar(userAvatar)" :alt="userName" />
+          </div>
+          <!-- 查看他人时显示静态头像 -->
+          <div v-else class="comic-frame avatar-frame">
+            <img :src="getAvatar(otherUser.avatar)" :alt="otherUser.username" />
           </div>
           <input
             ref="fileInputRef"
@@ -52,18 +56,27 @@
           <span v-if="uploading" class="upload-tip">上传中...</span>
 
           <div class="name-block">
-            <span class="name-text">{{ userName }}</span>
-            <span class="gender-badge" :class="userGender === 'female' ? 'gender-female' : 'gender-male'">
-              {{ userGender === 'female' ? '♀ 女' : '♂ 男' }}
+            <span class="name-text">{{ isViewingOthers ? otherUser.name : userName }}</span>
+            <span class="gender-badge" :class="(isViewingOthers ? otherUser.gender : userGender) === 'female' ? 'gender-female' : 'gender-male'">
+              {{ (isViewingOthers ? otherUser.gender : userGender) === 'female' ? '♀ 女' : '♂ 男' }}
+            </span>
+            <!-- 关注/粉丝数量 -->
+            <span class="social-item" @click="goToSocialList('following')">
+              <span class="social-value">{{ followingCount }}</span>
+              <span class="social-label">关注</span>
+            </span>
+            <span class="social-item" @click="goToSocialList('followers')">
+              <span class="social-value">{{ followersCount }}</span>
+              <span class="social-label">粉丝</span>
             </span>
           </div>
 
           <!-- 个人简介 -->
-          <div v-if="userBio" class="bio-row">
-            <p class="bio-text">{{ userBio }}</p>
+          <div v-if="isViewingOthers ? otherUser.bio : userBio" class="bio-row">
+            <p class="bio-text">{{ isViewingOthers ? otherUser.bio : userBio }}</p>
           </div>
 
-          <div class="info-row">
+          <div class="info-row" v-if="!isViewingOthers">
             <svg class="info-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
               <rect x="2" y="4" width="20" height="16" rx="2"/>
               <path d="M2 6l10 7 10-7"/>
@@ -71,7 +84,23 @@
             <span class="info-text">{{ userEmail || '未绑定邮箱' }}</span>
           </div>
 
-          <button class="comic-btn small" @click="openEditModal">✎ 修改信息</button>
+          <div class="action-row">
+            <template v-if="isViewingOthers">
+              <FollowButton :userId="targetUserId" />
+              <button 
+                class="comic-btn small" 
+                :disabled="!canSendMessage"
+                @click="goToMessages"
+                :title="canSendMessage ? '发送私信' : '只有关注的人或粉丝才能私信'"
+              >
+                💬 私信
+              </button>
+            </template>
+            <template v-else>
+              <button class="comic-btn small" @click="openEditModal">✎ 修改信息</button>
+              <button class="comic-btn small" @click="goToMessages">💬 私信</button>
+            </template>
+          </div>
         </section>
 
         <!-- 右侧：等级 + 经验 + 签到 -->
@@ -81,7 +110,7 @@
           <!-- 等级展示 -->
           <div class="level-hero">
             <span class="level-label">当前等级</span>
-            <span class="level-num">LV.{{ userLevel }}</span>
+            <span class="level-num">LV.{{ isViewingOthers ? otherUser.level : userLevel }}</span>
           </div>
 
           <!-- 经验条 -->
@@ -89,21 +118,21 @@
             <div class="exp-header">
               <span class="exp-title">经验值</span>
               <span class="exp-nums">
-                <span class="exp-cur">{{ userExp }}</span>
+                <span class="exp-cur">{{ isViewingOthers ? otherUser.exp : userExp }}</span>
                 <span class="exp-sep">/</span>
-                <span class="exp-max">{{ expMax }}</span>
+                <span class="exp-max">{{ isViewingOthers ? otherUser.expMax : expMax }}</span>
               </span>
-              <span class="exp-pct">{{ expPercent }}%</span>
+              <span class="exp-pct">{{ isViewingOthers ? Math.round((otherUser.exp / otherUser.expMax) * 100) : expPercent }}%</span>
             </div>
             <div class="exp-bar-wrap">
-              <div class="exp-bar-fill" :style="{ width: expPercent + '%' }">
-                <span v-if="expPercent > 15" class="exp-bar-label">EXP</span>
+              <div class="exp-bar-fill" :style="{ width: (isViewingOthers ? Math.round((otherUser.exp / otherUser.expMax) * 100) : expPercent) + '%' }">
+                <span v-if="(isViewingOthers ? Math.round((otherUser.exp / otherUser.expMax) * 100) : expPercent) > 15" class="exp-bar-label">EXP</span>
               </div>
             </div>
           </div>
 
           <!-- 签到区域 -->
-          <div class="sign-section">
+          <div class="sign-section" v-if="!isViewingOthers">
             <button
               class="comic-btn sign-btn"
               :class="{ signed: signedToday }"
@@ -228,6 +257,8 @@
         </div>
 
         <div v-if="worksLoading" class="empty-state"><p class="empty-text">加载中...</p></div>
+        
+        <!-- 作品列表 -->
         <div v-else-if="currentWorks.length === 0" class="empty-state">
           <div class="empty-icon">📭</div>
           <p class="empty-text">{{ emptyText }}</p>
@@ -270,7 +301,7 @@
 
       <!-- 底部按钮 -->
       <div class="profile-actions">
-        <button class="comic-btn" @click="goBack">← 返回首页</button>
+        <button class="comic-btn" @click="handleGoBack">← 返回</button>
         <button class="comic-btn danger" @click="handleLogout">退出登录</button>
       </div>
 
@@ -326,12 +357,38 @@
 
 <script setup>
 import { computed, reactive, ref, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { useAuth } from '../../stores/auth.js'
 import AvatarCropper from '../../components/AvatarCropper.vue'
+import FollowButton from '../../components/FollowButton.vue'
 
 const router = useRouter()
+const route = useRoute()
 const API_BASE = '/api'
+
+// 默认头像
+const defaultAvatar = '/assets/man-CFLsZIEw.png'
+
+// 头像处理函数
+function getAvatar(avatar) {
+  if (!avatar) return defaultAvatar
+  if (avatar.startsWith('http')) return avatar
+  return avatar
+}
+
+// 是否查看他人资料
+const isViewingOthers = ref(false)
+const targetUserId = ref(null)
+const otherUser = reactive({
+  id: null,
+  name: '',
+  avatar: '',
+  level: 0,
+  gender: 'male',
+  bio: '',
+  exp: 0,
+  expMax: 0,
+})
 
 // ── 页头背景 ──
 const headerBg = ref(localStorage.getItem('mato_header_bg') || '')
@@ -363,7 +420,38 @@ function handleHeaderBgChange(e) {
 }
 
 function goBackHome() {
-  router.push('/Home')
+  handleGoBack()
+}
+
+function handleGoBack() {
+  const fromPath = sessionStorage.getItem('mato_from_path')
+  if (fromPath) {
+    sessionStorage.removeItem('mato_from_path')
+    router.push(fromPath)
+  } else if (isViewingOthers.value) {
+    router.push('/SocialList')
+  } else {
+    router.push('/Home')
+  }
+}
+
+function goToUserProfile(userId) {
+  sessionStorage.setItem('mato_from_path', `/SocialList`)
+  router.push(`/Profile/${userId}`)
+}
+
+function goToSocialList(type) {
+  sessionStorage.setItem('mato_from_path', route.fullPath)
+  router.push(`/SocialList?type=${type}`)
+}
+
+function goToMessages() {
+  if (isViewingOthers.value && targetUserId.value) {
+    sessionStorage.setItem('mato_from_path', route.fullPath)
+    router.push(`/Messages?userId=${targetUserId.value}`)
+  } else {
+    router.push('/Messages')
+  }
 }
 
 const {
@@ -404,7 +492,10 @@ async function handleCropConfirm(croppedFile) {
   uploading.value = true
   try {
     const res = await uploadAvatar(croppedFile)
-    if (!res.success) {
+    if (res.success) {
+      // 头像上传成功后，刷新页面以更新头像显示
+      window.location.reload()
+    } else {
       alert(res.msg || '头像上传失败')
     }
   } catch {
@@ -509,7 +600,7 @@ function checkTodaySign() {
   }
 }
 
-// ===== 作品标签页 =====
+// ===== 标签页 =====
 const worksTabs = [
   { key: 'my', label: '我的代码' },
   { key: 'likes', label: '我的点赞' },
@@ -519,8 +610,17 @@ const activeWorksTab = ref('my')
 const currentWorks = ref([])
 const worksLoading = ref(false)
 
+// 关注/粉丝数量
+const followingCount = ref(0)
+const followersCount = ref(0)
+const canSendMessage = ref(false)
+
 const emptyText = computed(() => {
-  const map = { my: '你还没有上传作品', likes: '你还没有点赞的作品', collections: '你还没有收藏的作品' }
+  const map = { 
+    my: '你还没有上传作品', 
+    likes: '你还没有点赞的作品', 
+    collections: '你还没有收藏的作品'
+  }
   return map[activeWorksTab.value] || ''
 })
 
@@ -535,15 +635,62 @@ async function fetchWorks() {
   if (!isLoggedIn.value) return
   worksLoading.value = true
   try {
-    const map = { my: '/works/my/works', likes: '/works/my/likes', collections: '/works/my/collections' }
-    const res = await apiRequest(map[activeWorksTab.value])
-    if (res.code === 200) {
-      currentWorks.value = res.data
+    if (activeWorksTab.value === 'following') {
+      const res = await apiRequest('/social/following')
+      if (res.code === 200) {
+        followingList.value = res.data.list
+        followingCount.value = res.data.total || 0
+      }
+    } else if (activeWorksTab.value === 'followers') {
+      const res = await apiRequest('/social/followers')
+      if (res.code === 200) {
+        followersList.value = res.data.list
+        followersCount.value = res.data.total || 0
+      }
+    } else {
+      const map = { my: '/works/my/works', likes: '/works/my/likes', collections: '/works/my/collections' }
+      const res = await apiRequest(map[activeWorksTab.value])
+      if (res.code === 200) {
+        currentWorks.value = res.data
+      }
     }
   } catch (e) {
     console.error('[Profile/works]', e)
   } finally {
     worksLoading.value = false
+  }
+}
+
+async function fetchOtherUserWorks(userId) {
+  worksLoading.value = true
+  try {
+    const res = await fetch(`${API_BASE}/works/user/${userId}`, {
+      headers: { Authorization: `Bearer ${token.value}` }
+    })
+    const data = await res.json()
+    if (data.code === 200) {
+      currentWorks.value = data.data
+    }
+  } catch (e) {
+    console.error('[Profile/otherWorks]', e)
+  } finally {
+    worksLoading.value = false
+  }
+}
+
+async function fetchOtherUserSocialCounts(userId) {
+  try {
+    const res = await fetch(`${API_BASE}/social/counts/${userId}`, {
+      headers: { Authorization: `Bearer ${token.value}` }
+    })
+    const data = await res.json()
+    if (data.code === 200) {
+      followingCount.value = data.data.following || 0
+      followersCount.value = data.data.followers || 0
+      canSendMessage.value = !!data.data.isFollowing || !!data.data.isFollowed
+    }
+  } catch (e) {
+    console.error('[Profile/otherSocialCounts]', e)
   }
 }
 
@@ -617,15 +764,78 @@ async function handleWorkSave() {
   }
 }
 
+async function fetchSocialCounts() {
+  if (!isLoggedIn.value) return
+  try {
+    const [followingRes, followersRes] = await Promise.all([
+      apiRequest('/social/following'),
+      apiRequest('/social/followers')
+    ])
+    if (followingRes.code === 200) {
+      followingCount.value = followingRes.data.total || 0
+    }
+    if (followersRes.code === 200) {
+      followersCount.value = followersRes.data.total || 0
+    }
+  } catch (e) {
+    console.error('[Profile/socialCounts]', e)
+  }
+}
+
+async function fetchOtherUser(userId) {
+  try {
+    const res = await fetch(`${API_BASE}/user/profile/${userId}`, {
+      headers: { Authorization: `Bearer ${token.value}` }
+    })
+    const data = await res.json()
+    if (data.code === 200) {
+      const u = data.data
+      otherUser.id = u.id
+      otherUser.name = u.username
+      otherUser.avatar = u.avatar || ''
+      otherUser.level = u.level || 0
+      otherUser.gender = u.gender || 'male'
+      otherUser.bio = u.bio || ''
+      otherUser.exp = u.exp || 0
+      otherUser.expMax = u.expMax || 100
+    }
+  } catch (err) {
+    console.error('fetchOtherUser error:', err)
+  }
+}
+
 onMounted(() => {
-  checkTodaySign()
-  fetchWorks()
+  loadUserData()
   document.addEventListener('keydown', handleEsc)
 })
 
 onUnmounted(() => {
   document.removeEventListener('keydown', handleEsc)
   document.body.style.overflow = ''
+})
+
+function loadUserData() {
+  const userId = route.params.userId
+  if (userId) {
+    isViewingOthers.value = true
+    targetUserId.value = userId
+    fetchOtherUser(userId)
+    fetchOtherUserWorks(userId)
+    fetchOtherUserSocialCounts(userId)
+    headerBg.value = ''
+  } else {
+    isViewingOthers.value = false
+    targetUserId.value = null
+    checkTodaySign()
+    fetchWorks()
+    fetchSocialCounts()
+    headerBg.value = localStorage.getItem('mato_header_bg') || ''
+  }
+}
+
+import { watch } from 'vue'
+watch(() => route.params.userId, (newUserId) => {
+  loadUserData()
 })
 
 function handleEsc(e) {
@@ -640,9 +850,6 @@ function handleLogout() {
   router.push('/Home')
 }
 
-function goBack() {
-  router.push('/Home')
-}
 </script>
 
 <style lang="scss" scoped>
@@ -950,6 +1157,41 @@ function goBack() {
   word-break: break-all;
 }
 
+/* 操作按钮行 */
+.action-row {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 0.8rem;
+}
+
+/* 关注/粉丝数量 - 与用户名同行 */
+.social-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  
+  &:hover {
+    opacity: 0.7;
+    background: rgba(0,0,0,0.05);
+  }
+}
+
+.social-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.social-label {
+  font-size: 0.8rem;
+  color: #666;
+}
+
 /* 统计卡片 */
 .stats-card {
   display: flex;
@@ -1130,6 +1372,14 @@ function goBack() {
   padding: 0.7rem 0.4rem;
   box-shadow: 2px 2px 0 #ddd;
   transform: rotate(-0.5deg);
+  &.clickable {
+    cursor: pointer;
+    &:hover {
+      background: #f0f0f0;
+      transform: rotate(-0.5deg) scale(1.05);
+      box-shadow: 3px 3px 0 #000;
+    }
+  }
 }
 
 .stat-item:nth-child(even) {
@@ -1486,6 +1736,60 @@ function goBack() {
   &:hover { background: #000; color: #ffd700; }
 }
 
+/* 关注/粉丝列表样式 */
+.social-list {
+  margin-top: 1rem;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #fff;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+  padding: 0.8rem;
+  transition: transform 0.12s, box-shadow 0.12s;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+  }
+}
+
+.user-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-name {
+  font-family: 'Bangers', 'Impact', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: #000;
+  margin-bottom: 0.1rem;
+}
+
+.user-level {
+  font-family: 'Comic Neue', cursive;
+  font-size: 0.75rem;
+  color: #888;
+}
+
 /* ==================== 编辑作品弹窗 ==================== */
 
 .work-edit-modal {
@@ -1544,6 +1848,10 @@ function goBack() {
 
   .works-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .social-grid {
+    grid-template-columns: 1fr;
   }
 
   .profile-actions {

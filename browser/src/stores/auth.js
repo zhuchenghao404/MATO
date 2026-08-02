@@ -118,6 +118,7 @@ export function useAuth() {
       ])
       if (profileRes.code === 200) {
         currentUser.value = {
+          id: profileRes.data.id,
           name: profileRes.data.username,
           username: profileRes.data.username,
           avatar: profileRes.data.avatar,
@@ -148,6 +149,7 @@ export function useAuth() {
       localStorage.setItem('mato_token', res.data.token)
       localStorage.setItem('mato_username', res.data.username)
       currentUser.value = {
+        id: res.data.id,
         name: res.data.username,
         username: res.data.username,
         avatar: res.data.avatar,
@@ -174,6 +176,7 @@ export function useAuth() {
       localStorage.setItem('mato_token', res.data.token)
       localStorage.setItem('mato_username', res.data.username)
       currentUser.value = {
+        id: res.data.id,
         name: res.data.username,
         username: res.data.username,
         avatar: res.data.avatar,
@@ -254,7 +257,8 @@ export function useAuth() {
     formData.append('avatar', file)
     const res = await requestFormData('/user/avatar', formData)
     if (res.code === 200 && currentUser.value) {
-      currentUser.value.avatar = res.data.avatar
+      currentUser.value = { ...currentUser.value, avatar: res.data.avatar }
+      localStorage.setItem('mato_user', JSON.stringify(currentUser.value))
       return { success: true, avatar: res.data.avatar }
     }
     return { success: false, msg: res.msg || '上传失败' }
@@ -313,5 +317,6 @@ export function useAuth() {
     showAuthModal,
     openAuthModal,
     closeAuthModal,
+    currentUser,
   }
 }

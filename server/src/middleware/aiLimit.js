@@ -18,18 +18,22 @@ async function ensureTable() {
   tableReady = true
 }
 
-/** AI 每日限额中间件 — 按 IP 限制，未登录用户也适用 */
+/** AI 每日限额中间件 — 按用户ID限制（登录用户），未登录按 IP 限制 */
 async function aiLimit(req, res, next) {
   try {
     await ensureTable()
 
-    const ip = req.ip || req.connection.remoteAddress || '0.0.0.0'
-    const today = new Date().toISOString().slice(0, 10)
+    // 优先按用户ID限制，未登录时按IP限制
+    const userId = req.user?.id
+    const identifier = userId ? `user_${userId}` : (req.ip || req.connection.remoteAddress || '0.0.0.0')
+    // 使用本地日期（而非 UTC），避免时区偏移
+    const now = new Date()
+    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
 
     // 查询今日使用次数
     const [rows] = await pool.execute(
       'SELECT count FROM ai_usage WHERE user_ip = ? AND usage_date = ?',
-      [ip, today]
+      [identifier, today]
     )
 
     const current = rows.length > 0 ? rows[0].count : 0
@@ -45,12 +49,12 @@ async function aiLimit(req, res, next) {
     if (rows.length > 0) {
       await pool.execute(
         'UPDATE ai_usage SET count = count + 1 WHERE user_ip = ? AND usage_date = ?',
-        [ip, today]
+        [identifier, today]
       )
     } else {
       await pool.execute(
         'INSERT INTO ai_usage (user_ip, usage_date, count) VALUES (?, ?, 1)',
-        [ip, today]
+        [identifier, today]
       )
     }
 

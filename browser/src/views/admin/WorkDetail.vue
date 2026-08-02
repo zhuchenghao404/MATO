@@ -3,18 +3,20 @@
     <div class="page-inner">
       <!-- 顶部工具栏 -->
       <div class="top-bar">
-        <button class="back-btn" @click="goBack">← 返回</button>
+        <button class="back-btn" @click="handleGoBack">← 返回</button>
         <div class="top-center">
           <h1 class="work-title" v-if="work">{{ work.title }}</h1>
         </div>
-        <div class="top-stats">
-          <button class="stat-btn" :class="{ active: work?.is_liked }" @click="handleLike" :disabled="!isLoggedIn">
-            ❤ {{ work?.like_count || 0 }}
-          </button>
-          <button class="stat-btn" :class="{ active: work?.is_collected }" @click="handleCollect" :disabled="!isLoggedIn">
-            ★ {{ work?.collect_count || 0 }}
-          </button>
-          <span class="stat-item">👁 {{ work?.view_count || 0 }}</span>
+        <div class="top-right">
+          <div class="top-stats">
+            <button class="stat-btn" :class="{ active: work?.is_liked }" @click="handleLike" :disabled="!isLoggedIn">
+              ❤ {{ work?.like_count || 0 }}
+            </button>
+            <button class="stat-btn" :class="{ active: work?.is_collected }" @click="handleCollect" :disabled="!isLoggedIn">
+              ★ {{ work?.collect_count || 0 }}
+            </button>
+            <span class="stat-item">👁 {{ work?.view_count || 0 }}</span>
+          </div>
         </div>
       </div>
 
@@ -64,6 +66,7 @@
           <div
             class="divider"
             @mousedown="startDrag"
+            @touchstart.prevent="startDrag"
             ref="dividerRef"
           >
             <div class="divider-handle"></div>
@@ -86,7 +89,7 @@
                 :key="previewKey"
                 :src="`/api/works/render/${work.id}`"
                 class="preview-iframe"
-                sandbox="allow-scripts allow-same-origin"
+                sandbox="allow-scripts"
                 title="代码运行预览"
               ></iframe>
             </div>
@@ -100,6 +103,11 @@
             <span class="author-name">{{ work.user?.name || '未知' }}</span>
             <span class="author-lv">Lv.{{ work.user?.level || 1 }}</span>
           </div>
+          <FollowButton 
+            v-if="isLoggedIn && !isOwnWork && work.user?.id" 
+            :userId="work.user.id" 
+            class="follow-btn"
+          />
           <span class="author-time">{{ formatTime(work.created_at) }}</span>
         </div>
 
@@ -141,14 +149,20 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAuth } from '../../stores/auth.js'
+import FollowButton from '../../components/FollowButton.vue'
 
 const route = useRoute()
 const router = useRouter()
 const API_BASE = '/api'
-const { isLoggedIn, token } = useAuth()
+const { isLoggedIn, token, currentUser } = useAuth()
+
+const isOwnWork = computed(() => {
+  if (!work.value?.user?.id || !currentUser.value?.id) return false
+  return work.value.user.id === currentUser.value.id
+})
 
 const work = ref(null)
 const loading = ref(true)
@@ -188,6 +202,8 @@ function startDrag(e) {
   dragging = true
   document.addEventListener('mousemove', onDrag)
   document.addEventListener('mouseup', stopDrag)
+  document.addEventListener('touchmove', onDragTouch, { passive: false })
+  document.addEventListener('touchend', stopDragTouch)
   document.body.style.cursor = 'col-resize'
   document.body.style.userSelect = 'none'
 }
@@ -203,12 +219,30 @@ function onDrag(e) {
   rightWidth.value = total - newLeft
 }
 
+function onDragTouch(e) {
+  if (!dragging || !layoutRef.value) return
+  e.preventDefault()
+  const total = layoutRef.value.offsetWidth - 8
+  const rect = layoutRef.value.getBoundingClientRect()
+  let newLeft = e.touches[0].clientX - rect.left
+  if (newLeft < MIN_WIDTH) newLeft = MIN_WIDTH
+  if (newLeft > total - MIN_WIDTH) newLeft = total - MIN_WIDTH
+  leftWidth.value = newLeft
+  rightWidth.value = total - newLeft
+}
+
 function stopDrag() {
   dragging = false
   document.removeEventListener('mousemove', onDrag)
   document.removeEventListener('mouseup', stopDrag)
+  document.removeEventListener('touchmove', onDragTouch)
+  document.removeEventListener('touchend', stopDragTouch)
   document.body.style.cursor = ''
   document.body.style.userSelect = ''
+}
+
+function stopDragTouch(e) {
+  stopDrag()
 }
 
 async function apiRequest(url, options = {}) {
@@ -298,7 +332,19 @@ async function handleComment() {
 }
 
 function goBack() {
-  router.push('/PerfectCase')
+  handleGoBack()
+}
+
+function handleGoBack() {
+  const fromPath = sessionStorage.getItem('mato_from_path')
+  if (fromPath) {
+    sessionStorage.removeItem('mato_from_path')
+    router.push(fromPath)
+  } else if (window.history.length > 1) {
+    router.back()
+  } else {
+    router.push('/Home')
+  }
 }
 
 function formatTime(dateStr) {
@@ -669,6 +715,12 @@ onUnmounted(() => {
   color: #555;
 }
 
+.follow-btn {
+  margin-left: auto;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+}
+
 /* ════════════════════════════════════
    评论区
    ════════════════════════════════════ */
@@ -774,36 +826,221 @@ onUnmounted(() => {
 }
 
 /* ════════════════════════════════════
-   响应式
+   响应式 - 平板
+   ════════════════════════════════════ */
+@media (max-width: 1023px) {
+  .top-bar {
+    gap: 0.5rem;
+    padding: 0.4rem 0.6rem;
+  }
+  .work-title { font-size: 0.95rem; }
+  .stat-btn { font-size: 0.7rem; padding: 2px 6px; }
+  .stat-item { font-size: 0.7rem; }
+}
+
+/* ════════════════════════════════════
+   响应式 - 手机
    ════════════════════════════════════ */
 @media (max-width: 767px) {
+  .detail-page {
+    height: 100dvh;
+  }
+
+  .page-inner {
+    height: 100dvh;
+  }
+
+  // 顶部栏 —— 两行布局
+  .top-bar {
+    flex-wrap: wrap;
+    padding: 0.4rem 0.6rem;
+    gap: 0.3rem;
+  }
+
+  .back-btn {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .top-center {
+    order: -1;
+    flex: 1 1 100%;
+    text-align: center;
+    min-width: 100%;
+    margin-bottom: 0.2rem;
+  }
+
+  .work-title {
+    font-size: 0.85rem;
+    white-space: normal;
+    line-height: 1.3;
+  }
+
+  .top-right {
+    flex: 0 0 auto;
+  }
+
+  .top-stats {
+    gap: 0.3rem;
+  }
+
+  .stat-btn {
+    font-size: 0.68rem;
+    padding: 2px 5px;
+  }
+
+  .stat-item {
+    font-size: 0.68rem;
+  }
+
+  // 描述
+  .work-desc {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  // 编辑区 —— 上下分栏
   .editor-layout {
     flex-direction: column;
   }
 
   .editor-panel {
     width: 100% !important;
-    height: 40vh;
-    flex-shrink: 0;
+    flex: 0 0 38vh;
   }
 
   .preview-panel {
     width: 100% !important;
     flex: 1;
+    min-height: 200px;
   }
 
   .divider {
     width: 100%;
-    height: 6px;
+    height: 8px;
     cursor: row-resize;
+    touch-action: none;
   }
 
   .divider-handle {
     width: 30px;
-    height: 2px;
+    height: 3px;
   }
 
-  .work-title { font-size: 0.9rem; }
-  .top-bar { padding: 0.4rem 0.6rem; }
+  // 面板头部紧凑化
+  .panel-header {
+    height: 32px;
+    padding: 0 0.3rem;
+  }
+
+  .panel-tab {
+    font-size: 0.65rem;
+    padding: 0 0.4rem;
+    gap: 3px;
+  }
+
+  .tab-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .btn-copy {
+    font-size: 0.6rem;
+    padding: 2px 5px;
+  }
+
+  .btn-refresh {
+    width: 24px;
+    height: 24px;
+    font-size: 0.85rem;
+  }
+
+  // 代码区域
+  .code-editor {
+    font-size: 0.72rem;
+    padding: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .no-code {
+    font-size: 0.75rem;
+  }
+
+  // 作者信息栏
+  .author-bar {
+    padding: 0.4rem 0.6rem;
+    gap: 0.4rem;
+  }
+
+  .author-avatar {
+    width: 26px;
+    height: 26px;
+    font-size: 0.75rem;
+  }
+
+  .author-name {
+    font-size: 0.75rem;
+  }
+
+  .author-lv {
+    font-size: 0.65rem;
+  }
+
+  .author-time {
+    font-size: 0.65rem;
+  }
+
+  // 评论区
+  .comments-section {
+    padding: 0.5rem 0.6rem;
+    max-height: 40vh;
+  }
+
+  .section-title {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .comment-form {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .comment-input {
+    font-size: 0.78rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+
+  .comic-btn.small {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .comment-item {
+    padding: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .comment-user {
+    font-size: 0.72rem;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .comment-content {
+    font-size: 0.78rem;
+  }
+
+  .login-hint {
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  .no-comments {
+    font-size: 0.75rem;
+    padding: 1rem;
+  }
 }
 </style>

@@ -87,10 +87,11 @@
         </div>
         <div class="preview-body">
           <iframe
+            v-if="previewHTML"
             ref="previewRef"
             class="preview-iframe"
             :srcdoc="previewHTML"
-            sandbox="allow-scripts allow-same-origin"
+            sandbox="allow-scripts"
             title="实时预览"
           ></iframe>
         </div>
@@ -345,7 +346,19 @@ async function apiPost(url, body) {
 }
 
 function goHome() {
-  router.push('/Home')
+  handleGoBack()
+}
+
+function handleGoBack() {
+  const fromPath = sessionStorage.getItem('mato_from_path')
+  if (fromPath) {
+    sessionStorage.removeItem('mato_from_path')
+    router.push(fromPath)
+  } else if (window.history.length > 1) {
+    router.back()
+  } else {
+    router.push('/Home')
+  }
 }
 
 // 保存到我的代码

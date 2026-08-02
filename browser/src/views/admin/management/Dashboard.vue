@@ -2,7 +2,7 @@
   <div class="dashboard">
     <!-- 统计卡片 -->
     <el-row :gutter="20">
-      <el-col :xs="24" :sm="12" :lg="6" v-for="card in statCards" :key="card.label">
+      <el-col :xs="24" :sm="12" :lg="4" v-for="card in statCards" :key="card.label">
         <el-card class="stat-card" shadow="hover">
           <div class="stat-content">
             <div class="stat-info">
@@ -36,8 +36,8 @@
     <el-row :gutter="20" style="margin-top: 20px">
       <el-col :xs="24" :lg="12">
         <el-card shadow="hover">
-          <template #header><span>近7天新注册用户</span></template>
-          <div ref="userChartRef" class="chart-box"></div>
+          <template #header><span>用户答题数量 TOP5</span></template>
+          <div ref="topAnswerRef" class="chart-box"></div>
         </el-card>
       </el-col>
       <el-col :xs="24" :lg="12">
@@ -60,6 +60,22 @@
         <el-card shadow="hover">
           <template #header><span>作品浏览量 TOP10</span></template>
           <div ref="topWorksRef" class="chart-box"></div>
+        </el-card>
+      </el-col>
+    </el-row>
+
+    <!-- 图表区 第三行：用户浏览量 TOP5 圆环图 + AI 调用趋势 -->
+    <el-row :gutter="20" style="margin-top: 20px">
+      <el-col :xs="24" :lg="12">
+        <el-card shadow="hover">
+          <template #header><span>用户作品总浏览量 TOP5</span></template>
+          <div ref="topUserViewsRef" class="chart-box"></div>
+        </el-card>
+      </el-col>
+      <el-col :xs="24" :lg="12">
+        <el-card shadow="hover">
+          <template #header><span>近7天 AI 调用趋势</span></template>
+          <div ref="aiTrendRef" class="chart-box"></div>
         </el-card>
       </el-col>
     </el-row>
@@ -156,6 +172,7 @@ const statCards = ref([
   { label: '作品总数', value: 0, hint: '', icon: 'PictureFilled', color: '#67c23a' },
   { label: '评论总数', value: 0, hint: '', icon: 'ChatDotSquare', color: '#e6a23c' },
   { label: '待审核', value: 0, hint: '', icon: 'WarningFilled', color: '#f56c6c' },
+  { label: '今日AI调用', value: 0, hint: '', icon: 'Cpu', color: '#8b5cf6' },
 ])
 
 const pendingCount = ref(0)
@@ -163,14 +180,18 @@ const recentUsers = ref([])
 const pendingWorks = ref([])
 
 // 图表
-const userChartRef = ref(null)
+const topAnswerRef = ref(null)
 const workChartRef = ref(null)
 const viewTrendRef = ref(null)
 const topWorksRef = ref(null)
-let userChart = null
+const topUserViewsRef = ref(null)
+const aiTrendRef = ref(null)
+let topAnswerChart = null
 let workChart = null
 let viewTrendChart = null
 let topWorksChart = null
+let topUserViewsChart = null
+let aiTrendChart = null
 
 // 代码预览
 const previewVisible = ref(false)
@@ -211,41 +232,61 @@ async function rejectWork(id) {
 
 // 填充最近7天日期
 function fill7Days(trendData) {
+  // 生成本地日期字符串 yyyy-MM-dd
+  function localDateStr(date) {
+    if (date instanceof Date) {
+      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+    }
+    return String(date).slice(0, 10)
+  }
   const result = []
   const map = {}
   if (trendData) {
-    trendData.forEach(d => { map[d.date] = d.count })
+    trendData.forEach(d => { map[localDateStr(d.date)] = d.count })
   }
   for (let i = 6; i >= 0; i--) {
     const d = new Date()
     d.setDate(d.getDate() - i)
-    const key = d.toISOString().slice(0, 10)
+    const key = localDateStr(d)
     result.push({ date: key.slice(5), count: map[key] || 0 })
   }
   return result
 }
 
 function renderCharts(data) {
-  if (!userChartRef.value || !workChartRef.value) return
+  if (!topAnswerRef.value || !workChartRef.value) return
 
-  if (!userChart) userChart = echarts.init(userChartRef.value)
+  if (!topAnswerChart) topAnswerChart = echarts.init(topAnswerRef.value)
   if (!workChart) workChart = echarts.init(workChartRef.value)
 
-  const userDays = fill7Days(data?.userTrend)
-  const workDays = fill7Days(data?.workTrend)
-
-  userChart.setOption({
-    tooltip: { trigger: 'axis' },
-    grid: { left: 40, right: 20, top: 20, bottom: 30 },
-    xAxis: { type: 'category', data: userDays.map(d => d.date), axisLabel: { rotate: 30 } },
-    yAxis: { type: 'value', minInterval: 1 },
+  // 用户答题数量 TOP5（横向柱状图）
+  const answerData = (data?.topAnswerUsers || [])
+  topAnswerChart.setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    grid: { left: 80, right: 40, top: 10, bottom: 20 },
+    xAxis: { type: 'value', minInterval: 1 },
+    yAxis: {
+      type: 'category',
+      data: answerData.map(u => u.username).reverse(),
+      axisLabel: { width: 70, overflow: 'truncate' },
+      inverse: true,
+    },
     series: [{
       type: 'bar',
-      data: userDays.map(d => d.count),
-      itemStyle: { color: '#409eff', borderRadius: [4, 4, 0, 0] },
-      barWidth: 24,
+      data: answerData.map(u => u.answer_count).reverse(),
+      itemStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+          { offset: 0, color: '#409eff' },
+          { offset: 1, color: '#79bbff' },
+        ]),
+        borderRadius: [0, 4, 4, 0],
+      },
+      barWidth: 20,
+      label: { show: true, position: 'right', color: '#666', formatter: '{c} 题' },
     }],
   })
+
+  const workDays = fill7Days(data?.workTrend)
 
   workChart.setOption({
     tooltip: { trigger: 'axis' },
@@ -309,6 +350,67 @@ function renderCharts(data) {
       }],
     })
   }
+
+  // 用户作品总浏览量 TOP5 圆环图
+  if (topUserViewsRef.value) {
+    if (!topUserViewsChart) topUserViewsChart = echarts.init(topUserViewsRef.value)
+    const userData = (data?.topUserViews || [])
+    const colors = ['#8b5cf6', '#6366f1', '#3b82f6', '#06b6d4', '#10b981']
+    topUserViewsChart.setOption({
+      tooltip: {
+        trigger: 'item',
+        formatter: p => `${p.name}: ${p.value} 次浏览 (占 ${p.percent}%)`,
+      },
+      legend: {
+        orient: 'vertical',
+        right: 10,
+        top: 'center',
+        textStyle: { fontSize: 12, color: '#666' },
+      },
+      series: [{
+        type: 'pie',
+        radius: ['45%', '72%'],
+        center: ['38%', '50%'],
+        avoidLabelOverlap: false,
+        itemStyle: { borderRadius: 4, borderColor: '#fff', borderWidth: 2 },
+        label: {
+          show: true,
+          position: 'outside',
+          formatter: '{b}\n{d}%',
+          fontSize: 11,
+        },
+        emphasis: {
+          label: { fontSize: 16, fontWeight: 'bold' },
+          scaleSize: 8,
+        },
+        data: userData.map((u, i) => ({
+          name: u.username,
+          value: u.total_views,
+          itemStyle: { color: colors[i % colors.length] },
+        })),
+      }],
+    })
+  }
+
+  // AI 调用趋势（折线图）
+  if (aiTrendRef.value) {
+    if (!aiTrendChart) aiTrendChart = echarts.init(aiTrendRef.value)
+    const aiDays = fill7Days(data?.aiTrend)
+    aiTrendChart.setOption({
+      tooltip: { trigger: 'axis' },
+      grid: { left: 40, right: 20, top: 20, bottom: 30 },
+      xAxis: { type: 'category', data: aiDays.map(d => d.date), axisLabel: { rotate: 30 } },
+      yAxis: { type: 'value', minInterval: 1 },
+      series: [{
+        type: 'line',
+        data: aiDays.map(d => d.count),
+        smooth: true,
+        lineStyle: { color: '#8b5cf6', width: 2 },
+        itemStyle: { color: '#8b5cf6' },
+        areaStyle: { color: 'rgba(139,92,246,0.1)' },
+      }],
+    })
+  }
 }
 
 async function fetchData() {
@@ -321,6 +423,7 @@ async function fetchData() {
         { label: '作品总数', value: d.workCount || 0, hint: `今日新增 ${d.todayWorks || 0}`, icon: 'PictureFilled', color: '#67c23a' },
         { label: '评论总数', value: d.commentCount || 0, hint: '', icon: 'ChatDotSquare', color: '#e6a23c' },
         { label: '待审核', value: d.pendingCount || 0, hint: '需要审核的作品', icon: 'WarningFilled', color: '#f56c6c' },
+        { label: '今日AI调用', value: d.todayAiCalls || 0, hint: 'DeepSeek API', icon: 'Cpu', color: '#8b5cf6' },
       ]
       pendingCount.value = d.pendingCount || 0
       recentUsers.value = d.recentUsers || []
@@ -329,12 +432,12 @@ async function fetchData() {
       renderCharts(d)
     }
   } catch {
-    // Mock
     statCards.value = [
       { label: '用户总数', value: 128, hint: '今日新增 3', icon: 'User', color: '#409eff' },
       { label: '作品总数', value: 256, hint: '今日新增 5', icon: 'PictureFilled', color: '#67c23a' },
       { label: '评论总数', value: 1024, hint: '', icon: 'ChatDotSquare', color: '#e6a23c' },
       { label: '待审核', value: 4, hint: '需要审核的作品', icon: 'WarningFilled', color: '#f56c6c' },
+      { label: '今日AI调用', value: 23, hint: 'DeepSeek API', icon: 'Cpu', color: '#8b5cf6' },
     ]
     pendingCount.value = 4
     recentUsers.value = [
@@ -368,6 +471,26 @@ async function fetchData() {
         { title: 'Vue3 待办事项', view_count: 1800, username: '李四' },
         { title: '响应式导航栏', view_count: 900, username: '赵六' },
       ],
+      topUserViews: [
+        { username: 'admin', total_views: 15000 },
+        { username: '王五', total_views: 7200 },
+        { username: '张三', total_views: 4560 },
+        { username: '李四', total_views: 2800 },
+        { username: '赵六', total_views: 1200 },
+      ],
+      topAnswerUsers: [
+        { username: 'admin', answer_count: 85 },
+        { username: '张三', answer_count: 62 },
+        { username: '李四', answer_count: 48 },
+        { username: '王五', answer_count: 35 },
+        { username: '赵六', answer_count: 20 },
+      ],
+      aiTrend: [
+        { date: '2024-06-06', count: 5 }, { date: '2024-06-07', count: 12 },
+        { date: '2024-06-08', count: 8 }, { date: '2024-06-09', count: 15 },
+        { date: '2024-06-10', count: 20 }, { date: '2024-06-11', count: 18 },
+        { date: '2024-06-12', count: 23 },
+      ],
     })
   }
 
@@ -390,10 +513,12 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  userChart?.dispose()
+  topAnswerChart?.dispose()
   workChart?.dispose()
   viewTrendChart?.dispose()
   topWorksChart?.dispose()
+  topUserViewsChart?.dispose()
+  aiTrendChart?.dispose()
 })
 </script>
 

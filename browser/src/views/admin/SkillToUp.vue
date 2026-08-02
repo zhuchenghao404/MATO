@@ -14,8 +14,26 @@
         <div class="page-inner">
             <header class="page-header">
                 <span class="header-badge">★ SKILL CHALLENGE ★</span>
-                <h1 class="page-title">技能闯关</h1>
-                <p class="page-desc">选择一个技能，开始挑战吧！</p>
+                <div class="title-row">
+                    <h1 class="page-title">技能闯关</h1>
+                    <div class="mode-toggle">
+                        <button
+                            class="mode-btn"
+                            :class="{ 'mode-btn--active': mode === 'challenge' }"
+                            @click="toggleMode"
+                        >
+                            闯关
+                        </button>
+                        <button
+                            class="mode-btn mode-btn--right"
+                            :class="{ 'mode-btn--active': mode === 'train' }"
+                            @click="toggleMode"
+                        >
+                            训练
+                        </button>
+                    </div>
+                </div>
+                <p class="page-desc">{{ pageDesc }}</p>
             </header>
 
             <section class="track-panel">
@@ -39,7 +57,7 @@
                             <h3 class="card-title">{{ skill.name }}</h3>
                             <span class="card-tag">{{ skill.tag }}</span>
                         </div>
-                        <span class="card-status">待挑战</span>
+                        <span class="card-status">{{ cardStatus }}</span>
                         <span
                             v-if="index < skills.length - 1"
                             class="card-connector"
@@ -62,11 +80,14 @@
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../../stores/auth.js'
 
 const router = useRouter()
 const { isLoggedIn } = useAuth()
+
+const mode = ref('challenge') // 'challenge' | 'train'
 
 const skills = [
     { name: 'HTML', icon: '📄', tag: '结构基础' },
@@ -77,12 +98,27 @@ const skills = [
     { name: 'Promise', icon: '⏳', tag: '异步编程' },
 ]
 
+const pageDesc = computed(() => {
+    return mode.value === 'challenge'
+        ? '选择一个技能，开始挑战吧！'
+        : '选择一个技能，开始训练吧！'
+})
+
+const cardStatus = computed(() => {
+    return mode.value === 'challenge' ? '待挑战' : '待训练'
+})
+
+function toggleMode() {
+    mode.value = mode.value === 'challenge' ? 'train' : 'challenge'
+}
+
 function goChallenge(skillName) {
     if (!isLoggedIn.value) {
         router.push('/Home?auth=open')
         return
     }
-    router.push(`/Challenge/${skillName}`)
+    const path = mode.value === 'challenge' ? `/Challenge/${skillName}` : `/Train/${skillName}`
+    router.push(path)
 }
 </script>
 
@@ -162,6 +198,8 @@ function goChallenge(skillName) {
     flex-direction: column;
     align-items: center;
     gap: 0.6rem;
+    position: relative;
+    z-index: 100;
 }
 
 .header-badge {
@@ -185,6 +223,51 @@ function goChallenge(skillName) {
     letter-spacing: 2px;
     line-height: 1.1;
     margin: 0;
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0.5rem 0;
+    position: relative;
+    z-index: 100;
+}
+
+.mode-toggle {
+    display: inline-grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0 #000;
+    background: #fff;
+    overflow: hidden;
+    z-index: 100;
+    position: relative;
+}
+
+.mode-btn {
+    padding: 0.65rem 0.85rem;
+    border: 0;
+    background: #fff;
+    color: #000;
+    font-family: 'Bangers', 'Impact', sans-serif;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    min-width: 60px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.mode-btn--right {
+    border-left: 3px solid #000;
+}
+
+.mode-btn--active {
+    background: #000;
+    color: #fff;
 }
 
 .page-desc {
@@ -505,6 +588,9 @@ function goChallenge(skillName) {
     .header-badge { font-size: 0.75rem; letter-spacing: 2px; padding: 0.25rem 0.8rem; }
     .page-title { font-size: 2.2rem; }
     .page-desc { font-size: 0.9rem; }
+    .title-row { gap: 1rem; }
+    .mode-toggle { box-shadow: 3px 3px 0 #000; }
+    .mode-btn { padding: 0.5rem 0.7rem; font-size: 0.9rem; }
     .learning-spark { width: min(320px, 100%); height: 68px; }
     .spark-doc { width: 58px; height: 38px; font-size: 0.82rem; border-width: 2px; }
     .spark-doc::before { width: 14px; height: 14px; border-left-width: 2px; border-bottom-width: 2px; }

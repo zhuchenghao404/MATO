@@ -157,8 +157,8 @@
                             class="comic-btn confirm-btn"
                             type="button"
                             @click="confirmAnswer"
-                            :disabled="!canSubmit"
-                        >确 定</button>
+                            :disabled="!canSubmit || judging"
+                        >{{ judging ? '评判中...' : '确 定' }}</button>
                     </template>
                     <!-- 已作答：显示结果 + 上下题导航 -->
                     <template v-else>
@@ -286,7 +286,25 @@ const answeredSet = ref(new Set())      // 已作答的题号
 const correctSet = ref(new Set())       // 答对的题号
 const userSelections = ref({})          // { [index]: { selectedOption, selectedKeys, userAnswer, isCorrect } }
 
-// 初始化：从后端加载已保存的答题记录
+// ── localStorage 本地存根（后端失败时兜底） ──
+const STORAGE_KEY = computed(() => `mato_quiz_${props.skill}`)
+
+function loadLocal() {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY.value)
+        return raw ? JSON.parse(raw) : {}
+    } catch { return {} }
+}
+
+function saveLocal(questionId, isCorrect, userAnswer) {
+    try {
+        const data = loadLocal()
+        data[String(questionId)] = { isCorrect, userAnswer, time: Date.now() }
+        localStorage.setItem(STORAGE_KEY.value, JSON.stringify(data))
+    } catch { /* quota exceeded, ignore */ }
+}
+
+// 初始化：从后端 + localStorage 加载答题记录
 async function loadAnswers() {
     // 先重置状态
     currentIndex.value = 0
@@ -302,35 +320,57 @@ async function loadAnswers() {
     answered.value = false
     isCorrect.value = false
 
-    if (!isLoggedIn.value || !token.value) return
-    try {
-        const res = await apiRequest('/quiz/my-answers')
-        if (res.code === 200 && Array.isArray(res.data)) {
-            // 构建 question_id → 本地索引 映射
-            const idToIndex = {}
-            questions.value.forEach((q, i) => { idToIndex[q.id] = i })
+    const idToIndex = {}
+    questions.value.forEach((q, i) => { idToIndex[q.id] = i })
+    const answeredVals = new Set()
+    const correctVals = new Set()
+    const selections = {}
 
-            const answeredVals = new Set()
-            const correctVals = new Set()
-            const selections = {}
+    // 1) 先从 localStorage 恢复
+    const local = loadLocal()
+    for (const [qid, rec] of Object.entries(local)) {
+        const idx = idToIndex[Number(qid)]
+        if (idx === undefined) continue
+        if (rec.isCorrect) {
+            answeredVals.add(idx)
+            correctVals.add(idx)
+        }
+        if (rec.userAnswer) {
+            selections[idx] = { userAnswer: rec.userAnswer, isCorrect: rec.isCorrect }
+        }
+    }
 
-            for (const record of res.data) {
-                const idx = idToIndex[record.question_id]
-                if (idx === undefined) continue
-                if (record.is_correct === 1) answeredVals.add(idx)  // 只有答对的才锁定
-                if (record.is_correct === 1) correctVals.add(idx)
-                selections[idx] = {
-                    userAnswer: record.user_answer || '',
-                    isCorrect: record.is_correct === 1,
+    // 2) 再从后端加载（覆盖 localStorage）
+    if (isLoggedIn.value && token.value) {
+        try {
+            const res = await apiRequest(`/quiz/my-answers?skill=${encodeURIComponent(props.skill)}`)
+            if (res.code === 200 && Array.isArray(res.data)) {
+                for (const record of res.data) {
+                    const idx = idToIndex[record.question_id]
+                    if (idx === undefined) continue
+                    if (record.is_correct === 1) {
+                        answeredVals.add(idx)
+                        correctVals.add(idx)
+                    }
+                    selections[idx] = {
+                        userAnswer: record.user_answer || '',
+                        isCorrect: record.is_correct === 1,
+                    }
                 }
             }
-
-            answeredSet.value = answeredVals
-            correctSet.value = correctVals
-            userSelections.value = selections
+        } catch (err) {
+            console.error('加载答题记录失败:', err)
         }
-    } catch (err) {
-        console.error('加载答题记录失败:', err)
+    }
+
+    answeredSet.value = answeredVals
+    correctSet.value = correctVals
+    userSelections.value = selections
+
+    // 自动跳转到第一个未答对的题目
+    const firstUnanswered = questions.value.findIndex((_, i) => !answeredVals.has(i))
+    if (firstUnanswered !== -1 && firstUnanswered !== currentIndex.value) {
+        currentIndex.value = firstUnanswered
     }
 }
 
@@ -366,6 +406,7 @@ const answered = ref(false)
 const isCorrect = ref(false)
 const resultMsg = ref(null)
 const showExplanation = ref(false)
+const judging = ref(false)
 
 function normalize(s) {
     return s.trim().replace(/\r\n/g, '\n')
@@ -384,19 +425,84 @@ function checkAnswer() {
         return userAns === correctAns
     }
     if (t === 'code-fix' || t === 'programming') {
-        // 简单文本比对（可后续升级为更宽松的匹配逻辑）
-        return normalize(userAnswer.value) === normalize(q.answer)
+        return fuzzyCodeCheck(userAnswer.value, q.answer)
     }
     return false
 }
 
-function confirmAnswer() {
-    isCorrect.value = checkAnswer()
+/** 代码模糊判题：AI不可用时的本地降级方案 */
+function fuzzyCodeCheck(userCode, expectedCode) {
+    if (!userCode || !expectedCode) return false
+    // 1. 完全一致（忽略首尾空白和换行符差异）
+    if (normalize(userCode) === normalize(expectedCode)) return true
+    // 2. 去除所有空白符后比较（容忍空格、缩进差异）
+    const stripWS = (s) => s.replace(/\s+/g, '').toLowerCase()
+    if (stripWS(userCode) === stripWS(expectedCode)) return true
+    // 3. 去除空白、单引号/双引号差异、分号后比较
+    const loose = (s) => s.replace(/[\s;'"]/g, '').toLowerCase()
+    if (loose(userCode) === loose(expectedCode)) return true
+    // 4. 关键词检查：用户代码是否包含了参考答案的关键结构
+    //    提取参考答案中所有长度>=3的标识符，要求用户代码包含大部分
+    const keywords = expectedCode.match(/[a-zA-Z_$][\w$]{2,}/g) || []
+    if (keywords.length > 0) {
+        const userLower = userCode.toLowerCase()
+        const matchCount = keywords.filter(k => userLower.includes(k.toLowerCase())).length
+        // 至少匹配80%的关键标识符
+        if (matchCount >= keywords.length * 0.8 && matchCount >= 3) return true
+    }
+    return false
+}
 
-    // 构造提交给后端的答案文本
+async function confirmAnswer() {
+    const q = currentQ.value
+    const t = q.type
     const submitAnswer = isChoice.value
         ? (isMulti.value ? [...selectedKeys.value].sort().join('') : selectedOption.value)
         : userAnswer.value
+
+    // 编程题和纠错题：调用 AI 智能评判
+    if (t === 'code-fix' || t === 'programming') {
+      judging.value = true
+      resultMsg.value = { type: 'correct', text: 'AI 正在评判中，请稍候...' }
+      try {
+        const res = await apiRequest('/ai/check', {
+          method: 'POST',
+          body: JSON.stringify({
+            question: q.question,
+            userAnswer: submitAnswer,
+            expectedAnswer: q.answer || '',
+            type: t,
+          }),
+        })
+        if (res.code === 200 && res.data) {
+          isCorrect.value = res.data.correct
+          resultMsg.value = {
+            type: res.data.correct ? 'correct' : 'wrong',
+            text: res.data.correct ? '回答正确！' : `回答不正确，${res.data.reason || '请检查代码逻辑'}`
+          }
+        } else {
+          // 降级：模糊比对（AI 不可用时使用本地判题）
+          isCorrect.value = checkAnswer()
+          const reason = res.code === 429
+            ? `（今日AI次数已用完，使用本地判题）`
+            : `（AI 暂不可用，使用本地判题）`
+          resultMsg.value = isCorrect.value
+            ? { type: 'correct', text: `回答正确！${reason}` }
+            : { type: 'wrong', text: `回答错误，再试一次吧！${reason}` }
+        }
+      } catch {
+        // 网络错误降级
+        isCorrect.value = checkAnswer()
+        resultMsg.value = isCorrect.value
+          ? { type: 'correct', text: '回答正确！（AI 暂不可用，使用本地判题）' }
+          : { type: 'wrong', text: '回答错误，再试一次吧！（AI 暂不可用，使用本地判题）' }
+      } finally {
+        judging.value = false
+      }
+    } else {
+      // 选择题：精确比对
+      isCorrect.value = checkAnswer()
+    }
 
     // 记录本次作答
     userSelections.value[currentIndex.value] = {
@@ -410,42 +516,50 @@ function confirmAnswer() {
         // 答对：锁定题目，加经验
         answeredSet.value.add(currentIndex.value)
         correctSet.value.add(currentIndex.value)
-        if (isExpCapped.value) {
+        saveLocal(currentQ.value.id, true, submitAnswer)
+        // AI 评判的结果保留，只追加经验提示
+        if (t === 'code-fix' || t === 'programming') {
+          const expMsg = isExpCapped.value
+            ? '经验已达上限'
+            : `+${expReward.value} EXP`
+          resultMsg.value = { type: 'correct', text: `回答正确！${expMsg}（AI 评判：${resultMsg.value?.text || '通过'}）` }
+        } else if (isExpCapped.value) {
             resultMsg.value = { type: 'correct', text: '回答正确！经验已达上限（99999），不再增加。' }
         } else {
             resultMsg.value = { type: 'correct', text: `回答正确！+${expReward.value} 经验值` }
         }
         if (isLoggedIn.value) {
-            syncExpAndRecord(submitAnswer)
+            await syncExpAndRecord(submitAnswer)
         }
     } else {
-        resultMsg.value = {
-            type: 'wrong',
-            text: '回答错误，再试一次吧！修改答案后点确定即可。'
+        // AI 评判的结果保留
+        if (t !== 'code-fix' && t !== 'programming') {
+          resultMsg.value = {
+              type: 'wrong',
+              text: '回答错误，再试一次吧！修改答案后点确定即可。'
+          }
         }
+        saveLocal(currentQ.value.id, false, submitAnswer)
         // 答错仅记录，不加经验
         if (isLoggedIn.value) {
-            apiRequest('/quiz/submit', {
+            await apiRequest('/quiz/submit', {
                 method: 'POST',
                 body: JSON.stringify({
                     questionId: currentQ.value.id,
                     answer: submitAnswer,
                     isCorrect: false,
                     expReward: 0,
+                    skill: props.skill,
                 }),
             }).catch(() => {})
         }
     }
 }
 
-/** 加经验并同步提交记录，两者顺序执行避免数据不一致 */
+/** 加经验并同步提交记录，先存记录再加经验，避免经验失败丢失记录 */
 async function syncExpAndRecord(submitAnswer) {
     try {
-        // 先加经验到数据库（已达上限则跳过）
-        if (!isExpCapped.value) {
-            await addExp(expReward.value)
-        }
-        // 再提交答题记录
+        // 先提交答题记录（最重要）
         await apiRequest('/quiz/submit', {
             method: 'POST',
             body: JSON.stringify({
@@ -453,8 +567,18 @@ async function syncExpAndRecord(submitAnswer) {
                 answer: submitAnswer,
                 isCorrect: true,
                 expReward: isExpCapped.value ? 0 : expReward.value,
+                skill: props.skill,
             }),
         })
+    } catch (e) {
+        console.error('提交答题记录失败:', e)
+    }
+
+    // 再加经验（不影响记录保存）
+    try {
+        if (!isExpCapped.value) {
+            await addExp(expReward.value)
+        }
     } catch (e) {
         console.error('同步经验失败:', e)
     }

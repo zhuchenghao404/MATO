@@ -10,6 +10,7 @@ const emailRoutes = require('./routes/email')
 const worksRoutes = require('./routes/works')
 const aiRoutes = require('./routes/ai')
 const adminRoutes = require('./routes/admin')
+const socialRoutes = require('./routes/social')
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -27,6 +28,7 @@ app.use('/api/email', emailRoutes)
 app.use('/api/works', worksRoutes)
 app.use('/api/ai', aiRoutes)
 app.use('/api/admin', adminRoutes)
+app.use('/api/social', socialRoutes)
 
 // 等级配置（挂到 /api 下，前端直接调 /api/level-configs）
 const pool = require('./db')
@@ -45,10 +47,41 @@ app.get('/api/health', (req, res) => {
   res.json({ code: 200, msg: 'MATO Server is running' })
 })
 
-// 404
-app.use((req, res) => {
-  res.status(404).json({ code: 404, msg: '接口不存在' })
-})
+// 生产模式：托管前端静态文件
+const frontendDist = path.resolve(__dirname, '..', '..', 'browser', 'dist')
+if (process.env.NODE_ENV === 'production') {
+  const fs = require('fs')
+  const indexPath = path.join(frontendDist, 'index.html')
+  
+  app.use((req, res, next) => {
+    // 跳过 API 路由
+    if (req.path.startsWith('/api/')) return next()
+    
+    // 尝试匹配静态文件
+    const filePath = path.join(frontendDist, req.path)
+    fs.readFile(filePath, (err, data) => {
+      if (!err) {
+        // 根据扩展名设置 Content-Type
+        const ext = path.extname(req.path).toLowerCase()
+        const types = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.json': 'application/json', '.ico': 'image/x-icon', '.woff2': 'font/woff2' }
+        res.setHeader('Content-Type', types[ext] || 'application/octet-stream')
+        return res.send(data)
+      }
+      // 静态文件没找到 → SPA fallback 返回 index.html
+      fs.readFile(indexPath, (e, html) => {
+        if (e) return res.status(500).send('前端未构建，请执行 npm run build')
+        res.setHeader('Content-Type', 'text/html; charset=utf-8')
+        res.send(html)
+      })
+    })
+  })
+  console.log('[Static] 静态文件服务已启用:', frontendDist)
+} else {
+  // 开发模式 404
+  app.use((req, res) => {
+    res.status(404).json({ code: 404, msg: '接口不存在' })
+  })
+}
 
 // 全局错误处理
 app.use((err, req, res, _next) => {
@@ -56,10 +89,10 @@ app.use((err, req, res, _next) => {
   res.status(500).json({ code: 500, msg: '服务器内部错误' })
 })
 
-const initAdmin = require('./initAdmin')
+const initDB = require('./initDB')
 
 // 启动服务器
-initAdmin().then(() => {
+initDB().then(() => {
   app.listen(PORT, () => {
     console.log(`\n  MATO Server 已启动 → http://localhost:${PORT}`)
     console.log(`  健康检查 → http://localhost:${PORT}/api/health\n`)

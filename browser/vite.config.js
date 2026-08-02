@@ -2,8 +2,62 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import sharp from 'sharp'
+import fs from 'fs/promises'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+// 图片压缩插件
+function imageCompressPlugin() {
+  let outDir
+  return {
+    name: 'image-compress',
+    configResolved(config) {
+      outDir = config.build.outDir
+    },
+    async writeBundle() {
+      // 压缩 dist/assets 中的图片
+      const assetsDir = path.join(outDir, 'assets')
+      let saved = 0
+      try {
+        const files = await fs.readdir(assetsDir)
+        for (const f of files) {
+          if (/\.(png|jpe?g)$/i.test(f)) {
+            const fp = path.join(assetsDir, f)
+            const input = await fs.readFile(fp)
+            const compressed = await sharp(input)
+              .png({ quality: 80, compressionLevel: 9 })
+              .toBuffer()
+            if (compressed.length < input.length) {
+              await fs.writeFile(fp, compressed)
+              saved += input.length - compressed.length
+            }
+          }
+        }
+      } catch (_) {}
+      // 压缩 dist 根目录的图片（如 public/favicon.png）
+      try {
+        const rootFiles = await fs.readdir(outDir)
+        for (const f of rootFiles) {
+          if (/\.(png|jpe?g)$/i.test(f)) {
+            const fp = path.join(outDir, f)
+            const input = await fs.readFile(fp)
+            const compressed = await sharp(input)
+              .png({ quality: 80, compressionLevel: 9 })
+              .toBuffer()
+            if (compressed.length < input.length) {
+              await fs.writeFile(fp, compressed)
+              saved += input.length - compressed.length
+            }
+          }
+        }
+      } catch (_) {}
+      if (saved > 0) {
+        console.log(`[image-compress] 图片压缩节省 ${(saved / 1024).toFixed(0)} KB`)
+      }
+    },
+  }
+}
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -28,6 +82,7 @@ export default defineConfig({
     allowedHosts: [
       'dry-poems-nail.loca.lt',
       '.loca.lt',
+      '.trycloudflare.com',
     ],
     hmr: {
       overlay: false,
@@ -38,6 +93,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    imageCompressPlugin(),
     {
       name: 'prevent-hmr-full-reload',
       configureServer(server) {

@@ -7,20 +7,20 @@ const router = express.Router()
 /** 提交答案（前端已判断对错，后端只记录） */
 router.post('/submit', authMiddleware, async (req, res) => {
   try {
-    const { questionId, answer, isCorrect, expReward } = req.body
+    const { questionId, answer, isCorrect, expReward, skill } = req.body
     if (!questionId || answer === undefined) {
       return res.json({ code: 400, msg: '参数不完整' })
     }
+    const skillName = skill || ''
 
     const [existing] = await pool.query(
-      'SELECT id, is_correct FROM question_records WHERE user_id = ? AND question_id = ?',
-      [req.user.id, questionId]
+      'SELECT id, is_correct FROM question_records WHERE user_id = ? AND question_id = ? AND skill = ?',
+      [req.user.id, questionId, skillName]
     )
     const correct = isCorrect ? 1 : 0
     const reward = expReward || 0
 
     if (existing.length > 0) {
-      // 已答过：之前错的现在答对了 → 更新
       if (existing[0].is_correct === 0 && correct === 1) {
         await pool.query(
           'UPDATE question_records SET answer = ?, is_correct = 1, exp_reward = ? WHERE id = ?',
@@ -28,14 +28,12 @@ router.post('/submit', authMiddleware, async (req, res) => {
         )
         return res.json({ code: 200, msg: '已更新为正确', data: { isCorrect: true, expReward: reward } })
       }
-      // 已经答对的 → 幂等忽略
       return res.json({ code: 200, msg: '该题已提交过', data: { isCorrect: true, expReward: reward } })
     }
 
-    // 新记录
     await pool.query(
-      'INSERT INTO question_records (user_id, question_id, answer, is_correct, exp_reward) VALUES (?, ?, ?, ?, ?)',
-      [req.user.id, questionId, String(answer), correct, reward]
+      'INSERT INTO question_records (user_id, question_id, skill, answer, is_correct, exp_reward) VALUES (?, ?, ?, ?, ?, ?)',
+      [req.user.id, questionId, skillName, String(answer), correct, reward]
     )
 
     res.json({
@@ -52,9 +50,10 @@ router.post('/submit', authMiddleware, async (req, res) => {
 /** 用户答题记录 */
 router.get('/my-answers', authMiddleware, async (req, res) => {
   try {
+    const skill = req.query.skill || ''
     const [rows] = await pool.query(
-      'SELECT question_id, is_correct, answer AS user_answer, exp_reward, created_at FROM question_records WHERE user_id = ? ORDER BY created_at DESC',
-      [req.user.id]
+      'SELECT question_id, is_correct, answer AS user_answer, exp_reward, created_at FROM question_records WHERE user_id = ? AND skill = ? ORDER BY created_at DESC',
+      [req.user.id, skill]
     )
     res.json({ code: 200, data: rows })
   } catch (err) {

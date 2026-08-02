@@ -16,6 +16,15 @@ router.use((req, res, next) => {
 // ==================== 仪表盘统计 ====================
 router.get('/stats', async (req, res) => {
   try {
+    /** 将 trend 数据中的 date (JS Date/string) 转为 yyyy-MM-dd 字符串，避免 JSON 序列化时区偏移 */
+    function fmtTrend(trend) {
+      return (trend || []).map(r => {
+        const d = r.date instanceof Date ? r.date : new Date(r.date)
+        // 用本地时间格式化，避免 UTC 序列化导致日期偏移一天
+        const ds = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+        return { date: ds, count: r.count }
+      })
+    }
     const [[{ userCount }]] = await pool.query('SELECT COUNT(*) as userCount FROM users')
     const [[{ workCount }]] = await pool.query('SELECT COUNT(*) as workCount FROM works')
     const [[{ commentCount }]] = await pool.query('SELECT COUNT(*) as commentCount FROM comments')
@@ -56,8 +65,44 @@ router.get('/stats', async (req, res) => {
        ORDER BY w.view_count DESC LIMIT 10`
     )
 
+    // 用户作品总浏览量 TOP5（圆环图用）
+    const [topUserViews] = await pool.query(
+      `SELECT u.username, IFNULL(SUM(w.view_count), 0) as total_views
+       FROM works w JOIN users u ON w.user_id = u.id
+       WHERE w.status = 1
+       GROUP BY u.id, u.username
+       ORDER BY total_views DESC LIMIT 5`
+    )
+
+    // AI API 今日访问次数（用本地日期，与 aiLimit.js 保持一致）
+    const now = new Date()
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
+    const [[{ todayAiCalls }]] = await pool.query(
+      'SELECT IFNULL(SUM(count), 0) as todayAiCalls FROM ai_usage WHERE usage_date = ?',
+      [todayStr]
+    )
+
+    // AI API 近7天访问趋势
+    const s = new Date(Date.now() - 6 * 86400000)
+    const sevenDaysAgo = `${s.getFullYear()}-${String(s.getMonth() + 1).padStart(2, '0')}-${String(s.getDate()).padStart(2, '0')}`
+    const [aiTrend] = await pool.query(
+      `SELECT usage_date as date, SUM(count) as count
+       FROM ai_usage WHERE usage_date >= ?
+       GROUP BY usage_date ORDER BY date`,
+      [sevenDaysAgo]
+    )
+
     const [recentUsers] = await pool.query(
       'SELECT username, email, level, created_at FROM users ORDER BY created_at DESC LIMIT 5'
+    )
+
+    // 用户答题数量 TOP5
+    const [topAnswerUsers] = await pool.query(
+      `SELECT u.username, COUNT(*) as answer_count
+       FROM question_records qr JOIN users u ON qr.user_id = u.id
+       WHERE qr.is_correct = 1
+       GROUP BY qr.user_id, u.username
+       ORDER BY answer_count DESC LIMIT 5`
     )
 
     res.json({
@@ -69,10 +114,14 @@ router.get('/stats', async (req, res) => {
         pendingCount,
         todayUsers,
         todayWorks,
-        userTrend,
-        workTrend,
-        viewTrend,
+        userTrend: fmtTrend(userTrend),
+        workTrend: fmtTrend(workTrend),
+        viewTrend: fmtTrend(viewTrend),
         topWorks,
+        topUserViews,
+        todayAiCalls,
+        aiTrend: fmtTrend(aiTrend),
+        topAnswerUsers,
         recentUsers,
       },
     })

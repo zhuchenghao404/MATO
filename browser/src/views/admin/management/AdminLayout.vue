@@ -83,14 +83,26 @@ const currentTitle = computed(() => {
 })
 
 function goHome() {
-  router.push('/Home')
+  handleGoBack()
+}
+
+function handleGoBack() {
+  const fromPath = sessionStorage.getItem('mato_from_path')
+  if (fromPath) {
+    sessionStorage.removeItem('mato_from_path')
+    router.push(fromPath)
+  } else if (window.history.length > 1) {
+    router.back()
+  } else {
+    router.push('/Home')
+  }
 }
 
 function logout() {
   localStorage.removeItem('mato_token')
   localStorage.removeItem('mato_user')
   localStorage.removeItem('mato_username')
-  router.push('/Home')
+  handleGoBack()
 }
 </script>
 

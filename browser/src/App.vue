@@ -29,7 +29,7 @@ const container = ref(null)
 const tabbar = ref(null)
 const route = useRoute()
 
-const isChallengePage = computed(() => route.path.startsWith('/Challenge') || route.path.startsWith('/WorkDetail') || route.path.startsWith('/Pen') || route.path.startsWith('/Profile') || route.path.startsWith('/admin'))
+const isChallengePage = computed(() => route.path.startsWith('/Challenge') || route.path.startsWith('/WorkDetail') || route.path.startsWith('/Pen') || route.path.startsWith('/Profile') || route.path.startsWith('/admin') || route.path.startsWith('/Messages') || route.path.startsWith('/SocialList'))
 
 let ctx = null
 let isHidden = false
@@ -43,6 +43,7 @@ onMounted(() => {
             end: 'max',
 
             onUpdate(self) {
+                if (!tabbar.value) return
 
                 // 向下滚动
                 if (self.direction === 1 && !isHidden) {
@@ -81,10 +82,12 @@ onUnmounted(() => {
 onUpdated(() => {
     // 路由切换时恢复 tabbar 显示
     isHidden = false
-    gsap.to(tabbar.value, {
-        yPercent: 0,
-        duration: 0.3
-    })
+    if (tabbar.value) {
+        gsap.to(tabbar.value, {
+            yPercent: 0,
+            duration: 0.3
+        })
+    }
 })
 </script>
 

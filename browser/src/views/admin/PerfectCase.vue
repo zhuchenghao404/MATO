@@ -55,7 +55,7 @@
               v-if="item._iframeActive"
               :src="`/api/works/render/${item.id}`"
               class="preview-iframe"
-              sandbox="allow-scripts allow-same-origin"
+              sandbox="allow-scripts"
               title="作品预览"
             ></iframe>
             <div v-else class="preview-placeholder">
@@ -263,8 +263,9 @@ const { isLoggedIn, token } = useAuth()
 
 // ── 筛选 ──
 const drawerOpen = ref(false)
-const currentFilter = ref('daily')
+const currentFilter = ref('all')
 const filterOptions = [
+  { value: 'all', label: '全部作品', icon: '📋' },
   { value: 'daily', label: '当日热门', icon: '🔥' },
   { value: 'monthly', label: '本月热门', icon: '⭐' },
   { value: 'most-liked', label: '最高点赞', icon: '❤' },

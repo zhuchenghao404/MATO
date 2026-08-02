@@ -31,6 +31,8 @@
                                 />
                             </svg>
                             <img class="user-avatar-img" :src="userAvatar" alt="用户头像">
+                            <!-- 未读消息提示 -->
+                            <span v-if="unreadCount > 0" class="unread-badge">{{ unreadCount > 99 ? '99+' : unreadCount }}</span>
                         </div>
                         <div class="user-info">
                             <span class="user-level">LV.{{ userLevel }}</span>
@@ -96,9 +98,28 @@ const route = useRoute();
 const router = useRouter();
 
 /* ===== 用户数据 ===== */
-const { isLoggedIn, userName, userAvatar, userLevel, userExp, expMax, logout, openAuthModal } = useAuth()
+const { isLoggedIn, userName, userAvatar, userLevel, userExp, expMax, logout, openAuthModal, token } = useAuth()
 const showUserMenu = ref(false)
 const userWidgetRef = ref(null)
+const unreadCount = ref(0)
+
+async function fetchUnreadCount() {
+  if (!isLoggedIn.value || !token.value) {
+    unreadCount.value = 0
+    return
+  }
+  try {
+    const res = await fetch('/api/social/unread-count', {
+      headers: { 'Authorization': `Bearer ${token.value}` }
+    })
+    const data = await res.json()
+    if (data.code === 200) {
+      unreadCount.value = data.data.count || 0
+    }
+  } catch (e) {
+    console.error('[Tabbar] fetchUnreadCount:', e)
+  }
+}
 
 function handleUserClick() {
   if (isLoggedIn.value) {
@@ -263,6 +284,9 @@ onMounted(() => {
 
     // 点击页面其他地方关闭下拉菜单
     document.addEventListener('click', handleClickOutside)
+    
+    // 获取未读消息数量
+    fetchUnreadCount()
 })
 
 onUnmounted(() => {
@@ -387,6 +411,26 @@ onUnmounted(() => {
         width: 48px;
         height: 48px;
         flex: 0 0 auto;
+    }
+
+    .unread-badge {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        background: #ef4444;
+        color: white;
+        font-size: 10px;
+        font-weight: bold;
+        min-width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 3px;
+        border: 2px solid #000;
+        box-shadow: 1px 1px 0 #000;
+        z-index: 3;
     }
 
     .exp-arc {

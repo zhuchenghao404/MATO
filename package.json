@@ -4,9 +4,16 @@
   "private": true,
   "description": "MATO - 前端学习平台（Monorepo）",
   "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run browser:dev\"",
+    "build": "npm run browser:build",
+    "start": "npm run build && cross-env NODE_ENV=production npm run server:start",
     "browser:dev": "cd browser && npm run dev",
     "browser:build": "cd browser && npm run build",
     "server:dev": "cd server && npm run dev",
     "server:start": "cd server && npm run start"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3",
+    "cross-env": "^10.1.0"
   }
 }

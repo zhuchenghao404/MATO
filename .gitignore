@@ -14,6 +14,13 @@ dist-ssr
 .env
 uploads/
 .codebuddy/
+.qoder/
+.trae/
+
+# 不需要上传的目录
+docs/
+prototype/
+ppt/
 
 # Editor directories and files
 .vscode/*

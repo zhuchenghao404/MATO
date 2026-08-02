@@ -108,6 +108,42 @@ router.get('/profile', authMiddleware, async (req, res) => {
   }
 })
 
+/** 获取指定用户信息（公开信息） */
+router.get('/profile/:userId', authMiddleware, async (req, res) => {
+  try {
+    const { userId } = req.params
+    const [rows] = await pool.query(
+      'SELECT id, username, gender, avatar, bio, exp, level FROM users WHERE id = ?',
+      [userId]
+    )
+    if (rows.length === 0) {
+      return res.json({ code: 404, msg: '用户不存在' })
+    }
+
+    const user = rows[0]
+    const levelConfig = await getLevelConfig()
+
+    const currentLevelCfg = levelConfig.find(c => c.level === user.level)
+    const nextLevelCfg = levelConfig.find(c => c.level === user.level + 1)
+    const expInLevel = user.exp - (currentLevelCfg?.exp_required || 0)
+    const expMax = nextLevelCfg
+      ? nextLevelCfg.exp_required - (currentLevelCfg?.exp_required || 0)
+      : 0
+
+    res.json({
+      code: 200,
+      data: {
+        ...user,
+        expInLevel,
+        expMax,
+      },
+    })
+  } catch (err) {
+    console.error('[profile/:userId]', err)
+    res.status(500).json({ code: 500, msg: '服务器错误' })
+  }
+})
+
 /** 更新个人资料 */
 router.put('/profile', authMiddleware, async (req, res) => {
   try {

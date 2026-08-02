@@ -70,7 +70,7 @@ router.post('/', authMiddleware, upload.single('cover'), async (req, res) => {
 // ==================== 作品列表 ====================
 router.get('/', async (req, res) => {
   try {
-    const { filter = 'daily', page = 1, pageSize = 12 } = req.query
+    const { filter = 'all', page = 1, pageSize = 12 } = req.query
     const offset = (parseInt(page) - 1) * parseInt(pageSize)
     const limit = parseInt(pageSize)
 
@@ -86,6 +86,7 @@ router.get('/', async (req, res) => {
     } else if (filter === 'most-viewed') {
       orderBy = 'w.view_count DESC, w.created_at DESC'
     }
+    // 'all' 不做任何筛选，展示全部已通过作品，按时间倒序
 
     const [works] = await pool.query(
       `SELECT w.id, w.user_id, w.title, w.description, w.cover,
@@ -177,12 +178,29 @@ router.get('/my/works', authMiddleware, async (req, res) => {
     const [works] = await pool.query(
       `SELECT w.id, w.title, w.description, w.cover, w.html_code, w.css_code, w.js_code, w.dependencies,
               w.like_count, w.collect_count, w.comment_count, w.view_count, w.status, w.created_at
-       FROM works w WHERE w.user_id = ? AND w.status IN (0, 1) ORDER BY w.created_at DESC`,
+       FROM works w WHERE w.user_id = ? AND w.status IN (0, 1, 2) ORDER BY w.created_at DESC`,
       [req.user.id]
     )
     res.json({ code: 200, data: works })
   } catch (err) {
     console.error('[works/my]', err)
+    res.status(500).json({ code: 500, msg: '服务器错误' })
+  }
+})
+
+/** 获取指定用户的作品 */
+router.get('/user/:userId', authMiddleware, async (req, res) => {
+  try {
+    const { userId } = req.params
+    const [works] = await pool.query(
+      `SELECT w.id, w.title, w.description, w.cover, w.html_code, w.css_code, w.js_code, w.dependencies,
+              w.like_count, w.collect_count, w.comment_count, w.view_count, w.status, w.created_at
+       FROM works w WHERE w.user_id = ? AND w.status = 1 ORDER BY w.created_at DESC`,
+      [userId]
+    )
+    res.json({ code: 200, data: works })
+  } catch (err) {
+    console.error('[works/user]', err)
     res.status(500).json({ code: 500, msg: '服务器错误' })
   }
 })
@@ -304,10 +322,8 @@ router.get('/:id', optionalAuth, async (req, res) => {
     if (shouldIncrement) {
       await pool.query('UPDATE works SET view_count = view_count + 1 WHERE id = ?', [id])
       work.view_count = (work.view_count || 0) + 1
-
-      if (userId) {
-        await pool.query('INSERT INTO work_views (user_id, work_id) VALUES (?, ?)', [userId, id])
-      }
+      // 总是记录浏览（匿名用户 user_id 为 NULL）
+      await pool.query('INSERT INTO work_views (user_id, work_id) VALUES (?, ?)', [userId, id])
     }
 
     // 检查当前用户是否已点赞/收藏
@@ -345,6 +361,7 @@ router.get('/:id', optionalAuth, async (req, res) => {
         is_liked,
         is_collected,
         user: {
+          id: work.user_id,
           name: work.username,
           avatar: work.avatar,
           level: work.level,
@@ -476,7 +493,8 @@ router.post('/save-pen', authMiddleware, async (req, res) => {
       return res.json({ code: 400, msg: '请输入作品名称' })
     }
 
-    const status = for_case ? 0 : 1 // 投稿需审核
+    // status: 0=待审核投稿, 1=已发布(优秀案例), 2=私人草稿(仅自己可见)
+    const status = for_case ? 0 : 2
 
     const [result] = await pool.query(
       `INSERT INTO works (user_id, title, description, cover, html_code, css_code, js_code, dependencies, status)

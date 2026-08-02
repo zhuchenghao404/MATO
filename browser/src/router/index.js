@@ -1,41 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/admin/Home.vue'
-import SkillLearning from '../views/admin/SkillLearning.vue'
-import SkillToUp from '../views/admin/SkillToUp.vue'
-import PerfectCase from '../views/admin/PerfectCase.vue'
-import WorkDetail from '../views/admin/WorkDetail.vue'
-import Pen from '../views/admin/Pen.vue'
-import Profile from '../views/admin/Profile.vue'
-import TitleFramework from '../components/TitleFramework.vue'
-
-// 后台管理
-import AdminLayout from '../views/admin/management/AdminLayout.vue'
-import Dashboard from '../views/admin/management/Dashboard.vue'
-import UserManagement from '../views/admin/management/UserManagement.vue'
-import WorkManagement from '../views/admin/management/WorkManagement.vue'
-import CommentManagement from '../views/admin/management/CommentManagement.vue'
 
 const routes = [
   { path: '/', redirect: '/Home' },
-  { path: '/Home', component: Home },
-  { path: '/SkillLearning', component: SkillLearning },
-  { path: '/SkillToUp', component: SkillToUp },
-  { path: '/PerfectCase', component: PerfectCase },
-  { path: '/WorkDetail/:id', component: WorkDetail },
-  { path: '/Pen', component: Pen },
-  { path: '/Profile', component: Profile },
-  { path: '/Challenge/:skill', component: TitleFramework, props: true },
+  { path: '/Home', component: () => import('../views/admin/Home.vue') },
+  { path: '/SkillLearning', component: () => import('../views/admin/SkillLearning.vue') },
+  { path: '/SkillToUp', component: () => import('../views/admin/SkillToUp.vue') },
+  { path: '/PerfectCase', component: () => import('../views/admin/PerfectCase.vue') },
+  { path: '/WorkDetail/:id', component: () => import('../views/admin/WorkDetail.vue') },
+  { path: '/Pen', component: () => import('../views/admin/Pen.vue') },
+  { path: '/Profile', component: () => import('../views/admin/Profile.vue') },
+  { path: '/Profile/:userId', component: () => import('../views/admin/Profile.vue') },
+  { path: '/SocialList', component: () => import('../views/admin/SocialList.vue') },
+  { path: '/Messages', component: () => import('../views/admin/Messages.vue') },
+  { path: '/Challenge/:skill', component: () => import('../components/TitleFramework.vue'), props: true },
 
   // 后台管理路由
   {
     path: '/admin',
-    component: AdminLayout,
+    component: () => import('../views/admin/management/AdminLayout.vue'),
     redirect: '/admin/dashboard',
     children: [
-      { path: 'dashboard', component: Dashboard, meta: { title: '仪表盘' } },
-      { path: 'users', component: UserManagement, meta: { title: '用户管理' } },
-      { path: 'works', component: WorkManagement, meta: { title: '作品管理' } },
-      { path: 'comments', component: CommentManagement, meta: { title: '评论管理' } },
+      { path: 'dashboard', component: () => import('../views/admin/management/Dashboard.vue'), meta: { title: '仪表盘' } },
+      { path: 'users', component: () => import('../views/admin/management/UserManagement.vue'), meta: { title: '用户管理' } },
+      { path: 'works', component: () => import('../views/admin/management/WorkManagement.vue'), meta: { title: '作品管理' } },
+      { path: 'comments', component: () => import('../views/admin/management/CommentManagement.vue'), meta: { title: '评论管理' } },
     ],
   },
 ]
